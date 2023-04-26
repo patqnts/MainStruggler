@@ -54,6 +54,7 @@ public class InventoryManager : MonoBehaviour
         selectedSlot = newValue;
 
         Item selectedItem = GetSelectedItem();
+        
         if (selectedItem != null && selectedItem.holdable == true)
         {
             spawnedItem = Instantiate(selectedItem.prefab, handTransform);
@@ -61,6 +62,14 @@ public class InventoryManager : MonoBehaviour
             spawnedItem.transform.localRotation = Quaternion.identity;
             spawnedItem.transform.localScale = Vector3.one;
             spawnedItem.transform.parent = weaponHolder.transform;
+            //Destroy(selectedItem);
+            CircleCollider2D itemCollider = spawnedItem.GetComponent<CircleCollider2D>();
+
+            // check if the component exists before destroying it
+            if (itemCollider != null)
+            {
+                Destroy(itemCollider);
+            }
         }
     }
 

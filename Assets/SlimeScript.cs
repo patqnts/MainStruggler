@@ -13,7 +13,7 @@ public class SlimeScript : MonoBehaviour, IDamageable
 
     public bool isFacingRight = true;
 
-
+    public GameObject alarm;
     public float moveSpeed = 500f;
 
     public GameObject[] dropPrefab;
@@ -52,6 +52,8 @@ public class SlimeScript : MonoBehaviour, IDamageable
 
         if (detectionZone.detectedObj.Count > 0)
         {
+            alarm.gameObject.SetActive(true);
+            Invoke("DeactivateAlarm", 1.2f);
             Vector2 direction = (detectionZone.detectedObj[0].transform.position - transform.position).normalized;
 
             // Update facing direction based on movement direction
@@ -67,6 +69,11 @@ public class SlimeScript : MonoBehaviour, IDamageable
         }
 
 
+    }
+
+    void DeactivateAlarm()
+    {
+        alarm.gameObject.SetActive(false);
     }
     public void OnHit(float damage, Vector2 knockback)
     {
