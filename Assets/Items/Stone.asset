@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1662d66746d5b7841a5171ab4c6f819a, type: 3}
+  m_Name: Stone
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 60820714438538513, guid: 3e241f4ac8bceb04884641f4988c0919, type: 3}
+  tile: {fileID: 0}
+  type: 4
+  actionType: 1
+  range: {x: 5, y: 4}
+  weaponDamage: 0
+  stackable: 1
+  consumable: 0
+  holdable: 0
+  image: {fileID: 130203420, guid: 51721a244c2b3b2448a18bd0044dee35, type: 3}
