@@ -66,10 +66,9 @@ public class InventoryManager : MonoBehaviour
             CircleCollider2D itemCollider = spawnedItem.GetComponent<CircleCollider2D>();
 
             // check if the component exists before destroying it
-            if (itemCollider != null)
-            {
+            
                 Destroy(itemCollider);
-            }
+            
         }
     }
 
@@ -110,6 +109,8 @@ public class InventoryManager : MonoBehaviour
         GameObject newItemGo = Instantiate(inventoryItemPrefab, slot.transform);
         InventoryItem inventoryItem = newItemGo.GetComponent<InventoryItem>();
         inventoryItem.InitialiseItem(item);
+
+
 
     }
 

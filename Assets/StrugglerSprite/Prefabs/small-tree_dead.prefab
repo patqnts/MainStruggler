@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7074023787951222143}
   - component: {fileID: -6201549210570180509}
   - component: {fileID: 1289731364640345039}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: small-tree_dead
   m_TagString: Tree
   m_Icon: {fileID: 0}

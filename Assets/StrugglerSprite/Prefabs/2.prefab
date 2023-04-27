@@ -24,6 +24,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1017984876538910845, guid: e5bb458f242015c43921923e7562a9b7,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1017984876538910845, guid: e5bb458f242015c43921923e7562a9b7,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1017984876538910845, guid: e5bb458f242015c43921923e7562a9b7,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1017984876538910845, guid: e5bb458f242015c43921923e7562a9b7,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -104,6 +119,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2923678960722727245, guid: f16c1066f3300ee4b90ab75a2d566255,
         type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2923678960722727245, guid: f16c1066f3300ee4b90ab75a2d566255,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2923678960722727245, guid: f16c1066f3300ee4b90ab75a2d566255,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2923678960722727245, guid: f16c1066f3300ee4b90ab75a2d566255,
+        type: 3}
       propertyPath: m_SortingOrder
       value: 2
       objectReference: {fileID: 0}
@@ -151,7 +181,7 @@ PrefabInstance:
     - target: {fileID: 4453049253977021100, guid: f16c1066f3300ee4b90ab75a2d566255,
         type: 3}
       propertyPath: knockbackForce
-      value: 2000
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4453049253977021100, guid: f16c1066f3300ee4b90ab75a2d566255,
         type: 3}
@@ -244,7 +274,7 @@ PrefabInstance:
     - target: {fileID: 7785157350946960024, guid: f16c1066f3300ee4b90ab75a2d566255,
         type: 3}
       propertyPath: m_Radius
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3161767953058028753, guid: f16c1066f3300ee4b90ab75a2d566255, type: 3}

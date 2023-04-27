@@ -25,29 +25,50 @@ public class InventorySlot : MonoBehaviour, IDropHandler
     }
     public void OnDrop(PointerEventData eventData)
     {
-        if (transform.childCount == 0)
+        InventoryItem droppedItem = eventData.pointerDrag.GetComponent<InventoryItem>();
+        if (droppedItem != null)
         {
-            InventoryItem inventoryItem = eventData.pointerDrag.GetComponent<InventoryItem>();
-            if (inventoryItem != null)
+            Transform itemParent = droppedItem.parentAfterDrag;
+            Transform dropParent = transform;
+            if (itemParent == dropParent)
             {
-                inventoryItem.parentAfterDrag = transform;
-                Item item = inventoryItem.item;
+                return; // No need to swap if dropping into the same slot
+            }
 
+            InventoryItem existingItem = null;
+            if (dropParent.childCount > 0)
+            {
+                existingItem = dropParent.GetChild(0).GetComponent<InventoryItem>();
+            }
 
-                if (item != null && item.prefab != null && 
-                    InventoryManager.instance.selectedSlot == transform.GetSiblingIndex() &&
-                    item.holdable == true
-                    )
+            if (existingItem != null)
+            {
+                // Swap items
+                existingItem.transform.SetParent(itemParent);
+                droppedItem.transform.SetParent(dropParent);
+                existingItem.parentAfterDrag = itemParent;
+                droppedItem.parentAfterDrag = dropParent;
+            }
+            else
+            {
+                // Move item to empty slot
+                droppedItem.transform.SetParent(dropParent);
+                droppedItem.parentAfterDrag = dropParent;
+            }
+
+            // Instantiate prefab if holding a holdable item in selected slot
+            if (droppedItem.item != null && droppedItem.item.prefab != null && droppedItem.item.holdable)
+            {
+                if (InventoryManager.instance.selectedSlot == transform.GetSiblingIndex())
                 {
                     // Instantiate the prefab and set its parent to the weapon holder
-                    GameObject newObject = Instantiate(item.prefab, InventoryManager.instance.weaponHolder.transform);
+                    GameObject newObject = Instantiate(droppedItem.item.prefab, InventoryManager.instance.weaponHolder.transform);
                     newObject.transform.localPosition = Vector3.zero;
                     newObject.transform.localRotation = Quaternion.identity;
                     newObject.transform.localScale = Vector3.one;
 
                     // Destroy the spawned item that was previously in the hand
-                    if (InventoryManager.instance.spawnedItem != null )
-                        
+                    if (InventoryManager.instance.spawnedItem != null)
                     {
                         Destroy(InventoryManager.instance.spawnedItem);
                     }
@@ -56,8 +77,15 @@ public class InventorySlot : MonoBehaviour, IDropHandler
                     InventoryManager.instance.spawnedItem = newObject;
                 }
             }
+            else if (!droppedItem.item.holdable && InventoryManager.instance.selectedSlot == transform.GetSiblingIndex())
+            {
+                Destroy(InventoryManager.instance.spawnedItem);
+            }
         }
     }
+
+
+
 
 
 

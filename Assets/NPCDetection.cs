@@ -8,13 +8,28 @@ public class NPCDetection : MonoBehaviour
     public Collider2D coll;
     public string Target = "Player";
     public GameObject notice;
+   
+
+
+   
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
-        notice.gameObject.SetActive(true);
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            notice.gameObject.SetActive(true);
+           
+        }
+       
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        notice.gameObject.SetActive(false);
+        
+
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            notice.gameObject.SetActive(false);
+
+        }
+
     }
 }

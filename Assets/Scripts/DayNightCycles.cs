@@ -9,7 +9,7 @@ public class DayNightCycles : MonoBehaviour
     [SerializeField] private float nightLength = 300f; // Night length in seconds
     [SerializeField] private float transitionLength = 10f; // Transition length in seconds
     [SerializeField] private Volume globalVolume; // Global volume to control the look of the game
-    private Light globalLight; // Global volume to control the look of the game
+   // Global volume to control the look of the game
 
 
     
@@ -48,7 +48,7 @@ public class DayNightCycles : MonoBehaviour
         float startWeight = globalVolume.weight;
         
         float endWeight = 1f;
-        float globalEnd = 0.5f;
+        
         while (t < transitionLength)
         {
             t += Time.deltaTime;
