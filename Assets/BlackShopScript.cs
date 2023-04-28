@@ -12,7 +12,10 @@ public class BlackShopScript : MonoBehaviour
     int coin;
     int stoneheart;
 
-
+    private void Start()
+    {
+        inventoryManager = FindObjectOfType<InventoryManager>();
+    }
     public void BuyItem(int id)
     {
         Item itemToBuy = itemList[id];

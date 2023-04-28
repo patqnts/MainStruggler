@@ -8,7 +8,8 @@ public class InventorySlot : MonoBehaviour, IDropHandler
 {
     public Image image;
     public Color selectedColor, notSelectedColor;
-
+    public int slot;
+    
 
 
     private void Awake()
@@ -28,6 +29,9 @@ public class InventorySlot : MonoBehaviour, IDropHandler
         InventoryItem droppedItem = eventData.pointerDrag.GetComponent<InventoryItem>();
         if (droppedItem != null)
         {
+
+            
+
             Transform itemParent = droppedItem.parentAfterDrag;
             Transform dropParent = transform;
             if (itemParent == dropParent)
@@ -35,6 +39,8 @@ public class InventorySlot : MonoBehaviour, IDropHandler
                 return; // No need to swap if dropping into the same slot
             }
 
+            
+            
             InventoryItem existingItem = null;
             if (dropParent.childCount > 0)
             {
@@ -83,10 +89,43 @@ public class InventorySlot : MonoBehaviour, IDropHandler
             }
         }
     }
+    public void RemoveItem()
+    {
+        InventoryItem item = transform.GetChild(0).GetComponent<InventoryItem>();
+        if (item != null)
+        {
+            // Remove the item from the weapon holder
+            if (item.inventoryManager.inventoryItemPrefab != null && item.inventoryManager.inventoryItemPrefab.transform.parent == item.inventoryManager.weaponHolder.transform)
+            {
+                Destroy(item.inventoryManager.inventoryItemPrefab);
+                
+            }
+
+            // Destroy the item object
+            Destroy(item.gameObject);
+            Destroy(InventoryManager.instance.spawnedItem);
+
+            // Reset the slot
+            item.transform.SetParent(null);
+            item.parentAfterDrag = null;
+        }
+    }
 
 
 
+ 
+    public void SelectedItem()
+    {
+        
+        InventoryManager.instance.ChangeSelectedSlot(slot);
+        
+        if (InventoryManager.instance.GetSelectedItem(false))
+        {
+
+            RemoveItem();
+        }
+    }
 
 
-
+  
 }
