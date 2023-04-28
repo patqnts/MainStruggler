@@ -20,11 +20,15 @@ public class Loot : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
-        {  
+        {
+            bool canAdd = InventoryManager.instance.AddItem(item);
+            if (canAdd)
+            {
                 StartCoroutine(MoveAndCollect(other.transform));
+            }
+                
           
-        }
-         
+        }    
         
     }
 
@@ -36,7 +40,7 @@ public class Loot : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
             yield return 0; 
         }
-        InventoryManager.instance.AddItem(item);
+       // InventoryManager.instance.AddItem(item);
         Debug.Log("Item Received:" + item);
         Destroy(gameObject);
 

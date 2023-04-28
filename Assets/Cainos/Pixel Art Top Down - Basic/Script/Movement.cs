@@ -11,12 +11,17 @@ public class Movement : MonoBehaviour, IDamageable
     private Vector2 movement;
     private bool isAttacking;
     private Vector2 lastDirection = Vector2.zero;
-
+    private InventoryManager item;
     public float Health { get; set; }
 
     private void Awake()
     {
         Health = 100f;
+        
+    }
+    private void Start()
+    {
+        item = GetComponent<InventoryManager>();
     }
 
     private void Update()
@@ -34,7 +39,16 @@ public class Movement : MonoBehaviour, IDamageable
         if (Input.GetKeyDown(KeyCode.Space) && !isAttacking)
         {
             StartCoroutine(Attack());
+
+
+            // Decrement consumable item after attacking
+            Item canEat = InventoryManager.instance.GetSelectedItem(item);
+            if (canEat != null && canEat.consumable && InventoryManager.instance.GetSelectedItem(item) != null)
+            {
+                InventoryManager.instance.GetSelectedItem(true);
+            }
         }
+
 
         // Update last direction if moving
         if (movement != Vector2.zero)
@@ -67,6 +81,8 @@ public class Movement : MonoBehaviour, IDamageable
         // Reset attacking flag and animation
         isAttacking = false;
         animator.SetBool("isAttacking", false);
+
+        
     }
 
     public void OnHit(float damage, Vector2 knockback)

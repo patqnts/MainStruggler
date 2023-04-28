@@ -12,7 +12,10 @@ public class AttackHitbox : MonoBehaviour
 
 
     public InventoryManager inventoryManager;
-
+    private void Update()
+    {
+        Item item = InventoryManager.instance.GetSelectedItem(false);
+    }
     void Start()
     {
         inventoryManager = FindObjectOfType<InventoryManager>();
@@ -32,7 +35,7 @@ public class AttackHitbox : MonoBehaviour
             Vector2 knockback = direction * knockbackForce;
             if (collision.gameObject.CompareTag("Enemy")|| collision.gameObject.CompareTag("Tree")|| collision.gameObject.CompareTag("Rock"))
             {
-                Item selectedItem = inventoryManager.GetSelectedItem();
+                Item selectedItem = inventoryManager.GetSelectedItem(false);
                 damage = selectedItem != null ? selectedItem.weaponDamage : 1f;               
                 damageableObject.OnHit(damage, knockback);
 

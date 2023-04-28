@@ -6257,10 +6257,12 @@ MonoBehaviour:
     type: 3}
   Merchant: {fileID: 6012793721474656899, guid: 3c3affb7b5dab824da989dadda2f0287,
     type: 3}
-  bonFire: {fileID: 7416822517387852609, guid: c8a272f7d6eb2f24c9c362af086b62b9, type: 3}
+  bonFire: {fileID: 1458452475300343260, guid: 440a4aa22b0e4a449ac094e0418f96d3, type: 3}
+  Witch: {fileID: 7416822517387852609, guid: c8a272f7d6eb2f24c9c362af086b62b9, type: 3}
   numBlackSmith: 1
   numBonfire: 3
   numMerchant: 1
+  numWitch: 1
   grassflowers:
   - {fileID: 11400000, guid: e52f8c514bcb8f1439743bbc3c92e082, type: 2}
   oldgrass:

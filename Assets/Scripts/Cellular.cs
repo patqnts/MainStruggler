@@ -18,9 +18,11 @@ public class Cellular : MonoBehaviour
     public GameObject blackSmith;
     public GameObject Merchant;
     public GameObject bonFire;
+    public GameObject Witch;
     public int numBlackSmith = 1;
     public int numBonfire = 3;
     public int numMerchant = 3;
+    public int numWitch = 1;
 
 
     //public Tilemap grassTilemap;
@@ -118,6 +120,16 @@ public class Cellular : MonoBehaviour
             Instantiate(bonFire, worldPosition, Quaternion.identity);
             groundTilePositions.RemoveAt(randomIndex);
             bonfire++;
+        }
+        int witchspawn = 0;
+        while (witchspawn < numWitch && groundTilePositions.Count > 0)
+        {
+            int randomIndex = Random.Range(0, groundTilePositions.Count);
+            Vector3Int tilePosition = groundTilePositions[randomIndex];
+            Vector3 worldPosition = tilemap.CellToWorld(tilePosition) + new Vector3(0.5f, 0.5f, 0f); // add offset to center the ruin on the tile
+            Instantiate(Witch, worldPosition, Quaternion.identity);
+            groundTilePositions.RemoveAt(randomIndex);
+            witchspawn++;
         }
     }
     private void UpperRightBiome()

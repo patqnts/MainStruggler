@@ -10,7 +10,7 @@ public class WanderScript : MonoBehaviour
 
     [SerializeField] private float moveSpeed = 1.5f;
     [SerializeField] private Vector2 decisionTime = new Vector2(1f, 4f);
-    [SerializeField] private float checkRadius = 0.2f;
+    
 
     private float decisionTimeCount;
     private Vector2 currentDirection;

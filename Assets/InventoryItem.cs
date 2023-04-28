@@ -29,12 +29,12 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler,IEnd
             item = newItem;
             image.sprite = item.image;
 
-            if (InventoryManager.instance.GetSelectedItem() != null && 
+            if (InventoryManager.instance.GetSelectedItem(false) != null && 
                 item.holdable == true &&
-                InventoryManager.instance.GetSelectedItem().type == ItemType.Weapon)
+                InventoryManager.instance.GetSelectedItem(false).type == ItemType.Weapon)
             {
                 // Instantiate the prefab and set its parent to the weapon holder
-                GameObject newObject = Instantiate(InventoryManager.instance.GetSelectedItem().prefab, InventoryManager.instance.weaponHolder.transform);
+                GameObject newObject = Instantiate(InventoryManager.instance.GetSelectedItem(false).prefab, InventoryManager.instance.weaponHolder.transform);
                 newObject.transform.localPosition = Vector3.zero;
                 newObject.transform.localRotation = Quaternion.identity;
                 newObject.transform.localScale = Vector3.one;
@@ -67,7 +67,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler,IEnd
     transform.SetParent(transform.root);
 
                                        //prevent holded weapon from destroying while dragging other items
-    if (inventoryManager != null && !InventoryManager.instance.GetSelectedItem())
+    if (inventoryManager != null && !InventoryManager.instance.GetSelectedItem(false))
     {
         Destroy(inventoryManager.spawnedItem);
     }
