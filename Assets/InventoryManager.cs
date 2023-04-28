@@ -139,4 +139,52 @@ public class InventoryManager : MonoBehaviour
         }
         return null;
     }
+
+
+    public InventoryItem GetInventoryItem(string itemName)
+{
+    for (int i = 0; i < inventorySlots.Length; i++)
+    {
+        InventorySlot slot = inventorySlots[i];
+        InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
+        if (itemInSlot != null && itemInSlot.item.name == itemName)
+        {
+            return itemInSlot;
+        }
+    }
+    return null;
+}
+
+public void RemoveItem(string itemName, int count)
+{
+    InventoryItem itemInInventory = GetInventoryItem(itemName);
+    if (itemInInventory != null)
+    {
+        itemInInventory.count -= count;
+        if (itemInInventory.count <= 0)
+        {
+            Destroy(itemInInventory.gameObject);
+        }
+        else
+        {
+            itemInInventory.RefreshCount();
+        }
+    }
+}
+    public int GetItemCount(string itemName)
+    {
+        int count = 0;
+        foreach (InventorySlot slot in inventorySlots)
+        {
+            InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
+            if (itemInSlot != null && itemInSlot.item.name == itemName)
+            {
+                count += itemInSlot.count;
+            }
+        }
+        return count;
+    }
+
+
+
 }
