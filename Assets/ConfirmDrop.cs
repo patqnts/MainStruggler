@@ -4,41 +4,19 @@ using UnityEngine.UI;
 
 public class ConfirmDrop : MonoBehaviour
 {
+
+    public GameObject box;
+   
+   
     
-    public Button confirmButton;
-    public Button cancelButton;
-
-    private UnityAction confirmAction;
-    private UnityAction cancelAction;
-
-    public void SetConfirmAction(UnityAction action)
+    public void Close()
     {
-        confirmAction = action;
-        confirmButton.onClick.AddListener(Confirm);
+       
+        box.SetActive(false);
     }
-
-    public void SetCancelAction(UnityAction action)
+    public void Open()
     {
-        cancelAction = action;
-        cancelButton.onClick.AddListener(Cancel);
-    }
 
-    private void Confirm()
-    {
-        confirmAction?.Invoke();
-        Close();
-    }
-
-    private void Cancel()
-    {
-        cancelAction?.Invoke();
-        Close();
-    }
-
-    private void Close()
-    {
-        confirmButton.onClick.RemoveAllListeners();
-        cancelButton.onClick.RemoveAllListeners();
-        gameObject.SetActive(false);
+        box.SetActive(true);
     }
 }

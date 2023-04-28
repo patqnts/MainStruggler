@@ -19,10 +19,12 @@ public class InventorySlot : MonoBehaviour, IDropHandler
     public void Select()
     {
         image.color = selectedColor;
+        
     }
     public void Deselect()
     {
         image.color = notSelectedColor;
+       
     }
     public void OnDrop(PointerEventData eventData)
     {
@@ -91,14 +93,15 @@ public class InventorySlot : MonoBehaviour, IDropHandler
     }
     public void RemoveItem()
     {
-        InventoryItem item = transform.GetChild(0).GetComponent<InventoryItem>();
-        if (item != null)
+        if (transform.childCount > 0)
         {
+            InventoryItem item = transform.GetChild(0).GetComponent<InventoryItem>();
+
             // Remove the item from the weapon holder
             if (item.inventoryManager.inventoryItemPrefab != null && item.inventoryManager.inventoryItemPrefab.transform.parent == item.inventoryManager.weaponHolder.transform)
             {
                 Destroy(item.inventoryManager.inventoryItemPrefab);
-                
+
             }
 
             // Destroy the item object
@@ -113,19 +116,26 @@ public class InventorySlot : MonoBehaviour, IDropHandler
 
 
 
- 
+    public ConfirmationDialog confirmationDialog;
+    public bool hasBeenClicked = false;
     public void SelectedItem()
     {
-        
+        if (transform.childCount == 0) return;
         InventoryManager.instance.ChangeSelectedSlot(slot);
-        
-        if (InventoryManager.instance.GetSelectedItem(false))
-        {
 
-            RemoveItem();
+        if (hasBeenClicked)
+        {
+            // Show the confirmation box
+            confirmationDialog.ShowConfirmationBox();
+            confirmationDialog.itemToRemove = this;
+        }
+        else
+        {
+            hasBeenClicked = true;
         }
     }
 
 
-  
+
+
 }
