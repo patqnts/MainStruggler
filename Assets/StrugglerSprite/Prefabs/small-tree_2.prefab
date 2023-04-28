@@ -184,6 +184,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6668152685787499450}
   - component: {fileID: 7293134279157143932}
+  - component: {fileID: 8538539024130846857}
+  - component: {fileID: 2514738388394077354}
   m_Layer: 0
   m_Name: TX Shadow Bush T4
   m_TagString: Untagged
@@ -258,3 +260,42 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &8538539024130846857
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8942247383027119824}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.04549688, y: 1.9312661}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 1.5, y: 0.75}
+    newSize: {x: 1.5, y: 0.75}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.5454968, y: 2.1735616}
+  m_EdgeRadius: 0
+--- !u!114 &2514738388394077354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8942247383027119824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3974dcd6f292e0f4681b2f4238907e7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alpha: 0.5
