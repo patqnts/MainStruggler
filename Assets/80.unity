@@ -273,7 +273,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &202560518
 Transform:
   m_ObjectHideFlags: 0
@@ -1509,7 +1509,8 @@ MonoBehaviour:
   tileset:
   - {fileID: 11400000, guid: 76e94849ecb3ab149a69e7ace627f038, type: 2}
   - {fileID: 11400000, guid: 975e5b1fcdbdcfb4a983002cc7c13692, type: 2}
-  - {fileID: 11400000, guid: 76e94849ecb3ab149a69e7ace627f038, type: 2}
+  - {fileID: 11400000, guid: 61d87083dc438e848b365d535c569d6f, type: 2}
+  - {fileID: 11400000, guid: d6575aa9c214a2e44b5a610683675873, type: 2}
   player: {fileID: 1925655482}
   camera: {fileID: 519420028}
   treePrefabs:

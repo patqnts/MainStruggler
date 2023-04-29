@@ -11,6 +11,7 @@ public class Cellular : MonoBehaviour
     public Tilemap tilemap;
 
     public Tilemap UpperRight;
+    
 
     //COLLIDER TILEMAP
     public Tilemap waterTilemap;
@@ -55,7 +56,7 @@ public class Cellular : MonoBehaviour
 
 
         GenerateMap();
-       // UpperRightBiome();
+        //UpperRightBiome();
 
         if (groundTilePositions.Count > 0) // spawn on ground
         {
@@ -134,21 +135,37 @@ public class Cellular : MonoBehaviour
     }
     private void UpperRightBiome()
     {
-        int biomeTileX = 100;//edge corner of upper right
-        int biomeTileY = 100;
+        int biomeTileX = mapWidth;//edge corner of upper right
+        int biomeTileY = mapHeight;
 
 
         TileBase biomeTile = tileset[2]; // replace with the tile you want to use for this biome
-        float scale =85f; // adjust this value to change the frequency of the noise
-        for (int x = 50; x < biomeTileX; x++)
+        TileBase UpperRightWater = tileset[3];
+        float scale =25f; // adjust this value to change the frequency of the noise
+        for (int x = mapWidth / 2; x < biomeTileX; x++)
         {
-            for (int y = 50; y < biomeTileY; y++)
+            for (int y = mapHeight / 2; y < biomeTileY; y++)
             {
                 float noise = Mathf.PerlinNoise((float)x / biomeTileX * scale, (float)y / biomeTileY * scale);
-                if (noise > 0.6f) // adjust this threshold value to change the density of the biome
+                if (noise > 0.4f) // adjust this threshold value to change the density of the biome
                 {
 
                     UpperRight.SetTile(new Vector3Int(x, y, 0), biomeTile);
+                    
+                }
+            }
+        }
+         // adjust this value to change the frequency of the noise
+        for (int x = mapWidth / 2; x < biomeTileX; x++)
+        {
+            for (int y = mapHeight / 2; y < biomeTileY; y++)
+            {
+                float noise = Mathf.PerlinNoise((float)x / biomeTileX * scale, (float)y / biomeTileY * scale);
+                if (noise > 0.4f) // adjust this threshold value to change the density of the biome
+                {
+
+                  
+                    waterTilemap.SetTile(new Vector3Int(x, y, 0), UpperRightWater);
                 }
             }
         }
