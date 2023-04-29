@@ -2164,6 +2164,11 @@ PrefabInstance:
       propertyPath: m_Icon
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8964455052685347681, guid: 8a28a06f4595cbf47a70c04b92cf0d33,
+        type: 3}
+      propertyPath: m_TagString
+      value: Interact
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a28a06f4595cbf47a70c04b92cf0d33, type: 3}
 --- !u!1001 &6073206873377076460
@@ -4369,6 +4374,31 @@ PrefabInstance:
       value: Canvas
       objectReference: {fileID: 0}
     - target: {fileID: 6073206872393807753, guid: ff3895597b4a6c749be60261ed37df0b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6073206872699208754, guid: ff3895597b4a6c749be60261ed37df0b,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 31.0887
+      objectReference: {fileID: 0}
+    - target: {fileID: 6073206872699208754, guid: ff3895597b4a6c749be60261ed37df0b,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 32.1436
+      objectReference: {fileID: 0}
+    - target: {fileID: 6073206872699208754, guid: ff3895597b4a6c749be60261ed37df0b,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 392.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6073206872699208754, guid: ff3895597b4a6c749be60261ed37df0b,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 55.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6073206873279286797, guid: ff3895597b4a6c749be60261ed37df0b,
         type: 3}
       propertyPath: m_IsActive
       value: 0

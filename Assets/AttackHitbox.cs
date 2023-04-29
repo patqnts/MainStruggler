@@ -38,10 +38,8 @@ public class AttackHitbox : MonoBehaviour
                 Item selectedItem = inventoryManager.GetSelectedItem(false);
                 damage = selectedItem != null ? selectedItem.weaponDamage : 1f;               
                 damageableObject.OnHit(damage, knockback);
-
-                
-
             }
+            
         }
         else
         {
