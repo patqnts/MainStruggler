@@ -1,20 +1,23 @@
-using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class Cellular : MonoBehaviour
+public class SecondTerrain : MonoBehaviour
 {
+    // Start is called before the first frame update
 
-    [Header("1ST TERRAIN")]
-  
+
+    [Header("2NT TERRAIN")]
+
     public int mapWidth;
     public int mapHeight;
     public int smoothnessIterations = 5;
     public int fillPercentage = 45;
     public Tilemap tilemap;
 
-   
-    
+
+
 
     //COLLIDER TILEMAP
     public Tilemap waterTilemap;
@@ -29,13 +32,12 @@ public class Cellular : MonoBehaviour
     public int numWitch = 1;
 
     public TileBase[] grassflowers;
-    public TileBase[] oldgrass;
+   
     //----------------------------//
     public TileBase[] tileset;
     private int[,] map;
     private List<Vector3Int> groundTilePositions = new List<Vector3Int>();
-    public GameObject player;
-    public GameObject camera;
+    
     public GameObject[] treePrefabs;
 
 
@@ -55,39 +57,7 @@ public class Cellular : MonoBehaviour
 
         GenerateMap();
 
-        if (groundTilePositions.Count > 0) // spawn on ground
-        {
-            int randomIndex = Random.Range(0, groundTilePositions.Count);
-            Vector3 playerPosition = tilemap.CellToWorld(groundTilePositions[randomIndex]);
-
-            // Check if the player is spawning in water
-            Vector3Int playerCell = tilemap.WorldToCell(playerPosition);
-            TileBase tile = waterTilemap.GetTile(playerCell);
-            if (tile != null)
-            {
-                // Set the player's position to the nearest ground tile
-                float closestDistance = float.MaxValue;
-                Vector3 closestPosition = playerPosition;
-                foreach (Vector3Int groundTilePosition in groundTilePositions)
-                {
-                    Vector3 groundTileWorldPosition = tilemap.CellToWorld(groundTilePosition);
-                    float distance = Vector3.Distance(playerPosition, groundTileWorldPosition);
-                    if (distance < closestDistance)
-                    {
-                        closestDistance = distance;
-                        closestPosition = groundTileWorldPosition;
-                    }
-                }
-
-                player.transform.position = closestPosition;
-            }
-            else
-            {
-                player.transform.position = playerPosition;
-            }
-        }
-
-        camera.transform.position = player.transform.position;
+        
 
         int blacksmithSpawn = 0;
         while (blacksmithSpawn < numBlackSmith && groundTilePositions.Count > 0)
@@ -110,8 +80,8 @@ public class Cellular : MonoBehaviour
             merchantSpawn++;
         }
         int bonfire = 0;
-        while(bonfire < numBonfire && groundTilePositions.Count > 0)
-                {
+        while (bonfire < numBonfire && groundTilePositions.Count > 0)
+        {
             int randomIndex = Random.Range(0, groundTilePositions.Count);
             Vector3Int tilePosition = groundTilePositions[randomIndex];
             Vector3 worldPosition = tilemap.CellToWorld(tilePosition) + new Vector3(0.5f, 0.5f, 0f); // add offset to center the ruin on the tile
@@ -130,10 +100,10 @@ public class Cellular : MonoBehaviour
             witchspawn++;
         }
     }
-   
+
     private void GenerateMapUsingSeed()
     {
-       
+        map = new int[mapWidth, mapHeight];
         for (int x = 0; x < mapWidth; x++)
         {
             for (int y = 0; y < mapHeight; y++)
@@ -159,6 +129,7 @@ public class Cellular : MonoBehaviour
 
     private void GenerateMap()
     {
+        Cellular cellular = GetComponent<Cellular>();
         if (seedCode == 0)
         {
             map = new int[mapWidth, mapHeight];
@@ -170,40 +141,42 @@ public class Cellular : MonoBehaviour
             GenerateMapUsingSeed();
         }
         SmoothMap();
-
-        for (int x = 0; x < mapWidth; x++)
+        
+        for (int x = cellular.mapWidth; x < mapWidth; x++)
         {
-            int tilesetground = 0;
-            int water = 1;
-            for (int y = 0; y < mapHeight; y++)
+            for (int y =0; y < mapHeight; y++)
             {
                 if (map[x, y] == 1)
                 {
-                    tilemap.SetTile(new Vector3Int(x, y, 0), tileset[tilesetground]); // replace with the tile you want to use for ground
-                    groundTilePositions.Add(new Vector3Int(x, y, 0));
-
-                    
+                    if(x > cellular.mapWidth -4)
+                    {
+                        tilemap.SetTile(new Vector3Int(x, y, 0), tileset[0]); // replace with the tile you want to use for ground
+                        groundTilePositions.Add(new Vector3Int(x, y, 0));
+                    }
                    
+
+
+
                 }
                 else
                 {
-                    waterTilemap.SetTile(new Vector3Int(x, y, 0), tileset[water]); // replace with the tile you want to use for water
+                    waterTilemap.SetTile(new Vector3Int(x, y, 0), tileset[1]); // replace with the tile you want to use for water
 
 
                     // Add collider to water tile
                     waterTilemap.SetTileFlags(new Vector3Int(x, y, 0), TileFlags.None);
                     waterTilemap.SetColliderType(new Vector3Int(x, y, 0), Tile.ColliderType.Grid);
                 }
+
+
+
                 // Randomly add grass tiles on ground tiles
                 if (map[x, y] == 1 && waterTilemap.GetTile(new Vector3Int(x, y, 0)) == null && Random.Range(0, 100) < 70)
                 {
-                    tilemap.SetTile(new Vector3Int(x, y, 2), grassflowers[0]); // replace with the tile you want to use for grass
+                    tilemap.SetTile(new Vector3Int(x, y, 1), grassflowers[0]); // replace with the tile you want to use for grass
                 }
 
-                if (map[x, y] == 1 && waterTilemap.GetTile(new Vector3Int(x, y, 0)) == null && Random.Range(0, 100) < 70)
-                {
-                    tilemap.SetTile(new Vector3Int(x, y, 1), oldgrass[Random.Range(0,2)]); // replace with the tile you want to use for grass
-                }
+                
 
             }
 
@@ -239,7 +212,7 @@ public class Cellular : MonoBehaviour
         {
             for (int y = 0; y < mapHeight; y++)
             {
-            
+                
                     map[x, y] = Random.Range(0, 100) < fillPercentage ? 1 : 0;
                 
             }
@@ -265,7 +238,7 @@ public class Cellular : MonoBehaviour
         }
     }
 
-    private int GetSurroundingWallCount(int gridX, int gridY)
+     private int GetSurroundingWallCount(int gridX, int gridY)
     {
         int wallCount = 0;
 
@@ -290,3 +263,5 @@ public class Cellular : MonoBehaviour
         return wallCount;
     }
 }
+
+

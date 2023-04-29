@@ -27,13 +27,13 @@ public class WitchShopScript : MonoBehaviour
                 coin = 0;
                 stoneheart = 0;
                 break;
-            case "Bottle":
+            case "Light-Longsword":
                 coin = 5;
                 stoneheart = 0;
                 break;
-            case "Flame-Sword":
+            case "Dark-Longsword":
                 coin = 10;
-                stoneheart = 2;
+                stoneheart = 0;
                 break;
             default:
                 Debug.Log("Invalid item name");

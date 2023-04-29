@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 232207224496940365}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.011, y: -0.373, z: 0}
+  m_LocalPosition: {x: -0.011, y: -0.176, z: 0}
   m_LocalScale: {x: 1.3657662, y: 1.5057447, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 7461685743319903043}
   - component: {fileID: 4928972569486597390}
   m_Layer: 0
-  m_Name: rock_small_prefab
+  m_Name: starstone-small
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -160,7 +160,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 1812070395, guid: da57e4d5e14d0284cb8ed15c3eb558b5, type: 3}
+  m_Sprite: {fileID: 441083486, guid: d282b410d68bd564c94445158f15d601, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -196,7 +196,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5523680297651747872}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.373, y: -0.352, z: 0}
+  m_LocalPosition: {x: -0.373, y: -0.155, z: 0}
   m_LocalScale: {x: 0.3855629, y: 0.59155935, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -280,7 +280,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7808072897784269866}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.3316, y: -0.454, z: 0}
+  m_LocalPosition: {x: 0.3316, y: -0.257, z: 0}
   m_LocalScale: {x: 0.8900344, y: 1.2339578, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -1650,8 +1650,8 @@ MonoBehaviour:
   inventoryManager: {fileID: 0}
   itemList:
   - {fileID: 11400000, guid: cce285e6480a9b5488a0002e5f3cd1ca, type: 2}
-  - {fileID: 11400000, guid: e98c57dde60ecbc4e8267e085174fd06, type: 2}
-  - {fileID: 11400000, guid: 592e24c49b844da408a5b4385f83d846, type: 2}
+  - {fileID: 11400000, guid: cd4e936ad40bd1f4ababa85169a79f68, type: 2}
+  - {fileID: 11400000, guid: 7d8d6a5c29b87b146827eb61525215f1, type: 2}
 --- !u!224 &4511322587647622349 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8944978152596460896, guid: c96a13ade0e55c343adf44056792ce4c,
