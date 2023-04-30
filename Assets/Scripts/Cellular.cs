@@ -37,6 +37,7 @@ public class Cellular : MonoBehaviour
     public GameObject player;
     public GameObject camera;
     public GameObject[] treePrefabs;
+    public Tile water;
 
 
     public int seedCode = 0;
@@ -175,34 +176,44 @@ public class Cellular : MonoBehaviour
         {
             int tilesetground = 0;
             int water = 1;
+            int transition = 2;
             for (int y = 0; y < mapHeight; y++)
             {
                 if (map[x, y] == 1)
                 {
+
                     tilemap.SetTile(new Vector3Int(x, y, 0), tileset[tilesetground]); // replace with the tile you want to use for ground
                     groundTilePositions.Add(new Vector3Int(x, y, 0));
 
-                    
-                   
+                }
+                else if (x > mapWidth)
+                {
+                    waterTilemap.SetTile(new Vector3Int(x, y, 0), tileset[transition]); // replace with the tile you want to use for water
+                                                                                        // Add collider to water tile
+                    waterTilemap.SetTileFlags(new Vector3Int(x, y, 0), TileFlags.None);
+                    waterTilemap.SetColliderType(new Vector3Int(x, y, 0), Tile.ColliderType.Grid);
+
+
                 }
                 else
                 {
-                    waterTilemap.SetTile(new Vector3Int(x, y, 0), tileset[water]); // replace with the tile you want to use for water
+                 waterTilemap.SetTile(new Vector3Int(x, y, 0), tileset[water]); // replace with the tile you want to use for water
 
+                // Add collider to water tile
+                 waterTilemap.SetTileFlags(new Vector3Int(x, y, 0), TileFlags.None);
+                 waterTilemap.SetColliderType(new Vector3Int(x, y, 0), Tile.ColliderType.Grid);
 
-                    // Add collider to water tile
-                    waterTilemap.SetTileFlags(new Vector3Int(x, y, 0), TileFlags.None);
-                    waterTilemap.SetColliderType(new Vector3Int(x, y, 0), Tile.ColliderType.Grid);
                 }
+
                 // Randomly add grass tiles on ground tiles
                 if (map[x, y] == 1 && waterTilemap.GetTile(new Vector3Int(x, y, 0)) == null && Random.Range(0, 100) < 70)
                 {
-                    tilemap.SetTile(new Vector3Int(x, y, 2), grassflowers[0]); // replace with the tile you want to use for grass
+                    tilemap.SetTile(new Vector3Int(x, y, 2), oldgrass[Random.Range(0, 1)]); // replace with the tile you want to use for grass
                 }
 
                 if (map[x, y] == 1 && waterTilemap.GetTile(new Vector3Int(x, y, 0)) == null && Random.Range(0, 100) < 70)
                 {
-                    tilemap.SetTile(new Vector3Int(x, y, 1), oldgrass[Random.Range(0,2)]); // replace with the tile you want to use for grass
+                    tilemap.SetTile(new Vector3Int(x, y, 2), grassflowers[Random.Range(0,1)]); // replace with the tile you want to use for grass
                 }
 
             }
@@ -233,15 +244,23 @@ public class Cellular : MonoBehaviour
 
     }
 
+
+
+
     private void FillMapRandomly()
     {
         for (int x = 0; x < mapWidth; x++)
         {
             for (int y = 0; y < mapHeight; y++)
             {
-            
+                if (x <= 15 || x >= mapWidth - 20 || y <= 20 || y == mapHeight - 20 || x == 1 || x == mapWidth - 20 || y == 1 || y >= mapHeight - 20)
+                {
+                    map[x, y] = 0;
+                }
+                else
+                {
                     map[x, y] = Random.Range(0, 100) < fillPercentage ? 1 : 0;
-                
+                }
             }
         }
     }

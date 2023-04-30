@@ -596,7 +596,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b1586ec71657a747bfb0b3e2ec8be86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dayLength: 100
+  dayLength: 500
   nightLength: 100
   transitionLength: 32
   globalVolume: {fileID: 230857732}
@@ -670,7 +670,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.6784314, g: 0.7607844, b: 0.4431373, a: 1}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1475,10 +1475,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95781be4bde78fd43b14773e9edd2c09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapWidth: 100
-  mapHeight: 100
-  smoothnessIterations: 23
-  fillPercentage: 55
+  mapWidth: 125
+  mapHeight: 150
+  smoothnessIterations: 100
+  fillPercentage: 57
   tilemap: {fileID: 1019895072}
   waterTilemap: {fileID: 2037586497}
   blackSmith: {fileID: 811616718371703854, guid: d7bbfde9c0c5730408dbe97f7120723f,
@@ -1492,13 +1492,15 @@ MonoBehaviour:
   numMerchant: 1
   numWitch: 1
   grassflowers:
+  - {fileID: 11400000, guid: 4ec6378e8748fac4a951502b5e2bf3c7, type: 2}
+  - {fileID: 11400000, guid: 8f92c22242d986042b263bf0b38027eb, type: 2}
   - {fileID: 11400000, guid: e52f8c514bcb8f1439743bbc3c92e082, type: 2}
   oldgrass:
   - {fileID: 11400000, guid: 062c51477422a9747a873446abd874a0, type: 2}
   - {fileID: 11400000, guid: 062c51477422a9747a873446abd874a0, type: 2}
   tileset:
-  - {fileID: 11400000, guid: 76e94849ecb3ab149a69e7ace627f038, type: 2}
-  - {fileID: 11400000, guid: 975e5b1fcdbdcfb4a983002cc7c13692, type: 2}
+  - {fileID: 11400000, guid: 620dfa9381e2e6849bedc324f92199bc, type: 2}
+  - {fileID: 11400000, guid: 851f473a2d78c3d45b0ff6e0d561f72b, type: 2}
   player: {fileID: 1925655482}
   camera: {fileID: 519420028}
   treePrefabs:
@@ -1513,6 +1515,7 @@ MonoBehaviour:
   - {fileID: 6725641232165134321, guid: 4ebd970acd42878459ae870a88e88019, type: 3}
   - {fileID: 2694150275487380254, guid: 081f7da41793b3d4c9091cfdef278408, type: 3}
   - {fileID: 7641841797069218316, guid: 258e6369974e4cb4d863f6140b11ef5f, type: 3}
+  water: {fileID: 0}
   seedCode: 0
 --- !u!4 &1967736705
 Transform:
@@ -1542,9 +1545,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d255e2c0ff2919145ae2b2e189cb4cdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapWidth: 200
-  mapHeight: 100
-  smoothnessIterations: 23
+  mapWidth: 250
+  mapHeight: 150
+  smoothnessIterations: 100
   fillPercentage: 55
   tilemap: {fileID: 1019895072}
   waterTilemap: {fileID: 2037586497}
@@ -1560,9 +1563,11 @@ MonoBehaviour:
   numWitch: 1
   grassflowers:
   - {fileID: 11400000, guid: 81ae7e7c93041fe489c907d9cb0679b3, type: 2}
+  - {fileID: 11400000, guid: 81ae7e7c93041fe489c907d9cb0679b3, type: 2}
+  - {fileID: 11400000, guid: 81ae7e7c93041fe489c907d9cb0679b3, type: 2}
   tileset:
-  - {fileID: 11400000, guid: 61d87083dc438e848b365d535c569d6f, type: 2}
-  - {fileID: 11400000, guid: d6575aa9c214a2e44b5a610683675873, type: 2}
+  - {fileID: 11400000, guid: fb2feab814220b348b92d41ce632a596, type: 2}
+  - {fileID: 11400000, guid: 851f473a2d78c3d45b0ff6e0d561f72b, type: 2}
   treePrefabs:
   - {fileID: 7641841797069218316, guid: e8b99a34743e2254aa75ffc67330a7ca, type: 3}
   - {fileID: 7641841797069218316, guid: 1bb58e63a3dd3b74b8955d13eecd1d6f, type: 3}

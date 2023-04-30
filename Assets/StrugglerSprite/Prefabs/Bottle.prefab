@@ -116,5 +116,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sr: {fileID: 648096565833635994}
   collider: {fileID: 914129137723103110}
-  moveSpeed: 3
+  moveSpeed: 4
   item: {fileID: 11400000, guid: e98c57dde60ecbc4e8267e085174fd06, type: 2}

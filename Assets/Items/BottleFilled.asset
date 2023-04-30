@@ -19,6 +19,6 @@ MonoBehaviour:
   range: {x: 1, y: 1}
   weaponDamage: 0
   stackable: 1
-  consumable: 0
+  consumable: 1
   holdable: 0
   image: {fileID: -1672398112, guid: 51721a244c2b3b2448a18bd0044dee35, type: 3}

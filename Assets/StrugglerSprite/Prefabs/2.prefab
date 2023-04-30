@@ -193,13 +193,13 @@ PrefabInstance:
         type: 3}
       propertyPath: dropPrefab.Array.data[1]
       value: 
-      objectReference: {fileID: 9186392332181356639, guid: b1d9b8ff163dc9a44849e25c39f84cf1,
+      objectReference: {fileID: 1550321499018942001, guid: ca78e7b2dff31bf4d92f1240cf4ca434,
         type: 3}
     - target: {fileID: 4453049253977021100, guid: f16c1066f3300ee4b90ab75a2d566255,
         type: 3}
       propertyPath: dropPrefab.Array.data[2]
       value: 
-      objectReference: {fileID: 8772386301943041245, guid: d24952724f3170543b2411b3e761c4b1,
+      objectReference: {fileID: 593067995031978350, guid: 05d3517b392834643848e1e375a2306e,
         type: 3}
     - target: {fileID: 7328376061788675789, guid: f16c1066f3300ee4b90ab75a2d566255,
         type: 3}

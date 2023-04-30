@@ -148,16 +148,14 @@ public class SecondTerrain : MonoBehaviour
             {
                 if (map[x, y] == 1)
                 {
-                    if(x > cellular.mapWidth -4)
-                    {
-                        tilemap.SetTile(new Vector3Int(x, y, 0), tileset[0]); // replace with the tile you want to use for ground
-                        groundTilePositions.Add(new Vector3Int(x, y, 0));
-                    }
-                   
 
-
-
+                    tilemap.SetTile(new Vector3Int(x, y, 0), tileset[0]); // replace with the tile you want to use for ground
+                    groundTilePositions.Add(new Vector3Int(x, y, 0));
                 }
+               
+
+                
+                
                 else
                 {
                     waterTilemap.SetTile(new Vector3Int(x, y, 0), tileset[1]); // replace with the tile you want to use for water
@@ -171,9 +169,9 @@ public class SecondTerrain : MonoBehaviour
 
 
                 // Randomly add grass tiles on ground tiles
-                if (map[x, y] == 1 && waterTilemap.GetTile(new Vector3Int(x, y, 0)) == null && Random.Range(0, 100) < 70)
+                if (map[x, y] == 1 && waterTilemap.GetTile(new Vector3Int(x, y, 0)) == null && Random.Range(0, 100) < 90)
                 {
-                    tilemap.SetTile(new Vector3Int(x, y, 1), grassflowers[0]); // replace with the tile you want to use for grass
+                    tilemap.SetTile(new Vector3Int(x, y, 1), grassflowers[Random.Range(0,1)]); // replace with the tile you want to use for grass
                 }
 
                 
@@ -212,9 +210,14 @@ public class SecondTerrain : MonoBehaviour
         {
             for (int y = 0; y < mapHeight; y++)
             {
-                
+                if (x <= 120 || x >= mapWidth - 20 || y <= 20 || y == mapHeight - 20 || x == 1 || x == mapWidth - 20 || y == 1 || y >= mapHeight - 20)
+                {
+                    map[x, y] = 0;
+                }
+                else
+                {
                     map[x, y] = Random.Range(0, 100) < fillPercentage ? 1 : 0;
-                
+                }
             }
         }
     }
