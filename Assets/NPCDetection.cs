@@ -12,9 +12,24 @@ public class NPCDetection : MonoBehaviour
     public GameObject notice;
     public GameObject noticeButtonUI;
     public GameObject shopUI;
-    public GameObject close;
+
+    private GameObject inactiveObject;
 
 
+
+
+    public string inactiveObjectName = "MainInventoryGroup"; // Reference to the inactive GameObject
+    void Start()
+    {
+        GameObject canvas = GameObject.Find("Canvas");
+        // Find the inactive GameObject by name
+        inactiveObject = canvas.transform.Find(inactiveObjectName).gameObject;
+
+        if (inactiveObject != null)
+        {
+            inactiveObject.SetActive(false);
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -35,7 +50,11 @@ public class NPCDetection : MonoBehaviour
             notice.gameObject.SetActive(false);
             noticeButtonUI.gameObject.SetActive(false); 
             shopUI.gameObject.SetActive(false);
-       
+
+            if (inactiveObject != null)
+            {
+                inactiveObject.SetActive(false);
+            }
 
         }
 
@@ -43,12 +62,21 @@ public class NPCDetection : MonoBehaviour
 
     public void OpenUI()
     {
+        if (inactiveObject != null)
+        {
+            inactiveObject.SetActive(true); // Activate the inactive object
+        }
         shopUI.gameObject.SetActive(true);
-        
+       
     }
     public void CloseUI()
     {
-      
+
         shopUI.gameObject.SetActive(false);
+        if (inactiveObject != null)
+        {
+            inactiveObject.SetActive(false);
+        }
+
     }
 }

@@ -689,7 +689,7 @@ MonoBehaviour:
   notice: {fileID: 6599436820683057295}
   noticeButtonUI: {fileID: 7648021702660473308}
   shopUI: {fileID: 5056289567614038932}
-  close: {fileID: 3714961300693220696}
+  close: {fileID: 0}
 --- !u!1 &2397435669528778042
 GameObject:
   m_ObjectHideFlags: 0
@@ -802,7 +802,7 @@ RectTransform:
   m_GameObject: {fileID: 3714961300693220696}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.07565215, y: 0.07442987, z: 0}
+  m_LocalScale: {x: 0.16891645, y: 0.16618732, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1651208159826569600}
@@ -810,7 +810,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 123, y: -93}
+  m_AnchoredPosition: {x: 195, y: 90}
   m_SizeDelta: {x: 392.09998, y: 455.12}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6015804304137062318
@@ -834,14 +834,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.8333406, b: 0.6179246, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9aa4348290784b2468144a97eb15d8d7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 92b204cca46037444ab18ba6701f86f7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -997,7 +997,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -1035,6 +1035,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 591992697560718789}
+        m_TargetAssemblyTypeName: NPCDetection, Assembly-CSharp
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1284,6 +1296,27 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -455.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 8944978151923447899, guid: c96a13ade0e55c343adf44056792ce4c,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1497272514, guid: 73567c2e5b46e5141a21c3dc36e27ad0,
+        type: 3}
+    - target: {fileID: 8944978151923447899, guid: c96a13ade0e55c343adf44056792ce4c,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.9506372
+      objectReference: {fileID: 0}
+    - target: {fileID: 8944978151923447899, guid: c96a13ade0e55c343adf44056792ce4c,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8944978151923447899, guid: c96a13ade0e55c343adf44056792ce4c,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.6179246
       objectReference: {fileID: 0}
     - target: {fileID: 8944978151923447902, guid: c96a13ade0e55c343adf44056792ce4c,
         type: 3}
