@@ -58,7 +58,7 @@ public class RockScript : MonoBehaviour, IDamageable
     {
        
 
-            Instantiate(dropPrefab[Random.Range(1, dropPrefab.Length)], transform.position, Quaternion.identity);
+            Instantiate(dropPrefab[Random.Range(0, dropPrefab.Length)], transform.position, Quaternion.identity);
 
         
     }

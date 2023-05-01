@@ -28,22 +28,64 @@ public class AttackHitbox : MonoBehaviour
     {
         IDamageable damageableObject = collision.gameObject.GetComponent<IDamageable>();
 
-        if (hitCollider != null)
+        if (hitCollider != null && collision.gameObject != null && damageableObject != null)
         {
             Vector3 parentPos = transform.parent.position;
             Vector2 direction = (collision.gameObject.transform.position - parentPos).normalized;
             Vector2 knockback = direction * knockbackForce;
-            if (collision.gameObject.CompareTag("Enemy")|| collision.gameObject.CompareTag("Tree")|| collision.gameObject.CompareTag("Rock"))
+
+            Item selectedItem = inventoryManager.GetSelectedItem(false);
+            if (collision.gameObject.CompareTag("Enemy"))
             {
-                Item selectedItem = inventoryManager.GetSelectedItem(false);
-                damage = selectedItem != null ? selectedItem.weaponDamage : 1f;               
-                damageableObject.OnHit(damage, knockback);
+                if (selectedItem != null && selectedItem.type == ItemType.Weapon)
+                {
+                    // WEAPON TO ENEMY
+                    damage = selectedItem.weaponDamage;
+                }
+                else if (selectedItem != null && selectedItem.type == ItemType.Tool)
+                {
+                    //TOOL TO ENEMY
+                    damage = selectedItem.weaponDamage * .6f;
+                }
+                else
+                {
+                    // Hand only
+                    damage = 1f;
+                }
             }
-            
+            else if (collision.gameObject.CompareTag("Tree") || collision.gameObject.CompareTag("Rock"))
+            {
+                if (selectedItem != null && selectedItem.type == ItemType.Tool)
+                {
+                    // TOOL TO TREES AND ROCK
+                    damage = selectedItem.weaponDamage;
+                }
+                else if (selectedItem != null && selectedItem.type == ItemType.Weapon)
+                {
+                    // WEAPON TO TREES AND ROCK
+                    damage = selectedItem.weaponDamage * .6f;
+                }
+                else
+                {
+                    // Hand only
+                    damage = 1f;
+                } 
+            }
+            else
+            {
+                // Set the base damage to 1 for other types of objects
+                damage = selectedItem.weaponDamage = 1f;
+            }
+
+            damageableObject.OnHit(damage, knockback);
         }
         else
         {
-            Debug.Log("Wall");
+            Debug.Log("None");
         }
+        
     }
+
+
+
 }

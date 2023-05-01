@@ -31,7 +31,10 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler,IEnd
 
             if (InventoryManager.instance.GetSelectedItem(false) != null && 
                 item.holdable == true &&
-                InventoryManager.instance.GetSelectedItem(false).type == ItemType.Weapon)
+                InventoryManager.instance.GetSelectedItem(false).type == ItemType.Weapon || 
+                
+                InventoryManager.instance.GetSelectedItem(false) != null &&
+                item.holdable == true && InventoryManager.instance.GetSelectedItem(false).type == ItemType.Tool)
             {
                 // Instantiate the prefab and set its parent to the weapon holder
                 GameObject newObject = Instantiate(InventoryManager.instance.GetSelectedItem(false).prefab, InventoryManager.instance.weaponHolder.transform);

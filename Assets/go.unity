@@ -1504,17 +1504,20 @@ MonoBehaviour:
   player: {fileID: 1925655482}
   camera: {fileID: 519420028}
   treePrefabs:
-  - {fileID: 7641841797069218316, guid: e902d4dd682ebca40a6d5764dc6551db, type: 3}
   - {fileID: 2736138971278135775, guid: b0afd2929cbde1e4ea4f814d6ca64865, type: 3}
   - {fileID: 6725641232165134321, guid: 4ebd970acd42878459ae870a88e88019, type: 3}
-  - {fileID: 3473242657989273246, guid: 392ef1ad348cad143885cff090629b54, type: 3}
+  - {fileID: 7641841797069218316, guid: c509704f090c88742842ffa5c04ebf8c, type: 3}
   - {fileID: 3081754911678330582, guid: a646581b1ff6c0c4c892d34706e82a0a, type: 3}
   - {fileID: 2694051314971446967, guid: db98e8bed7f025644bb08db03c08ab2b, type: 3}
   - {fileID: 4205138259144466107, guid: 100da967bc563c24cabc2673d7e5e034, type: 3}
-  - {fileID: 2366360824452190194, guid: 37bcd8f3273bd5045a61d7030f110c45, type: 3}
+  - {fileID: 2736138971278135775, guid: 919fc7f5fba0564498a688c3cd664c34, type: 3}
   - {fileID: 6725641232165134321, guid: 4ebd970acd42878459ae870a88e88019, type: 3}
   - {fileID: 2694150275487380254, guid: 081f7da41793b3d4c9091cfdef278408, type: 3}
+  - {fileID: 2694051314971446967, guid: 0a7d9a8f96c51524dab049c331141821, type: 3}
+  - {fileID: 7641841797069218316, guid: c509704f090c88742842ffa5c04ebf8c, type: 3}
   - {fileID: 7641841797069218316, guid: 258e6369974e4cb4d863f6140b11ef5f, type: 3}
+  - {fileID: 2694051314971446967, guid: 5aa87533fb966be43a02b12b87c4d5cd, type: 3}
+  - {fileID: 7641841797069218316, guid: c509704f090c88742842ffa5c04ebf8c, type: 3}
   water: {fileID: 0}
   seedCode: 0
 --- !u!4 &1967736705
@@ -1540,7 +1543,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1967736703}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d255e2c0ff2919145ae2b2e189cb4cdc, type: 3}
   m_Name: 
@@ -1548,7 +1551,7 @@ MonoBehaviour:
   mapWidth: 250
   mapHeight: 150
   smoothnessIterations: 100
-  fillPercentage: 58
+  fillPercentage: 57
   tilemap: {fileID: 1019895072}
   waterTilemap: {fileID: 2037586497}
   blackSmith: {fileID: 811616718371703854, guid: d7bbfde9c0c5730408dbe97f7120723f,
@@ -1578,6 +1581,11 @@ MonoBehaviour:
   - {fileID: 6725641232165134321, guid: 4ebd970acd42878459ae870a88e88019, type: 3}
   - {fileID: 2694051314971446967, guid: db98e8bed7f025644bb08db03c08ab2b, type: 3}
   - {fileID: 4205138259144466107, guid: 100da967bc563c24cabc2673d7e5e034, type: 3}
+  - {fileID: 2694051314971446967, guid: aa00ed2592cbfb343a6ccc43ef21b2d6, type: 3}
+  - {fileID: 2694051314971446967, guid: 5be9a7abf29852b438cd0791c3a8e30f, type: 3}
+  - {fileID: 2736138971278135775, guid: 4bcd60e38cbd34b40884ac45ad63363b, type: 3}
+  - {fileID: 2736138971278135775, guid: 166d34bb0543e7b46808b192da3b28cc, type: 3}
+  - {fileID: 6725641232165134321, guid: 4ebd970acd42878459ae870a88e88019, type: 3}
   seedCode: 0
 --- !u!4 &2017937114 stripped
 Transform:
@@ -4449,8 +4457,31 @@ PrefabInstance:
     - target: {fileID: 6073206873279286797, guid: ff3895597b4a6c749be60261ed37df0b,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6073206873279286799, guid: ff3895597b4a6c749be60261ed37df0b,
+        type: 3}
+      propertyPath: itemsToPickup.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6073206873279286799, guid: ff3895597b4a6c749be60261ed37df0b,
+        type: 3}
+      propertyPath: itemsToPickup.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: e6a4ae9b16340ad4fb80784b0ee4ad15,
+        type: 2}
+    - target: {fileID: 6073206873279286799, guid: ff3895597b4a6c749be60261ed37df0b,
+        type: 3}
+      propertyPath: itemsToPickup.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: f8040fdbd627f0f488cda72be0a389aa,
+        type: 2}
+    - target: {fileID: 6073206873279286799, guid: ff3895597b4a6c749be60261ed37df0b,
+        type: 3}
+      propertyPath: itemsToPickup.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: cce285e6480a9b5488a0002e5f3cd1ca,
+        type: 2}
     - target: {fileID: 6073206873675267535, guid: ff3895597b4a6c749be60261ed37df0b,
         type: 3}
       propertyPath: weaponHolder

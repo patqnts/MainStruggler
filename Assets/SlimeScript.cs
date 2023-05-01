@@ -80,6 +80,7 @@ public class SlimeScript : MonoBehaviour, IDamageable
         Health -= damage;
         rb.AddForce(knockback);
         animator.SetTrigger("Hurt");
+        Debug.Log(Health);
     }
 
     public void OnHit(float damage)
