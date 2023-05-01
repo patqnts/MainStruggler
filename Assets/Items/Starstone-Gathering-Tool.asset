@@ -17,7 +17,7 @@ MonoBehaviour:
   type: 1
   actionType: 0
   range: {x: 5, y: 4}
-  weaponDamage: 220
+  weaponDamage: 200
   stackable: 0
   consumable: 0
   holdable: 1
