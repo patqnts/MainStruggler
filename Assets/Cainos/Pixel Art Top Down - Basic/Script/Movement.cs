@@ -32,8 +32,8 @@ public class Movement : MonoBehaviour, IDamageable
         // Get input for movement
         movement.x = joystick.Horizontal;
         movement.y = joystick.Vertical;
-        //movement.x = Input.GetAxisRaw("Horizontal");
-        //movement.y = Input.GetAxisRaw("Vertical");
+        movement.x = Input.GetAxisRaw("Horizontal");
+        movement.y = Input.GetAxisRaw("Vertical");
 
         // Set animator parameters for movement
         animator.SetFloat("Horizontal", movement.x);
@@ -70,8 +70,7 @@ public class Movement : MonoBehaviour, IDamageable
     {
         if (!isAttacking)
         {
-            Vector2 force = movement.normalized * moveSpeed * Time.fixedDeltaTime;
-            rb.AddForce(force, ForceMode2D.Impulse);
+            rb.MovePosition(rb.position + movement.normalized * moveSpeed * Time.fixedDeltaTime);
         }
     }
 

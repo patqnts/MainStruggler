@@ -61,7 +61,7 @@ public class Cellular : MonoBehaviour
         if (groundTilePositions.Count > 0) // spawn on ground
         {
             int randomIndex = Random.Range(0, groundTilePositions.Count);
-            Vector3 playerPosition = tilemap.CellToWorld(groundTilePositions[randomIndex]);
+            Vector3 playerPosition = tilemap.GetCellCenterWorld(groundTilePositions[randomIndex]);
 
             // Check if the player is spawning in water
             Vector3Int playerCell = tilemap.WorldToCell(playerPosition);
@@ -73,12 +73,12 @@ public class Cellular : MonoBehaviour
                 Vector3 closestPosition = playerPosition;
                 foreach (Vector3Int groundTilePosition in groundTilePositions)
                 {
-                    Vector3 groundTileWorldPosition = tilemap.CellToWorld(groundTilePosition);
-                    float distance = Vector3.Distance(playerPosition, groundTileWorldPosition);
+                    Vector3 groundTileCenter = tilemap.GetCellCenterWorld(groundTilePosition);
+                    float distance = Vector3.Distance(playerPosition, groundTileCenter);
                     if (distance < closestDistance)
                     {
                         closestDistance = distance;
-                        closestPosition = groundTileWorldPosition;
+                        closestPosition = groundTileCenter;
                     }
                 }
 
@@ -89,6 +89,9 @@ public class Cellular : MonoBehaviour
                 player.transform.position = playerPosition;
             }
         }
+
+
+
 
         camera.transform.position = player.transform.position;
 

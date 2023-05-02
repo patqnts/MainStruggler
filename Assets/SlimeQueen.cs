@@ -32,7 +32,7 @@ public class SlimeQueen : MonoBehaviour, IDamageable
 
             if (_health <= 0)
             {
-                rb.velocity = Vector2.zero;
+                rb.constraints = RigidbodyConstraints2D.FreezeAll;
                 collider.enabled = false;
                 animator.SetTrigger("Death");
                 Destroy(gameObject, 2.3f);

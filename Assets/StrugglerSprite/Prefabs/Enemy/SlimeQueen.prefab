@@ -173,12 +173,12 @@ MonoBehaviour:
   playerDetectionZone: {fileID: 3559810121155677841}
   slimeMinionPrefab: {fileID: 6725641232165134321, guid: 4ebd970acd42878459ae870a88e88019,
     type: 3}
-  projectileCooldown: 3
+  projectileCooldown: 5
   stunDuration: 2
-  projectileSpeed: 5
+  projectileSpeed: 4
   projectilePrefab: {fileID: 8613849481098850520, guid: d023b99c1ec82f440aaae86d93599b1c,
     type: 3}
-  projectileDamage: 5
+  projectileDamage: 1
   projectileKnockbackForce: 200
   pushbackForce: 3000
   collider: {fileID: 923861142236718806}

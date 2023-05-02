@@ -38,11 +38,12 @@ public class Loot : MonoBehaviour
         while (transform.position != target.position)
         {
             transform.position = Vector3.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
-            yield return 0; 
+            yield return 0;
+            Destroy(gameObject,0.5f);
         }
        // InventoryManager.instance.AddItem(item);
         Debug.Log("Item Received:" + item);
-        Destroy(gameObject);
+        
 
 
 

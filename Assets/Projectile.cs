@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    public float damage;
+    public float damage = 1;
     public float knockbackForce;
 
     private void OnTriggerEnter2D(Collider2D collision)

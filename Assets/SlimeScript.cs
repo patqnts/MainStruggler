@@ -27,6 +27,7 @@ public class SlimeScript : MonoBehaviour, IDamageable
             if (_health <= 0)
             {
                 moveSpeed = 0;
+
                 hitCollider.enabled = false;
                 animator.SetTrigger("Death");
                 Destroy(gameObject,1.2f);
