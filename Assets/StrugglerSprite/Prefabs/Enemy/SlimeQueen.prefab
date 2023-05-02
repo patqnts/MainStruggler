@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 2177926263589866154}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -2.78, y: 3.65, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 0}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6791189085087274112}
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: -272798361, guid: 25711e426ccb76f4e8b9738ec5ca90e2, type: 3}
+  m_Sprite: {fileID: 775863112, guid: e09ba9b45a11e01499b9ff46850918be, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -128,7 +128,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 2, y: 2}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -147,7 +147,7 @@ Animator:
   m_GameObject: {fileID: 2177926263589866154}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f729badd1f927e94db4c83af372fa7b4, type: 2}
+  m_Controller: {fileID: 9100000, guid: 77183d87a359f284aacb3ed2f098b3b9, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba7031edf4382ea45a0c3ed51a055b23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 5000
+  _health: 1000
   playerDetectionZone: {fileID: 3559810121155677841}
   slimeMinionPrefab: {fileID: 6725641232165134321, guid: 4ebd970acd42878459ae870a88e88019,
     type: 3}
@@ -181,6 +181,7 @@ MonoBehaviour:
   projectileDamage: 5
   projectileKnockbackForce: 200
   pushbackForce: 3000
+  collider: {fileID: 923861142236718806}
 --- !u!1 &6005342578448021299
 GameObject:
   m_ObjectHideFlags: 0

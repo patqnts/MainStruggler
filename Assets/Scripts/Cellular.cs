@@ -23,10 +23,12 @@ public class Cellular : MonoBehaviour
     public GameObject Merchant;
     public GameObject bonFire;
     public GameObject Witch;
+    public GameObject SlimeQueen;
     public int numBlackSmith = 1;
     public int numBonfire = 3;
     public int numMerchant = 3;
     public int numWitch = 1;
+    public int numSlimeQueen = 1;
 
     public TileBase[] grassflowers;
     public TileBase[] oldgrass;
@@ -90,6 +92,18 @@ public class Cellular : MonoBehaviour
 
         camera.transform.position = player.transform.position;
 
+        //SLIME QUEEN
+        int slimequeenSpawn = 0;
+        while (slimequeenSpawn < numSlimeQueen && groundTilePositions.Count > 0)
+        {
+            int randomIndex = Random.Range(0, groundTilePositions.Count);
+            Vector3Int tilePosition = groundTilePositions[randomIndex];
+            Vector3 worldPosition = tilemap.CellToWorld(tilePosition) + new Vector3(0.5f, 0.5f, 0f); // add offset to center the ruin on the tile
+            Instantiate(SlimeQueen, worldPosition, Quaternion.identity);
+            groundTilePositions.RemoveAt(randomIndex);
+            slimequeenSpawn++;
+        }
+        // BLACKSMITH
         int blacksmithSpawn = 0;
         while (blacksmithSpawn < numBlackSmith && groundTilePositions.Count > 0)
         {
@@ -100,6 +114,7 @@ public class Cellular : MonoBehaviour
             groundTilePositions.RemoveAt(randomIndex);
             blacksmithSpawn++;
         }
+        //MERCHANT
         int merchantSpawn = 0;
         while (merchantSpawn < numMerchant && groundTilePositions.Count > 0)
         {
@@ -110,6 +125,7 @@ public class Cellular : MonoBehaviour
             groundTilePositions.RemoveAt(randomIndex);
             merchantSpawn++;
         }
+        //RUIN BONFIRE
         int bonfire = 0;
         while(bonfire < numBonfire && groundTilePositions.Count > 0)
                 {
@@ -120,6 +136,7 @@ public class Cellular : MonoBehaviour
             groundTilePositions.RemoveAt(randomIndex);
             bonfire++;
         }
+        //WITCH
         int witchspawn = 0;
         while (witchspawn < numWitch && groundTilePositions.Count > 0)
         {
@@ -222,7 +239,7 @@ public class Cellular : MonoBehaviour
 
         }
         // Add trees to the ground tiles
-        int numTrees = Mathf.RoundToInt(groundTilePositions.Count / 10); // 10% of the ground tiles will have trees
+        int numTrees = Mathf.RoundToInt(groundTilePositions.Count / 7); // 10% of the ground tiles will have trees
         for (int i = 0; i < numTrees; i++)
         {
             // Find a random ground tile

@@ -22,6 +22,7 @@ public class Projectile : MonoBehaviour
                 if (rb != null)
                 {
                     Vector2 direction = (collision.transform.position - transform.position).normalized;
+
                     rb.AddForce(direction * knockbackForce);
                 }
             }

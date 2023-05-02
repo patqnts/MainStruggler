@@ -10,7 +10,7 @@ public class SlimeScript : MonoBehaviour, IDamageable
     public Collider2D hitCollider;
     public float knockbackForce = 200f;
     public Animator animator;
-
+    
     public bool isFacingRight = true;
 
     public GameObject alarm;
@@ -26,8 +26,12 @@ public class SlimeScript : MonoBehaviour, IDamageable
 
             if (_health <= 0)
             {
+                moveSpeed = 0;
+                hitCollider.enabled = false;
+                animator.SetTrigger("Death");
+                Destroy(gameObject,1.2f);
+                
                 DropItem();
-                Destroy(gameObject);
             }
         }
         get
@@ -67,6 +71,8 @@ public class SlimeScript : MonoBehaviour, IDamageable
             }
             rb.AddForce(direction * moveSpeed * Time.deltaTime);
         }
+       
+      
 
 
     }

@@ -8,6 +8,7 @@ public class RockScript : MonoBehaviour, IDamageable
 
     public GameObject[] dropPrefab;
     public Animator animator;
+    public Collider2D collider;
 
     
     public float Health
@@ -18,8 +19,10 @@ public class RockScript : MonoBehaviour, IDamageable
 
             if (_health <= 0)
             {
+                collider.enabled = false;
+                animator.SetBool("Destroyed", true);
+                Destroy(gameObject, 1f);
                 DropItem();
-                Destroy(gameObject);
             }
         }
         get

@@ -134,6 +134,7 @@ MonoBehaviour:
   - {fileID: 60820714438538513, guid: 3e241f4ac8bceb04884641f4988c0919, type: 3}
   - {fileID: 3396009678439204717, guid: acc8f81c2f236594aae730138a983065, type: 3}
   animator: {fileID: -3793105448501500391}
+  collider: {fileID: 490399588900303665}
   _health: 500
 --- !u!95 &-3793105448501500391
 Animator:
@@ -145,7 +146,7 @@ Animator:
   m_GameObject: {fileID: 2694051314971446967}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a6cfad484444e7245b5a687697ef9e68, type: 2}
+  m_Controller: {fileID: 9100000, guid: 631eeb30effebc44cb6c6ee8adb5529b, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

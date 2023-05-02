@@ -20,7 +20,7 @@ public class SlimeQueen : MonoBehaviour, IDamageable
     private Rigidbody2D rb;
     private Animator animator;
     private bool isStunned = false;
-  
+    public Collider2D collider;
     private float projectileTimer = 0f;
     private List<GameObject> slimeMinions = new List<GameObject>();
 
@@ -32,8 +32,12 @@ public class SlimeQueen : MonoBehaviour, IDamageable
 
             if (_health <= 0)
             {
+                rb.velocity = Vector2.zero;
+                collider.enabled = false;
+                animator.SetTrigger("Death");
+                Destroy(gameObject, 2.3f);
+
                 
-                Destroy(gameObject);
             }
         }
         get

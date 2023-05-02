@@ -9,6 +9,7 @@ public class TreeScript : MonoBehaviour, IDamageable
 
     public Animator animator;
     public GameObject[] dropPrefab;
+    public Collider2D collider;
     
     public float Health
     {
@@ -18,8 +19,11 @@ public class TreeScript : MonoBehaviour, IDamageable
 
             if (_health <= 0)
             {
+                collider.enabled = false;
+                animator.SetBool("Destroyed", true);
+                Destroy(gameObject, 1f);
                 DropItem();
-                Destroy(gameObject);
+                
             }
         }
         get

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Joystick : MonoBehaviour
+public class Joysticks : MonoBehaviour
 {
     public float maxDistance = 50f; // maximum distance the joystick handle can move from the center
     public KeyCode upKey = KeyCode.W; // keyboard key to map to "up" axis

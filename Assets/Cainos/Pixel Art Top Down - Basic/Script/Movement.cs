@@ -8,6 +8,9 @@ public class Movement : MonoBehaviour, IDamageable
     [SerializeField] private float attackTime = 0.2f;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Animator animator;
+    [SerializeField] private Joystick joystick;
+
+
     private Vector2 movement;
     private bool isAttacking;
     private Vector2 lastDirection = Vector2.zero;
@@ -27,8 +30,10 @@ public class Movement : MonoBehaviour, IDamageable
     private void Update()
     {
         // Get input for movement
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
+        movement.x = joystick.Horizontal;
+        movement.y = joystick.Vertical;
+        //movement.x = Input.GetAxisRaw("Horizontal");
+        //movement.y = Input.GetAxisRaw("Vertical");
 
         // Set animator parameters for movement
         animator.SetFloat("Horizontal", movement.x);
@@ -65,7 +70,23 @@ public class Movement : MonoBehaviour, IDamageable
     {
         if (!isAttacking)
         {
-            rb.MovePosition(rb.position + movement.normalized * moveSpeed * Time.fixedDeltaTime);
+            Vector2 force = movement.normalized * moveSpeed * Time.fixedDeltaTime;
+            rb.AddForce(force, ForceMode2D.Impulse);
+        }
+    }
+
+    public void OnButtonPress()
+    {
+        if (!isAttacking)
+        {
+            StartCoroutine(Attack());
+
+            // Decrement consumable item after attacking
+            Item canEat = InventoryManager.instance.GetSelectedItem(item);
+            if (canEat != null && canEat.consumable && InventoryManager.instance.GetSelectedItem(item) != null)
+            {
+                InventoryManager.instance.GetSelectedItem(true);
+            }
         }
     }
 
