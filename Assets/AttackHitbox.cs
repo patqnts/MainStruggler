@@ -71,11 +71,7 @@ public class AttackHitbox : MonoBehaviour
                     damage = 1f;
                 } 
             }
-            else
-            {
-                // Set the base damage to 1 for other types of objects
-                damage = selectedItem.weaponDamage = 1f;
-            }
+
 
             damageableObject.OnHit(damage, knockback);
         }

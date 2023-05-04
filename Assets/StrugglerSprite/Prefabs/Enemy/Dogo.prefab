@@ -193,10 +193,17 @@ MonoBehaviour:
   projectilePrefab: {fileID: 8613849481098850520, guid: af1e0f105ca9a3c449d27dd2f9e690d4,
     type: 3}
   moveSpeed: 600
-  _health: 10
+  _health: 1
   isAttacking: 0
-  projectileCooldown: 7
+  isSecondPhase: 0
+  isAlive: 0
+  inTransition: 0
+  playerTarget: {fileID: 0}
+  projectileCooldown: 3
   projectilesToThrow: 15
+  chargeDashSpeed: 2000
+  chargeDashDuration: 0.5
+  chargeDashCooldown: 8
 --- !u!50 &1097468475318778000
 Rigidbody2D:
   serializedVersion: 4
@@ -225,10 +232,10 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5292333702654999886}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.1343137, y: 0.063480794}

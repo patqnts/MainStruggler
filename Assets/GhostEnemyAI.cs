@@ -12,9 +12,13 @@ public class GhostEnemyAI : MonoBehaviour, IDamageable
     public Animator animator;
     public GameObject projectilePrefab;
     public float moveSpeed;
-    private float desiredDistance = 3f;
+    public float pushbackForce = 1000f;
     public float _health = 10;
     public bool isAttacking = false;
+    public bool isSecondPhase = false;
+    public bool isAlive;
+    public bool inTransition = false;
+
     public float Health
     {
         set
@@ -23,11 +27,30 @@ public class GhostEnemyAI : MonoBehaviour, IDamageable
 
             if (_health <= 0)
             {
-                moveSpeed = 0;
+                if (isSecondPhase)
+                {
+                    isAlive = false;
+                    rb.constraints = RigidbodyConstraints2D.FreezeAll;
+                    hitCollider.enabled = false;
+                    animator.SetTrigger("Death");
+                    Destroy(gameObject, 4f);
+                }
+                else
+                {
+                    // Enter second phase
+                    isAlive = false;
+                    isSecondPhase = true;
 
-                hitCollider.enabled = false;
-                animator.SetTrigger("Death");
-                Destroy(gameObject, 1.2f);
+                    inTransition = true;
+                    animator.SetTrigger("Phase2");
+                    animator.SetBool("SecondPhase", true);
+
+                    _health = 10;
+                    isAlive = true;
+                    lastChargeDashTime = 5f;
+
+                    //animator.Play("Idle2");
+                }
             }
         }
         get
@@ -38,6 +61,12 @@ public class GhostEnemyAI : MonoBehaviour, IDamageable
 
     public float projectileCooldown;  // the cooldown time between projectile throws
     public int projectilesToThrow;  // the number of projectiles to throw each time
+
+
+    public float chargeDashSpeed;
+    public float chargeDashDuration;
+    public float chargeDashCooldown;
+    private float lastChargeDashTime= 5f;
 
     public void Start()
     {
@@ -69,11 +98,16 @@ public class GhostEnemyAI : MonoBehaviour, IDamageable
 
    private void ThrowProjectileAtPlayer()
     {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (_health <= 0)
+        {
+            return;
+        }
+
+        GameObject player = GameObject.FindGameObjectWithTag("Target");
         Vector2 playerPoss = player.transform.position;
         Vector2 enemyPos = transform.position;
         float distance = Vector2.Distance(playerPoss, enemyPos);
-        if (player != null && distance <5f)
+        if (player != null && distance <5f && !isSecondPhase)
         {
             isAttacking = true;
             animator.SetTrigger("Attack");
@@ -83,25 +117,42 @@ public class GhostEnemyAI : MonoBehaviour, IDamageable
             projectile.GetComponent<Rigidbody2D>().AddForce(direction * 250);
             Destroy(projectile, 4f);
         }
+        else if (player != null && distance < 5f && isSecondPhase && isAlive)
+        {
+            isAttacking = true;
+            animator.SetTrigger("Attack");
+            
+            
+            GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+            Vector2 playerPos = player.transform.position;
+            Vector2 direction = (playerPos - (Vector2)transform.position).normalized;
+            projectile.GetComponent<Rigidbody2D>().AddForce(direction * 600);
+            Destroy(projectile, 4f);
+        }
     }
 
     private void FixedUpdate()
     {
-        
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        GameObject player = GameObject.FindGameObjectWithTag("Target");
         if (player != null)
         {
             Vector2 playerPos = player.transform.position;
             Vector2 enemyPos = transform.position;
             float distance = Vector2.Distance(playerPos, enemyPos);
 
-            if (distance > 3f)
+            if (Time.time - lastChargeDashTime > chargeDashCooldown && distance < 8f && isSecondPhase && isAlive)
+            {
+                // Charge dash towards the player
+                StartCoroutine(ChargeDash(playerPos));
+                lastChargeDashTime = Time.time;
+            }
+            else if (distance > 3.5f)
             {
                 // move towards the player
                 Vector2 direction = (playerPos - enemyPos).normalized;
                 rb.AddForce(direction * moveSpeed * Time.deltaTime);
             }
-            else if (distance < 3f)
+            else if (distance < 3.5f)
             {
                 // move away from the player
                 Vector2 direction = (enemyPos - playerPos).normalized;
@@ -111,12 +162,43 @@ public class GhostEnemyAI : MonoBehaviour, IDamageable
 
         if (!isAttacking)
         {
-            moveSpeed = 500f;
+            if (isSecondPhase)
+            {
+                moveSpeed = 650f;
+            }
+            else
+            {
+                moveSpeed = 500f;
+            }
+            
         }
         else
         {
             moveSpeed = 0;
+             
         }
+    }
+
+    private IEnumerator ChargeDash(Vector2 targetPos)
+    {
+        isAttacking = true;
+        animator.SetTrigger("Dash");
+
+        // Stop moving before charging
+        originalVelocity = rb.velocity;
+        rb.velocity = Vector2.zero;
+
+        // Move towards the player at high speed
+        Vector2 direction = (targetPos - (Vector2)transform.position).normalized;
+        rb.AddForce(direction * chargeDashSpeed);
+
+        yield return new WaitForSeconds(chargeDashDuration);
+
+        // Resume moving after charging
+        rb.velocity = originalVelocity;
+
+        // End the attack
+        isAttacking = false;
     }
 
     public void OnHit(float damage, Vector2 knockback)
@@ -130,5 +212,19 @@ public class GhostEnemyAI : MonoBehaviour, IDamageable
     public void OnHit(float damage)
     {
         Health -= damage;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+
+        IDamageable damageableObject = collision.gameObject.GetComponent<IDamageable>();
+
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            damageableObject.OnHit(damage);
+            // Push the player back
+            Vector2 pushDirection = (collision.transform.position - transform.position).normalized;
+            collision.gameObject.GetComponent<Rigidbody2D>().AddForce(pushDirection * (pushbackForce * 4));
+        }
     }
 }

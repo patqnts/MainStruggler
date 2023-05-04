@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7b0cd746c7db6b54e9f7cec50ec65b5c
+guid: 0ac0b2c7bffae0543b959df4e76c12fd
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -129,7 +129,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SLIME-PROJECTILE-hit_0
+      name: slime-projectile_0
       rect:
         serializedVersion: 2
         x: 0
@@ -143,14 +143,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 97d4076dd3fa4594aa461c4516c1081b
-      internalID: 818920843
+      spriteID: 56746e1eeeafa024d89101748539522f
+      internalID: 1927369966
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SLIME-PROJECTILE-hit_1
+      name: slime-projectile_1
       rect:
         serializedVersion: 2
         x: 32
@@ -164,14 +164,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 76b5f42dffef165448495e650fda50de
-      internalID: 493134016
+      spriteID: 7a4f5cf139575e74591adba23afc0bf2
+      internalID: -615058406
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SLIME-PROJECTILE-hit_2
+      name: slime-projectile_2
       rect:
         serializedVersion: 2
         x: 64
@@ -185,14 +185,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a3eb85329c926004eab7402d8762064b
-      internalID: 386381925
+      spriteID: 2e60385d3bf32c049bd37681fbf60fc3
+      internalID: -800266717
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SLIME-PROJECTILE-hit_3
+      name: slime-projectile_3
       rect:
         serializedVersion: 2
         x: 96
@@ -206,8 +206,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 26c73fe05b5cb7949b8a7ae7bae45556
-      internalID: 1060067161
+      spriteID: 97db852514eb65943a76df2c7c0e4063
+      internalID: -1904785012
       vertices: []
       indices: 
       edges: []
@@ -223,10 +223,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      SLIME-PROJECTILE-hit_3: 1060067161
-      SLIME-PROJECTILE-hit_0: 818920843
-      SLIME-PROJECTILE-hit_1: 493134016
-      SLIME-PROJECTILE-hit_2: 386381925
+      slime-projectile_3: -1904785012
+      slime-projectile_0: 1927369966
+      slime-projectile_2: -800266717
+      slime-projectile_1: -615058406
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
