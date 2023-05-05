@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 4569498411233027884}
   - component: {fileID: 3228914070869191185}
   - component: {fileID: 8880767870088857236}
+  - component: {fileID: 4475241243647149674}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -178,6 +179,27 @@ MonoBehaviour:
   noticeButtonUI: {fileID: 2468834001008214735}
   shopUI: {fileID: 4511322587647622348}
   inactiveObjectName: MainInventoryGroup
+--- !u!50 &4475241243647149674
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 259635293396916816}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &350903412084163116
 GameObject:
   m_ObjectHideFlags: 0

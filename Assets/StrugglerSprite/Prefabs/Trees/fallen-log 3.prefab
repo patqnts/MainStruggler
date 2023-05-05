@@ -218,7 +218,7 @@ MonoBehaviour:
   - {fileID: 9061668225178378007, guid: 34ef1725ec3680144bb6758b5a7ef42d, type: 3}
   - {fileID: 9061668225178378007, guid: 34ef1725ec3680144bb6758b5a7ef42d, type: 3}
   collider: {fileID: 3047474607450488283}
-  _health: 100
+  _health: 3
 --- !u!95 &1289731364640345039
 Animator:
   serializedVersion: 4
@@ -256,7 +256,7 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7

@@ -12,6 +12,7 @@ public class Cellular : MonoBehaviour
     public int smoothnessIterations = 5;
     public int fillPercentage = 45;
     public Tilemap tilemap;
+    public Tilemap flowergrasstilemap;
 
    
     
@@ -24,11 +25,13 @@ public class Cellular : MonoBehaviour
     public GameObject bonFire;
     public GameObject Witch;
     public GameObject SlimeQueen;
+    public GameObject DogoTotem;
     public int numBlackSmith = 1;
     public int numBonfire = 3;
     public int numMerchant = 3;
     public int numWitch = 1;
     public int numSlimeQueen = 1;
+    public int numDog = 1;
 
     public TileBase[] grassflowers;
     public TileBase[] oldgrass;
@@ -150,6 +153,17 @@ public class Cellular : MonoBehaviour
             groundTilePositions.RemoveAt(randomIndex);
             witchspawn++;
         }
+        //DOGO TOTEM
+        int dogspawn = 0;
+        while (dogspawn < numDog && groundTilePositions.Count > 0)
+        {
+            int randomIndex = Random.Range(0, groundTilePositions.Count);
+            Vector3Int tilePosition = groundTilePositions[randomIndex];
+            Vector3 worldPosition = tilemap.CellToWorld(tilePosition) + new Vector3(0.5f, 0.5f, 0f); // add offset to center the ruin on the tile
+            Instantiate(DogoTotem, worldPosition, Quaternion.identity);
+            groundTilePositions.RemoveAt(randomIndex);
+            dogspawn++;
+        }
     }
    
     private void GenerateMapUsingSeed()
@@ -226,14 +240,14 @@ public class Cellular : MonoBehaviour
                 }
 
                 // Randomly add grass tiles on ground tiles
-                if (map[x, y] == 1 && waterTilemap.GetTile(new Vector3Int(x, y, 0)) == null && Random.Range(0, 100) < 70)
+                if (map[x, y] == 1 && waterTilemap.GetTile(new Vector3Int(x, y, 0)) == null && Random.Range(0, 100) < 90)
                 {
-                    tilemap.SetTile(new Vector3Int(x, y, 2), oldgrass[Random.Range(0, 1)]); // replace with the tile you want to use for grass
+                    flowergrasstilemap.SetTile(new Vector3Int(x, y, 0), oldgrass[Random.Range(0, 1)]); // replace with the tile you want to use for grass
                 }
 
-                if (map[x, y] == 1 && waterTilemap.GetTile(new Vector3Int(x, y, 0)) == null && Random.Range(0, 100) < 70)
+                if (map[x, y] == 1 && waterTilemap.GetTile(new Vector3Int(x, y, 0)) == null && Random.Range(0, 100) < 90)
                 {
-                    tilemap.SetTile(new Vector3Int(x, y, 2), grassflowers[Random.Range(0,1)]); // replace with the tile you want to use for grass
+                    flowergrasstilemap.SetTile(new Vector3Int(x, y, 0), grassflowers[Random.Range(0,1)]); // replace with the tile you want to use for grass
                 }
 
             }
@@ -241,6 +255,7 @@ public class Cellular : MonoBehaviour
 
 
         }
+        float treePrefabSize = 2f;
         // Add trees to the ground tiles
         int numTrees = Mathf.RoundToInt(groundTilePositions.Count / 7); // 10% of the ground tiles will have trees
         for (int i = 0; i < numTrees; i++)
@@ -249,16 +264,37 @@ public class Cellular : MonoBehaviour
             int randomIndex = Random.Range(0, groundTilePositions.Count);
             Vector3 treePosition = tilemap.CellToWorld(groundTilePositions[randomIndex]) + new Vector3(0.5f, 0.5f, 0f); // add offset to center the tree on the tile
 
-            // Instantiate the selected tree prefab
-            int randomTreeIndex = Random.Range(0, treePrefabs.Length);
-            GameObject tree = Instantiate(treePrefabs[randomTreeIndex], treePosition, Quaternion.identity);
+            // Check if the position is clear of other objects
+            Collider2D[] overlaps = Physics2D.OverlapCircleAll(treePosition, treePrefabSize);
+            bool canPlaceTree = true;
+            foreach (Collider2D overlap in overlaps)
+            {
+                if (overlap.gameObject.CompareTag("Rock") || overlap.gameObject.CompareTag("Tree"))
+                {
+                    canPlaceTree = false;
+                    break;
+                }
+            }
 
-            // Set the tree as a child of the Cellular object
-            tree.transform.SetParent(transform);
+            if (canPlaceTree)
+            {
+                // Instantiate the selected tree prefab
+                int randomTreeIndex = Random.Range(0, treePrefabs.Length);
+                GameObject tree = Instantiate(treePrefabs[randomTreeIndex], treePosition, Quaternion.identity);
 
-            // Remove the ground tile from the list of available positions so that another tree isn't placed on the same tile
-            groundTilePositions.RemoveAt(randomIndex);
+                // Set the tree as a child of the Cellular object
+                tree.transform.SetParent(transform);
+
+                // Remove the ground tile from the list of available positions so that another tree isn't placed on the same tile
+                groundTilePositions.RemoveAt(randomIndex);
+            }
+            else
+            {
+                // Try again if the position is not clear
+                continue;
+            }
         }
+
 
 
 

@@ -7,7 +7,7 @@ using UnityEngine.Tilemaps;
 public class WaterScript : MonoBehaviour
 {
     [SerializeField] private Tilemap groundTilemap;
-    [SerializeField] private float pushForce = 10f;
+    [SerializeField] private float pushForce = 1500;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
