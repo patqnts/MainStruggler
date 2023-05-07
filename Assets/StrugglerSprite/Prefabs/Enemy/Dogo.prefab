@@ -80,7 +80,7 @@ GameObject:
   - component: {fileID: 4337596748707148952}
   m_Layer: 0
   m_Name: Dogo
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -193,12 +193,12 @@ MonoBehaviour:
   projectilePrefab: {fileID: 8613849481098850520, guid: af1e0f105ca9a3c449d27dd2f9e690d4,
     type: 3}
   moveSpeed: 600
+  pushbackForce: 1000
   _health: 1
   isAttacking: 0
   isSecondPhase: 0
   isAlive: 0
   inTransition: 0
-  playerTarget: {fileID: 0}
   projectileCooldown: 3
   projectilesToThrow: 15
   chargeDashSpeed: 2000

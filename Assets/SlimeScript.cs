@@ -10,12 +10,12 @@ public class SlimeScript : MonoBehaviour, IDamageable
     public Collider2D hitCollider;
     public float knockbackForce = 200f;
     public Animator animator;
-    
+    private SlimeSpawner spawner;
     public bool isFacingRight = true;
 
     public GameObject alarm;
     public float moveSpeed = 500f;
-
+    public float attackRange = 0.5f;
     public GameObject[] dropPrefab;
     
     public float Health
@@ -30,9 +30,11 @@ public class SlimeScript : MonoBehaviour, IDamageable
 
                 hitCollider.enabled = false;
                 animator.SetTrigger("Death");
-                Destroy(gameObject,1.2f);
-                
                 DropItem();
+                Destroy(gameObject,1.2f);
+               
+               
+                
             }
         }
         get
@@ -48,6 +50,7 @@ public class SlimeScript : MonoBehaviour, IDamageable
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        spawner = FindObjectOfType<SlimeSpawner>();
     }
 
     
@@ -71,6 +74,15 @@ public class SlimeScript : MonoBehaviour, IDamageable
                 isFacingRight = false;
             }
             rb.AddForce(direction * moveSpeed * Time.deltaTime);
+            // Get the position of the closest detected object
+            Vector2 playerPos = detectionZone.detectedObj[0].transform.position;
+
+            // Check if the player is close enough to attack
+            float distanceToPlayer = Vector2.Distance(transform.position, playerPos);
+            if (distanceToPlayer <= attackRange)
+            {
+                animator.SetTrigger("Attack");
+            }
         }
        
       
@@ -96,18 +108,10 @@ public class SlimeScript : MonoBehaviour, IDamageable
 
     }
     private void OnCollisionEnter2D(Collision2D collision)
-    {
-        IDamageable damageableObject = collision.gameObject.GetComponent<IDamageable>();
-
-
-
-        // Calculate knockback based on facing direction
-        Vector2 direction = transform.right * (isFacingRight ? 1 : -1);
-        Vector2 knockback = direction * knockbackForce;
-        knockback.y = Random.Range(-1f, 1f) * knockbackForce;
+    { 
         if (collision.gameObject.CompareTag("Player"))
         {
-            damageableObject.OnHit(damage, knockback);
+            
             animator.SetBool("Attack", true);
         }
         else
@@ -127,5 +131,6 @@ public class SlimeScript : MonoBehaviour, IDamageable
                  
         }
     }
+    
 
 }

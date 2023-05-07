@@ -21,4 +21,19 @@ MonoBehaviour:
   stackable: 0
   consumable: 0
   holdable: 1
+  description: 'A very sharp sword.
+
+
+    Damage: 200'
+  priceAmount: 1600
+  materialRequirements:
+  - materialSprite: {fileID: -1781302341, guid: 73567c2e5b46e5141a21c3dc36e27ad0,
+      type: 3}
+    requiredAmount: 3
+  - materialSprite: {fileID: 1873076053, guid: 51721a244c2b3b2448a18bd0044dee35, type: 3}
+    requiredAmount: 50
+  - materialSprite: {fileID: 130203420, guid: 51721a244c2b3b2448a18bd0044dee35, type: 3}
+    requiredAmount: 150
+  - materialSprite: {fileID: 1543865707, guid: 51721a244c2b3b2448a18bd0044dee35, type: 3}
+    requiredAmount: 200
   image: {fileID: 735838813, guid: 10c1939d16d3ebb4bbe38773e8228229, type: 3}

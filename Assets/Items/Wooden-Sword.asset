@@ -21,4 +21,18 @@ MonoBehaviour:
   stackable: 0
   consumable: 0
   holdable: 1
+  description: 'A sword made of ... yeah, "wood".
+
+
+    Damage: 50'
+  priceAmount: 200
+  materialRequirements:
+  - materialSprite: {fileID: 1543865707, guid: 51721a244c2b3b2448a18bd0044dee35, type: 3}
+    requiredAmount: 10
+  - materialSprite: {fileID: 130203420, guid: 51721a244c2b3b2448a18bd0044dee35, type: 3}
+    requiredAmount: 5
+  - materialSprite: {fileID: 618154134, guid: b118e8567b28b334db77b832e5862f9d, type: 3}
+    requiredAmount: 0
+  - materialSprite: {fileID: 618154134, guid: b118e8567b28b334db77b832e5862f9d, type: 3}
+    requiredAmount: 0
   image: {fileID: 807947157, guid: 10c1939d16d3ebb4bbe38773e8228229, type: 3}

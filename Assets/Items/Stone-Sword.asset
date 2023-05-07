@@ -21,4 +21,14 @@ MonoBehaviour:
   stackable: 0
   consumable: 0
   holdable: 1
+  description: 'A stone made of sword.
+
+
+    Damage: 80'
+  priceAmount: 400
+  materialRequirements:
+  - materialSprite: {fileID: 130203420, guid: 51721a244c2b3b2448a18bd0044dee35, type: 3}
+    requiredAmount: 40
+  - materialSprite: {fileID: 1543865707, guid: 51721a244c2b3b2448a18bd0044dee35, type: 3}
+    requiredAmount: 10
   image: {fileID: 873185211, guid: 10c1939d16d3ebb4bbe38773e8228229, type: 3}

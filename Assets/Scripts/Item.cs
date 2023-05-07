@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-
 [CreateAssetMenu(menuName = "Scriptable object/Item")]
 public class Item : ScriptableObject
 {
@@ -15,17 +14,29 @@ public class Item : ScriptableObject
     public ActionType actionType;
     public Vector2Int range = new Vector2Int(5, 4);
     public float weaponDamage;
-    
 
     [Header("Only UI")]
     public bool stackable = true;
     public bool consumable;
     public bool holdable;
 
+    [TextAreaAttribute(15, 20)]
+    public string description;
+    public int priceAmount;
+    public MaterialRequirement[] materialRequirements;
 
     [Header("Both")]
     public Sprite image;
-}   
+}
+
+[System.Serializable]
+public class MaterialRequirement
+{
+    public Sprite materialSprite;
+    public int requiredAmount;
+    
+}
+
 public enum ItemType
 {
     BuildingBlock,
@@ -34,8 +45,8 @@ public enum ItemType
     Currency,
     Material,
     Food,
-      
 }
+
 public enum ActionType
 {
     Attack,
@@ -52,4 +63,3 @@ public enum Element
     Wind,
     Water
 }
-

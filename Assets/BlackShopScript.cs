@@ -35,6 +35,10 @@ public class BlackShopScript : MonoBehaviour
                 coin = 10;
                 stoneheart = 2;
                 break;
+            case "Wooden-Sword":
+                coin = 10;
+                stoneheart = 2;
+                break;
             default:
                 Debug.Log("Invalid item name");
                 return;

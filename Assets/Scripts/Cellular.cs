@@ -240,15 +240,61 @@ public class Cellular : MonoBehaviour
                 }
 
                 // Randomly add grass tiles on ground tiles
-                if (map[x, y] == 1 && waterTilemap.GetTile(new Vector3Int(x, y, 0)) == null && Random.Range(0, 100) < 90)
+                if (map[x, y] == 1 && waterTilemap.GetTile(new Vector3Int(x, y, 0)) == null)
                 {
-                    flowergrasstilemap.SetTile(new Vector3Int(x, y, 0), oldgrass[Random.Range(0, 1)]); // replace with the tile you want to use for grass
+                    bool isCenter = true;
+                    for (int i = -1; i <= 1; i++)
+                    {
+                        for (int j = -1; j <= 1; j++)
+                        {
+                            int nx = x + i;
+                            int ny = y + j;
+                            if (nx < 0 || ny < 0 || nx >= mapWidth || ny >= mapHeight || map[nx, ny] != map[x, y])
+                            {
+                                isCenter = false;
+                                break;
+                            }
+                        }
+                        if (!isCenter)
+                        {
+                            break;
+                        }
+                    }
+                    if (isCenter && Random.Range(0, 100) < 90)
+                    {
+                        flowergrasstilemap.SetTile(new Vector3Int(x, y, 0), oldgrass[Random.Range(0, 1)]);
+                    }
                 }
 
-                if (map[x, y] == 1 && waterTilemap.GetTile(new Vector3Int(x, y, 0)) == null && Random.Range(0, 100) < 90)
+
+                if (map[x, y] == 1 && waterTilemap.GetTile(new Vector3Int(x, y, 0)) == null)
                 {
-                    flowergrasstilemap.SetTile(new Vector3Int(x, y, 0), grassflowers[Random.Range(0,1)]); // replace with the tile you want to use for grass
+                    bool isCenter = true;
+                    for (int i = -1; i <= 1; i++)
+                    {
+                        for (int j = -1; j <= 1; j++)
+                        {
+                            int nx = x + i;
+                            int ny = y + j;
+                            if (nx < 0 || ny < 0 || nx >= mapWidth || ny >= mapHeight || map[nx, ny] != map[x, y])
+                            {
+                                isCenter = false;
+                                break;
+                            }
+                        }
+                        if (!isCenter)
+                        {
+                            break;
+                        }
+                    }
+                    if (isCenter && Random.Range(0, 100) < 90)
+                    {
+                        flowergrasstilemap.SetTile(new Vector3Int(x, y, 0), grassflowers[Random.Range(0, 1)]);
+                    }
                 }
+
+
+                
 
             }
 
@@ -257,7 +303,7 @@ public class Cellular : MonoBehaviour
         }
         float treePrefabSize = 2f;
         // Add trees to the ground tiles
-        int numTrees = Mathf.RoundToInt(groundTilePositions.Count / 7); // 10% of the ground tiles will have trees
+        int numTrees = Mathf.RoundToInt(groundTilePositions.Count / 4); // 10% of the ground tiles will have trees
         for (int i = 0; i < numTrees; i++)
         {
             // Find a random ground tile
