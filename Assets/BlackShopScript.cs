@@ -8,36 +8,62 @@ public class BlackShopScript : MonoBehaviour
 
 
     public InventoryManager inventoryManager;
+  
     public Item[] itemList;
     int coin;
     int stoneheart;
+    public int Intest;
 
     private void Start()
     {
         inventoryManager = FindObjectOfType<InventoryManager>();
+
     }
-    public void BuyItem(int id)
+   
+
+    public void BuyItem()
     {
-        Item itemToBuy = itemList[id];
         
+        Item itemToBuy = itemList[Intest];
+
 
         switch (itemToBuy.name)
         {
-            case "Coin":
+            case "Wooden Sword"://0
                 coin = 0;
                 stoneheart = 0;
                 break;
-            case "Flame-Sword":
-                coin = 5;
+            case "Stone Sword"://1
+                coin = 0;
                 stoneheart = 0;
                 break;
-            case "Wind-Sword":
-                coin = 10;
-                stoneheart = 2;
+            case "Steel Sword"://2
+                coin = 0;
+                stoneheart = 0;
                 break;
-            case "Wooden-Sword":
-                coin = 10;
-                stoneheart = 2;
+            case "Starstone Sword"://3
+                coin = 0;
+                stoneheart = 0;
+                break;
+            case "Coin"://4
+                coin = 0;
+                stoneheart = 0;
+                break;
+            case "Wood Gathering Tool"://5
+                coin = 0;
+                stoneheart = 0;
+                break;
+            case "Stone Gathering Tool"://6
+                coin = 0;
+                stoneheart = 0;
+                break;
+            case "Steel Gathering Tool"://7
+                coin = 0;
+                stoneheart = 0;
+                break;
+            case "Starstone Gathering Tool"://8
+                coin = 0;
+                stoneheart = 0;
                 break;
             default:
                 Debug.Log("Invalid item name");

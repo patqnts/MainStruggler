@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1662d66746d5b7841a5171ab4c6f819a, type: 3}
-  m_Name: Steel-Gathering-Tool
+  m_Name: Steel Gathering Tool
   m_EditorClassIdentifier: 
   prefab: {fileID: 8772386301943041245, guid: 6f9290b3e83d05b4d94256ea77557888, type: 3}
   tile: {fileID: 0}
@@ -21,4 +21,13 @@ MonoBehaviour:
   stackable: 0
   consumable: 0
   holdable: 1
+  description: Trees and Rocks destroyer.
+  priceAmount: 800
+  materialRequirements:
+  - materialSprite: {fileID: 130203420, guid: 51721a244c2b3b2448a18bd0044dee35, type: 3}
+    requiredAmount: 25
+  - materialSprite: {fileID: 1543865707, guid: 51721a244c2b3b2448a18bd0044dee35, type: 3}
+    requiredAmount: 25
+  - materialSprite: {fileID: 1873076053, guid: 51721a244c2b3b2448a18bd0044dee35, type: 3}
+    requiredAmount: 10
   image: {fileID: 1285593797, guid: 10c1939d16d3ebb4bbe38773e8228229, type: 3}

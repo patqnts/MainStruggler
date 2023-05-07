@@ -10,29 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1662d66746d5b7841a5171ab4c6f819a, type: 3}
-  m_Name: Wooden-Sword
+  m_Name: Stone Gathering Tool
   m_EditorClassIdentifier: 
-  prefab: {fileID: 8772386301943041245, guid: 878d71947c561b04280b95f94d15841d, type: 3}
+  prefab: {fileID: 8772386301943041245, guid: e393d8f5874b7b2449133b4f6e38454b, type: 3}
   tile: {fileID: 0}
-  type: 2
+  type: 1
   actionType: 0
   range: {x: 5, y: 4}
-  weaponDamage: 50
+  weaponDamage: 80
   stackable: 0
   consumable: 0
   holdable: 1
-  description: 'A sword made of ... yeah, "wood".
-
-
-    Damage: 50'
-  priceAmount: 200
+  description: Slightly better gathering tool.
+  priceAmount: 400
   materialRequirements:
   - materialSprite: {fileID: 1543865707, guid: 51721a244c2b3b2448a18bd0044dee35, type: 3}
     requiredAmount: 10
   - materialSprite: {fileID: 130203420, guid: 51721a244c2b3b2448a18bd0044dee35, type: 3}
-    requiredAmount: 5
-  - materialSprite: {fileID: 618154134, guid: b118e8567b28b334db77b832e5862f9d, type: 3}
-    requiredAmount: 0
-  - materialSprite: {fileID: 618154134, guid: b118e8567b28b334db77b832e5862f9d, type: 3}
-    requiredAmount: 0
-  image: {fileID: 807947157, guid: 10c1939d16d3ebb4bbe38773e8228229, type: 3}
+    requiredAmount: 15
+  image: {fileID: 342973544, guid: 10c1939d16d3ebb4bbe38773e8228229, type: 3}

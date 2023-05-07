@@ -10,27 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1662d66746d5b7841a5171ab4c6f819a, type: 3}
-  m_Name: Steel-Sword
+  m_Name: Stone Sword
   m_EditorClassIdentifier: 
-  prefab: {fileID: 8772386301943041245, guid: 70db9534395ad6a4584f26a8e96cb882, type: 3}
+  prefab: {fileID: 8772386301943041245, guid: fda11e182330e8e49bedfff578ab9c1b, type: 3}
   tile: {fileID: 0}
   type: 2
   actionType: 0
   range: {x: 5, y: 4}
-  weaponDamage: 150
+  weaponDamage: 80
   stackable: 0
   consumable: 0
   holdable: 1
-  description: 'A pretty decent sword.
+  description: 'A stone made of sword.
 
 
-    Damage: 150'
-  priceAmount: 800
+    Damage: 80'
+  priceAmount: 400
   materialRequirements:
   - materialSprite: {fileID: 130203420, guid: 51721a244c2b3b2448a18bd0044dee35, type: 3}
-    requiredAmount: 50
-  - materialSprite: {fileID: 1543865707, guid: 51721a244c2b3b2448a18bd0044dee35, type: 3}
     requiredAmount: 40
-  - materialSprite: {fileID: 1873076053, guid: 51721a244c2b3b2448a18bd0044dee35, type: 3}
-    requiredAmount: 20
-  image: {fileID: -879884669, guid: 10c1939d16d3ebb4bbe38773e8228229, type: 3}
+  - materialSprite: {fileID: 1543865707, guid: 51721a244c2b3b2448a18bd0044dee35, type: 3}
+    requiredAmount: 10
+  image: {fileID: 873185211, guid: 10c1939d16d3ebb4bbe38773e8228229, type: 3}

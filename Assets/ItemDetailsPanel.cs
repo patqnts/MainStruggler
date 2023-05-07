@@ -12,8 +12,17 @@ public class ItemDetailsPanel : MonoBehaviour
     public Image priceImage;
     public Text priceAmountText;
     public Sprite coinSprite;
+    
+   
+    public BlackShopScript blackShop;
+    private void Start()
+    {
+       
+        blackShop = FindObjectOfType<BlackShopScript>();
+  
+    }
 
-
+   
     private void Cycle()
     {
         foreach (var materialImage in materialImages)
@@ -25,8 +34,14 @@ public class ItemDetailsPanel : MonoBehaviour
             materialAmountText.gameObject.SetActive(false);
         }
     }
+    public int getID;
     public void DisplayItemDetails()
     {
+        blackShop.Intest = getID;
+        Cycle();
+        
+       
+        Debug.Log("Current Item " + blackShop.Intest);
         // Set the image, name, description, materials required, and price text
         image.sprite = item.image;
         nameText.text = item.name;
@@ -36,10 +51,7 @@ public class ItemDetailsPanel : MonoBehaviour
 
         // Hide material images and reset material amount texts if item does not have any material requirements
 
-        Cycle();
-
-
-
+        
         for (int i = 0; i < item.materialRequirements.Length; i++)
             {
                 if (i < materialImages.Length && i < materialAmountTexts.Length) // Check if the index is within bounds
@@ -48,16 +60,14 @@ public class ItemDetailsPanel : MonoBehaviour
                     materialAmountTexts[i].text = item.materialRequirements[i].requiredAmount.ToString();
 
                 
-                materialImages[i].gameObject.SetActive(true); // Show the material image
-                materialAmountTexts[i].gameObject.SetActive(true);
-                if (item.materialRequirements[i].requiredAmount == 0)
-                {
-                    materialAmountTexts[i].gameObject.SetActive(false);
-                }
+                     materialImages[i].gameObject.SetActive(true); // Show the material image
+                     materialAmountTexts[i].gameObject.SetActive(true);
+                     if (item.materialRequirements[i].requiredAmount == 0)
+                     {
+                          materialAmountTexts[i].gameObject.SetActive(false);
+                     }
                 
-            }
-              
-
+                }       
             }
         if (item.materialRequirements.Length == 0 || item.materialRequirements.Length == null)
         {
@@ -72,10 +82,7 @@ public class ItemDetailsPanel : MonoBehaviour
                 materialAmountText.gameObject.SetActive(false);
             }
         }
-
-
-
+        
     }
-
 
 }
