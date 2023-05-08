@@ -14,9 +14,6 @@ public class Cellular : MonoBehaviour
     public Tilemap tilemap;
     public Tilemap flowergrasstilemap;
 
-   
-    
-
     //COLLIDER TILEMAP
     public Tilemap waterTilemap;
     //ruin prefab
@@ -42,7 +39,7 @@ public class Cellular : MonoBehaviour
     public GameObject player;
     public GameObject camera;
     public GameObject[] treePrefabs;
-    public Tile water;
+    
 
 
     public int seedCode = 0;
@@ -57,7 +54,6 @@ public class Cellular : MonoBehaviour
     {
 
         seedCode = PlayerPrefs.GetInt("seedCode", 0);
-
 
         GenerateMap();
 
@@ -292,13 +288,7 @@ public class Cellular : MonoBehaviour
                         flowergrasstilemap.SetTile(new Vector3Int(x, y, 0), grassflowers[Random.Range(0, 1)]);
                     }
                 }
-
-
-                
-
             }
-
-
 
         }
         float treePrefabSize = 2f;
@@ -340,14 +330,7 @@ public class Cellular : MonoBehaviour
                 continue;
             }
         }
-
-
-
-
     }
-
-
-
 
     private void FillMapRandomly()
     {

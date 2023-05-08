@@ -15,9 +15,10 @@ public class Movement : MonoBehaviour, IDamageable
     private bool isAttacking;
     private Vector2 lastDirection = Vector2.zero;
     private InventoryManager item;
-    public float _health = 10f;
+    
     public Collider2D collider;
     public bool isDead = false;
+    public float _health = 10f;
     public float Health
     {
         set

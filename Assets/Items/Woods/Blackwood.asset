@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1662d66746d5b7841a5171ab4c6f819a, type: 3}
+  m_Name: Blackwood
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 9061668225178378007, guid: 34ef1725ec3680144bb6758b5a7ef42d, type: 3}
+  tile: {fileID: 0}
+  type: 4
+  actionType: 1
+  range: {x: 1, y: 1}
+  weaponDamage: 0
+  stackable: 1
+  consumable: 0
+  holdable: 0
+  description: Kahoy
+  priceAmount: 999999
+  materialRequirements:
+  - materialSprite: {fileID: 1269202101, guid: 73567c2e5b46e5141a21c3dc36e27ad0, type: 3}
+    requiredAmount: 12313
+  - materialSprite: {fileID: -566052409, guid: 73567c2e5b46e5141a21c3dc36e27ad0, type: 3}
+    requiredAmount: 99999
+  image: {fileID: 1269202101, guid: 73567c2e5b46e5141a21c3dc36e27ad0, type: 3}
