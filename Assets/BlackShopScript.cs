@@ -12,7 +12,7 @@ public class BlackShopScript : MonoBehaviour
     public Item[] itemList;
     int coin;
     int stoneheart;
-    public int Intest;
+    public int Intest = -1;
 
     private void Start()
     {

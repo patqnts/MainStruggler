@@ -9,14 +9,15 @@ public class TravelerShopScript : MonoBehaviour
     public Item[] itemList;
     int coin;
     int stoneheart;
+    public int Intest = -1;
 
     private void Start()
     {
         inventoryManager = FindObjectOfType<InventoryManager>();
     }
-    public void BuyItem(int id)
+    public void BuyItem()
     {
-        Item itemToBuy = itemList[id];
+        Item itemToBuy = itemList[Intest];
 
 
         switch (itemToBuy.name)
@@ -26,11 +27,11 @@ public class TravelerShopScript : MonoBehaviour
                 stoneheart = 0;
                 break;
             case "Fruit":
-                coin = 5;
+                coin = 0;
                 stoneheart = 0;
                 break;
-            case "BottleFilled":
-                coin = 10;
+            case "Wood":
+                coin = 0;
                 stoneheart = 0;
                 break;
             default:

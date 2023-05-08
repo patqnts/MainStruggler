@@ -169,7 +169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba7031edf4382ea45a0c3ed51a055b23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 1000
+  _health: 5000
   playerDetectionZone: {fileID: 3559810121155677841}
   slimeMinionPrefab: {fileID: 6725641232165134321, guid: 4ebd970acd42878459ae870a88e88019,
     type: 3}

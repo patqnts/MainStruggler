@@ -14,11 +14,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 2295965134542050878, guid: c4519bdd54052b74fb72d6aceecb971f, type: 3}
   tile: {fileID: 0}
-  type: 1
+  type: 5
   actionType: 1
   range: {x: 1, y: 1}
   weaponDamage: 0
   stackable: 1
   consumable: 1
   holdable: 0
+  description: 'Refills every rest.
+
+
+    +X amount of health.'
+  priceAmount: 1000
+  materialRequirements:
+  - materialSprite: {fileID: 357429414, guid: 51721a244c2b3b2448a18bd0044dee35, type: 3}
+    requiredAmount: 50
+  - materialSprite: {fileID: 1873076053, guid: 51721a244c2b3b2448a18bd0044dee35, type: 3}
+    requiredAmount: 30
   image: {fileID: -1672398112, guid: 51721a244c2b3b2448a18bd0044dee35, type: 3}

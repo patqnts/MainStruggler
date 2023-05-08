@@ -21,4 +21,11 @@ MonoBehaviour:
   stackable: 1
   consumable: 0
   holdable: 0
+  description: Kahoy
+  priceAmount: 999999
+  materialRequirements:
+  - materialSprite: {fileID: 1269202101, guid: 73567c2e5b46e5141a21c3dc36e27ad0, type: 3}
+    requiredAmount: 12313
+  - materialSprite: {fileID: -566052409, guid: 73567c2e5b46e5141a21c3dc36e27ad0, type: 3}
+    requiredAmount: 99999
   image: {fileID: 1543865707, guid: 51721a244c2b3b2448a18bd0044dee35, type: 3}

@@ -21,14 +21,14 @@ public class ConfirmationDialog : MonoBehaviour
 
         // Set the UI Image object as inactive to hide the confirmation box
         gameObject.SetActive(false);
-        itemToRemove.hasBeenClicked = false;
+        
     }
 
     public void CancelRemoval()
     {
         // Set the UI Image object as inactive to hide the confirmation box
         gameObject.SetActive(false);
-        itemToRemove.hasBeenClicked = false;
+        
     }
     void Start()
     {

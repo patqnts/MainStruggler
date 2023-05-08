@@ -11,28 +11,33 @@ public class WitchShopScript : MonoBehaviour
     public Item[] itemList;
     int coin;
     int stoneheart;
+    public int Intest = -1;
 
     private void Start()
     {
         inventoryManager = FindObjectOfType<InventoryManager>();
     }
-    public void BuyItem(int id)
+    public void BuyItem()
     {
-        Item itemToBuy = itemList[id];
+        Item itemToBuy = itemList[Intest];
 
 
         switch (itemToBuy.name)
         {
-            case "Coin":
+            case "BottleFilled":
                 coin = 0;
                 stoneheart = 0;
                 break;
-            case "Light-Longsword":
-                coin = 5;
+            case "Light Longsword":
+                coin = 0;
                 stoneheart = 0;
                 break;
-            case "Dark-Longsword":
-                coin = 10;
+            case "Dark Longsword":
+                coin = 0;
+                stoneheart = 0;
+                break;
+            case "Flame Sword":
+                coin = 0;
                 stoneheart = 0;
                 break;
             default:

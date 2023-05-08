@@ -15,13 +15,38 @@ public class Movement : MonoBehaviour, IDamageable
     private bool isAttacking;
     private Vector2 lastDirection = Vector2.zero;
     private InventoryManager item;
-    public float Health { get; set; }
-
-    private void Awake()
+    public float _health = 10f;
+    public Collider2D collider;
+    public bool isDead = false;
+    public float Health
     {
-        Health = 100f;
-        
+        set
+        {
+            _health = value;
+
+            if (_health <= 0)
+            {
+                rb.constraints = RigidbodyConstraints2D.FreezeAll;
+                collider.enabled = false;
+                animator.SetTrigger("Death");
+                Invoke("Dead", 2.3f);
+               // Destroy(gameObject, 2.3f);
+                
+
+            }
+        }
+        get
+        {
+            return _health;
+        }
     }
+    public void Dead()
+    {
+        isDead = true;
+        gameObject.SetActive(false);
+    }
+
+    
     private void Start()
     {
         item = GetComponent<InventoryManager>();
@@ -30,10 +55,10 @@ public class Movement : MonoBehaviour, IDamageable
     private void Update()
     {
         // Get input for movement
-        movement.x = joystick.Horizontal;
-        movement.y = joystick.Vertical;
-       // movement.x = Input.GetAxisRaw("Horizontal");
-        //movement.y = Input.GetAxisRaw("Vertical");
+        // movement.x = joystick.Horizontal;
+        // movement.y = joystick.Vertical;
+        movement.x = Input.GetAxisRaw("Horizontal");
+        movement.y = Input.GetAxisRaw("Vertical");
 
         // Set animator parameters for movement
         animator.SetFloat("Horizontal", movement.x);
@@ -114,6 +139,7 @@ public class Movement : MonoBehaviour, IDamageable
 
         // Play hurt animation
         animator.SetTrigger("Hurt");
+        Debug.Log("Current health: " + _health);
     }
 
     public void OnHit(float damage)

@@ -8,6 +8,6 @@ public class reload : MonoBehaviour
     // Start is called before the first frame update
     public void Reload()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+       // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

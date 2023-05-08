@@ -10,15 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1662d66746d5b7841a5171ab4c6f819a, type: 3}
-  m_Name: Dark-Longsword
+  m_Name: Flame Sword
   m_EditorClassIdentifier: 
-  prefab: {fileID: 1471064017145405185, guid: 60cc47dc9938dee40a7d817da2a5f1a0, type: 3}
+  prefab: {fileID: 9186392332181356639, guid: b1d9b8ff163dc9a44849e25c39f84cf1, type: 3}
   tile: {fileID: 0}
   type: 2
   actionType: 0
   range: {x: 5, y: 4}
-  weaponDamage: 15
+  weaponDamage: 160
   stackable: 0
   consumable: 0
   holdable: 1
-  image: {fileID: 937176768, guid: 51721a244c2b3b2448a18bd0044dee35, type: 3}
+  description: 
+  priceAmount: 5000
+  materialRequirements: []
+  image: {fileID: -1398177459, guid: 51721a244c2b3b2448a18bd0044dee35, type: 3}

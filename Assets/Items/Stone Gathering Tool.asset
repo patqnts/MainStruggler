@@ -25,7 +25,7 @@ MonoBehaviour:
   priceAmount: 400
   materialRequirements:
   - materialSprite: {fileID: 1543865707, guid: 51721a244c2b3b2448a18bd0044dee35, type: 3}
-    requiredAmount: 10
+    requiredAmount: 35
   - materialSprite: {fileID: 130203420, guid: 51721a244c2b3b2448a18bd0044dee35, type: 3}
-    requiredAmount: 15
+    requiredAmount: 50
   image: {fileID: 342973544, guid: 10c1939d16d3ebb4bbe38773e8228229, type: 3}

@@ -117,23 +117,34 @@ public class InventorySlot : MonoBehaviour, IDropHandler
 
 
     public ConfirmationDialog confirmationDialog;
-    public bool hasBeenClicked = false;
+  
+    private int clickCount = 0;
+    private float lastClickTime = 0f;
+
     public void SelectedItem()
     {
         if (transform.childCount == 0) return;
         InventoryManager.instance.ChangeSelectedSlot(slot);
 
-        if (hasBeenClicked)
+        float currentTime = Time.time;
+        if (currentTime - lastClickTime < 0.25f && clickCount >= 2)
         {
             // Show the confirmation box
             confirmationDialog.ShowConfirmationBox();
             confirmationDialog.itemToRemove = this;
+
+            // Reset click count and time
+            clickCount = 0;
+            lastClickTime = 0f;
         }
         else
         {
-            hasBeenClicked = true;
+            // Increment click count and update last click time
+            clickCount++;
+            lastClickTime = currentTime;
         }
     }
+
 
 
 

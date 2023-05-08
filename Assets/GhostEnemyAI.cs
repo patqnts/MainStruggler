@@ -129,6 +129,10 @@ public class GhostEnemyAI : MonoBehaviour, IDamageable
             projectile.GetComponent<Rigidbody2D>().AddForce(direction * 600);
             Destroy(projectile, 4f);
         }
+        else
+        {
+            Debug.Log("Player Defeated");
+        }
     }
 
     private void FixedUpdate()
