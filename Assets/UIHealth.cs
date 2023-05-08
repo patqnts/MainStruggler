@@ -3,10 +3,11 @@ using UnityEngine.UI;
 
 public class UIHealth : MonoBehaviour
 {
-    public Movement player;
-    public Image heartPrefab;
+   
+    public Image emptyHeartPrefab;
+    public Image filledHeartPrefab;
     public Transform heartsContainer;
-    public int maxHearts = 10;
+    public int maxHearts;
 
     private Image[] hearts;
 
@@ -16,24 +17,34 @@ public class UIHealth : MonoBehaviour
         hearts = new Image[maxHearts];
         for (int i = 0; i < maxHearts; i++)
         {
-            hearts[i] = Instantiate(heartPrefab, heartsContainer);
+            hearts[i] = Instantiate(emptyHeartPrefab, heartsContainer);
         }
     }
 
-    void Update()
+    public void UpdateHealth(float currentHealth, float maxHealth)
     {
-        // Update heart images based on player's health
-        float fillAmount = Mathf.Round(player.Health) / maxHearts;
-        for (int i = 0; i < maxHearts; i++)
+        float fillAmount = Mathf.Clamp01(currentHealth / maxHealth);
+        int filledHearts = Mathf.CeilToInt(fillAmount * maxHearts);
+
+        for (int i = 0; i < hearts.Length; i++)
         {
-            hearts[i].fillAmount = Mathf.Clamp01(fillAmount - i);
+            if (i < filledHearts)
+            {
+                hearts[i].sprite = filledHeartPrefab.sprite;
+            }
+            else
+            {
+                hearts[i].sprite = emptyHeartPrefab.sprite;
+            }
         }
     }
+
+
 
     public void AddHeart()
     {
         // Add a new heart image to the UI
-        Instantiate(heartPrefab, heartsContainer);
+        Instantiate(emptyHeartPrefab, heartsContainer);
         maxHearts++;
     }
 }

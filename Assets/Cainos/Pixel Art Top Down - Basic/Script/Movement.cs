@@ -6,6 +6,7 @@ public class Movement : MonoBehaviour, IDamageable
 {
     [SerializeField] private float moveSpeed = 3f;
     [SerializeField] private float attackTime = 0.2f;
+    [SerializeField] private float eatTime = 1f;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Animator animator;
     [SerializeField] private Joystick joystick;
@@ -18,7 +19,12 @@ public class Movement : MonoBehaviour, IDamageable
     
     public Collider2D collider;
     public bool isDead = false;
-    public float _health = 10f;
+
+
+
+    public float _health;
+    public UIHealth uiHealth;
+    public float maxHealth;
     public float Health
     {
         set
@@ -31,10 +37,14 @@ public class Movement : MonoBehaviour, IDamageable
                 collider.enabled = false;
                 animator.SetTrigger("Death");
                 Invoke("Dead", 2.3f);
-               // Destroy(gameObject, 2.3f);
-                
+                // Destroy(gameObject, 2.3f);
+
+            
+
 
             }
+            
+           
         }
         get
         {
@@ -51,6 +61,8 @@ public class Movement : MonoBehaviour, IDamageable
     private void Start()
     {
         item = GetComponent<InventoryManager>();
+        uiHealth = FindObjectOfType<UIHealth>();
+        uiHealth.UpdateHealth(_health, maxHealth);
     }
 
     private void Update()
@@ -74,9 +86,16 @@ public class Movement : MonoBehaviour, IDamageable
 
             // Decrement consumable item after attacking
             Item canEat = InventoryManager.instance.GetSelectedItem(item);
-            if (canEat != null && canEat.consumable && InventoryManager.instance.GetSelectedItem(item) != null)
+            if (canEat != null && canEat.consumable && InventoryManager.instance.GetSelectedItem(item) != null && _health < maxHealth)
             {
+                
+                _health++;
+                uiHealth.UpdateHealth(_health, maxHealth);
                 InventoryManager.instance.GetSelectedItem(true);
+            }
+            else
+            {
+                Debug.Log("Health is already full");
             }
         }
 
@@ -110,14 +129,18 @@ public class Movement : MonoBehaviour, IDamageable
             Item canEat = InventoryManager.instance.GetSelectedItem(item);
             if (canEat != null && canEat.consumable && InventoryManager.instance.GetSelectedItem(item) != null)
             {
+                _health++;
+                uiHealth.UpdateHealth(_health, maxHealth);
                 InventoryManager.instance.GetSelectedItem(true);
+                
+                Debug.Log("Added Health" + _health);
             }
         }
     }
 
     private IEnumerator Attack()
     {
-        // Set attacking flag and play animation
+        
         isAttacking = true;
         animator.SetBool("isAttacking", true);
 
@@ -137,15 +160,18 @@ public class Movement : MonoBehaviour, IDamageable
         Health -= damage;
         rb.AddForce(knockback);
         rb.drag = 10f;
-
+       
         // Play hurt animation
         animator.SetTrigger("Hurt");
         Debug.Log("Current health: " + _health);
+        uiHealth.UpdateHealth(_health, maxHealth);
+
     }
 
     public void OnHit(float damage)
     {
         // Take damage
         Health -= damage;
+        
     }
 }
