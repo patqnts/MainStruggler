@@ -6,7 +6,7 @@ public class Plant : MonoBehaviour, IDamageable
 {
 
     public Rigidbody2D rb;
-    private float damage = 0f;
+    private float damage = 1f;
     public float explosionDamage = 5f;
     public DetectionZone detectionZone;
     public Collider2D hitCollider;
@@ -47,7 +47,7 @@ public class Plant : MonoBehaviour, IDamageable
     public bool isDetecting = false; // New variable
     private float explosionTimer = 3f;
     private float timer = 0f;
-    public GameObject explosionEffect;
+   
     public Transform explosionPoint;
     public float explosionRadius = 2f;
 

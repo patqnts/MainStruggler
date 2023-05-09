@@ -45,7 +45,7 @@ public class GhostEnemyAI : MonoBehaviour, IDamageable
                     animator.SetTrigger("Phase2");
                     animator.SetBool("SecondPhase", true);
 
-                    _health = 10;
+                    _health = 2500;
                     isAlive = true;
                     lastChargeDashTime = 5f;
 
@@ -129,7 +129,7 @@ public class GhostEnemyAI : MonoBehaviour, IDamageable
             projectile.GetComponent<Rigidbody2D>().AddForce(direction * 600);
             Destroy(projectile, 4f);
         }
-        else
+        else if (player == null)
         {
             Debug.Log("Player Defeated");
         }
@@ -161,6 +161,10 @@ public class GhostEnemyAI : MonoBehaviour, IDamageable
                 // move away from the player
                 Vector2 direction = (enemyPos - playerPos).normalized;
                 rb.AddForce(direction * moveSpeed * Time.deltaTime);
+            }
+            else
+            {
+                Debug.Log("player dead?");
             }
         }
 

@@ -9084,6 +9084,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7747176309864421607}
     m_Modifications:
+    - target: {fileID: 2136834282194299018, guid: b6e6f8d9d3f05cc4ca0e0bc43607ffdf,
+        type: 3}
+      propertyPath: m_FontData.m_FontStyle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2506336935171230505, guid: b6e6f8d9d3f05cc4ca0e0bc43607ffdf,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6185124196459173463, guid: b6e6f8d9d3f05cc4ca0e0bc43607ffdf,
         type: 3}
       propertyPath: m_Sprite
@@ -9279,6 +9289,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7803134296527417794, guid: b6e6f8d9d3f05cc4ca0e0bc43607ffdf,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b6e6f8d9d3f05cc4ca0e0bc43607ffdf, type: 3}

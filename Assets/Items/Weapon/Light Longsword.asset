@@ -21,7 +21,9 @@ MonoBehaviour:
   stackable: 0
   consumable: 0
   holdable: 1
-  description: 
+  description: 'Light sword pero kulay pink eh noh.
+
+    Ano magagawa mo ako developer.'
   priceAmount: 5000
   materialRequirements: []
   image: {fileID: -1063535214, guid: 51721a244c2b3b2448a18bd0044dee35, type: 3}

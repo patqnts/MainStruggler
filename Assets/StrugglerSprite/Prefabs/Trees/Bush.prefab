@@ -129,6 +129,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dropPrefab:
   - {fileID: 1550321499018942001, guid: ca78e7b2dff31bf4d92f1240cf4ca434, type: 3}
+  - {fileID: 1550321499018942001, guid: ca78e7b2dff31bf4d92f1240cf4ca434, type: 3}
   animator: {fileID: -3793105448501500391}
   collider: {fileID: 490399588900303665}
   _health: 1

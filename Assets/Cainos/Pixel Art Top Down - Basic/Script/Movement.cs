@@ -11,16 +11,14 @@ public class Movement : MonoBehaviour, IDamageable
     [SerializeField] private Animator animator;
     [SerializeField] private Joystick joystick;
 
-
     private Vector2 movement;
     private bool isAttacking;
     private Vector2 lastDirection = Vector2.zero;
     private InventoryManager item;
+    public Transform dropPos;
     
     public Collider2D collider;
     public bool isDead = false;
-
-
 
     public float _health;
     public UIHealth uiHealth;
@@ -38,13 +36,9 @@ public class Movement : MonoBehaviour, IDamageable
                 animator.SetTrigger("Death");
                 Invoke("Dead", 2.3f);
                 // Destroy(gameObject, 2.3f);
-
-            
-
-
             }
             
-           
+          
         }
         get
         {
@@ -53,23 +47,35 @@ public class Movement : MonoBehaviour, IDamageable
     }
     public void Dead()
     {
-        isDead = true;
-        gameObject.SetActive(false);
+       isDead = true;
+       InventoryManager.instance.DropAllItems(dropPos);
+        
+
+    }
+    public void Respawn()
+    {
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+        collider.enabled = true;
+        isDead = false;
+        _health = maxHealth;
+        animator.SetTrigger("Respawn");
     }
 
     
     private void Start()
     {
-        item = GetComponent<InventoryManager>();
         uiHealth = FindObjectOfType<UIHealth>();
+        uiHealth.SetMaxHearts(maxHealth);
+       
+        item = GetComponent<InventoryManager>();
         uiHealth.UpdateHealth(_health, maxHealth);
     }
 
     private void Update()
     {
         // Get input for movement
-        // movement.x = joystick.Horizontal;
-        // movement.y = joystick.Vertical;
+         movement.x = joystick.Horizontal;
+         movement.y = joystick.Vertical;
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
 
@@ -83,19 +89,29 @@ public class Movement : MonoBehaviour, IDamageable
         {
             StartCoroutine(Attack());
 
-
+           // 
+            
+            
             // Decrement consumable item after attacking
             Item canEat = InventoryManager.instance.GetSelectedItem(item);
             if (canEat != null && canEat.consumable && InventoryManager.instance.GetSelectedItem(item) != null && _health < maxHealth)
             {
-                
                 _health++;
-                uiHealth.UpdateHealth(_health, maxHealth);
                 InventoryManager.instance.GetSelectedItem(true);
+
+                
+                
+            }
+            else if (canEat != null && InventoryManager.instance.GetSelectedItem(item) != null && canEat.name == "Fruit") //HEART CONTAINER PLACEHOLDER
+            {
+                
+                uiHealth.AddHeart();
+                InventoryManager.instance.GetSelectedItem(true);
+
             }
             else
             {
-                Debug.Log("Health is already full");
+                return;
             }
         }
 
@@ -109,6 +125,7 @@ public class Movement : MonoBehaviour, IDamageable
         // Set animator parameters for last direction
         animator.SetFloat("LastHorizontal", lastDirection.x);
         animator.SetFloat("LastVertical", lastDirection.y);
+        uiHealth.UpdateHealth(_health, maxHealth);
     }
 
     private void FixedUpdate()
@@ -159,12 +176,13 @@ public class Movement : MonoBehaviour, IDamageable
         // Take damage and apply knockback force
         Health -= damage;
         rb.AddForce(knockback);
-        rb.drag = 10f;
+        
        
         // Play hurt animation
         animator.SetTrigger("Hurt");
         Debug.Log("Current health: " + _health);
         uiHealth.UpdateHealth(_health, maxHealth);
+        //rb.drag = 10;
 
     }
 
@@ -172,6 +190,6 @@ public class Movement : MonoBehaviour, IDamageable
     {
         // Take damage
         Health -= damage;
-        
+        uiHealth.UpdateHealth(_health, maxHealth);
     }
 }

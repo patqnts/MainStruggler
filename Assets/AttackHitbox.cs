@@ -77,7 +77,7 @@ public class AttackHitbox : MonoBehaviour
         }
         else
         {
-            Debug.Log("None");
+           
         }
         
     }

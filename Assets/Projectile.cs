@@ -22,14 +22,14 @@ public class Projectile : MonoBehaviour
             IDamageable damageable = collision.GetComponent<IDamageable>();
             if (damageable != null)
             {
-                damageable.OnHit(damage);
+               
                 animator.SetTrigger("Hit");
                 // Apply knockback force to the player
                 Rigidbody2D rb = collision.GetComponent<Rigidbody2D>();
                 if (rb != null)
                 {
                     Vector2 direction = (collision.transform.position - transform.position).normalized;
-
+                    damageable.OnHit(damage);
                     rb.AddForce(direction * knockbackForce);
                 }
             }

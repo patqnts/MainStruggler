@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InventoryManager : MonoBehaviour
 {
@@ -10,10 +11,11 @@ public class InventoryManager : MonoBehaviour
     public GameObject inventoryItemPrefab;
     public Transform handTransform;
     public GameObject weaponHolder;
+    
 
     public int selectedSlot = -1;
     public GameObject spawnedItem;
-
+    public Text selected;
     private void Awake()
     {
         instance = this;
@@ -35,7 +37,16 @@ public class InventoryManager : MonoBehaviour
             
 
         }
-  
+        Item selectedItem = GetSelectedItem(false);
+        if (selectedItem != null)
+        {
+            selected.text = selectedItem.name;
+        }
+        else
+        {
+            selected.text = "";
+        }
+
 
     }
 
@@ -173,27 +184,8 @@ public class InventoryManager : MonoBehaviour
 
     }
 
-    public void DropItem(Item item)
-    {
-        for (int i = 0; i < inventorySlots.Length; i++)
-        {
-            InventorySlot slot = inventorySlots[i];
-            InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
-            if (itemInSlot != null && itemInSlot.item == item)
-            {
-                if (itemInSlot.count > 1)
-                {
-                    itemInSlot.count--;
-                    itemInSlot.RefreshCount();
-                }
-                else
-                {
-                    Destroy(itemInSlot.gameObject);
-                }
-                break;
-            }
-        }
-    }
+   
+
     public int GetItemCount(string itemName)
     {
         int count = 0;
@@ -207,6 +199,29 @@ public class InventoryManager : MonoBehaviour
         }
         return count;
     }
+
+    public void DropAllItems(Transform dropLocation)
+    {
+        for (int i = 0; i < inventorySlots.Length; i++)
+        {
+            InventorySlot slot = inventorySlots[i];
+            InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
+            if (itemInSlot != null)
+            {
+                // Instantiate the item's prefab at the player's position
+                GameObject itemObject = Instantiate(itemInSlot.item.prefab, dropLocation.position, Quaternion.identity);
+
+              
+                // Remove the item from the player's inventory
+                RemoveItem(itemInSlot.item.name, itemInSlot.count);
+            }
+        }
+    }
+
+
+
+
+
 
 
 

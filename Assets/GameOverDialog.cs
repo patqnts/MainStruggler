@@ -8,7 +8,7 @@ public class GameOverDialog : MonoBehaviour
     private GameObject gameOverBox;
     public Movement player;
 
-    public string inactiveObjectName = "GameOver Placeholder";
+    public string inactiveObjectName = "reload";
     void Start()
     {
         player = FindObjectOfType<Movement>();

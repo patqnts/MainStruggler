@@ -5,9 +5,19 @@ using UnityEngine.SceneManagement;
 
 public class reload : MonoBehaviour
 {
-    // Start is called before the first frame update
+
+    Movement player;
+    public GameObject button;
+    private void Start()
+    {
+        player = FindObjectOfType<Movement>();
+    }
     public void Reload()
     {
-       // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        RuinSavePoint.PlayerDied();
+        player.Respawn();
+        button.SetActive(false);
+        
     }
 }
