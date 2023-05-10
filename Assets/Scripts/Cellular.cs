@@ -56,42 +56,6 @@ public class Cellular : MonoBehaviour
         seedCode = PlayerPrefs.GetInt("seedCode", 0);
 
         GenerateMap();
-
-        if (groundTilePositions.Count > 0) // spawn on ground
-        {
-            int randomIndex = Random.Range(0, groundTilePositions.Count);
-            Vector3 playerPosition = tilemap.GetCellCenterWorld(groundTilePositions[randomIndex]);
-
-            // Check if the player is spawning in water
-            Vector3Int playerCell = tilemap.WorldToCell(playerPosition);
-            TileBase tile = waterTilemap.GetTile(playerCell);
-            if (tile != null)
-            {
-                // Set the player's position to the nearest ground tile
-                float closestDistance = float.MaxValue;
-                Vector3 closestPosition = playerPosition;
-                foreach (Vector3Int groundTilePosition in groundTilePositions)
-                {
-                    Vector3 groundTileCenter = tilemap.GetCellCenterWorld(groundTilePosition);
-                    float distance = Vector3.Distance(playerPosition, groundTileCenter);
-                    if (distance < closestDistance)
-                    {
-                        closestDistance = distance;
-                        closestPosition = groundTileCenter;
-                    }
-                }
-
-                player.transform.position = closestPosition;
-            }
-            else
-            {
-                player.transform.position = playerPosition;
-            }
-        }
-
-
-
-
         camera.transform.position = player.transform.position;
 
         //SLIME QUEEN
@@ -160,6 +124,8 @@ public class Cellular : MonoBehaviour
             groundTilePositions.RemoveAt(randomIndex);
             dogspawn++;
         }
+
+        RuinSavePoint.PlayerDied();
     }
    
     private void GenerateMapUsingSeed()

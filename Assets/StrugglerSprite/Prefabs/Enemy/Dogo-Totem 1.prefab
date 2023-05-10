@@ -145,6 +145,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b368e8b2646c0184999006ecd770f7a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collider: {fileID: 451765083061662556}
   animator: {fileID: 7976190944407720496}
   Dogo: {fileID: 5292333702654999886, guid: 73c0ecc03aa8c9143a59777dd981fb2b, type: 3}

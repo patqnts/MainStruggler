@@ -29,7 +29,8 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler,IEnd
             item = newItem;
             image.sprite = item.image;
 
-            if (InventoryManager.instance.GetSelectedItem(false) != null && 
+            if (InventoryManager.instance.GetSelectedItem(false) != InventoryManager.instance.GetSelectedItem(false).holdable&&
+                InventoryManager.instance.GetSelectedItem(false) != null && 
                 item.holdable == true &&
                 InventoryManager.instance.GetSelectedItem(false).type == ItemType.Weapon || 
                 
@@ -37,23 +38,22 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler,IEnd
                 item.holdable == true && InventoryManager.instance.GetSelectedItem(false).type == ItemType.Tool)
             {
                 // Instantiate the prefab and set its parent to the weapon holder
-                GameObject newObject = Instantiate(InventoryManager.instance.GetSelectedItem(false).prefab, InventoryManager.instance.weaponHolder.transform);
-                newObject.transform.localPosition = Vector3.zero;
-                newObject.transform.localRotation = Quaternion.identity;
-                newObject.transform.localScale = Vector3.one;
+                Sprite itemSprite = newItem.prefab.GetComponent<SpriteRenderer>().sprite;
+                InventoryManager.instance.weaponHolder.GetComponent<SpriteRenderer>().sprite = itemSprite;
 
                 // Destroy the spawned item that was previously in the hand
-                if (InventoryManager.instance.spawnedItem != null && item.holdable == true)
-
+            }
+            else
+            {
+                if (InventoryManager.instance.GetSelectedItem(false) == InventoryManager.instance.GetSelectedItem(false).holdable)
                 {
-                    Destroy(InventoryManager.instance.spawnedItem);
+                    Sprite selectedSprite = InventoryManager.instance.GetSelectedItem(false).prefab.GetComponent<SpriteRenderer>().sprite;
+                    InventoryManager.instance.weaponHolder.GetComponent<SpriteRenderer>().sprite = selectedSprite;
                 }
-                InventoryManager.instance.spawnedItem = newObject;
-
-                // Set the new spawned item as the currently selected item
             }
 
-            
+
+
             RefreshCount();
         }
     }

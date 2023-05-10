@@ -32,8 +32,6 @@ public class InventorySlot : MonoBehaviour, IDropHandler
         if (droppedItem != null)
         {
 
-            
-
             Transform itemParent = droppedItem.parentAfterDrag;
             Transform dropParent = transform;
             if (itemParent == dropParent)
@@ -41,8 +39,6 @@ public class InventorySlot : MonoBehaviour, IDropHandler
                 return; // No need to swap if dropping into the same slot
             }
 
-            
-            
             InventoryItem existingItem = null;
             if (dropParent.childCount > 0)
             {
@@ -69,11 +65,8 @@ public class InventorySlot : MonoBehaviour, IDropHandler
             {
                 if (InventoryManager.instance.selectedSlot == transform.GetSiblingIndex())
                 {
-                    // Instantiate the prefab and set its parent to the weapon holder
-                    GameObject newObject = Instantiate(droppedItem.item.prefab, InventoryManager.instance.weaponHolder.transform);
-                    newObject.transform.localPosition = Vector3.zero;
-                    newObject.transform.localRotation = Quaternion.identity;
-                    newObject.transform.localScale = Vector3.one;
+                    Sprite itemSprite = droppedItem.item.prefab.GetComponent<SpriteRenderer>().sprite;
+                    InventoryManager.instance.weaponHolder.GetComponent<SpriteRenderer>().sprite = itemSprite;
 
                     // Destroy the spawned item that was previously in the hand
                     if (InventoryManager.instance.spawnedItem != null)
@@ -81,16 +74,28 @@ public class InventorySlot : MonoBehaviour, IDropHandler
                         Destroy(InventoryManager.instance.spawnedItem);
                     }
 
-                    // Set the new spawned item as the currently selected item
-                    InventoryManager.instance.spawnedItem = newObject;
+                    // Set the animator of the spawned item if it has one
+                    if (droppedItem.item.prefab.GetComponent<Animator>() != null)
+                    {
+                        InventoryManager.instance.weaponHolder.GetComponent<Animator>().runtimeAnimatorController = droppedItem.item.prefab.GetComponent<Animator>().runtimeAnimatorController;
+                    }
+                    else
+                    {
+                        InventoryManager.instance.weaponHolder.GetComponent<Animator>().runtimeAnimatorController = null;
+                    }
                 }
             }
             else if (!droppedItem.item.holdable && InventoryManager.instance.selectedSlot == transform.GetSiblingIndex())
             {
+                InventoryManager.instance.weaponHolder.GetComponent<SpriteRenderer>().sprite = null;
                 Destroy(InventoryManager.instance.spawnedItem);
+                InventoryManager.instance.weaponHolder.GetComponent<Animator>().runtimeAnimatorController = null;
             }
+
         }
     }
+
+
     public void RemoveItem()
     {
         if (transform.childCount > 0)
@@ -101,7 +106,6 @@ public class InventorySlot : MonoBehaviour, IDropHandler
             if (item.inventoryManager.inventoryItemPrefab != null && item.inventoryManager.inventoryItemPrefab.transform.parent == item.inventoryManager.weaponHolder.transform)
             {
                 Destroy(item.inventoryManager.inventoryItemPrefab);
-
             }
 
             // Destroy the item object
@@ -111,8 +115,16 @@ public class InventorySlot : MonoBehaviour, IDropHandler
             // Reset the slot
             item.transform.SetParent(null);
             item.parentAfterDrag = null;
+
+            // Remove the sprite and animator
+            if (InventoryManager.instance.selectedSlot == slot)
+            {
+                InventoryManager.instance.weaponHolder.GetComponent<SpriteRenderer>().sprite = null;
+                InventoryManager.instance.weaponHolder.GetComponent<Animator>().runtimeAnimatorController = null;
+            }
         }
     }
+
 
 
 

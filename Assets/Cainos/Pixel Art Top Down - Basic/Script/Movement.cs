@@ -74,6 +74,7 @@ public class Movement : MonoBehaviour, IDamageable
        
         item = GetComponent<InventoryManager>();
         uiHealth.UpdateHealth(_health, maxHealth);
+        
     }
 
     private void Update()

@@ -50,7 +50,7 @@ public class InventoryManager : MonoBehaviour
 
     }
 
-   public void ChangeSelectedSlot(int newValue)
+    public void ChangeSelectedSlot(int newValue)
     {
         if (spawnedItem != null)
         {
@@ -65,23 +65,43 @@ public class InventoryManager : MonoBehaviour
         selectedSlot = newValue;
 
         Item selectedItem = GetSelectedItem(false);
-        
+
         if (selectedItem != null && selectedItem.holdable == true)
         {
-            spawnedItem = Instantiate(selectedItem.prefab, handTransform);
-            spawnedItem.transform.localPosition = Vector3.zero;
-            spawnedItem.transform.localRotation = Quaternion.identity;
-            spawnedItem.transform.localScale = Vector3.one;
-            spawnedItem.transform.parent = weaponHolder.transform;
-            //Destroy(selectedItem);
-            CircleCollider2D itemCollider = spawnedItem.GetComponent<CircleCollider2D>();
+            SpriteRenderer weaponSpriteRenderer = weaponHolder.GetComponent<SpriteRenderer>();
+            Animator weaponAnimator = weaponHolder.GetComponent<Animator>();
 
-            // check if the component exists before destroying it
-            
-                Destroy(itemCollider);
-            
+            if (selectedItem.prefab.GetComponent<Animator>() != null)
+            {
+                weaponAnimator.runtimeAnimatorController = selectedItem.prefab.GetComponent<Animator>().runtimeAnimatorController;
+                weaponSpriteRenderer.sprite = null;
+                weaponAnimator.enabled = true; // turn on the animator
+            }
+            else
+            {
+                weaponAnimator.enabled = false; // turn off the animator
+                weaponSpriteRenderer.sprite = null;
+
+                if (selectedItem == null || !selectedItem.holdable)
+                {
+                    InventoryManager.instance.weaponHolder.GetComponent<SpriteRenderer>().sprite = null;
+                }
+                else
+                {
+                    Sprite selectedSprite = InventoryManager.instance.GetSelectedItem(false).prefab.GetComponent<SpriteRenderer>().sprite;
+                    InventoryManager.instance.weaponHolder.GetComponent<SpriteRenderer>().sprite = selectedSprite;
+                }
+            }
+        }
+        else // No item is selected or the selected item is not holdable
+        {
+            SpriteRenderer weaponSpriteRenderer = weaponHolder.GetComponent<SpriteRenderer>();
+            Animator weaponAnimator = weaponHolder.GetComponent<Animator>();
+            weaponAnimator.enabled = false; // turn off the animator
+            weaponSpriteRenderer.sprite = null; // remove the sprite
         }
     }
+
 
     public bool AddItem(Item item)
     {
@@ -120,9 +140,6 @@ public class InventoryManager : MonoBehaviour
         GameObject newItemGo = Instantiate(inventoryItemPrefab, slot.transform);
         InventoryItem inventoryItem = newItemGo.GetComponent<InventoryItem>();
         inventoryItem.InitialiseItem(item);
-
-
-
     }
 
 
