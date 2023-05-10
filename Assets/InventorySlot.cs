@@ -60,6 +60,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler
                 droppedItem.parentAfterDrag = dropParent;
             }
 
+
             // Instantiate prefab if holding a holdable item in selected slot
             if (droppedItem.item != null && droppedItem.item.prefab != null && droppedItem.item.holdable)
             {
@@ -97,33 +98,34 @@ public class InventorySlot : MonoBehaviour, IDropHandler
 
 
     public void RemoveItem()
+{
+    if (transform.childCount > 0)
     {
-        if (transform.childCount > 0)
+        InventoryItem item = transform.GetChild(0).GetComponent<InventoryItem>();
+
+        // Remove the item from the weapon holder
+        if (item.inventoryManager.inventoryItemPrefab != null)
         {
-            InventoryItem item = transform.GetChild(0).GetComponent<InventoryItem>();
-
-            // Remove the item from the weapon holder
-            if (item.inventoryManager.inventoryItemPrefab != null && item.inventoryManager.inventoryItemPrefab.transform.parent == item.inventoryManager.weaponHolder.transform)
-            {
-                Destroy(item.inventoryManager.inventoryItemPrefab);
-            }
-
-            // Destroy the item object
-            Destroy(item.gameObject);
-            Destroy(InventoryManager.instance.spawnedItem);
-
-            // Reset the slot
-            item.transform.SetParent(null);
-            item.parentAfterDrag = null;
-
-            // Remove the sprite and animator
-            if (InventoryManager.instance.selectedSlot == slot)
-            {
                 InventoryManager.instance.weaponHolder.GetComponent<SpriteRenderer>().sprite = null;
                 InventoryManager.instance.weaponHolder.GetComponent<Animator>().runtimeAnimatorController = null;
             }
+
+        // Destroy the item object
+        Destroy(item.gameObject);
+        Destroy(InventoryManager.instance.spawnedItem);
+
+        // Reset the slot
+        item.transform.SetParent(null);
+        item.parentAfterDrag = null;
+
+        // Remove the sprite and animator
+        if (InventoryManager.instance.selectedSlot == slot)
+        {
+            InventoryManager.instance.weaponHolder.GetComponent<SpriteRenderer>().sprite = null;
+            InventoryManager.instance.weaponHolder.GetComponent<Animator>().runtimeAnimatorController = null;
         }
     }
+}
 
 
 

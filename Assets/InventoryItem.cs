@@ -29,7 +29,8 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler,IEnd
             item = newItem;
             image.sprite = item.image;
 
-            if (InventoryManager.instance.GetSelectedItem(false) != InventoryManager.instance.GetSelectedItem(false).holdable&&
+            if (//InventoryManager.instance.GetSelectedItem(false) == null ||
+                !InventoryManager.instance.GetSelectedItem(false).holdable &&
                 InventoryManager.instance.GetSelectedItem(false) != null && 
                 item.holdable == true &&
                 InventoryManager.instance.GetSelectedItem(false).type == ItemType.Weapon || 
@@ -45,10 +46,14 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler,IEnd
             }
             else
             {
-                if (InventoryManager.instance.GetSelectedItem(false) == InventoryManager.instance.GetSelectedItem(false).holdable)
+                if (InventoryManager.instance.GetSelectedItem(false) != null && InventoryManager.instance.GetSelectedItem(false).holdable)
                 {
                     Sprite selectedSprite = InventoryManager.instance.GetSelectedItem(false).prefab.GetComponent<SpriteRenderer>().sprite;
                     InventoryManager.instance.weaponHolder.GetComponent<SpriteRenderer>().sprite = selectedSprite;
+                }
+                else
+                {
+                    InventoryManager.instance.weaponHolder.GetComponent<SpriteRenderer>().sprite = null;
                 }
             }
 
