@@ -33,8 +33,9 @@ public class Movement : MonoBehaviour, IDamageable
             {
                 rb.constraints = RigidbodyConstraints2D.FreezeAll;
                 collider.enabled = false;
+                
                 animator.SetTrigger("Death");
-                Invoke("Dead", 2.3f);
+                Invoke("Dead", 2f);
                 // Destroy(gameObject, 2.3f);
             }
             
@@ -47,10 +48,14 @@ public class Movement : MonoBehaviour, IDamageable
     }
     public void Dead()
     {
-       isDead = true;
-       InventoryManager.instance.DropAllItems(dropPos);
+        
+        isDead = true;
         
 
+    }
+    public void DropItemPlayer()
+    {
+        InventoryManager.instance.DropAllItems(dropPos);
     }
     public void Respawn()
     {
@@ -73,6 +78,7 @@ public class Movement : MonoBehaviour, IDamageable
 
     private void Update()
     {
+        
         // Get input for movement
          movement.x = joystick.Horizontal;
          movement.y = joystick.Vertical;

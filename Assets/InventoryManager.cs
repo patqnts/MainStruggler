@@ -202,27 +202,58 @@ public class InventoryManager : MonoBehaviour
 
     public void DropAllItems(Transform dropLocation)
     {
+        // Keep track of items that have already been dropped
+        HashSet<string> itemsDropped = new HashSet<string>();
+
+        for (int i = 0; i < inventorySlots.Length; i++)
+        {
+            InventorySlot slot = inventorySlots[i];
+            InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
+            if (itemInSlot != null && !itemsDropped.Contains(itemInSlot.item.name))
+            {
+                // Instantiate a new instance of the item's prefab at the drop location
+                GameObject itemObject = Instantiate(itemInSlot.item.prefab, dropLocation.position, Quaternion.identity);
+
+                // If the item is stackable, remove only one instance of the item from the player's inventory
+                if (itemInSlot.item.stackable)
+                {
+                    RemoveItem(itemInSlot.item.name, 1);
+                }
+                // If the item is not stackable, remove all instances of the item from the player's inventory
+                else
+                {
+                    RemoveItem(itemInSlot.item.name, itemInSlot.count);
+                }
+
+                // Add the item to the set of items that have already been dropped
+                itemsDropped.Add(itemInSlot.item.name);
+            }
+        }
+    }
+
+    public bool isInventoryEmpty()
+    {
         for (int i = 0; i < inventorySlots.Length; i++)
         {
             InventorySlot slot = inventorySlots[i];
             InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
             if (itemInSlot != null)
             {
-                // Instantiate the item's prefab at the player's position
-                GameObject itemObject = Instantiate(itemInSlot.item.prefab, dropLocation.position, Quaternion.identity);
-
-              
-                // Remove the item from the player's inventory
-                RemoveItem(itemInSlot.item.name, itemInSlot.count);
+                return false;
             }
         }
+        return true;
     }
 
-
-
-
-
-
-
-
 }
+
+
+
+
+
+
+
+
+
+
+

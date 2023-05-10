@@ -1637,7 +1637,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &641397325
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2403,7 +2403,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1398624116
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2437,7 +2437,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f703fcfc335a9c4e9386cb6abe45470, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  button: {fileID: 641397324}
+  button: {fileID: 1398624115}
 --- !u!1 &1442371871
 GameObject:
   m_ObjectHideFlags: 0
@@ -3322,6 +3322,11 @@ PrefabInstance:
       propertyPath: _health
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1273671145819078583, guid: 8a28a06f4595cbf47a70c04b92cf0d33,
+        type: 3}
+      propertyPath: dropPos
+      value: 
+      objectReference: {fileID: 2017937114}
     - target: {fileID: 1273671145819078583, guid: 8a28a06f4595cbf47a70c04b92cf0d33,
         type: 3}
       propertyPath: collider

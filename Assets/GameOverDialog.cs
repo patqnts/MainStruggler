@@ -27,7 +27,13 @@ public class GameOverDialog : MonoBehaviour
     {
         if (player.isDead)
         {
-            gameOverBox.SetActive(true);
+            player.DropItemPlayer();
+
+            if (InventoryManager.instance.isInventoryEmpty())
+            {
+                // All items have been dropped, so show the game over box
+                gameOverBox.SetActive(true);
+            }
         }
     }
 }
