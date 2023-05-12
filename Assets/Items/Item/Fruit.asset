@@ -18,7 +18,8 @@ MonoBehaviour:
   actionType: 1
   range: {x: 5, y: 4}
   weaponDamage: 1
-  stackable: 1
+  _stackable: 1
+  maxStackCount: 99
   consumable: 0
   holdable: 0
   description: Prutas. Nesfruta buko why not. Coconut

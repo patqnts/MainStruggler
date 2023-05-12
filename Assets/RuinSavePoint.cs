@@ -37,6 +37,20 @@ public class RuinSavePoint : MonoBehaviour
             lastRuin = this;
             Debug.Log("SAVEPOINT");
         }
+        else if (other.CompareTag("Tree") || other.CompareTag("Rock"))
+        {
+            Destroy(other.gameObject);
+            Debug.Log("Tree Destoryed");
+        }
+        else if (other.CompareTag("Enemy"))
+        {
+            Rigidbody2D enemyRigidbody = other.GetComponent<Rigidbody2D>();
+            if (enemyRigidbody != null)
+            {
+                Vector2 knockbackDirection = (other.transform.position - transform.position).normalized;
+                enemyRigidbody.AddForce(knockbackDirection * 10f, ForceMode2D.Impulse);
+            }
+        }
     }
 
     // Called when a collider exits this trigger

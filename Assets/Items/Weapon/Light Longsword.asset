@@ -18,7 +18,8 @@ MonoBehaviour:
   actionType: 0
   range: {x: 5, y: 4}
   weaponDamage: 180
-  stackable: 0
+  _stackable: 0
+  maxStackCount: 1
   consumable: 0
   holdable: 1
   description: 'Light sword pero kulay pink eh noh.

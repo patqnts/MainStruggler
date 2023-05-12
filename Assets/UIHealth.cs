@@ -29,6 +29,7 @@ public class UIHealth : MonoBehaviour
     {
         float fillAmount = Mathf.Clamp01(currentHealth / maxHealth);
         int filledHearts = Mathf.CeilToInt(fillAmount * maxHearts);
+        
 
         for (int i = 0; i < hearts.Length; i++)
         {
@@ -47,8 +48,6 @@ public class UIHealth : MonoBehaviour
         player.maxHealth++;
         player._health++;
         SetMaxHearts(player.maxHealth);
-       
-
 
     }
     public void SetMaxHearts(float maxHealth)

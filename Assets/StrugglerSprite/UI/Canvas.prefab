@@ -1291,6 +1291,7 @@ MonoBehaviour:
   weaponHolder: {fileID: 0}
   selectedSlot: 0
   spawnedItem: {fileID: 0}
+  selected: {fileID: 0}
 --- !u!1 &6073206873735447981
 GameObject:
   m_ObjectHideFlags: 0

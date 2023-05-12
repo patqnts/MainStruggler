@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7702984526162720605}
   - component: {fileID: -3793105448501500391}
   - component: {fileID: -4452850678887081640}
-  m_Layer: 3
+  m_Layer: 10
   m_Name: Big Starstone
   m_TagString: Rock
   m_Icon: {fileID: 0}
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_Sprite: {fileID: 1552653819, guid: d282b410d68bd564c94445158f15d601, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.8113208, g: 0.8113208, b: 0.8113208, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

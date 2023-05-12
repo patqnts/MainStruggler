@@ -21,6 +21,7 @@ public class StoneHItBox : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        
         IDamageable damageableObject = collision.gameObject.GetComponent<IDamageable>();
         Vector3 parentPos = transform.parent.position;
         Vector2 direction = (collision.gameObject.transform.position - parentPos).normalized;
@@ -28,6 +29,8 @@ public class StoneHItBox : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Player"))
         {
+            
+
             damageableObject.OnHit(damage, knockback);
         }
             

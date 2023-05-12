@@ -18,7 +18,8 @@ MonoBehaviour:
   actionType: 1
   range: {x: 1, y: 1}
   weaponDamage: 0
-  stackable: 1
+  _stackable: 1
+  maxStackCount: 999
   consumable: 0
   holdable: 0
   description: Kahoy

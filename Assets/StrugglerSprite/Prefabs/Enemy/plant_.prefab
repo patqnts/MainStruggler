@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7401251658839098987}
   - component: {fileID: 7401251658839098986}
   - component: {fileID: 7401251658839098989}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: plant_
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -255,7 +255,7 @@ GameObject:
   m_Component:
   - component: {fileID: 865845289726602099}
   - component: {fileID: 3250319343393565270}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: TX Shadow Stone T1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

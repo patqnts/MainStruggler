@@ -16,8 +16,9 @@ public class StoneKnightScript : MonoBehaviour, IDamageable
     public bool isDetecting;
 
     public float attackRange = 1.5f;
-
-    public float _health = 10f;
+    [SerializeField] private EnemyHealthBar healthBar;
+    public GameObject enemyHealthObject;
+    public float _health,maxHealth = 10f;
     public float Health
     {
         set
@@ -28,6 +29,7 @@ public class StoneKnightScript : MonoBehaviour, IDamageable
             {
                 moveSpeed = 0;
                 hitCollider.enabled = false;
+                enemyHealthObject.SetActive(false);
                 animator.SetTrigger("Death");
                 Destroy(gameObject, 1.2f);
             }
@@ -36,6 +38,10 @@ public class StoneKnightScript : MonoBehaviour, IDamageable
         {
             return _health;
         }
+    }
+    private void Awake()
+    {
+        healthBar = GetComponentInChildren<EnemyHealthBar>();
     }
     private void Start()
     {
@@ -60,7 +66,7 @@ public class StoneKnightScript : MonoBehaviour, IDamageable
         if (detectionZone.detectedObj.Count > 0)
         {
             animator.SetTrigger("Wake");
-
+            enemyHealthObject.SetActive(true);
             if (animator.GetCurrentAnimatorStateInfo(0).IsName("Spawn") || animator.GetCurrentAnimatorStateInfo(0).IsName("Still"))
             {
                 movement = Vector2.zero;
@@ -94,6 +100,7 @@ public class StoneKnightScript : MonoBehaviour, IDamageable
             isDetecting = false;
             movement = Vector2.zero;
             animator.SetBool("Detect", false);
+            enemyHealthObject.SetActive(false);
         }
         Timer -= Time.deltaTime;
     }
@@ -129,7 +136,12 @@ public class StoneKnightScript : MonoBehaviour, IDamageable
         Health -= damage;
         rb.AddForce(knockback);
        
+        healthBar.UpdateHealthBar(_health, maxHealth);
         animator.SetTrigger("Hurt");
+        if(_health <= 0)
+        {
+            enemyHealthObject.SetActive(false);
+        }
     }
 
     public void OnHit(float damage)

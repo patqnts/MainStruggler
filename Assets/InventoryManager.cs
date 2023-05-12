@@ -95,10 +95,14 @@ public class InventoryManager : MonoBehaviour
         }
         else // No item is selected or the selected item is not holdable
         {
-            SpriteRenderer weaponSpriteRenderer = weaponHolder.GetComponent<SpriteRenderer>();
-            Animator weaponAnimator = weaponHolder.GetComponent<Animator>();
-            weaponAnimator.enabled = false; // turn off the animator
-            weaponSpriteRenderer.sprite = null; // remove the sprite
+            if(selectedItem != null)
+            {
+                SpriteRenderer weaponSpriteRenderer = weaponHolder.GetComponent<SpriteRenderer>();
+                Animator weaponAnimator = weaponHolder.GetComponent<Animator>();
+                weaponAnimator.enabled = false; // turn off the animator
+                weaponSpriteRenderer.sprite = null; // remove the sprite
+            }
+            
         }
     }
 
@@ -112,7 +116,7 @@ public class InventoryManager : MonoBehaviour
             InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
             if (itemInSlot != null &&
                 itemInSlot.item == item &&
-                itemInSlot.count < maxStackedItems &&
+                itemInSlot.count < item.maxStackCount &&
                 itemInSlot.item.stackable == true)
             {
                 itemInSlot.count++;
@@ -263,14 +267,3 @@ public class InventoryManager : MonoBehaviour
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-

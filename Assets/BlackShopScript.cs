@@ -19,72 +19,100 @@ public class BlackShopScript : MonoBehaviour
         inventoryManager = FindObjectOfType<InventoryManager>();
 
     }
-   
+
 
     public void BuyItem()
     {
-        
+        if (Intest < 0 || Intest >= itemList.Length)
+        {
+            Debug.Log("Invalid item index");
+            return;
+        }
+
         Item itemToBuy = itemList[Intest];
 
+        int coinCost = 0;
+        int woodCost = 0;
+        int stoneCost = 0;
+        int stoneheartCost = 0;
+        int starstoneCost = 0;
+        int steelIngotCost = 0;
 
         switch (itemToBuy.name)
         {
-            case "Wooden Sword"://0
-                coin = 0;
-                stoneheart = 0;
+            case "Coin":
+                coinCost = 0;
                 break;
-            case "Stone Sword"://1
-                coin = 0;
-                stoneheart = 0;
+            case "Wooden Sword":
+                coinCost = 200;
+                woodCost = 10;
+                stoneCost = 5;
                 break;
-            case "Steel Sword"://2
-                coin = 0;
-                stoneheart = 0;
+            case "Stone Sword":
+                coinCost = 400;
+                stoneCost = 40;
+                woodCost = 10;
                 break;
-            case "Starstone Sword"://3
-                coin = 0;
-                stoneheart = 0;
+            case "Steel Sword":
+                coinCost = 800;
+                stoneCost = 50;
+                woodCost = 40;
+                stoneheartCost = 20;
                 break;
-            case "Coin"://4
-                coin = 0;
-                stoneheart = 0;
+            case "Starstone Sword":
+                coinCost = 1600;
+                starstoneCost = 3;
+                stoneCost = 150;
+                woodCost = 200;
+                stoneheartCost = 50;
                 break;
-            case "Wood Gathering Tool"://5
-                coin = 0;
-                stoneheart = 0;
+            case "Wood Gathering Tool":
+                coinCost = 100;
+                woodCost = 5;
                 break;
-            case "Stone Gathering Tool"://6
-                coin = 0;
-                stoneheart = 0;
+            case "Stone Gathering Tool":
+                coinCost = 400;
+                stoneCost = 50;
+                woodCost = 35;
                 break;
-            case "Steel Gathering Tool"://7
-                coin = 0;
-                stoneheart = 0;
+            case "Steel Gathering Tool":
+                coinCost = 800;
+                stoneCost = 100;
+                woodCost = 100;
+                stoneheartCost = 10;
                 break;
-            case "Starstone Gathering Tool"://8
-                coin = 0;
-                stoneheart = 0;
+            case "Starstone Gathering Tool":
+                coinCost = 1600;
+                starstoneCost = 3;
+                stoneCost = 150;
+                woodCost = 150;
+                steelIngotCost = 50;
                 break;
             default:
                 Debug.Log("Invalid item name");
                 return;
         }
 
-        if (inventoryManager.GetItemCount("Coin") < coin || inventoryManager.GetItemCount("Stoneheart") < stoneheart)
+        if (inventoryManager.GetItemCount("Coin") < coinCost ||
+            inventoryManager.GetItemCount("Wood") < woodCost ||
+            inventoryManager.GetItemCount("Stone") < stoneCost ||
+            inventoryManager.GetItemCount("Stoneheart") < stoneheartCost ||
+            inventoryManager.GetItemCount("Starstone") < starstoneCost ||
+            inventoryManager.GetItemCount("Steel") < steelIngotCost)
         {
-            Debug.Log("Not enough coins/materials to buy " + itemToBuy.name);
+            Debug.Log("Not enough resources to buy " + itemToBuy.name);
             return;
         }
-
 
         bool added = inventoryManager.AddItem(itemToBuy);
         if (added)
         {
-            if (coin > 0)
-            {
-                inventoryManager.RemoveItem("Coin", coin);
-                inventoryManager.RemoveItem("Stoneheart", stoneheart);
-            }
+            inventoryManager.RemoveItem("Coin", coinCost);
+            inventoryManager.RemoveItem("Wood", woodCost);
+            inventoryManager.RemoveItem("Stone", stoneCost);
+            inventoryManager.RemoveItem("Stoneheart", stoneheartCost);
+            inventoryManager.RemoveItem("Starstone", starstoneCost);
+            inventoryManager.RemoveItem("Steel", steelIngotCost);
             Debug.Log("Bought " + itemToBuy.name);
         }
         else

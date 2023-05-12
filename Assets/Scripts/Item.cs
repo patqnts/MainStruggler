@@ -16,7 +16,26 @@ public class Item : ScriptableObject
     public float weaponDamage;
 
     [Header("Only UI")]
-    public bool stackable = true;
+    public bool _stackable = true;
+    public bool stackable
+    {
+        get { return _stackable; }
+        set
+        {
+            _stackable = value;
+            if (_stackable)
+            {
+                maxStackCount = 64; // Set the default max stack count to 64
+            }
+            else
+            {
+                maxStackCount = 1; // Set the max stack count to 1 if not stackable
+            }
+        }
+    }
+    public int maxStackCount = 1; // Default max stack count is 1
+
+
     public bool consumable;
     public bool holdable;
 

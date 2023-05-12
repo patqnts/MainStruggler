@@ -132,12 +132,12 @@ TextureImporter:
       name: small-tree_0
       rect:
         serializedVersion: 2
-        x: 41
-        y: 1
-        width: 12
-        height: 17
+        x: 0
+        y: 0
+        width: 96
+        height: 96
       alignment: 9
-      pivot: {x: 0.45759073, y: 0.26981717}
+      pivot: {x: 0.5, y: 0.15}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -153,12 +153,12 @@ TextureImporter:
       name: small-tree_1
       rect:
         serializedVersion: 2
-        x: 115
-        y: 1
-        width: 57
-        height: 86
+        x: 96
+        y: 0
+        width: 96
+        height: 96
       alignment: 9
-      pivot: {x: 0.49415293, y: 0.08}
+      pivot: {x: 0.5, y: 0.15}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -174,12 +174,12 @@ TextureImporter:
       name: small-tree_2
       rect:
         serializedVersion: 2
-        x: 207
-        y: 1
-        width: 71
-        height: 87
+        x: 192
+        y: 0
+        width: 96
+        height: 96
       alignment: 9
-      pivot: {x: 0.45727518, y: 0.07381827}
+      pivot: {x: 0.5, y: 0.15}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

@@ -10,6 +10,7 @@ TagManager:
   - Rock
   - Interact
   - Target
+  - Water
   layers:
   - Default
   - TransparentFX
@@ -17,11 +18,11 @@ TagManager:
   - Chests
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
+  - ICON
+  - Player
+  - NPC
+  - Enemy
+  - Ignore
   - 
   - 
   - 

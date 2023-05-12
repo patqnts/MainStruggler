@@ -15,10 +15,14 @@ public class reload : MonoBehaviour
     public void Reload()
     {
         
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        
         RuinSavePoint.PlayerDied();
         player.Respawn();
         button.SetActive(false);
         
+    }
+    public void NewGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

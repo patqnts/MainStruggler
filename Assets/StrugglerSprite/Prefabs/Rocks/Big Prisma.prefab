@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7702984526162720605}
   - component: {fileID: -3793105448501500391}
   - component: {fileID: -4452850678887081640}
-  m_Layer: 3
+  m_Layer: 10
   m_Name: Big Prisma
   m_TagString: Rock
   m_Icon: {fileID: 0}

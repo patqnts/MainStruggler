@@ -259,7 +259,7 @@ public class Cellular : MonoBehaviour
         }
         float treePrefabSize = 2f;
         // Add trees to the ground tiles
-        int numTrees = Mathf.RoundToInt(groundTilePositions.Count / 4); // 10% of the ground tiles will have trees
+        int numTrees = Mathf.RoundToInt(groundTilePositions.Count / 3); // 10% of the ground tiles will have trees
         for (int i = 0; i < numTrees; i++)
         {
             // Find a random ground tile

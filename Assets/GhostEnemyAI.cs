@@ -7,7 +7,7 @@ public class GhostEnemyAI : MonoBehaviour, IDamageable
     public Rigidbody2D rb;
     Vector2 originalVelocity;
     public float damage = 1f;
-    public DetectionZone detectionZone;
+  
     public Collider2D hitCollider;
     public Animator animator;
     public GameObject projectilePrefab;
@@ -18,7 +18,7 @@ public class GhostEnemyAI : MonoBehaviour, IDamageable
     public bool isSecondPhase = false;
     public bool isAlive;
     public bool inTransition = false;
-
+    public Movement player;
     public float Health
     {
         set
@@ -45,7 +45,7 @@ public class GhostEnemyAI : MonoBehaviour, IDamageable
                     animator.SetTrigger("Phase2");
                     animator.SetBool("SecondPhase", true);
 
-                    _health = 2500;
+                    _health = 1;
                     isAlive = true;
                     lastChargeDashTime = 5f;
 
@@ -70,6 +70,7 @@ public class GhostEnemyAI : MonoBehaviour, IDamageable
 
     public void Start()
     {
+        player = FindObjectOfType<Movement>();
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         StartCoroutine(ThrowProjectilesWithCooldown());
@@ -84,8 +85,10 @@ public class GhostEnemyAI : MonoBehaviour, IDamageable
             {
                 // Stop moving before throwing projectiles
 
-
-                ThrowProjectileAtPlayer();
+                if (!player.isDead)
+                {
+                    ThrowProjectileAtPlayer();
+                }
 
                 // Resume moving after throwing projectiles
 
@@ -96,42 +99,41 @@ public class GhostEnemyAI : MonoBehaviour, IDamageable
         }
     }
 
-   private void ThrowProjectileAtPlayer()
+    private void ThrowProjectileAtPlayer()
     {
+        GameObject player = GameObject.FindGameObjectWithTag("Target");
+        if (player == null)
+        {
+            Debug.Log("Player Defeated");
+            return;
+        }
+
         if (_health <= 0)
         {
             return;
         }
 
-        GameObject player = GameObject.FindGameObjectWithTag("Target");
         Vector2 playerPoss = player.transform.position;
         Vector2 enemyPos = transform.position;
         float distance = Vector2.Distance(playerPoss, enemyPos);
-        if (player != null && distance <5f && !isSecondPhase)
+        if (distance < 5f && !isSecondPhase)
         {
             isAttacking = true;
             animator.SetTrigger("Attack");
             GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
-            Vector2 playerPos = player.transform.position;
-            Vector2 direction = (playerPos - (Vector2)transform.position).normalized;
+            Debug.Log("Projectile position: " + projectile.transform.position);
+            Vector2 direction = (playerPoss - enemyPos).normalized;
             projectile.GetComponent<Rigidbody2D>().AddForce(direction * 250);
-            Destroy(projectile, 4f);
+            Destroy(projectile, 60f);
         }
-        else if (player != null && distance < 5f && isSecondPhase && isAlive)
+        else if (distance < 5f && isSecondPhase && isAlive)
         {
             isAttacking = true;
             animator.SetTrigger("Attack");
-            
-            
             GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
-            Vector2 playerPos = player.transform.position;
-            Vector2 direction = (playerPos - (Vector2)transform.position).normalized;
+            Vector2 direction = (playerPoss - enemyPos).normalized;
             projectile.GetComponent<Rigidbody2D>().AddForce(direction * 600);
-            Destroy(projectile, 4f);
-        }
-        else if (player == null)
-        {
-            Debug.Log("Player Defeated");
+            Destroy(projectile, 60f);
         }
     }
 

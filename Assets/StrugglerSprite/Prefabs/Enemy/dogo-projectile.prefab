@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8546288904408682197}
   - component: {fileID: 8184958633520115551}
   - component: {fileID: -7057970177936315691}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: dogo-projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}

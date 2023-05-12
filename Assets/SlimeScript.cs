@@ -17,7 +17,9 @@ public class SlimeScript : MonoBehaviour, IDamageable
     public float moveSpeed = 500f;
     public float attackRange = 0.5f;
     public GameObject[] dropPrefab;
-    
+    [SerializeField] private EnemyHealthBar enemyHealthBar;
+    public GameObject enemyHealthObject;
+    public GameObject floatingDamage;
     public float Health
     {
         set
@@ -30,11 +32,12 @@ public class SlimeScript : MonoBehaviour, IDamageable
 
                 hitCollider.enabled = false;
                 animator.SetTrigger("Death");
+                
                 DropItem();
                 Destroy(gameObject,1.2f);
                
-               
-                
+
+
             }
         }
         get
@@ -42,15 +45,19 @@ public class SlimeScript : MonoBehaviour, IDamageable
             return _health;
         }
     }
-    
+    private void Awake()
+    {
+        enemyHealthBar = GetComponentInChildren<EnemyHealthBar>();
+    }
 
     // Start is called before the first frame update
-    public float _health = 10;
+    public float _health,maxHealth = 10;
     public void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spawner = FindObjectOfType<SlimeSpawner>();
+       
     }
 
     
@@ -60,6 +67,7 @@ public class SlimeScript : MonoBehaviour, IDamageable
 
         if (detectionZone.detectedObj.Count > 0)
         {
+            enemyHealthObject.SetActive(true);
             alarm.gameObject.SetActive(true);
             Invoke("DeactivateAlarm", 1.2f);
             Vector2 direction = (detectionZone.detectedObj[0].transform.position - transform.position).normalized;
@@ -84,11 +92,17 @@ public class SlimeScript : MonoBehaviour, IDamageable
                 animator.SetTrigger("Attack");
             }
         }
+        else
+        {
+            enemyHealthObject.SetActive(false);
+        }
        
       
 
 
     }
+
+    
 
     void DeactivateAlarm()
     {
@@ -97,10 +111,25 @@ public class SlimeScript : MonoBehaviour, IDamageable
     public void OnHit(float damage, Vector2 knockback)
     {
         Health -= damage;
+        enemyHealthBar.UpdateHealthBar(_health, maxHealth);
+
+        // Create a new GameObject with the floating damage value
+        var floatingDamageGO = Instantiate(floatingDamage, transform.position, Quaternion.identity);
+        floatingDamageGO.GetComponent<TextMesh>().text = damage.ToString();
+
+        // Destroy the floating damage after a set amount of time
+        Destroy(floatingDamageGO, 1f);
+
         rb.AddForce(knockback);
         animator.SetTrigger("Hurt");
         Debug.Log(Health);
+        if (_health <= 0)
+        {
+            enemyHealthObject.SetActive(false);
+            Destroy(floatingDamageGO, 1f);
+        }
     }
+
 
     public void OnHit(float damage)
     {

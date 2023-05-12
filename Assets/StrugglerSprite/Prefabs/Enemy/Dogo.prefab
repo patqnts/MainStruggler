@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &9179703130823211786
 Transform:
   m_ObjectHideFlags: 0
@@ -78,7 +78,7 @@ GameObject:
   - component: {fileID: 5392425308314855472}
   - component: {fileID: 1097468475318778000}
   - component: {fileID: 4337596748707148952}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dogo
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -140,7 +140,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -2018569697
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 4
   m_Sprite: {fileID: -1539070804, guid: 92ad56835d59a77438106d6342bbbc06, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -187,18 +187,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 1097468475318778000}
   damage: 1
-  detectionZone: {fileID: 6021854679619374196}
   hitCollider: {fileID: 4337596748707148952}
   animator: {fileID: 5292333702654999887}
   projectilePrefab: {fileID: 8613849481098850520, guid: af1e0f105ca9a3c449d27dd2f9e690d4,
     type: 3}
   moveSpeed: 600
   pushbackForce: 1000
-  _health: 2500
+  _health: 1
   isAttacking: 0
   isSecondPhase: 0
   isAlive: 0
   inTransition: 0
+  player: {fileID: 0}
   projectileCooldown: 3
   projectilesToThrow: 15
   chargeDashSpeed: 2000

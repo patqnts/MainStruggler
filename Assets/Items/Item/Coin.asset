@@ -18,7 +18,8 @@ MonoBehaviour:
   actionType: 1
   range: {x: 5, y: 4}
   weaponDamage: 5
-  stackable: 1
+  _stackable: 1
+  maxStackCount: 999999
   consumable: 0
   holdable: 0
   description: Currency that can be use to buy something.

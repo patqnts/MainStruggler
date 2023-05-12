@@ -45,7 +45,7 @@ public class AttackHitbox : MonoBehaviour
                 else if (selectedItem != null && selectedItem.type == ItemType.Tool)
                 {
                     //TOOL TO ENEMY
-                    damage = selectedItem.weaponDamage * .6f;
+                    damage = selectedItem.weaponDamage * .05f;
                 }
                 else
                 {
@@ -63,7 +63,7 @@ public class AttackHitbox : MonoBehaviour
                 else if (selectedItem != null && selectedItem.type == ItemType.Weapon)
                 {
                     // WEAPON TO TREES AND ROCK
-                    damage = selectedItem.weaponDamage * .6f;
+                    damage = selectedItem.weaponDamage * .05f;
                 }
                 else
                 {

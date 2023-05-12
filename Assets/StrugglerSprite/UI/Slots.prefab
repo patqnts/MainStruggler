@@ -92,7 +92,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 0
+    m_Left: 2
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
@@ -119,6 +119,7 @@ MonoBehaviour:
   selectedColor: {r: 0.5613208, g: 1, b: 0.8438408, a: 1}
   notSelectedColor: {r: 0.735849, g: 0.7119729, b: 0.6699003, a: 1}
   slot: 0
+  confirmationDialog: {fileID: 0}
 --- !u!114 &2995162024617462866
 MonoBehaviour:
   m_ObjectHideFlags: 0

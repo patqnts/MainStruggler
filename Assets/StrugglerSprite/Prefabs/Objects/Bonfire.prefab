@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9166082557929310122}
   - component: {fileID: 9024799479561077360}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -122,7 +122,7 @@ GameObject:
   - component: {fileID: 6667897548885555071}
   - component: {fileID: 9186079440119001156}
   - component: {fileID: 2871244539302871225}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bonfire
   m_TagString: Untagged
   m_Icon: {fileID: 0}

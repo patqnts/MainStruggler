@@ -14,21 +14,29 @@ public class NPCDetection : MonoBehaviour
     public GameObject shopUI;
 
     private GameObject inactiveObject;
-   
+    private GameObject InventoryBag;
+
 
 
 
 
     public string inactiveObjectName = "MainInventoryGroup"; // Reference to the inactive GameObject
+    public string inventory = "ShowMainInventoryButton";
     void Start()
     {
         GameObject canvas = GameObject.Find("Main User Interface");
+        
         // Find the inactive GameObject by name
         inactiveObject = canvas.transform.Find(inactiveObjectName).gameObject;
+        InventoryBag = canvas.transform.Find(inventory).gameObject;
 
         if (inactiveObject != null)
         {
             inactiveObject.SetActive(false);
+        }
+        if (InventoryBag != null)
+        {
+            InventoryBag.SetActive(true);
         }
     }
 
@@ -38,6 +46,7 @@ public class NPCDetection : MonoBehaviour
         {
             notice.gameObject.SetActive(true);
             noticeButtonUI.gameObject.SetActive(true);
+            
             
         }
        
@@ -56,6 +65,10 @@ public class NPCDetection : MonoBehaviour
             {
                 inactiveObject.SetActive(false);
             }
+            if (InventoryBag != null)
+            {
+                InventoryBag.SetActive(true);
+            }
 
         }
 
@@ -69,6 +82,7 @@ public class NPCDetection : MonoBehaviour
         }
         shopUI.gameObject.SetActive(true);
         noticeButtonUI.gameObject.SetActive(false);
+        InventoryBag.SetActive(false);
 
     }
     public void CloseUI()
@@ -78,6 +92,7 @@ public class NPCDetection : MonoBehaviour
         if (inactiveObject != null)
         {
             inactiveObject.SetActive(false);
+            InventoryBag.SetActive(true);
         }
 
     }

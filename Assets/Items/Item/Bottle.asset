@@ -18,7 +18,11 @@ MonoBehaviour:
   actionType: 1
   range: {x: 1, y: 1}
   weaponDamage: 0
-  stackable: 1
+  _stackable: 1
+  maxStackCount: 99
   consumable: 0
   holdable: 0
+  description: 
+  priceAmount: 0
+  materialRequirements: []
   image: {fileID: 1420380874, guid: 51721a244c2b3b2448a18bd0044dee35, type: 3}
