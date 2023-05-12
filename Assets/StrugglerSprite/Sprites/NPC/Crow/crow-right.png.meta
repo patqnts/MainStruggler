@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 73567c2e5b46e5141a21c3dc36e27ad0
+guid: c9fa4911cdd71d846ad74e01b08b0d47
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -129,148 +129,169 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: VER2_0
+      name: crow-right_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 224
-        width: 32
-        height: 30
-      alignment: 9
-      pivot: {x: 0.5, y: 0.2}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: eb3e66e1089de904fa461c54e978e0c1
-      internalID: 1420595539
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: VER2_1
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 224
-        width: 32
-        height: 30
-      alignment: 9
-      pivot: {x: 0.5, y: 0.2}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5ee8dfee814dd9f4b8c90a703a6d9744
-      internalID: 1269202101
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: VER2_2
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 223
+        y: 0
         width: 96
-        height: 33
+        height: 96
       alignment: 9
-      pivot: {x: 0.5, y: 0.2}
+      pivot: {x: 0.45, y: 0.1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dfe32bebac7037b4ca39d34f97498fb1
-      internalID: -1414141850
+      spriteID: b71bb66ea7c343348b15ce18ff83cbc7
+      internalID: 398633370
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: VER2_3
+      name: crow-right_1
       rect:
         serializedVersion: 2
-        x: 17
-        y: 97
-        width: 182
-        height: 112
-      alignment: 9
-      pivot: {x: 0.5, y: 0.2}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6f116cb582678f14e8f92dd9258153be
-      internalID: 1497272514
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: VER2_4
-      rect:
-        serializedVersion: 2
-        x: 0
+        x: 96
         y: 0
-        width: 32
-        height: 32
+        width: 96
+        height: 96
       alignment: 9
-      pivot: {x: 0.5, y: 0.2}
+      pivot: {x: 0.45, y: 0.1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5a46766790295ff48bcdd617b0e48466
-      internalID: -1781302341
+      spriteID: ebaad2c4881a5564980f2536b6ada6b7
+      internalID: -665153608
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: VER2_5
+      name: crow-right_2
       rect:
         serializedVersion: 2
-        x: 32
+        x: 192
         y: 0
-        width: 32
-        height: 32
+        width: 96
+        height: 96
       alignment: 9
-      pivot: {x: 0.5, y: 0.2}
+      pivot: {x: 0.45, y: 0.1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2782f8c921690d940a96414efb8c93da
-      internalID: -566052409
+      spriteID: 0945b1146817bea4881a85c51d113095
+      internalID: -745449329
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: VER2_6
+      name: crow-right_3
       rect:
         serializedVersion: 2
-        x: 67
-        y: 2
-        width: 27
-        height: 25
+        x: 288
+        y: 0
+        width: 96
+        height: 96
       alignment: 9
-      pivot: {x: 0.5, y: 0.2}
+      pivot: {x: 0.45, y: 0.1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ff275316e9385da4ba1b67013623e999
-      internalID: -1191300391
+      spriteID: 135d3b6b0aef22c4b880955ca21767fb
+      internalID: 1984880416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crow-right_4
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.45, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc2223b3e9a32ed43a08eea4b1225efb
+      internalID: 245188883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crow-right_5
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 0
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.45, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 853200e01a401a44aa5c33a1f50b91ae
+      internalID: -1936725316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crow-right_6
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 0
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.45, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58c12b59379e11143a11be6cfdc3be59
+      internalID: -23630774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crow-right_7
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 0
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.45, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08d6b6441a0162044b86eccb09538008
+      internalID: 237614805
       vertices: []
       indices: 
       edges: []
@@ -286,13 +307,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      VER2_0: 1420595539
-      VER2_2: -1414141850
-      VER2_1: 1269202101
-      VER2_4: -1781302341
-      VER2_3: 1497272514
-      VER2_5: -566052409
-      VER2_6: -1191300391
+      crow-right_0: 398633370
+      crow-right_4: 245188883
+      crow-right_7: 237614805
+      crow-right_5: -1936725316
+      crow-right_3: 1984880416
+      crow-right_1: -665153608
+      crow-right_6: -23630774
+      crow-right_2: -745449329
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

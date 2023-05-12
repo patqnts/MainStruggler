@@ -10,6 +10,7 @@ public class Movement : MonoBehaviour, IDamageable
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Animator animator;
     [SerializeField] private Joystick joystick;
+
    
 
     public float dashSpeed;
@@ -95,19 +96,18 @@ public class Movement : MonoBehaviour, IDamageable
         // Get input for movement
          movement.x = joystick.Horizontal;
          movement.y = joystick.Vertical;
-         movement.x = Input.GetAxisRaw("Horizontal");
-         movement.y = Input.GetAxisRaw("Vertical");
+        //  movement.x = Input.GetAxisRaw("Horizontal");
+        //movement.y = Input.GetAxisRaw("Vertical");
 
         // Set animator parameters for movement
         animator.SetFloat("Horizontal", movement.x);
         animator.SetFloat("Vertical", movement.y);
         animator.SetFloat("Speed", movement.sqrMagnitude);
 
-
-        
-        if (Input.GetKeyDown(KeyCode.LeftShift) && !isAttacking && movement != Vector2.zero && dashCounter<=0)
+        //Dash logic
+        if (Input.GetKeyDown(KeyCode.LeftShift) && !isAttacking && movement != Vector2.zero && dashCounter <= 0)
         {
-            
+
             if (dashCoolCounter <= 0 && dashCounter <= 0)
             {
                 ghost.makeGhost = true;
@@ -117,14 +117,14 @@ public class Movement : MonoBehaviour, IDamageable
 
                 Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Ignore"), true);
             }
-    
+
 
             Debug.Log("DASH");
         }
-       
+
         if (dashCounter > 0)
         {
-            
+
             dashCounter -= Time.deltaTime;
             if (dashCounter <= 0)
             {
@@ -143,27 +143,25 @@ public class Movement : MonoBehaviour, IDamageable
 
 
 
+
+
         // Handle attack logic
         if (Input.GetKeyDown(KeyCode.Space) && !isAttacking)
         {
             StartCoroutine(Attack());
-
-           // 
-            
-            
-            // Decrement consumable item after attacking
+            isAttacking = true;
             Item canEat = InventoryManager.instance.GetSelectedItem(item);
             if (canEat != null && canEat.consumable && InventoryManager.instance.GetSelectedItem(item) != null && _health < maxHealth)
             {
                 _health++;
                 InventoryManager.instance.GetSelectedItem(true);
 
-                
-                
+
+
             }
             else if (canEat != null && InventoryManager.instance.GetSelectedItem(item) != null && canEat.name == "Fruit") //HEART CONTAINER PLACEHOLDER
             {
-                
+
                 uiHealth.AddHeart();
                 InventoryManager.instance.GetSelectedItem(true);
 
@@ -181,10 +179,7 @@ public class Movement : MonoBehaviour, IDamageable
             lastDirection = movement;
             
         }
-        else
-        {
-            ghost.makeGhost = false;
-        }
+        
         
 
         // Set animator parameters for last direction
@@ -200,6 +195,9 @@ public class Movement : MonoBehaviour, IDamageable
             rb.MovePosition(rb.position + movement.normalized * activeMoveSpeed * Time.fixedDeltaTime);
             
         }
+
+        
+
     }
 
     public void OnButtonPress()
@@ -228,6 +226,18 @@ public class Movement : MonoBehaviour, IDamageable
             {
                 return;
             }
+        }
+    }
+    public void Dash()
+    {
+        if (dashCoolCounter <= 0 && dashCounter <= 0)
+        {
+            ghost.makeGhost = true;
+            activeMoveSpeed = dashSpeed;
+            dashCounter = dashLength;
+
+
+            Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Ignore"), true);
         }
     }
 

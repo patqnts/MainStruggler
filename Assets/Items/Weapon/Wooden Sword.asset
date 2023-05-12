@@ -36,4 +36,4 @@ MonoBehaviour:
     requiredAmount: 0
   - materialSprite: {fileID: 618154134, guid: b118e8567b28b334db77b832e5862f9d, type: 3}
     requiredAmount: 0
-  image: {fileID: 807947157, guid: 10c1939d16d3ebb4bbe38773e8228229, type: 3}
+  image: {fileID: 1633866421, guid: d9a09ae36fc993c438ece0f13525844d, type: 3}

@@ -15,8 +15,7 @@ public class DetectionZone : MonoBehaviour
     {
         if(collision.gameObject.tag == Target)
         {
-            detectedObj.Add(collision);
-            
+            detectedObj.Add(collision); 
         }
         
     }

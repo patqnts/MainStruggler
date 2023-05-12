@@ -5,7 +5,7 @@ using UnityEngine;
 public class Transparency : MonoBehaviour
 {
     public float distanceThreshold = 1f; // Change this value to adjust the distance threshold
-    private float angleThreshold = 90f; // Change this value to adjust the angle threshold
+    
     public float alpha = 0.5f; // Change this value to adjust the transparency
 
     private Material material;

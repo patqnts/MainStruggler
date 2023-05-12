@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 73567c2e5b46e5141a21c3dc36e27ad0
+guid: 88e35d9b684ea984eb686a326c4436e4
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -129,148 +129,169 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: VER2_0
+      name: crow-attack_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 224
-        width: 32
-        height: 30
-      alignment: 9
-      pivot: {x: 0.5, y: 0.2}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: eb3e66e1089de904fa461c54e978e0c1
-      internalID: 1420595539
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: VER2_1
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 224
-        width: 32
-        height: 30
-      alignment: 9
-      pivot: {x: 0.5, y: 0.2}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5ee8dfee814dd9f4b8c90a703a6d9744
-      internalID: 1269202101
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: VER2_2
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 223
+        y: 0
         width: 96
-        height: 33
+        height: 96
       alignment: 9
-      pivot: {x: 0.5, y: 0.2}
+      pivot: {x: 0.45, y: 0.1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dfe32bebac7037b4ca39d34f97498fb1
-      internalID: -1414141850
+      spriteID: 4411f46bd40e9fb4d936a4be821ae259
+      internalID: -640335696
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: VER2_3
+      name: crow-attack_1
       rect:
         serializedVersion: 2
-        x: 17
-        y: 97
-        width: 182
-        height: 112
-      alignment: 9
-      pivot: {x: 0.5, y: 0.2}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6f116cb582678f14e8f92dd9258153be
-      internalID: 1497272514
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: VER2_4
-      rect:
-        serializedVersion: 2
-        x: 0
+        x: 96
         y: 0
-        width: 32
-        height: 32
+        width: 96
+        height: 96
       alignment: 9
-      pivot: {x: 0.5, y: 0.2}
+      pivot: {x: 0.45, y: 0.1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5a46766790295ff48bcdd617b0e48466
-      internalID: -1781302341
+      spriteID: a2e334a0a7fdca44fb251e38d614e88d
+      internalID: -1299152906
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: VER2_5
+      name: crow-attack_2
       rect:
         serializedVersion: 2
-        x: 32
+        x: 192
         y: 0
-        width: 32
-        height: 32
+        width: 96
+        height: 96
       alignment: 9
-      pivot: {x: 0.5, y: 0.2}
+      pivot: {x: 0.45, y: 0.1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2782f8c921690d940a96414efb8c93da
-      internalID: -566052409
+      spriteID: c465ca1aa4e5efa468332c03bed2c7c1
+      internalID: 942371539
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: VER2_6
+      name: crow-attack_3
       rect:
         serializedVersion: 2
-        x: 67
-        y: 2
-        width: 27
-        height: 25
+        x: 288
+        y: 0
+        width: 96
+        height: 96
       alignment: 9
-      pivot: {x: 0.5, y: 0.2}
+      pivot: {x: 0.45, y: 0.1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ff275316e9385da4ba1b67013623e999
-      internalID: -1191300391
+      spriteID: df1ce6ed52e833a4ebac70be96f66ee3
+      internalID: 1131243299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crow-attack_4
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.45, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8cf6295cf567af040979b38ef02a66ca
+      internalID: 872507344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crow-attack_5
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 0
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.45, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c14ebb64a0ac3a24fbdb3362b9437885
+      internalID: -1326588346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crow-attack_6
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 0
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.45, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df9a518f3c1b82143baee898794d442e
+      internalID: 560825082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crow-attack_7
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 0
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.45, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1871a27ab87ab9a448c9b458c0fe89c3
+      internalID: -1798022450
       vertices: []
       indices: 
       edges: []
@@ -286,13 +307,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      VER2_0: 1420595539
-      VER2_2: -1414141850
-      VER2_1: 1269202101
-      VER2_4: -1781302341
-      VER2_3: 1497272514
-      VER2_5: -566052409
-      VER2_6: -1191300391
+      crow-attack_5: -1326588346
+      crow-attack_6: 560825082
+      crow-attack_4: 872507344
+      crow-attack_0: -640335696
+      crow-attack_3: 1131243299
+      crow-attack_2: 942371539
+      crow-attack_7: -1798022450
+      crow-attack_1: -1299152906
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

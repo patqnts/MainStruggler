@@ -94,6 +94,11 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1708634346952448840, guid: 4ebd970acd42878459ae870a88e88019,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2246009434438189772, guid: 4ebd970acd42878459ae870a88e88019,
         type: 3}
       propertyPath: m_IsActive
@@ -245,6 +250,16 @@ PrefabInstance:
       propertyPath: enemyHealthObject
       value: 
       objectReference: {fileID: 34205716944113442}
+    - target: {fileID: 8430104308133653915, guid: 4ebd970acd42878459ae870a88e88019,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8430104308133653915, guid: 4ebd970acd42878459ae870a88e88019,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8530098986264164416, guid: 4ebd970acd42878459ae870a88e88019,
         type: 3}
       propertyPath: m_IsActive
