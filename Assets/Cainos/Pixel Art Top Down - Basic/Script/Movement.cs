@@ -60,6 +60,7 @@ public class Movement : MonoBehaviour, IDamageable
     {
         
         isDead = true;
+        InventoryManager.instance.ChangeSelectedSlot(0);
         
 
     }
@@ -96,7 +97,7 @@ public class Movement : MonoBehaviour, IDamageable
         // Get input for movement
          movement.x = joystick.Horizontal;
          movement.y = joystick.Vertical;
-        //  movement.x = Input.GetAxisRaw("Horizontal");
+        // movement.x = Input.GetAxisRaw("Horizontal");
         //movement.y = Input.GetAxisRaw("Vertical");
 
         // Set animator parameters for movement

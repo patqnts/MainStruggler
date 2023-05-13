@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Plant : MonoBehaviour, IDamageable
 {
-
+   
     public Rigidbody2D rb;
     private float damage = 1f;
     public float explosionDamage = 5f;
@@ -15,7 +15,7 @@ public class Plant : MonoBehaviour, IDamageable
     public Animator animator;
     public float moveSpeed = 5f;
     public float _health = 3f;
-
+    private NPCManager npcManager;
     public bool isFacingRight = true;
     public float Health
     {
@@ -31,6 +31,7 @@ public class Plant : MonoBehaviour, IDamageable
                 hitCollider.enabled = false;
                 animator.SetTrigger("Explode");
                 timer = 3f;
+               
                 Destroy(gameObject, 2f);
 
 
@@ -56,6 +57,7 @@ public class Plant : MonoBehaviour, IDamageable
     {
         rb = GetComponent<Rigidbody2D>();
         detectionZone = GetComponent<DetectionZone>();
+        npcManager = FindObjectOfType<NPCManager>();
     }
 
     public void ExplosionDamageUpdate()
@@ -90,6 +92,7 @@ public class Plant : MonoBehaviour, IDamageable
                 // Disable collider and destroy object after animation finishes
                 if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1 && !animator.IsInTransition(0))
                 {
+                    npcManager.OnEnemyDestroyed();
                     hitCollider.enabled = false;
                     Destroy(gameObject, 1f);
                 }

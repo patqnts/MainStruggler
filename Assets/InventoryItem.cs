@@ -73,13 +73,20 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler,IEnd
     image.raycastTarget = false;
     parentAfterDrag = transform.parent;
     transform.SetParent(transform.root);
-
-                                       //prevent holded weapon from destroying while dragging other items
-    if (inventoryManager != null && !InventoryManager.instance.GetSelectedItem(false))
-    {
+        
+        //prevent holded weapon from destroying while dragging other items
+        if (inventoryManager != null && !InventoryManager.instance.GetSelectedItem(false))
+        {
         Destroy(inventoryManager.spawnedItem);
+        
+        }
+        if (InventoryManager.instance.selectedSlot == transform.GetSiblingIndex())
+        {
+            InventoryManager.instance.weaponHolder.GetComponent<SpriteRenderer>().sprite = null;
+            InventoryManager.instance.weaponHolder.GetComponent<Animator>().runtimeAnimatorController = null;
+        }
+
     }
-}
 
     public void OnDrag(PointerEventData eventData)
     {

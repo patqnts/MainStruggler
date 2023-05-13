@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SlimeQueen : MonoBehaviour, IDamageable
 {
-    public float _health = 10;
+    public float _health,maxHealth;
     private float currentHealth;
     public DetectionZone playerDetectionZone;
     public GameObject slimeMinionPrefab;
@@ -24,6 +24,11 @@ public class SlimeQueen : MonoBehaviour, IDamageable
     private float projectileTimer = 0f;
     private List<GameObject> slimeMinions = new List<GameObject>();
 
+
+
+    [SerializeField] private EnemyHealthBar healthBar;
+    public GameObject enemyHealthObject;
+
     public float Health
     {
         set
@@ -34,6 +39,7 @@ public class SlimeQueen : MonoBehaviour, IDamageable
             {
                 rb.constraints = RigidbodyConstraints2D.FreezeAll;
                 collider.enabled = false;
+                enemyHealthObject.SetActive(false);
                 animator.SetTrigger("Death");
                 Destroy(gameObject, 2.3f);
 
@@ -45,7 +51,10 @@ public class SlimeQueen : MonoBehaviour, IDamageable
             return _health;
         }
     }
-
+    private void Awake()
+    {
+        healthBar = GetComponentInChildren<EnemyHealthBar>();
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -69,8 +78,8 @@ public class SlimeQueen : MonoBehaviour, IDamageable
             if (playerDetectionZone.detectedObj.Count > 0)
             {
                 // Summon slime minions if not at maximum capacity and cooldown has passed
-                
 
+                
                 // Shoot projectiles if cooldown has passed
                 if (projectileTimer <= 0)
                 {
@@ -90,7 +99,11 @@ public class SlimeQueen : MonoBehaviour, IDamageable
                     Vector2 randomDirection = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
                     rb.AddForce(randomDirection * pushbackForce * Time.deltaTime);
                 }
+
             }
+            
+            
+            
         }
         else
         {
@@ -167,6 +180,7 @@ public class SlimeQueen : MonoBehaviour, IDamageable
     {
         Health -= damage;
         rb.AddForce(knockback);
+        healthBar.UpdateHealthBar(_health, maxHealth);
         animator.SetTrigger("Hurt");
         Debug.Log(Health);
     }

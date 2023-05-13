@@ -71,6 +71,8 @@ public class InventoryManager : MonoBehaviour
             SpriteRenderer weaponSpriteRenderer = weaponHolder.GetComponent<SpriteRenderer>();
             Animator weaponAnimator = weaponHolder.GetComponent<Animator>();
 
+            Sprite selectedSprite = InventoryManager.instance.GetSelectedItem(false).prefab.GetComponent<SpriteRenderer>().sprite;
+            InventoryManager.instance.weaponHolder.GetComponent<SpriteRenderer>().sprite = selectedSprite;
             if (selectedItem.prefab.GetComponent<Animator>() != null)
             {
                 weaponAnimator.runtimeAnimatorController = selectedItem.prefab.GetComponent<Animator>().runtimeAnimatorController;
@@ -80,17 +82,8 @@ public class InventoryManager : MonoBehaviour
             else
             {
                 weaponAnimator.enabled = false; // turn off the animator
-                weaponSpriteRenderer.sprite = null;
-
-                if (selectedItem == null || !selectedItem.holdable)
-                {
-                    InventoryManager.instance.weaponHolder.GetComponent<SpriteRenderer>().sprite = null;
-                }
-                else
-                {
-                    Sprite selectedSprite = InventoryManager.instance.GetSelectedItem(false).prefab.GetComponent<SpriteRenderer>().sprite;
-                    InventoryManager.instance.weaponHolder.GetComponent<SpriteRenderer>().sprite = selectedSprite;
-                }
+                weaponSpriteRenderer.sprite = null;        
+                
             }
         }
         else // No item is selected or the selected item is not holdable

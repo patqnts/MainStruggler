@@ -13,29 +13,20 @@ public class Cellular : MonoBehaviour
     public int fillPercentage = 45;
     public Tilemap tilemap;
     public Tilemap flowergrasstilemap;
-
+    public NPCManager npcManager;
     //COLLIDER TILEMAP
     public Tilemap waterTilemap;
     //ruin prefab
-    public GameObject blackSmith;
-    public GameObject Merchant;
-    public GameObject bonFire;
-    public GameObject Witch;
-    public GameObject SlimeQueen;
-    public GameObject DogoTotem;
-    public int numBlackSmith = 1;
-    public int numBonfire = 3;
-    public int numMerchant = 3;
-    public int numWitch = 1;
-    public int numSlimeQueen = 1;
-    public int numDog = 1;
+    
+    
+   
 
     public TileBase[] grassflowers;
     public TileBase[] oldgrass;
     //----------------------------//
     public TileBase[] tileset;
     private int[,] map;
-    private List<Vector3Int> groundTilePositions = new List<Vector3Int>();
+    public List<Vector3Int> groundTilePositions = new List<Vector3Int>();
     public GameObject player;
     public GameObject camera;
     public GameObject[] treePrefabs;
@@ -58,72 +49,14 @@ public class Cellular : MonoBehaviour
         GenerateMap();
         camera.transform.position = player.transform.position;
 
-        //SLIME QUEEN
-        int slimequeenSpawn = 0;
-        while (slimequeenSpawn < numSlimeQueen && groundTilePositions.Count > 0)
-        {
-            int randomIndex = Random.Range(0, groundTilePositions.Count);
-            Vector3Int tilePosition = groundTilePositions[randomIndex];
-            Vector3 worldPosition = tilemap.CellToWorld(tilePosition) + new Vector3(0.5f, 0.5f, 0f); // add offset to center the ruin on the tile
-            Instantiate(SlimeQueen, worldPosition, Quaternion.identity);
-            groundTilePositions.RemoveAt(randomIndex);
-            slimequeenSpawn++;
-        }
-        // BLACKSMITH
-        int blacksmithSpawn = 0;
-        while (blacksmithSpawn < numBlackSmith && groundTilePositions.Count > 0)
-        {
-            int randomIndex = Random.Range(0, groundTilePositions.Count);
-            Vector3Int tilePosition = groundTilePositions[randomIndex];
-            Vector3 worldPosition = tilemap.CellToWorld(tilePosition) + new Vector3(0.5f, 0.5f, 0f); // add offset to center the ruin on the tile
-            Instantiate(blackSmith, worldPosition, Quaternion.identity);
-            groundTilePositions.RemoveAt(randomIndex);
-            blacksmithSpawn++;
-        }
-        //MERCHANT
-        int merchantSpawn = 0;
-        while (merchantSpawn < numMerchant && groundTilePositions.Count > 0)
-        {
-            int randomIndex = Random.Range(0, groundTilePositions.Count);
-            Vector3Int tilePosition = groundTilePositions[randomIndex];
-            Vector3 worldPosition = tilemap.CellToWorld(tilePosition) + new Vector3(0.5f, 0.5f, 0f); // add offset to center the ruin on the tile
-            Instantiate(Merchant, worldPosition, Quaternion.identity);
-            groundTilePositions.RemoveAt(randomIndex);
-            merchantSpawn++;
-        }
-        //RUIN BONFIRE
-        int bonfire = 0;
-        while(bonfire < numBonfire && groundTilePositions.Count > 0)
-                {
-            int randomIndex = Random.Range(0, groundTilePositions.Count);
-            Vector3Int tilePosition = groundTilePositions[randomIndex];
-            Vector3 worldPosition = tilemap.CellToWorld(tilePosition) + new Vector3(0.5f, 0.5f, 0f); // add offset to center the ruin on the tile
-            Instantiate(bonFire, worldPosition, Quaternion.identity);
-            groundTilePositions.RemoveAt(randomIndex);
-            bonfire++;
-        }
-        //WITCH
-        int witchspawn = 0;
-        while (witchspawn < numWitch && groundTilePositions.Count > 0)
-        {
-            int randomIndex = Random.Range(0, groundTilePositions.Count);
-            Vector3Int tilePosition = groundTilePositions[randomIndex];
-            Vector3 worldPosition = tilemap.CellToWorld(tilePosition) + new Vector3(0.5f, 0.5f, 0f); // add offset to center the ruin on the tile
-            Instantiate(Witch, worldPosition, Quaternion.identity);
-            groundTilePositions.RemoveAt(randomIndex);
-            witchspawn++;
-        }
-        //DOGO TOTEM
-        int dogspawn = 0;
-        while (dogspawn < numDog && groundTilePositions.Count > 0)
-        {
-            int randomIndex = Random.Range(0, groundTilePositions.Count);
-            Vector3Int tilePosition = groundTilePositions[randomIndex];
-            Vector3 worldPosition = tilemap.CellToWorld(tilePosition) + new Vector3(0.5f, 0.5f, 0f); // add offset to center the ruin on the tile
-            Instantiate(DogoTotem, worldPosition, Quaternion.identity);
-            groundTilePositions.RemoveAt(randomIndex);
-            dogspawn++;
-        }
+        npcManager.SpawnQueen();
+        npcManager.SpawnCrow();
+        npcManager.SpawnDogo();
+        npcManager.SpawnMerchant();
+        npcManager.SpawnSmith();
+        npcManager.SpawnRuin();
+        npcManager.SpawnWitch();
+
 
         RuinSavePoint.PlayerDied();
     }

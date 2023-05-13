@@ -12,7 +12,7 @@ public class SlimeScript : MonoBehaviour, IDamageable
     public Animator animator;
     private SlimeSpawner spawner;
     public bool isFacingRight = true;
-
+    private NPCManager npcManager;
     public GameObject alarm;
     public float moveSpeed = 500f;
     public float attackRange = 0.5f;
@@ -32,7 +32,7 @@ public class SlimeScript : MonoBehaviour, IDamageable
 
                 hitCollider.enabled = false;
                 animator.SetTrigger("Death");
-                
+                npcManager.OnEnemyDestroyed();
                 DropItem();
                 Destroy(gameObject,1.2f);
                
@@ -57,7 +57,7 @@ public class SlimeScript : MonoBehaviour, IDamageable
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spawner = FindObjectOfType<SlimeSpawner>();
-       
+        npcManager = FindObjectOfType<NPCManager>();
     }
 
     

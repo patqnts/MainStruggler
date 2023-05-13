@@ -3344,6 +3344,37 @@ Transform:
   m_Father: {fileID: 1967736705}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1830182417
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1830182418}
+  m_Layer: 0
+  m_Name: EnemyContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1830182418
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1830182417}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 74.48082, y: 66.78458, z: -0.7595674}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1837268510
 GameObject:
   m_ObjectHideFlags: 0
@@ -3556,6 +3587,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1967736705}
   - component: {fileID: 1967736704}
+  - component: {fileID: 1967736707}
   - component: {fileID: 1967736706}
   m_Layer: 0
   m_Name: Cellular Automata
@@ -3578,27 +3610,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mapWidth: 125
   mapHeight: 150
-  smoothnessIterations: 100
-  fillPercentage: 59
+  smoothnessIterations: 23
+  fillPercentage: 58
   tilemap: {fileID: 1019895072}
   flowergrasstilemap: {fileID: 194258149}
+  npcManager: {fileID: 1967736707}
   waterTilemap: {fileID: 2037586497}
-  blackSmith: {fileID: 811616718371703854, guid: d7bbfde9c0c5730408dbe97f7120723f,
-    type: 3}
-  Merchant: {fileID: 6012793721474656899, guid: 3c3affb7b5dab824da989dadda2f0287,
-    type: 3}
-  bonFire: {fileID: 1458452475300343260, guid: 440a4aa22b0e4a449ac094e0418f96d3, type: 3}
-  Witch: {fileID: 7416822517387852609, guid: c8a272f7d6eb2f24c9c362af086b62b9, type: 3}
-  SlimeQueen: {fileID: 2177926263589866154, guid: 5514009ea82d05f4cb6952b9034d75af,
-    type: 3}
-  DogoTotem: {fileID: 5564117439839634920, guid: 36a05fdd6038e9547a634f26d0c78cf4,
-    type: 3}
-  numBlackSmith: 1
-  numBonfire: 3
-  numMerchant: 1
-  numWitch: 1
-  numSlimeQueen: 1
-  numDog: 1
   grassflowers:
   - {fileID: 11400000, guid: 8f92c22242d986042b263bf0b38027eb, type: 2}
   - {fileID: 11400000, guid: e52f8c514bcb8f1439743bbc3c92e082, type: 2}
@@ -3608,10 +3625,10 @@ MonoBehaviour:
   tileset:
   - {fileID: 11400000, guid: 620dfa9381e2e6849bedc324f92199bc, type: 2}
   - {fileID: 11400000, guid: 851f473a2d78c3d45b0ff6e0d561f72b, type: 2}
+  groundTilePositions: []
   player: {fileID: 7691808091801843775}
   camera: {fileID: 519420028}
   treePrefabs:
-  - {fileID: 6514383625283103687, guid: 056d7d2152078d940b02fdc563bfeb83, type: 3}
   - {fileID: 7641841797069218316, guid: c509704f090c88742842ffa5c04ebf8c, type: 3}
   - {fileID: 3081754911678330582, guid: a646581b1ff6c0c4c892d34706e82a0a, type: 3}
   - {fileID: 2694051314971446967, guid: db98e8bed7f025644bb08db03c08ab2b, type: 3}
@@ -3625,9 +3642,7 @@ MonoBehaviour:
   - {fileID: 2736138971278135775, guid: 919fc7f5fba0564498a688c3cd664c34, type: 3}
   - {fileID: 2736138971278135775, guid: 4bcd60e38cbd34b40884ac45ad63363b, type: 3}
   - {fileID: 2736138971278135775, guid: 166d34bb0543e7b46808b192da3b28cc, type: 3}
-  - {fileID: 3081754911678330582, guid: a646581b1ff6c0c4c892d34706e82a0a, type: 3}
-  - {fileID: 5891413548151957510, guid: 4565dfb6d1e604e43b729933b83ea473, type: 3}
-  - {fileID: 8576634829336773482, guid: 7ad46620c9307914181a9baa2a2c0280, type: 3}
+  - {fileID: 6514383625283103687, guid: 056d7d2152078d940b02fdc563bfeb83, type: 3}
   seedCode: 0
 --- !u!4 &1967736705
 Transform:
@@ -3696,6 +3711,35 @@ MonoBehaviour:
   - {fileID: 3081754911678330582, guid: a646581b1ff6c0c4c892d34706e82a0a, type: 3}
   - {fileID: 8576634829336773482, guid: 7ad46620c9307914181a9baa2a2c0280, type: 3}
   seedCode: 0
+--- !u!114 &1967736707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1967736703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84e79e30e3eaeaa42b5fbad741054b07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cellular: {fileID: 1967736704}
+  SlimeQueen: {fileID: 2177926263589866154, guid: 5514009ea82d05f4cb6952b9034d75af,
+    type: 3}
+  blackSmith: {fileID: 811616718371703854, guid: d7bbfde9c0c5730408dbe97f7120723f,
+    type: 3}
+  Merchant: {fileID: 6012793721474656899, guid: 3c3affb7b5dab824da989dadda2f0287,
+    type: 3}
+  bonFire: {fileID: 1458452475300343260, guid: 440a4aa22b0e4a449ac094e0418f96d3, type: 3}
+  Witch: {fileID: 7416822517387852609, guid: c8a272f7d6eb2f24c9c362af086b62b9, type: 3}
+  Crow: {fileID: 6514383625283103687, guid: 056d7d2152078d940b02fdc563bfeb83, type: 3}
+  Dogo: {fileID: 5564117439839634920, guid: 36a05fdd6038e9547a634f26d0c78cf4, type: 3}
+  Container: {fileID: 1830182417}
+  enemyList:
+  - {fileID: 5891413548151957510, guid: 4565dfb6d1e604e43b729933b83ea473, type: 3}
+  - {fileID: 8576634829336773482, guid: 7ad46620c9307914181a9baa2a2c0280, type: 3}
+  - {fileID: 7401251658839098977, guid: e5bddcd5512b8dd4887e4689be374b5e, type: 3}
+  maxSpawnCount: 125
 --- !u!1 &2019480824
 GameObject:
   m_ObjectHideFlags: 0
@@ -6493,6 +6537,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -308.65
       objectReference: {fileID: 0}
+    - target: {fileID: 6073206872040970490, guid: ff3895597b4a6c749be60261ed37df0b,
+        type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6073206872382763788, guid: ff3895597b4a6c749be60261ed37df0b,
         type: 3}
       propertyPath: m_Pivot.x
@@ -6784,6 +6833,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 40.1
       objectReference: {fileID: 0}
+    - target: {fileID: 6073206872787931839, guid: ff3895597b4a6c749be60261ed37df0b,
+        type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6073206873279286797, guid: ff3895597b4a6c749be60261ed37df0b,
         type: 3}
       propertyPath: m_IsActive
@@ -6798,7 +6852,7 @@ PrefabInstance:
         type: 3}
       propertyPath: itemsToPickup.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 05ad4c8e02bbe5146ba6a1258458e6d9,
+      objectReference: {fileID: 11400000, guid: 592e24c49b844da408a5b4385f83d846,
         type: 2}
     - target: {fileID: 6073206873279286799, guid: ff3895597b4a6c749be60261ed37df0b,
         type: 3}
@@ -6812,6 +6866,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: cce285e6480a9b5488a0002e5f3cd1ca,
         type: 2}
+    - target: {fileID: 6073206873615651100, guid: ff3895597b4a6c749be60261ed37df0b,
+        type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6073206873675267534, guid: ff3895597b4a6c749be60261ed37df0b,
         type: 3}
       propertyPath: m_IsActive
@@ -7350,6 +7409,11 @@ PrefabInstance:
       objectReference: {fileID: 7691808091801843780}
     - target: {fileID: 5678072925804631275, guid: e9f7a625b740ece409163bdd092e909b,
         type: 3}
+      propertyPath: _health
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5678072925804631275, guid: e9f7a625b740ece409163bdd092e909b,
+        type: 3}
       propertyPath: joystick
       value: 
       objectReference: {fileID: 1292976054}
@@ -7357,6 +7421,11 @@ PrefabInstance:
         type: 3}
       propertyPath: dashSpeed
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5678072925804631275, guid: e9f7a625b740ece409163bdd092e909b,
+        type: 3}
+      propertyPath: maxHealth
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5678072925804631275, guid: e9f7a625b740ece409163bdd092e909b,
         type: 3}
@@ -7407,12 +7476,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -879884669, guid: 10c1939d16d3ebb4bbe38773e8228229,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 8640467324597822494, guid: e9f7a625b740ece409163bdd092e909b,
         type: 3}
       propertyPath: m_WasSpriteAssigned
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8640467324597822495, guid: e9f7a625b740ece409163bdd092e909b,
         type: 3}

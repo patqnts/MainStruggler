@@ -19,6 +19,7 @@ public class StoneKnightScript : MonoBehaviour, IDamageable
     [SerializeField] private EnemyHealthBar healthBar;
     public GameObject enemyHealthObject;
     public float _health,maxHealth = 10f;
+    private NPCManager npcManager;
     public float Health
     {
         set
@@ -31,6 +32,7 @@ public class StoneKnightScript : MonoBehaviour, IDamageable
                 hitCollider.enabled = false;
                 enemyHealthObject.SetActive(false);
                 animator.SetTrigger("Death");
+                npcManager.OnEnemyDestroyed();
                 Destroy(gameObject, 1.2f);
             }
         }
@@ -48,6 +50,7 @@ public class StoneKnightScript : MonoBehaviour, IDamageable
         detectionZone = GetComponentInChildren<DetectionZone>();
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        npcManager = FindObjectOfType<NPCManager>();
     }
     private void Update()
     {
@@ -75,7 +78,7 @@ public class StoneKnightScript : MonoBehaviour, IDamageable
             {
                 animator.SetBool("Detect", true);
                 isDetecting = true;
-                if (!isAttacking)
+                if (!isAttacking && detectionZone.detectedObj[0].transform.position != null)
                 {
                     movement = (detectionZone.detectedObj[0].transform.position - transform.position).normalized;
                     rb.AddForce(movement * moveSpeed * Time.deltaTime);
@@ -146,6 +149,7 @@ public class StoneKnightScript : MonoBehaviour, IDamageable
 
     public void OnHit(float damage)
     {
+        healthBar.UpdateHealthBar(_health, maxHealth);
         Health -= damage;
     }
     

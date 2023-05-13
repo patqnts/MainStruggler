@@ -29,11 +29,12 @@ public class InventorySlot : MonoBehaviour, IDropHandler
     public void OnDrop(PointerEventData eventData)
     {
         InventoryItem droppedItem = eventData.pointerDrag.GetComponent<InventoryItem>();
+       
         if (droppedItem != null)
         {
-
             Transform itemParent = droppedItem.parentAfterDrag;
             Transform dropParent = transform;
+
             if (itemParent == dropParent)
             {
                 return; // No need to swap if dropping into the same slot
@@ -59,42 +60,141 @@ public class InventorySlot : MonoBehaviour, IDropHandler
                 droppedItem.transform.SetParent(dropParent);
                 droppedItem.parentAfterDrag = dropParent;
             }
-
-
-            // Instantiate prefab if holding a holdable item in selected slot
-            if (droppedItem.item != null && droppedItem.item.prefab != null && droppedItem.item.holdable)
+            //IF  ITEM IS NOT HOLDABLE AND SWAP TO WEAPON
+            if (droppedItem.item != null && droppedItem.item.prefab != null && !droppedItem.item.holdable)
             {
-                if (InventoryManager.instance.selectedSlot == transform.GetSiblingIndex())
+                
+                if (InventoryManager.instance.selectedSlot != transform.GetSiblingIndex())
                 {
-                    Sprite itemSprite = droppedItem.item.prefab.GetComponent<SpriteRenderer>().sprite;
-                    InventoryManager.instance.weaponHolder.GetComponent<SpriteRenderer>().sprite = itemSprite;
+                    Item selectedItem = InventoryManager.instance.GetSelectedItem(false);
+                    if (selectedItem != null && selectedItem.holdable)
+                    {
+                        Sprite itemSprite = selectedItem.prefab.GetComponent<SpriteRenderer>().sprite;
+                        InventoryManager.instance.weaponHolder.GetComponent<SpriteRenderer>().sprite = itemSprite;
+                        Animator itemAnimator = selectedItem.prefab.GetComponent<Animator>();
+                        if (itemAnimator != null)
+                        {
+                            InventoryManager.instance.weaponHolder.GetComponent<Animator>().runtimeAnimatorController = itemAnimator.runtimeAnimatorController;
+                        }
+                        else
+                        {
+                            InventoryManager.instance.weaponHolder.GetComponent<Animator>().runtimeAnimatorController = null;
+                            Debug.Log("Holdable item has no animator");
+                        }
+                    }
+                    else
+                    {
+                        InventoryManager.instance.weaponHolder.GetComponent<Animator>().runtimeAnimatorController = null;
+                        InventoryManager.instance.weaponHolder.GetComponent<SpriteRenderer>().sprite = null;
+                    }
+                }
+
+            }
+
+                // Instantiate prefab if holding a holdable item in selected slot
+                if (droppedItem.item != null && droppedItem.item.prefab != null && droppedItem.item.holdable) 
+            {
+                // IF HOLDABLE ITEM IS DROPPED TO SELECTED SLOT
+                if (InventoryManager.instance.selectedSlot == transform.GetSiblingIndex())   //holdable item- to selected slot
+                {
+                    Item selectedItem = InventoryManager.instance.GetSelectedItem(false);
+                    Animator weaponAnimator = InventoryManager.instance.weaponHolder.GetComponent<Animator>();
+                    if (selectedItem != null && selectedItem.holdable)  //IF WEAPON DROP TO SELECTED WEAPON
+                    {
+                        weaponAnimator.enabled = true;
+                        Sprite itemSprite = droppedItem.item.prefab.GetComponent<SpriteRenderer>().sprite;
+                        InventoryManager.instance.weaponHolder.GetComponent<SpriteRenderer>().sprite = itemSprite;
+
+                        // Destroy the spawned item that was previously in the hand
+                        if (InventoryManager.instance.spawnedItem != null)
+                        {
+                            Destroy(InventoryManager.instance.spawnedItem);
+                        }
+
+                        // Set the animator of the spawned item if it has one
+                        Animator itemAnimator = droppedItem.item.prefab.GetComponent<Animator>();
+                        if (itemAnimator != null)
+                        {
+                            InventoryManager.instance.weaponHolder.GetComponent<Animator>().runtimeAnimatorController = itemAnimator.runtimeAnimatorController;
+                        }
+                        else
+                        {
+                            InventoryManager.instance.weaponHolder.GetComponent<Animator>().runtimeAnimatorController = null;
+                            Debug.Log("Holdable item has no animator");
+                        }
+                    }
+                    else
+                    {
+                        if(selectedItem != null && !selectedItem.holdable)
+                        {
+
+                            InventoryManager.instance.weaponHolder.GetComponent<Animator>().runtimeAnimatorController = null;
+
+                            InventoryManager.instance.weaponHolder.GetComponent<SpriteRenderer>().sprite = null;
+
+                           
+                        }
+                    }
+                    
+
+                    
+                }
+                // IF HOLDABLE ITEM IS REMOVED FROM THE SELECTED SLOT TO "NOT SELECTED SLOT"
+                else if (InventoryManager.instance.selectedSlot != transform.GetSiblingIndex()) 
+                {
+
+                    Item selectedItem = InventoryManager.instance.GetSelectedItem(false);
+
+                    if (selectedItem != null && selectedItem.holdable) //switch weapon
+                    {
+                        Sprite itemSprite = selectedItem.prefab.GetComponent<SpriteRenderer>().sprite;
+                        InventoryManager.instance.weaponHolder.GetComponent<SpriteRenderer>().sprite = itemSprite;
+                        Animator itemAnimator = selectedItem.prefab.GetComponent<Animator>();
+                        if (itemAnimator != null)
+                        {
+                            InventoryManager.instance.weaponHolder.GetComponent<Animator>().runtimeAnimatorController = itemAnimator.runtimeAnimatorController;
+                        }
+                        else
+                        {
+                            InventoryManager.instance.weaponHolder.GetComponent<Animator>().runtimeAnimatorController = null;
+                            Debug.Log("Holdable item has no animator");
+                        }
+                    }
+                    
+                    else
+                    {
+                        InventoryManager.instance.weaponHolder.GetComponent<Animator>().runtimeAnimatorController = null;
+                        InventoryManager.instance.weaponHolder.GetComponent<SpriteRenderer>().sprite = null;
+                    }
+                    
 
                     // Destroy the spawned item that was previously in the hand
                     if (InventoryManager.instance.spawnedItem != null)
                     {
                         Destroy(InventoryManager.instance.spawnedItem);
                     }
-
-                    // Set the animator of the spawned item if it has one
-                    if (droppedItem.item.prefab.GetComponent<Animator>() != null)
-                    {
-                        InventoryManager.instance.weaponHolder.GetComponent<Animator>().runtimeAnimatorController = droppedItem.item.prefab.GetComponent<Animator>().runtimeAnimatorController;
-                    }
-                    else
-                    {
-                        InventoryManager.instance.weaponHolder.GetComponent<Animator>().runtimeAnimatorController = null;
-                    }
                 }
             }
             else if (!droppedItem.item.holdable && InventoryManager.instance.selectedSlot == transform.GetSiblingIndex())
             {
+                InventoryManager.instance.weaponHolder.GetComponent<Animator>().runtimeAnimatorController = null;
                 InventoryManager.instance.weaponHolder.GetComponent<SpriteRenderer>().sprite = null;
-                Destroy(InventoryManager.instance.spawnedItem);
+
+                // Destroy the spawned item that was previously in the hand
+                if (InventoryManager.instance.spawnedItem != null)
+                {
+                    Destroy(InventoryManager.instance.spawnedItem);
+                }              
+            }
+            else
+            {
+                // Disable animator if item is not holdable and has no animator
                 InventoryManager.instance.weaponHolder.GetComponent<Animator>().runtimeAnimatorController = null;
             }
-
         }
     }
+
+
 
 
     public void RemoveItem()
