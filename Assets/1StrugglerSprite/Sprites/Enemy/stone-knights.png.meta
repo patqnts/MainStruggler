@@ -1001,13 +1001,12 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       stone-knights_33: 694235
-      stone-knights_37: 972211417
+      stone-knights_16: 152108908
       stone-knights_15: -66595982
       stone-knights_3: -942672760
       stone-knights_4: 985422947
       stone-knights_25: 1297372113
       stone-knights_31: -939865316
-      stone-knights_40: 1981889662
       stone-knights_32: 1481678447
       stone-knights_1: 1214339043
       stone-knights_27: -1787166310
@@ -1037,10 +1036,11 @@ TextureImporter:
       stone-knights_21: -732017507
       stone-knights_11: -2025612429
       stone-knights_9: -715624675
-      stone-knights_16: 152108908
-      stone-knights_6: 20347130
-      stone-knights_26: 551371573
       stone-knights_23: 844366196
+      stone-knights_37: 972211417
+      stone-knights_26: 551371573
+      stone-knights_40: 1981889662
+      stone-knights_6: 20347130
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

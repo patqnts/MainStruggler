@@ -61,7 +61,7 @@ public class NPCManager : MonoBehaviour
 
             // Increment the spawn count
             currentSpawnCount++;
-            Debug.Log("Enemy Alive: " + currentSpawnCount);
+            
         }
     }
     public void OnEnemyDestroyed()

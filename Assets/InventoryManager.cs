@@ -13,7 +13,7 @@ public class InventoryManager : MonoBehaviour
     public GameObject weaponHolder;
    
     public GameObject fairyHolder;
-    public int fairySlot = 100;
+    public int fairySlot = 7;
     public int selectedSlot = -1;
     public GameObject spawnedItem;
     public Text selected;
@@ -25,7 +25,7 @@ public class InventoryManager : MonoBehaviour
     private void Start()
     {
         ChangeSelectedSlot(0);
-        SetFairySlot(3);
+        SetFairySlot(7);
     }
     private void Update()
     {
@@ -63,7 +63,7 @@ public class InventoryManager : MonoBehaviour
             equipmentSlots[fairySlot].Deselect();
         }
         equipmentSlots[newValue].Select();
-        fairySlot = newValue ;
+        fairySlot = newValue;
     }
 
     public void ChangeSelectedSlot(int newValue)
@@ -82,7 +82,7 @@ public class InventoryManager : MonoBehaviour
 
         Item selectedItem = GetSelectedItem(false);
 
-        if (selectedItem != null && selectedItem.holdable == true)
+        if (selectedItem != null && selectedItem.holdable)
         {
             SpriteRenderer weaponSpriteRenderer = weaponHolder.GetComponent<SpriteRenderer>();
             Animator weaponAnimator = weaponHolder.GetComponent<Animator>();

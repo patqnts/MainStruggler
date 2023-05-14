@@ -28,22 +28,40 @@ public class InventorySlot : MonoBehaviour, IDropHandler
     }
     public void OnDrop(PointerEventData eventData)
     {
+        // Get the InventoryItem component from the dragged object
         InventoryItem droppedItem = eventData.pointerDrag.GetComponent<InventoryItem>();
        
         if (droppedItem != null)
         {
+            // Get the transform of the item's original parent
             Transform itemParent = droppedItem.parentAfterDrag;
+            // Get the transform of the drop target
             Transform dropParent = transform;
 
+
+            // If the item is being dropped into the same slot, do nothing
             if (itemParent == dropParent)
             {
                 return; // No need to swap if dropping into the same slot
             }
 
+            // Check if there is already an item in the drop target
             InventoryItem existingItem = null;
+
             if (dropParent.childCount > 0)
             {
                 existingItem = dropParent.GetChild(0).GetComponent<InventoryItem>();
+            }
+
+            // Check if dropped item is not a weapon or fairy
+            if (dropParent.parent == InventoryManager.instance.equipmentSlots[7].transform)
+            {
+                
+                if (droppedItem.item.type != ItemType.Fairy && existingItem == null)
+                {
+                    Debug.Log("Item is not fairy : slot slot");
+                    
+                }
             }
 
             if (existingItem != null)
@@ -144,7 +162,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler
             else
             {
                 Debug.Log("item is not fairy");
-                Item fairySlot = InventoryManager.instance.GetFairySlot(false);
+                Item fairySlot = InventoryManager.instance.GetFairySlot(false); //SHOW CURRENT FAIRY
                 if (fairySlot != null && fairySlot.type == ItemType.Fairy)
                 {
                     Sprite itemSprite = fairySlot.prefab.GetComponent<SpriteRenderer>().sprite;
@@ -172,8 +190,10 @@ public class InventorySlot : MonoBehaviour, IDropHandler
                 //IF  ITEM IS NOT HOLDABLE AND SWAP TO WEAPON
            if (droppedItem.item != null && droppedItem.item.prefab != null && !droppedItem.item.holdable)
            {
-                
-                if (InventoryManager.instance.selectedSlot != transform.GetSiblingIndex())
+               
+                Debug.Log(transform.GetSiblingIndex());
+                if (InventoryManager.instance.selectedSlot != transform.GetSiblingIndex() &&
+                    InventoryManager.instance.fairySlot != transform.GetSiblingIndex())
                 {
                     Item selectedItem = InventoryManager.instance.GetSelectedItem(false);
                     if (selectedItem != null && selectedItem.holdable)
@@ -245,10 +265,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler
                             Debug.Log("Item is not holdable");
                            
                         }
-                    }
-                    
-
-                    
+                    }                                    
                 }
                 // IF HOLDABLE ITEM IS REMOVED FROM THE SELECTED SLOT TO "NOT SELECTED SLOT"
                 else if (InventoryManager.instance.selectedSlot != transform.GetSiblingIndex()) 
@@ -267,6 +284,8 @@ public class InventorySlot : MonoBehaviour, IDropHandler
                         }
                         else
                         {
+
+                            InventoryManager.instance.weaponHolder.GetComponent<SpriteRenderer>().sprite = null;
                             InventoryManager.instance.weaponHolder.GetComponent<Animator>().runtimeAnimatorController = null;
                             Debug.Log("Holdable item has no animator");
                         }
@@ -308,9 +327,6 @@ public class InventorySlot : MonoBehaviour, IDropHandler
         }
     }
 
-
-
-
     public void RemoveItem()
 {
     if (transform.childCount > 0)
@@ -341,9 +357,6 @@ public class InventorySlot : MonoBehaviour, IDropHandler
     }
 }
 
-
-
-
     public ConfirmationDialog confirmationDialog;
   
     private int clickCount = 0;
@@ -372,9 +385,5 @@ public class InventorySlot : MonoBehaviour, IDropHandler
             lastClickTime = currentTime;
         }
     }
-
-
-
-
 
 }

@@ -14,6 +14,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler,IEnd
     [HideInInspector] public Item item;
     [HideInInspector] public int count = 1;
     [HideInInspector] public Transform parentAfterDrag;
+    [HideInInspector] public Transform originalParent;
     public InventoryManager inventoryManager;
 
 
@@ -57,8 +58,6 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler,IEnd
                 }
             }
 
-
-
             RefreshCount();
         }
     }
@@ -71,8 +70,11 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler,IEnd
     public void OnBeginDrag(PointerEventData eventData)
 {
     image.raycastTarget = false;
+    originalParent = transform.parent;
     parentAfterDrag = transform.parent;
+
     transform.SetParent(transform.root);
+        
         
         //prevent holded weapon from destroying while dragging other items
         if (inventoryManager != null && !InventoryManager.instance.GetSelectedItem(false))
@@ -96,9 +98,33 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler,IEnd
     public void OnEndDrag(PointerEventData eventData)
     {
         image.raycastTarget = true;
-        transform.SetParent(parentAfterDrag);
+        Debug.Log("Yeet");
+
+        // Check if the item is a fairy and if the destination slot is the fairy slot
+        if (item.type == ItemType.Fairy && transform.parent == InventoryManager.instance.equipmentSlots[7].transform)
+        {
+            // If a fairy is dropped into the fairy slot, leave it there
+            Debug.Log("Fairy in fairy slot");
+            transform.SetParent(parentAfterDrag);
+        }
+        else if (transform.parent == InventoryManager.instance.equipmentSlots[7].transform)
+        {
+            // If a non-fairy is dropped into the fairy slot, return it to its original slot
+            Debug.Log("Non-fairy in fairy slot");
+            transform.SetParent(originalParent);
+            transform.position = originalParent.position;
+        }
+        else
+        {
+            // If the item is not dropped into the fairy slot, leave it in its new slot
+            Debug.Log("Item in regular slot");
+            transform.SetParent(parentAfterDrag);
+        }
+
     }
 
-    
-    
+
+
+
+
 }

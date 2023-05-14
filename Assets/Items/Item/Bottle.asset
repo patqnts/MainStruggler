@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 8588402731884210102, guid: bc19e5a39abe95d40aa69a1b4e70ba04, type: 3}
   tile: {fileID: 0}
-  type: 5
+  type: 6
   actionType: 1
   range: {x: 1, y: 1}
   weaponDamage: 0

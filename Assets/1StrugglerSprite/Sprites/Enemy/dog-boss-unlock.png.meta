@@ -1021,9 +1021,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      dog-boss-unlock_3: 1486637502
-      dog-boss-unlock_2: -129144178
       dog-boss-unlock_6: -2028274895
+      dog-boss-unlock_2: -129144178
+      dog-boss-unlock_34: 675934262
       dog-boss-unlock_29: 1921923369
       dog-boss-unlock_23: 1216628546
       dog-boss-unlock_22: 1148064248
@@ -1057,12 +1057,12 @@ TextureImporter:
       dog-boss-unlock_18: 1095157113
       dog-boss-unlock_28: -1120417101
       dog-boss-unlock_5: -939317924
-      dog-boss-unlock_16: -1771364564
+      dog-boss-unlock_3: 1486637502
       dog-boss-unlock_11: 1668818916
-      dog-boss-unlock_34: 675934262
-      dog-boss-unlock_19: 1468075577
-      dog-boss-unlock_14: 267279395
       dog-boss-unlock_32: -248489160
+      dog-boss-unlock_14: 267279395
+      dog-boss-unlock_19: 1468075577
+      dog-boss-unlock_16: -1771364564
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

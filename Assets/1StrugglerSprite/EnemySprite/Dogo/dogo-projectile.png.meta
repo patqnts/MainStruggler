@@ -433,7 +433,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      dogo-projectile_10: 862654897
+      dogo-projectile_7: 439306843
       dogo-projectile_2: 2062592398
       dogo-projectile_4: -913554562
       dogo-projectile_13: -121928141
@@ -444,8 +444,8 @@ TextureImporter:
       dogo-projectile_12: -545205473
       dogo-projectile_0: 1733339700
       dogo-projectile_6: 1648714282
-      dogo-projectile_7: 439306843
       dogo-projectile_9: -48594039
+      dogo-projectile_10: 862654897
       dogo-projectile_3: -1519381385
   spritePackingTag: 
   pSDRemoveMatte: 0
