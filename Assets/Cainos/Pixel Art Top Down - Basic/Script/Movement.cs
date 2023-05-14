@@ -97,8 +97,8 @@ public class Movement : MonoBehaviour, IDamageable
         // Get input for movement
          movement.x = joystick.Horizontal;
          movement.y = joystick.Vertical;
-        // movement.x = Input.GetAxisRaw("Horizontal");
-        //movement.y = Input.GetAxisRaw("Vertical");
+         movement.x = Input.GetAxisRaw("Horizontal");
+        movement.y = Input.GetAxisRaw("Vertical");
 
         // Set animator parameters for movement
         animator.SetFloat("Horizontal", movement.x);

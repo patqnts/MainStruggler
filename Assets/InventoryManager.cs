@@ -8,11 +8,12 @@ public class InventoryManager : MonoBehaviour
     public static InventoryManager instance;
     public int maxStackedItems = 99;
     public InventorySlot[] inventorySlots;
+    public InventorySlot[] equipmentSlots;
     public GameObject inventoryItemPrefab;
-    public Transform handTransform;
     public GameObject weaponHolder;
-    
-
+   
+    public GameObject fairyHolder;
+    public int fairySlot = 100;
     public int selectedSlot = -1;
     public GameObject spawnedItem;
     public Text selected;
@@ -24,6 +25,7 @@ public class InventoryManager : MonoBehaviour
     private void Start()
     {
         ChangeSelectedSlot(0);
+        SetFairySlot(3);
     }
     private void Update()
     {
@@ -48,6 +50,20 @@ public class InventoryManager : MonoBehaviour
         }
 
 
+    }
+    public void SetFairySlot(int newValue)
+    {
+        if (spawnedItem != null)
+        {
+            Destroy(spawnedItem);
+            spawnedItem = null;
+        }
+        if (fairySlot != null)
+        {
+            equipmentSlots[fairySlot].Deselect();
+        }
+        equipmentSlots[newValue].Select();
+        fairySlot = newValue ;
     }
 
     public void ChangeSelectedSlot(int newValue)
@@ -99,6 +115,13 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
+    public void SpawnNewItem(Item item, InventorySlot slot)
+    {
+        GameObject newItemGo = Instantiate(inventoryItemPrefab, slot.transform);
+        InventoryItem inventoryItem = newItemGo.GetComponent<InventoryItem>();
+        inventoryItem.InitialiseItem(item);
+    }
+
 
     public bool AddItem(Item item)
     {
@@ -132,14 +155,33 @@ public class InventoryManager : MonoBehaviour
         return false;
     }
 
-   public void SpawnNewItem(Item item, InventorySlot slot)
+  
+
+
+    public Item GetFairySlot(bool use)
     {
-        GameObject newItemGo = Instantiate(inventoryItemPrefab, slot.transform);
-        InventoryItem inventoryItem = newItemGo.GetComponent<InventoryItem>();
-        inventoryItem.InitialiseItem(item);
+        InventorySlot slot = equipmentSlots[fairySlot];
+        InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
+
+        if (itemInSlot != null)
+        {
+            Item item = itemInSlot.item;
+            if (use == true)
+            {
+                itemInSlot.count--;
+                if (itemInSlot.count <= 0)
+                {
+                    Destroy(itemInSlot.gameObject);
+                }
+                else
+                {
+                    itemInSlot.RefreshCount();
+                }
+            }
+            return item;
+        }
+        return null;
     }
-
-
 
     public Item GetSelectedItem(bool use)
     {

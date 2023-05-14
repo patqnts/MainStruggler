@@ -158,6 +158,10 @@ MonoBehaviour:
   rb: {fileID: 3855551679905846460}
   animator: {fileID: 6707948088474255970}
   joystick: {fileID: 0}
+  dashSpeed: 0
+  dashLength: 0.5
+  dashCooldown: 1
+  ghost: {fileID: 0}
   dropPos: {fileID: 1571781133800515871}
   collider: {fileID: 584528336367423641}
   isDead: 0

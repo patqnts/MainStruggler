@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1662d66746d5b7841a5171ab4c6f819a, type: 3}
-  m_Name: Bottle
+  m_Name: Dark Fairy
   m_EditorClassIdentifier: 
-  prefab: {fileID: 8588402731884210102, guid: bc19e5a39abe95d40aa69a1b4e70ba04, type: 3}
+  prefab: {fileID: 8613849481098850520, guid: af1e0f105ca9a3c449d27dd2f9e690d4, type: 3}
   tile: {fileID: 0}
   type: 5
   actionType: 1
-  range: {x: 1, y: 1}
-  weaponDamage: 0
+  range: {x: 5, y: 4}
+  weaponDamage: 5
   _stackable: 1
-  maxStackCount: 99
+  maxStackCount: 999999
   consumable: 0
   holdable: 0
-  description: 
+  description: Dark Fairy item test.
   priceAmount: 0
   materialRequirements: []
-  image: {fileID: 1420380874, guid: 51721a244c2b3b2448a18bd0044dee35, type: 3}
+  image: {fileID: 1733339700, guid: 97c88ca2f5f8cc447a92f8914712d902, type: 3}

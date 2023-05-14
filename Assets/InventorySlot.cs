@@ -60,9 +60,118 @@ public class InventorySlot : MonoBehaviour, IDropHandler
                 droppedItem.transform.SetParent(dropParent);
                 droppedItem.parentAfterDrag = dropParent;
             }
-            //IF  ITEM IS NOT HOLDABLE AND SWAP TO WEAPON
-            if (droppedItem.item != null && droppedItem.item.prefab != null && !droppedItem.item.holdable)
+
+            //FAIRY DROPPING SLOT
+            if (droppedItem.item != null && droppedItem.item.prefab != null && droppedItem.item.type == ItemType.Fairy)
             {
+                Debug.Log("sibling index: "+ transform.GetSiblingIndex());
+
+                if (InventoryManager.instance.fairySlot == transform.GetSiblingIndex())
+                {
+                    Debug.Log("Item is fairy slot: " + InventoryManager.instance.fairySlot);
+
+
+                    Item fairySlot = InventoryManager.instance.GetFairySlot(false);
+                    
+
+
+                    if (fairySlot != null && fairySlot.type == ItemType.Fairy)
+                    {
+                        //FAIRY
+                       
+                        Sprite itemSprite = fairySlot.prefab.GetComponent<SpriteRenderer>().sprite;
+                        InventoryManager.instance.fairyHolder.GetComponent<SpriteRenderer>().sprite = itemSprite;
+                        // CURRENT SELECTED SLOT
+                       
+                        Animator fairyAnimator = fairySlot.prefab.GetComponent<Animator>();
+                        if (fairyAnimator != null )
+                        {
+                            Debug.Log("Fairy and Weapon Animation Good");
+                            InventoryManager.instance.fairyHolder.GetComponent<Animator>().runtimeAnimatorController = fairyAnimator.runtimeAnimatorController;
+                        }
+                        else
+                        {
+                            InventoryManager.instance.fairyHolder.GetComponent<Animator>().runtimeAnimatorController = null;
+                            Debug.Log("Fairy or Wweapon item has no animator");
+                        }
+                    }
+                    else
+                    {
+                        InventoryManager.instance.fairyHolder.GetComponent<Animator>().runtimeAnimatorController = null;
+                        InventoryManager.instance.fairyHolder.GetComponent<SpriteRenderer>().sprite = null;
+                        Debug.Log("ALL NULL");
+                       
+                    }
+                
+            }
+                else if (InventoryManager.instance.fairySlot != transform.GetSiblingIndex())
+                {
+                    Debug.Log("Item  fairy is REMOVED from slot or SWAPPED");
+                    Item fairySlot = InventoryManager.instance.GetFairySlot(false);
+                    
+
+
+                    if (fairySlot != null && fairySlot.type == ItemType.Fairy)
+                    {
+                        //FAIRY
+                        Sprite itemSprite = fairySlot.prefab.GetComponent<SpriteRenderer>().sprite;
+                        InventoryManager.instance.fairyHolder.GetComponent<SpriteRenderer>().sprite = itemSprite;
+                        // CURRENT SELECTED SLOT
+                        
+                        
+
+                        Animator fairyAnimator = fairySlot.prefab.GetComponent<Animator>();
+                        
+                        if (fairyAnimator != null)
+                        {
+                             InventoryManager.instance.fairyHolder.GetComponent<Animator>().runtimeAnimatorController = fairyAnimator.runtimeAnimatorController;
+                        }
+                        else
+                        {
+                            InventoryManager.instance.fairyHolder.GetComponent<Animator>().runtimeAnimatorController = null;
+                            Debug.Log("Holdable item has no animator");
+                        }
+                    }
+                    else
+                    {
+                        InventoryManager.instance.fairyHolder.GetComponent<Animator>().runtimeAnimatorController = null;
+                        InventoryManager.instance.fairyHolder.GetComponent<SpriteRenderer>().sprite = null;
+
+                       
+                    }
+                }
+            }
+            else
+            {
+                Debug.Log("item is not fairy");
+                Item fairySlot = InventoryManager.instance.GetFairySlot(false);
+                if (fairySlot != null && fairySlot.type == ItemType.Fairy)
+                {
+                    Sprite itemSprite = fairySlot.prefab.GetComponent<SpriteRenderer>().sprite;
+                    InventoryManager.instance.fairyHolder.GetComponent<SpriteRenderer>().sprite = itemSprite;
+                    Animator itemAnimator = fairySlot.prefab.GetComponent<Animator>();
+                    if (itemAnimator != null)
+                    {
+                        InventoryManager.instance.fairyHolder.GetComponent<Animator>().runtimeAnimatorController = itemAnimator.runtimeAnimatorController;
+                    }
+                    else
+                    {
+                        InventoryManager.instance.fairyHolder.GetComponent<Animator>().runtimeAnimatorController = null;
+                        Debug.Log("Holdable item has no animator");
+                    }
+                }
+                else
+                {
+                    InventoryManager.instance.fairyHolder.GetComponent<Animator>().runtimeAnimatorController = null;
+                    InventoryManager.instance.fairyHolder.GetComponent<SpriteRenderer>().sprite = null;
+                }
+            }
+
+
+
+                //IF  ITEM IS NOT HOLDABLE AND SWAP TO WEAPON
+           if (droppedItem.item != null && droppedItem.item.prefab != null && !droppedItem.item.holdable)
+           {
                 
                 if (InventoryManager.instance.selectedSlot != transform.GetSiblingIndex())
                 {
@@ -84,12 +193,14 @@ public class InventorySlot : MonoBehaviour, IDropHandler
                     }
                     else
                     {
-                        InventoryManager.instance.weaponHolder.GetComponent<Animator>().runtimeAnimatorController = null;
+                        Debug.Log("Holdable item has no animator 2");
+                    
+                    InventoryManager.instance.weaponHolder.GetComponent<Animator>().runtimeAnimatorController = null;
                         InventoryManager.instance.weaponHolder.GetComponent<SpriteRenderer>().sprite = null;
                     }
                 }
 
-            }
+           }
 
                 // Instantiate prefab if holding a holdable item in selected slot
                 if (droppedItem.item != null && droppedItem.item.prefab != null && droppedItem.item.holdable) 
@@ -131,7 +242,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler
                             InventoryManager.instance.weaponHolder.GetComponent<Animator>().runtimeAnimatorController = null;
 
                             InventoryManager.instance.weaponHolder.GetComponent<SpriteRenderer>().sprite = null;
-
+                            Debug.Log("Item is not holdable");
                            
                         }
                     }
@@ -163,6 +274,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler
                     
                     else
                     {
+                        Debug.Log("Item is not holdable24");
                         InventoryManager.instance.weaponHolder.GetComponent<Animator>().runtimeAnimatorController = null;
                         InventoryManager.instance.weaponHolder.GetComponent<SpriteRenderer>().sprite = null;
                     }
@@ -176,7 +288,9 @@ public class InventorySlot : MonoBehaviour, IDropHandler
                 }
             }
             else if (!droppedItem.item.holdable && InventoryManager.instance.selectedSlot == transform.GetSiblingIndex())
+               // && InventoryManager.instance.GetFairySlot(false) == null) /////PLACEHOLDER
             {
+                Debug.Log("Item is not holdable87: Sibling index : " + transform.GetSiblingIndex());
                 InventoryManager.instance.weaponHolder.GetComponent<Animator>().runtimeAnimatorController = null;
                 InventoryManager.instance.weaponHolder.GetComponent<SpriteRenderer>().sprite = null;
 
@@ -239,7 +353,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler
     {
         if (transform.childCount == 0) return;
         InventoryManager.instance.ChangeSelectedSlot(slot);
-
+        Debug.Log(slot);
         float currentTime = Time.time;
         if (currentTime - lastClickTime < 0.25f && clickCount >= 2)
         {

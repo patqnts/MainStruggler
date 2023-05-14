@@ -63,6 +63,7 @@ public enum ItemType
     Weapon,
     Currency,
     Material,
+    Fairy,
     Food,
 }
 
