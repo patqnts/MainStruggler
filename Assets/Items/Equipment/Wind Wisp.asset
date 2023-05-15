@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1662d66746d5b7841a5171ab4c6f819a, type: 3}
-  m_Name: Dark Fairy
+  m_Name: Wind Wisp
   m_EditorClassIdentifier: 
-  prefab: {fileID: 8613849481098850520, guid: af1e0f105ca9a3c449d27dd2f9e690d4, type: 3}
+  prefab: {fileID: 3661716113293759410, guid: a619d8a1dcfc1ca4aac3c92f6c3225ac, type: 3}
   tile: {fileID: 0}
   type: 5
   actionType: 1
@@ -22,7 +22,7 @@ MonoBehaviour:
   maxStackCount: 999999
   consumable: 0
   holdable: 0
-  description: Dark Fairy item test.
-  priceAmount: 0
+  description: Wind
+  priceAmount: 10000
   materialRequirements: []
-  image: {fileID: 1733339700, guid: 97c88ca2f5f8cc447a92f8914712d902, type: 3}
+  image: {fileID: -198941422, guid: 728e102f148d2d848a66102ea8b182be, type: 3}
