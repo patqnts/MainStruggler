@@ -76,55 +76,65 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler,IEnd
     transform.SetParent(transform.root);
         
         
-        //prevent holded weapon from destroying while dragging other items
-        if (inventoryManager != null && !InventoryManager.instance.GetSelectedItem(false))
-        {
-        Destroy(inventoryManager.spawnedItem);
-        
-        }
-        if (InventoryManager.instance.selectedSlot == transform.GetSiblingIndex())
-        {
-            InventoryManager.instance.weaponHolder.GetComponent<SpriteRenderer>().sprite = null;
-            InventoryManager.instance.weaponHolder.GetComponent<Animator>().runtimeAnimatorController = null;
-        }
 
     }
 
     public void OnDrag(PointerEventData eventData)
     {
+      
         transform.position = Input.mousePosition;
+        if (transform.parent.GetSiblingIndex() == 8)
+        {
+            // The current item is from equipmentSlots[7]
+            Debug.Log("Dragging item from equipmentSlots[7]");
+            // Add your desired logic here
+        }
+
+     
+
+        if (item.type != ItemType.Fairy)
+        {
+            
+            // Make the specific slot disappear or become inaccessible
+            InventoryManager.instance.equipmentSlots[7].gameObject.SetActive(false);
+        }
+        
+
+        if (item.type == ItemType.Fairy)
+        {
+            
+            // Iterate through all the equipment slots
+            for (int i = 0; i < InventoryManager.instance.inventorySlots.Length; i++)
+            {
+                InventoryItem existingItem = InventoryManager.instance.inventorySlots[i].GetComponentInChildren<InventoryItem>();
+
+                // Check if the slot has a non-fairy item
+                if (existingItem != null && existingItem.item.type != ItemType.Fairy)
+                {
+                    // Make the slot disappear or become inaccessible
+                    InventoryManager.instance.inventorySlots[i].gameObject.SetActive(false);
+                }
+                else
+                {
+                    InventoryManager.instance.inventorySlots[i].gameObject.SetActive(true);
+                }
+            }
+        }
+
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
         image.raycastTarget = true;
-        Debug.Log("Yeet");
-
-        // Check if the item is a fairy and if the destination slot is the fairy slot
-        if (item.type == ItemType.Fairy && transform.parent == InventoryManager.instance.equipmentSlots[7].transform)
+        InventoryManager.instance.equipmentSlots[7].gameObject.SetActive(true);
+        for (int i = 0; i < InventoryManager.instance.inventorySlots.Length; i++)
         {
-            // If a fairy is dropped into the fairy slot, leave it there
-            Debug.Log("Fairy in fairy slot");
-            transform.SetParent(parentAfterDrag);
+            InventoryManager.instance.inventorySlots[i].gameObject.SetActive(true);
         }
-        else if (transform.parent == InventoryManager.instance.equipmentSlots[7].transform)
-        {
-            // If a non-fairy is dropped into the fairy slot, return it to its original slot
-            Debug.Log("Non-fairy in fairy slot");
-            transform.SetParent(originalParent);
-            transform.position = originalParent.position;
-        }
-        else
-        {
-            // If the item is not dropped into the fairy slot, leave it in its new slot
-            Debug.Log("Item in regular slot");
-            transform.SetParent(parentAfterDrag);
-        }
-
+        // If the item is not dropped into the fairy slot, leave it in its new slot
+        Debug.Log("Item in regular slot/Swappers");
+        transform.SetParent(parentAfterDrag);
     }
 
 
-
-
-
-}
+    }

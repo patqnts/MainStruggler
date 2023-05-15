@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class InventoryManager : MonoBehaviour
 {
     public static InventoryManager instance;
-    public int maxStackedItems = 99;
     public InventorySlot[] inventorySlots;
     public InventorySlot[] equipmentSlots;
     public GameObject inventoryItemPrefab;
