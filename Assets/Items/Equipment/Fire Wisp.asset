@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1662d66746d5b7841a5171ab4c6f819a, type: 3}
   m_Name: Fire Wisp
   m_EditorClassIdentifier: 
-  prefab: {fileID: 8578541933679962056, guid: 461bff76742930b40baa54914f57c0db, type: 3}
+  prefab: {fileID: 593067995031978350, guid: 8e0e77a846708b34a96cee87ac318dcc, type: 3}
   tile: {fileID: 0}
   type: 5
   actionType: 1
@@ -23,6 +23,6 @@ MonoBehaviour:
   consumable: 0
   holdable: 0
   description: 'Fire '
-  priceAmount: 10000
+  priceAmount: 0
   materialRequirements: []
-  image: {fileID: 685715283, guid: 59ebb4a81f9a8a84791b650bb23419e1, type: 3}
+  image: {fileID: -536975744, guid: c3c53e49058f269459a6b8b47db0943e, type: 3}

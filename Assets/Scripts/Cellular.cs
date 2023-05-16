@@ -233,21 +233,26 @@ public class Cellular : MonoBehaviour
 
     private void FillMapRandomly()
     {
+        Vector2 center = new Vector2(mapWidth / 2, mapHeight / 2);
+        float maxDistance = Mathf.Min(center.x - 9, center.y - 9); // Subtract 5 tiles from center coordinates
+
         for (int x = 0; x < mapWidth; x++)
         {
             for (int y = 0; y < mapHeight; y++)
             {
-                if (x <= 15 || x >= mapWidth - 20 || y <= 20 || y == mapHeight - 20 || x == 1 || x == mapWidth - 20 || y == 1 || y >= mapHeight - 20)
+                if (Vector2.Distance(new Vector2(x, y), center) <= maxDistance)
                 {
-                    map[x, y] = 0;
+                    map[x, y] = Random.Range(0, 100) < fillPercentage ? 1 : 0;
                 }
                 else
                 {
-                    map[x, y] = Random.Range(0, 100) < fillPercentage ? 1 : 0;
+                    map[x, y] = 0;
                 }
             }
         }
     }
+
+
 
     private void SmoothMap()
     {

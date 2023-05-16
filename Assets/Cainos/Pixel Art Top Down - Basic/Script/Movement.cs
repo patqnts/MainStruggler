@@ -7,8 +7,8 @@ public class Movement : MonoBehaviour, IDamageable
     [SerializeField] private float moveSpeed = 3f;
     [SerializeField] private float attackTime = 0.2f;
     [SerializeField] private float eatTime = 1f;
-    [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private Animator animator;
+    [SerializeField] public Rigidbody2D rb;
+    [SerializeField] public Animator animator;
     [SerializeField] private Joystick joystick;
 
    
@@ -90,14 +90,14 @@ public class Movement : MonoBehaviour, IDamageable
         uiHealth.UpdateHealth(_health, maxHealth);
         
     }
-
+    
     private void Update()
     {
         
         // Get input for movement
          movement.x = joystick.Horizontal;
          movement.y = joystick.Vertical;
-         movement.x = Input.GetAxisRaw("Horizontal");
+        movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
 
         // Set animator parameters for movement

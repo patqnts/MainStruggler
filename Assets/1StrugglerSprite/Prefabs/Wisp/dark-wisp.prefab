@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3301516853013718534}
   - component: {fileID: 3301516853013718535}
   - component: {fileID: 3301516853013718648}
+  - component: {fileID: -5713342897673002014}
   m_Layer: 0
   m_Name: dark-wisp
   m_TagString: Untagged
@@ -74,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -222407988, guid: 22bc9fa0af1bed24eaa75fa8be092cd5, type: 3}
+  m_Sprite: {fileID: 1992216871, guid: c3c53e49058f269459a6b8b47db0943e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -105,3 +106,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-5713342897673002014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3301516853013718649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 767ce600dea14d24d8395cee1c345780, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sr: {fileID: 0}
+  collider: {fileID: 0}
+  moveSpeed: 0
+  item: {fileID: 0}

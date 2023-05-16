@@ -17,12 +17,12 @@ MonoBehaviour:
   type: 2
   actionType: 0
   range: {x: 5, y: 4}
-  weaponDamage: 50
+  weaponDamage: 145
   _stackable: 0
   maxStackCount: 1
   consumable: 0
   holdable: 1
-  description: 
+  description: Sword of a knight
   priceAmount: 0
   materialRequirements: []
   image: {fileID: 398589292, guid: 51721a244c2b3b2448a18bd0044dee35, type: 3}

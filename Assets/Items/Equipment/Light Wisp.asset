@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1662d66746d5b7841a5171ab4c6f819a, type: 3}
   m_Name: Light Wisp
   m_EditorClassIdentifier: 
-  prefab: {fileID: 6300414717085751947, guid: a7cba7399294c1f40915c8068da59ce7, type: 3}
+  prefab: {fileID: 593067995031978350, guid: 68184821fb59f9c4887ce75028e67657, type: 3}
   tile: {fileID: 0}
   type: 5
   actionType: 1
@@ -23,6 +23,6 @@ MonoBehaviour:
   consumable: 0
   holdable: 0
   description: Light
-  priceAmount: 10000
+  priceAmount: 0
   materialRequirements: []
-  image: {fileID: 1613971684, guid: 29e0b522590363d47868d6347761a9c2, type: 3}
+  image: {fileID: 63631467, guid: c3c53e49058f269459a6b8b47db0943e, type: 3}

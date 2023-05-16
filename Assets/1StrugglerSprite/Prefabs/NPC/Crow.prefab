@@ -964,6 +964,7 @@ MonoBehaviour:
   isLookingLeft: 0
   notice: {fileID: 5653431554175772898}
   NoticeUI: {fileID: 1839863958855547361}
+  isAttacking: 0
 --- !u!1 &8136154088761985000
 GameObject:
   m_ObjectHideFlags: 0

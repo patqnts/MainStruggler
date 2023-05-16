@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1662d66746d5b7841a5171ab4c6f819a, type: 3}
   m_Name: Dark Wisp
   m_EditorClassIdentifier: 
-  prefab: {fileID: 3301516853013718649, guid: f0ead867153768e4e894a6a7c4909101, type: 3}
+  prefab: {fileID: 593067995031978350, guid: 65b3e12c51b8e724b93c1c32be359897, type: 3}
   tile: {fileID: 0}
   type: 5
   actionType: 1
@@ -25,4 +25,4 @@ MonoBehaviour:
   description: Dark Wisp
   priceAmount: 0
   materialRequirements: []
-  image: {fileID: -222407988, guid: 22bc9fa0af1bed24eaa75fa8be092cd5, type: 3}
+  image: {fileID: 1992216871, guid: c3c53e49058f269459a6b8b47db0943e, type: 3}

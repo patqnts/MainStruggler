@@ -12,6 +12,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 9100000, guid: ad2a5c8d021374b45822845d3dbc4db2, type: 2}
     - target: {fileID: 2033552450, guid: 4ebd970acd42878459ae870a88e88019, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 2033552450, guid: 4ebd970acd42878459ae870a88e88019, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2033552450, guid: 4ebd970acd42878459ae870a88e88019, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
       value: 2
       objectReference: {fileID: 0}
@@ -237,6 +245,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -427712157, guid: 74c9f10ed043e5747984e8faeae7a576,
         type: 3}
+    - target: {fileID: 7435164957362388111, guid: 4ebd970acd42878459ae870a88e88019,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8217159490047040458, guid: 4ebd970acd42878459ae870a88e88019,
         type: 3}
       propertyPath: healthbar
@@ -268,6 +281,26 @@ PrefabInstance:
       propertyPath: enemyHealthObject
       value: 
       objectReference: {fileID: 34205716944113442}
+    - target: {fileID: 8387779401808789958, guid: 4ebd970acd42878459ae870a88e88019,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.008146875
+      objectReference: {fileID: 0}
+    - target: {fileID: 8387779401808789958, guid: 4ebd970acd42878459ae870a88e88019,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.00803825
+      objectReference: {fileID: 0}
+    - target: {fileID: 8387779401808789958, guid: 4ebd970acd42878459ae870a88e88019,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -1080
+      objectReference: {fileID: 0}
+    - target: {fileID: 8387779401808789958, guid: 4ebd970acd42878459ae870a88e88019,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -539.0218
+      objectReference: {fileID: 0}
     - target: {fileID: 8430104308133653915, guid: 4ebd970acd42878459ae870a88e88019,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -287,6 +320,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8960037788323341303, guid: 4ebd970acd42878459ae870a88e88019,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8960037788323341303, guid: 4ebd970acd42878459ae870a88e88019,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: 0.27
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ebd970acd42878459ae870a88e88019, type: 3}

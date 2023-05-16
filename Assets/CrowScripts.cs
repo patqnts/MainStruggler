@@ -8,12 +8,16 @@ public class CrowScripts : MonoBehaviour
     public DetectionZone detectionZone;
     public bool isLookingRight = false;
     public bool isLookingLeft = false;
+    public GameObject dashAbility;
+    public string inactiveObjectName = "Dash";
+
+
     private Movement player;
 
     private float attackTimer = 0f;
     private float attackInterval = 2f;
     private int numAttacks = 0;
-
+    
 
     public GameObject notice;
     public GameObject NoticeUI;
@@ -21,6 +25,13 @@ public class CrowScripts : MonoBehaviour
     private void Start()
     {
         player = FindObjectOfType<Movement>();
+        GameObject canvas = GameObject.Find("Controller");
+        dashAbility = canvas.transform.Find(inactiveObjectName).gameObject;
+
+        if (dashAbility != null)
+        {
+            dashAbility.SetActive(false);
+        }
     }
     void Update()
     {
@@ -69,21 +80,21 @@ public class CrowScripts : MonoBehaviour
                     {
                         StopAttack();
                         numAttacks = 0;
+                        dashAbility.SetActive(true);
                         Debug.Log("Success");
                         
                     }
                 }
 
                 // Make the player immovable while attacking
-                 Debug.Log("NOT now!");
+                
             }
             else
             {
                StopAttack();
-               animator.SetBool("Attack", false);
-               animator.SetBool("isLookingRight", false);
-               animator.SetBool("isLookingLeft", false);
-               Debug.Log("Can Move now!");
+               
+              
+             
                 
             }
         }
@@ -105,14 +116,30 @@ public class CrowScripts : MonoBehaviour
         
     public void Attack()
     {
+        if(detectionZone.detectedObj.Count > 0 && !player.isDead)
+        {
+            isAttacking = true;
+            //player.rb.constraints = RigidbodyConstraints2D.FreezeAll;
+            player.animator.SetBool("Crow", true);
 
-        isAttacking = true;
+        }
+        else
+        {
+            StopAttack();
+        }
         
+        
+       
+
+
     }
 
     public void StopAttack()
     {
+        animator.SetBool("Attack", false);
         isAttacking = false;
+        player.animator.SetBool("Crow", false);
+        
     }
     
     

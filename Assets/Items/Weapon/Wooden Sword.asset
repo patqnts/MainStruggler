@@ -22,11 +22,11 @@ MonoBehaviour:
   maxStackCount: 3
   consumable: 0
   holdable: 1
-  description: 'A sword made of ... yeah, "wood".
+  description: 'A sword made of ...  wood.
 
 
     Damage: 50'
-  priceAmount: 200
+  priceAmount: 5
   materialRequirements:
   - materialSprite: {fileID: 1543865707, guid: 51721a244c2b3b2448a18bd0044dee35, type: 3}
     requiredAmount: 10

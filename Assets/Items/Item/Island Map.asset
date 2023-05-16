@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1662d66746d5b7841a5171ab4c6f819a, type: 3}
+  m_Name: Island Map
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 9061668225178378007, guid: e350c7e71433afd47a44da2d449e2f3c, type: 3}
+  tile: {fileID: 0}
+  type: 1
+  actionType: 1
+  range: {x: 5, y: 4}
+  weaponDamage: 1
+  _stackable: 1
+  maxStackCount: 1
+  consumable: 0
+  holdable: 0
+  description: Reveals the map.
+  priceAmount: 250
+  materialRequirements: []
+  image: {fileID: -163314762, guid: c3c53e49058f269459a6b8b47db0943e, type: 3}
