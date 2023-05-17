@@ -5,12 +5,14 @@ using UnityEngine;
 public class Movement : MonoBehaviour, IDamageable
 {
     [SerializeField] private float moveSpeed = 3f;
-    [SerializeField] private float attackTime = 0.2f;
+    [SerializeField] private float attackTime = 0.40f;
     [SerializeField] private float eatTime = 1f;
     [SerializeField] public Rigidbody2D rb;
     [SerializeField] public Animator animator;
     [SerializeField] private Joystick joystick;
 
+    public Transform slashPos;
+    
    
 
     public float dashSpeed;
@@ -90,7 +92,7 @@ public class Movement : MonoBehaviour, IDamageable
         uiHealth.UpdateHealth(_health, maxHealth);
         
     }
-    
+
     private void Update()
     {
         
@@ -144,11 +146,12 @@ public class Movement : MonoBehaviour, IDamageable
 
 
 
-
+       
 
         // Handle attack logic
         if (Input.GetKeyDown(KeyCode.Space) && !isAttacking)
         {
+            
             StartCoroutine(Attack());
             isAttacking = true;
             Item canEat = InventoryManager.instance.GetSelectedItem(item);
@@ -188,6 +191,123 @@ public class Movement : MonoBehaviour, IDamageable
         animator.SetFloat("LastVertical", lastDirection.y);
         uiHealth.UpdateHealth(_health, maxHealth);
     }
+    private IEnumerator Attack()
+    {
+        Item slash = InventoryManager.instance.GetSelectedItem(false);
+
+        if (slash != null && slash.type == ItemType.Weapon)
+        {
+            GameObject slashHolder = slash.slashTrailPrefab;
+
+            if (slashHolder != null)
+            {
+                Vector3 slashPosition = slashPos.position;
+                Quaternion slashRotation = Quaternion.identity;
+                bool flipSpriteX = false;
+                bool flipSpriteY = false;
+                //MOVEMENT
+                if (movement.x > 0 || lastDirection.x > 0) // Moving right
+                {
+                    if(lastDirection.y > 0)
+                    {
+                        slashPosition.x += 0.5f;
+                        flipSpriteX = true;
+                        slashRotation = Quaternion.Euler(0f, 0f, 50f);
+                        //slashRotation = Quaternion.Euler(0f, 0f, -50f); flipx lower right
+                        Debug.Log("up right");
+                    }
+                    else if (lastDirection.y < 0)
+                    {
+                        slashPosition.y -= .6f;
+                        slashRotation = Quaternion.Euler(0f, 0f, -50f);
+                        flipSpriteX = true;
+                        slashPosition.x += 0.3f;
+                        Debug.Log("down right");
+                    }
+                    else
+                    {
+                        slashPosition.x += 0.5f;
+                        flipSpriteX = true;
+                        Debug.Log(" right");
+                    }
+                    
+                }
+
+
+                else if (lastDirection.x < 0) // Moving left
+                {
+                    if(lastDirection.y > 0)
+                    {
+                        slashPosition.x -= 0.5f;
+                        slashRotation = Quaternion.Euler(0f, 0f, -50f);
+                        Debug.Log("up left");
+                    }
+                    else if(lastDirection.y < 0)
+                    {
+                        slashPosition.y -= .6f;
+                        slashPosition.x -= 0.3f;
+                        slashRotation = Quaternion.Euler(0f, 0f, -160f);
+                        flipSpriteX = true;
+                        Debug.Log("down left");
+                    }
+                    else
+                    {
+                        slashPosition.x -= 0.5f;
+                        Debug.Log(" left");
+                    }
+
+                    
+                   
+                }
+                else if (movement.y > 0 || lastDirection.y > 0) // Moving up
+                {
+                    Debug.Log("up ");
+                    slashRotation = Quaternion.Euler(0f, 0f, -110f);
+                    flipSpriteY = true;
+                }
+                else if (movement.y < 0|| lastDirection.y < 0) // Moving down
+                {
+                    slashPosition.y -= .6f;
+                    slashRotation = Quaternion.Euler(0f, 0f, -110f);
+                    flipSpriteX = true;
+                    Debug.Log("down");
+                }
+                
+               
+                // Instantiate the slash prefab
+                GameObject slashObject = Instantiate(slashHolder, slashPosition, slashRotation);
+                Debug.Log("movement: " + lastDirection.x + "movement: " + lastDirection.y + "Rotation: " + slashRotation.z);
+                // Adjust the sprite renderer flips based on the movement direction
+                SpriteRenderer slashSpriteRenderer = slashObject.GetComponent<SpriteRenderer>();
+                if (slashSpriteRenderer != null)
+                {
+                    slashSpriteRenderer.flipX = flipSpriteX;
+                    slashSpriteRenderer.flipY = flipSpriteY;
+                }
+
+                Destroy(slashObject, 2f);
+            }
+            else
+            {
+                Debug.Log("No Slash Prefab");
+            }
+        }
+        else
+        {
+            Debug.Log("No weapon");
+        }
+
+        isAttacking = true;
+        animator.SetBool("isAttacking", true);
+
+        // Wait for attack time
+        yield return new WaitForSeconds(attackTime);
+
+        // Reset attacking flag and animation
+        isAttacking = false;
+        animator.SetBool("isAttacking", false);
+    }
+
 
     private void FixedUpdate()
     {
@@ -242,21 +362,7 @@ public class Movement : MonoBehaviour, IDamageable
         }
     }
 
-    private IEnumerator Attack()
-    {
-        
-        isAttacking = true;
-        animator.SetBool("isAttacking", true);
-
-        // Wait for attack time
-        yield return new WaitForSeconds(attackTime);
-
-        // Reset attacking flag and animation
-        isAttacking = false;
-        animator.SetBool("isAttacking", false);
-
-        
-    }
+    
 
     public void OnHit(float damage, Vector2 knockback)
     {

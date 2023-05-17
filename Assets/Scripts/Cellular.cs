@@ -197,7 +197,33 @@ public class Cellular : MonoBehaviour
         {
             // Find a random ground tile
             int randomIndex = Random.Range(0, groundTilePositions.Count);
-            Vector3 treePosition = tilemap.CellToWorld(groundTilePositions[randomIndex]) + new Vector3(0.5f, 0.5f, 0f); // add offset to center the tree on the tile
+            Vector3Int tilePosition = groundTilePositions[randomIndex];
+
+            // Check if the position is near water
+            bool isNearWater = false;
+            for (int x = tilePosition.x - 1; x <= tilePosition.x + 1; x++)
+            {
+                for (int y = tilePosition.y - 1; y <= tilePosition.y + 1; y++)
+                {
+                    if (waterTilemap.GetTile(new Vector3Int(x, y, 0)) != null)
+                    {
+                        isNearWater = true;
+                        break;
+                    }
+                }
+                if (isNearWater)
+                {
+                    break;
+                }
+            }
+
+            // Skip this tile if it's near water
+            if (isNearWater)
+            {
+                continue;
+            }
+
+            Vector3 treePosition = tilemap.CellToWorld(tilePosition) + new Vector3(0.5f, 0.5f, 0f); // add offset to center the tree on the tile
 
             // Check if the position is clear of other objects
             Collider2D[] overlaps = Physics2D.OverlapCircleAll(treePosition, treePrefabSize);
@@ -229,12 +255,13 @@ public class Cellular : MonoBehaviour
                 continue;
             }
         }
+
     }
 
     private void FillMapRandomly()
     {
         Vector2 center = new Vector2(mapWidth / 2, mapHeight / 2);
-        float maxDistance = Mathf.Min(center.x - 9, center.y - 9); // Subtract 5 tiles from center coordinates
+        float maxDistance = Mathf.Min(center.x - 9, center.y - 9); // Subtract  tiles from center coordinates
 
         for (int x = 0; x < mapWidth; x++)
         {

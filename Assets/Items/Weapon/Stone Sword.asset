@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Stone Sword
   m_EditorClassIdentifier: 
   prefab: {fileID: 8772386301943041245, guid: fda11e182330e8e49bedfff578ab9c1b, type: 3}
+  slashTrailPrefab: {fileID: 1271498546720987143, guid: bd8b87de4e01b6a42a137f4233bc3dcc,
+    type: 3}
   tile: {fileID: 0}
   type: 2
   actionType: 0

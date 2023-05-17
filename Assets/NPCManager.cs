@@ -98,6 +98,32 @@ public class NPCManager : MonoBehaviour
             int randomIndex = Random.Range(0, cellular.groundTilePositions.Count);
             Vector3Int tilePosition = cellular.groundTilePositions[randomIndex];
             Vector3 worldPosition = cellular.tilemap.CellToWorld(tilePosition) + new Vector3(0.5f, 0.5f, 0f); // add offset to center the ruin on the tile
+
+            bool isNearWater = false;
+            int distance = 2; // Adjust the distance here (e.g., 1 for a 3x3 square, 2 for a 5x5 square)
+
+            for (int x = tilePosition.x - distance; x <= tilePosition.x + distance; x++)
+            {
+                for (int y = tilePosition.y - distance; y <= tilePosition.y + distance; y++)
+                {
+                    if (cellular.waterTilemap.GetTile(new Vector3Int(x, y, 0)) != null)
+                    {
+                        isNearWater = true;
+                        break;
+                    }
+                }
+                if (isNearWater)
+                {
+                    break;
+                }
+            }
+
+            // Skip this tile if it's near water
+            if (isNearWater)
+            {
+                continue;
+            }
+
             Instantiate(blackSmith, worldPosition, Quaternion.identity);
             cellular.groundTilePositions.RemoveAt(randomIndex);
             blacksmithSpawn++;
@@ -113,6 +139,33 @@ public class NPCManager : MonoBehaviour
             int randomIndex = Random.Range(0, cellular.groundTilePositions.Count);
             Vector3Int tilePosition = cellular.groundTilePositions[randomIndex];
             Vector3 worldPosition = cellular.tilemap.CellToWorld(tilePosition) + new Vector3(0.5f, 0.5f, 0f); // add offset to center the ruin on the tile
+
+            // Check water distance
+            bool isNearWater = false;
+            int distance = 2; // Adjust the distance here (e.g., 1 for a 3x3 square, 2 for a 5x5 square)
+
+            for (int x = tilePosition.x - distance; x <= tilePosition.x + distance; x++)
+            {
+                for (int y = tilePosition.y - distance; y <= tilePosition.y + distance; y++)
+                {
+                    if (cellular.waterTilemap.GetTile(new Vector3Int(x, y, 0)) != null)
+                    {
+                        isNearWater = true;
+                        break;
+                    }
+                }
+                if (isNearWater)
+                {
+                    break;
+                }
+            }
+
+            // Skip this tile if it's near water
+            if (isNearWater)
+            {
+                continue;
+            }
+
             Instantiate(Witch, worldPosition, Quaternion.identity);
             cellular.groundTilePositions.RemoveAt(randomIndex);
             witchspawn++;
@@ -127,6 +180,33 @@ public class NPCManager : MonoBehaviour
             int randomIndex = Random.Range(0, cellular.groundTilePositions.Count);
             Vector3Int tilePosition = cellular.groundTilePositions[randomIndex];
             Vector3 worldPosition = cellular.tilemap.CellToWorld(tilePosition) + new Vector3(0.5f, 0.5f, 0f); // add offset to center the ruin on the tile
+
+            // Check water distance
+            bool isNearWater = false;
+            int distance = 2; // Adjust the distance here (e.g., 1 for a 3x3 square, 2 for a 5x5 square)
+
+            for (int x = tilePosition.x - distance; x <= tilePosition.x + distance; x++)
+            {
+                for (int y = tilePosition.y - distance; y <= tilePosition.y + distance; y++)
+                {
+                    if (cellular.waterTilemap.GetTile(new Vector3Int(x, y, 0)) != null)
+                    {
+                        isNearWater = true;
+                        break;
+                    }
+                }
+                if (isNearWater)
+                {
+                    break;
+                }
+            }
+
+            // Skip this tile if it's near water
+            if (isNearWater)
+            {
+                continue;
+            }
+
             Instantiate(Crow, worldPosition, Quaternion.identity);
             cellular.groundTilePositions.RemoveAt(randomIndex);
             crowspawn++;
@@ -155,6 +235,33 @@ public class NPCManager : MonoBehaviour
             int randomIndex = Random.Range(0, cellular.groundTilePositions.Count);
             Vector3Int tilePosition = cellular.groundTilePositions[randomIndex];
             Vector3 worldPosition = cellular.tilemap.CellToWorld(tilePosition) + new Vector3(0.5f, 0.5f, 0f); // add offset to center the ruin on the tile
+
+            // Check water distance
+            bool isNearWater = false;
+            int distance = 2; // Adjust the distance here (e.g., 1 for a 3x3 square, 2 for a 5x5 square)
+
+            for (int x = tilePosition.x - distance; x <= tilePosition.x + distance; x++)
+            {
+                for (int y = tilePosition.y - distance; y <= tilePosition.y + distance; y++)
+                {
+                    if (cellular.waterTilemap.GetTile(new Vector3Int(x, y, 0)) != null)
+                    {
+                        isNearWater = true;
+                        break;
+                    }
+                }
+                if (isNearWater)
+                {
+                    break;
+                }
+            }
+
+            // Skip this tile if it's near water
+            if (isNearWater)
+            {
+                continue;
+            }
+
             Instantiate(bonFire, worldPosition, Quaternion.identity);
             cellular.groundTilePositions.RemoveAt(randomIndex);
             ruinspawn++;

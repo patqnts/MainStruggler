@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Light Longsword
   m_EditorClassIdentifier: 
   prefab: {fileID: 1471064017145405185, guid: a9946d91dfccb944685c6e4150507dac, type: 3}
+  slashTrailPrefab: {fileID: 1271498546720987143, guid: 9ddd1fe1249ca684dbf12aee3cb3d476,
+    type: 3}
   tile: {fileID: 0}
   type: 2
   actionType: 0

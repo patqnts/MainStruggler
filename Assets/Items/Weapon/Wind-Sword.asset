@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Wind-Sword
   m_EditorClassIdentifier: 
   prefab: {fileID: 8772386301943041245, guid: d24952724f3170543b2411b3e761c4b1, type: 3}
+  slashTrailPrefab: {fileID: 1271498546720987143, guid: 672d052a4a3d7ce45b2032d7c1e2e9f2,
+    type: 3}
   tile: {fileID: 0}
   type: 2
   actionType: 0

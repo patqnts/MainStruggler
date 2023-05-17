@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,7 @@ using UnityEngine.Tilemaps;
 public class Item : ScriptableObject
 {
     public GameObject prefab; // Add the prefab property to the Item class
+    public GameObject slashTrailPrefab;
 
     [Header("Only gameplay")]
     public TileBase tile;
@@ -46,6 +48,8 @@ public class Item : ScriptableObject
 
     [Header("Both")]
     public Sprite image;
+
+   
 }
 
 [System.Serializable]

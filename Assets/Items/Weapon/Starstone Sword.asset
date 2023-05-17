@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Starstone Sword
   m_EditorClassIdentifier: 
   prefab: {fileID: 8772386301943041245, guid: b77e9721bb0d70245ad56e1d010bb682, type: 3}
+  slashTrailPrefab: {fileID: 1271498546720987143, guid: 9ddd1fe1249ca684dbf12aee3cb3d476,
+    type: 3}
   tile: {fileID: 0}
   type: 2
   actionType: 0
