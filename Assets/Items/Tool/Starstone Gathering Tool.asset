@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Starstone Gathering Tool
   m_EditorClassIdentifier: 
   prefab: {fileID: 8772386301943041245, guid: a12c16eef3e0ff9488a4700f45856587, type: 3}
+  slashTrailPrefab: {fileID: 0}
   tile: {fileID: 0}
   type: 1
   actionType: 0
@@ -23,7 +24,7 @@ MonoBehaviour:
   consumable: 0
   holdable: 1
   description: Nature's nightmare. Literally.
-  priceAmount: 1600
+  priceAmount: 500
   materialRequirements:
   - materialSprite: {fileID: -1781302341, guid: 73567c2e5b46e5141a21c3dc36e27ad0,
       type: 3}

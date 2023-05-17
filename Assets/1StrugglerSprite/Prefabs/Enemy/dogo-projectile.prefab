@@ -138,7 +138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  knockbackForce: 5000
+  knockbackForce: 3000
   animator: {fileID: -7057970177936315691}
 --- !u!95 &-7057970177936315691
 Animator:

@@ -28,7 +28,7 @@ MonoBehaviour:
 
 
     Damage: 80'
-  priceAmount: 400
+  priceAmount: 10
   materialRequirements:
   - materialSprite: {fileID: 130203420, guid: 51721a244c2b3b2448a18bd0044dee35, type: 3}
     requiredAmount: 40

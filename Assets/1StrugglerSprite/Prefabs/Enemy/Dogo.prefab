@@ -78,6 +78,7 @@ GameObject:
   - component: {fileID: 5392425308314855472}
   - component: {fileID: 1097468475318778000}
   - component: {fileID: 4337596748707148952}
+  - component: {fileID: 6845998329259354576}
   m_Layer: 10
   m_Name: Dogo
   m_TagString: Enemy
@@ -193,12 +194,13 @@ MonoBehaviour:
     type: 3}
   moveSpeed: 600
   pushbackForce: 1000
-  _health: 1
+  _health: 3
   isAttacking: 0
   isSecondPhase: 0
   isAlive: 0
   inTransition: 0
   player: {fileID: 0}
+  ghost: {fileID: 6845998329259354576}
   projectileCooldown: 3
   projectilesToThrow: 15
   chargeDashSpeed: 2000
@@ -251,3 +253,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6120932, y: 1.1269616}
   m_EdgeRadius: 0
+--- !u!114 &6845998329259354576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5292333702654999886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce5ec12a452541b419477aa97817b9ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ghostDelay: 0.1
+  ghost: {fileID: 4441445809337448781, guid: e3e156c4d745d57439eb819646e73ea8, type: 3}
+  makeGhost: 0

@@ -13,12 +13,13 @@ public class GhostEnemyAI : MonoBehaviour, IDamageable
     public GameObject projectilePrefab;
     public float moveSpeed;
     public float pushbackForce = 1000f;
-    public float _health = 10;
+    public float _health,maxHealth = 10;
     public bool isAttacking = false;
     public bool isSecondPhase = false;
     public bool isAlive;
     public bool inTransition = false;
     public Movement player;
+    public CharacterGhost ghost;
     public float Health
     {
         set
@@ -45,7 +46,7 @@ public class GhostEnemyAI : MonoBehaviour, IDamageable
                     animator.SetTrigger("Phase2");
                     animator.SetBool("SecondPhase", true);
 
-                    _health = 1;
+                    _health = maxHealth;
                     isAlive = true;
                     lastChargeDashTime = 5f;
 
@@ -124,7 +125,7 @@ public class GhostEnemyAI : MonoBehaviour, IDamageable
             Debug.Log("Projectile position: " + projectile.transform.position);
             Vector2 direction = (playerPoss - enemyPos).normalized;
             projectile.GetComponent<Rigidbody2D>().AddForce(direction * 250);
-            Destroy(projectile, 60f);
+            Destroy(projectile, 5f);
         }
         else if (distance < 5f && isSecondPhase && isAlive)
         {
@@ -133,7 +134,7 @@ public class GhostEnemyAI : MonoBehaviour, IDamageable
             GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
             Vector2 direction = (playerPoss - enemyPos).normalized;
             projectile.GetComponent<Rigidbody2D>().AddForce(direction * 600);
-            Destroy(projectile, 60f);
+            Destroy(projectile, 5f);
         }
     }
 
@@ -142,15 +143,18 @@ public class GhostEnemyAI : MonoBehaviour, IDamageable
         GameObject player = GameObject.FindGameObjectWithTag("Target");
         if (player != null)
         {
+           
             Vector2 playerPos = player.transform.position;
             Vector2 enemyPos = transform.position;
             float distance = Vector2.Distance(playerPos, enemyPos);
 
             if (Time.time - lastChargeDashTime > chargeDashCooldown && distance < 8f && isSecondPhase && isAlive)
             {
+                
                 // Charge dash towards the player
                 StartCoroutine(ChargeDash(playerPos));
                 lastChargeDashTime = Time.time;
+                
             }
             else if (distance > 3.5f)
             {
@@ -191,13 +195,15 @@ public class GhostEnemyAI : MonoBehaviour, IDamageable
 
     private IEnumerator ChargeDash(Vector2 targetPos)
     {
+        ghost.makeGhost = true;
         isAttacking = true;
         animator.SetTrigger("Dash");
+        
 
         // Stop moving before charging
         originalVelocity = rb.velocity;
         rb.velocity = Vector2.zero;
-
+        yield return new WaitForSeconds(0.5f);
         // Move towards the player at high speed
         Vector2 direction = (targetPos - (Vector2)transform.position).normalized;
         rb.AddForce(direction * chargeDashSpeed);
@@ -209,6 +215,8 @@ public class GhostEnemyAI : MonoBehaviour, IDamageable
 
         // End the attack
         isAttacking = false;
+        ghost.makeGhost = false;
+
     }
 
     public void OnHit(float damage, Vector2 knockback)
