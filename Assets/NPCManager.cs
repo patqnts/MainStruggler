@@ -13,6 +13,7 @@ public class NPCManager : MonoBehaviour
     public GameObject Witch;
     public GameObject Crow;
     public GameObject Dogo;
+    public GameObject Golem;
     public GameObject Container;
     private List<Vector3Int> availableLocations;
     public List<GameObject> enemyList; // list of enemies to spawn
@@ -223,6 +224,20 @@ public class NPCManager : MonoBehaviour
             Instantiate(Merchant, worldPosition, Quaternion.identity);
             cellular.groundTilePositions.RemoveAt(randomIndex);
             merchantspawn++;
+        }
+    }
+
+    public void SpawnGolem()
+    {
+        int golemspawn = 0;
+        while (golemspawn < 1 && cellular.groundTilePositions.Count > 0)
+        {
+            int randomIndex = Random.Range(0, cellular.groundTilePositions.Count);
+            Vector3Int tilePosition = cellular.groundTilePositions[randomIndex];
+            Vector3 worldPosition = cellular.tilemap.CellToWorld(tilePosition) + new Vector3(0.5f, 0.5f, 0f); // add offset to center the ruin on the tile
+            Instantiate(Golem, worldPosition, Quaternion.identity);
+            cellular.groundTilePositions.RemoveAt(randomIndex);
+            golemspawn++;
         }
     }
 

@@ -6446,13 +6446,13 @@ MonoBehaviour:
   Witch: {fileID: 3221683281970857208, guid: c824419318b9a7a4a809aed0361f2966, type: 3}
   Crow: {fileID: 6843259269941955606, guid: 676f0f8ab48d44e49a8a699f6847ca14, type: 3}
   Dogo: {fileID: 5564117439839634920, guid: 36a05fdd6038e9547a634f26d0c78cf4, type: 3}
+  Golem: {fileID: 384921432218952113, guid: 27b83623aa8395245a0e501ffaca3a1e, type: 3}
   Container: {fileID: 1830182417}
   enemyList:
   - {fileID: 7627692086151174695, guid: 7c1097dd31e992a40a0043ac80509bf1, type: 3}
   - {fileID: 7884328161490689696, guid: 4f62cacb9942a174b93151ee96831ee3, type: 3}
   - {fileID: 3650326439081999691, guid: 02ab961b660b5c24fa6ae88864d9ddd1, type: 3}
   - {fileID: 1792641864401048566, guid: 29bcfb062684b9a45b1db70b71a65f22, type: 3}
-  - {fileID: 384921432218952113, guid: 27b83623aa8395245a0e501ffaca3a1e, type: 3}
   maxSpawnCount: 125
 --- !u!1 &2019480824
 GameObject:

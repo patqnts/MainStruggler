@@ -56,6 +56,7 @@ public class Cellular : MonoBehaviour
         npcManager.SpawnSmith();
         npcManager.SpawnRuin();
         npcManager.SpawnWitch();
+        npcManager.SpawnGolem();
 
 
         RuinSavePoint.PlayerDied();

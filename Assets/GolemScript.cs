@@ -206,4 +206,14 @@ public class GolemScript : MonoBehaviour, IDamageable
         healthBar.UpdateHealthBar(_health, maxHealth);
         Health -= damage;
     }
+    public float treeDamage = 5000f;
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        IDamageable damageable = collision.gameObject.GetComponent<IDamageable>();
+        if (collision.gameObject.CompareTag("Tree") || collision.gameObject.CompareTag("Rock"))
+        {
+            damageable.OnHit(treeDamage);
+        }
+    }
+
 }
