@@ -4,15 +4,37 @@ using UnityEngine;
 
 public class SlashScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public Animator animator;
-    private void Start()
+    public Collider2D hitCollider;
+    public float knockbackForce = 5000f;
+
+    public float damage = 25f;
+
+
+
+    void Start()
     {
-        animator = GetComponent<Animator>();
+
+        // Get the Collider2D component of the hitbox
+        hitCollider = GetComponent<Collider2D>();
     }
-    public void Slash()
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        animator.SetTrigger("Slash");
-        Debug.Log("Slash");
+        IDamageable damageableObject = collision.gameObject.GetComponent<IDamageable>();
+
+        if (hitCollider != null && collision.gameObject != null && damageableObject != null)
+        {
+            Vector3 parentPos = transform.position;
+            Vector2 direction = (collision.gameObject.transform.position - parentPos).normalized;
+            Vector2 knockback = direction * knockbackForce;
+            if (collision.gameObject.CompareTag("Enemy"))
+            {
+                damageableObject.OnHit(damage, knockback);
+            }
+
+
+        }
+
+
     }
 }

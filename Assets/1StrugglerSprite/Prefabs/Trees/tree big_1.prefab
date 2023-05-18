@@ -345,7 +345,7 @@ MonoBehaviour:
   - {fileID: 9061668225178378007, guid: 34ef1725ec3680144bb6758b5a7ef42d, type: 3}
   - {fileID: 9061668225178378007, guid: 34ef1725ec3680144bb6758b5a7ef42d, type: 3}
   collider: {fileID: 4877795997869722703}
-  _health: 100
+  _health: 750
 --- !u!95 &-1504488106004920685
 Animator:
   serializedVersion: 4

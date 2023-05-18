@@ -26,8 +26,10 @@ public class Movement : MonoBehaviour, IDamageable
     private Vector2 lastDirection = Vector2.zero;
     private InventoryManager item;
 
-    public CharacterGhost ghost;
+    public HoldButton holdButton;
 
+    public CharacterGhost ghost;
+    private bool canTool = true;
     public Transform dropPos;
     public Collider2D collider;
     public bool isDead = false;
@@ -99,8 +101,8 @@ public class Movement : MonoBehaviour, IDamageable
         // Get input for movement
          movement.x = joystick.Horizontal;
          movement.y = joystick.Vertical;
-        // movement.x = Input.GetAxisRaw("Horizontal");
-        //movement.y = Input.GetAxisRaw("Vertical");
+         movement.x = Input.GetAxisRaw("Horizontal");
+         movement.y = Input.GetAxisRaw("Vertical");
 
         // Set animator parameters for movement
         animator.SetFloat("Horizontal", movement.x);
@@ -144,38 +146,47 @@ public class Movement : MonoBehaviour, IDamageable
             dashCoolCounter -= Time.deltaTime;
         }
 
+        
 
 
-       
+        Item handle = InventoryManager.instance.GetSelectedItem(false);
 
         // Handle attack logic
-        if (Input.GetKeyDown(KeyCode.Space) && !isAttacking)
+        if (handle != null && handle.type == ItemType.Tool)
         {
-            
-            StartCoroutine(Attack());
-            isAttacking = true;
-            Item canEat = InventoryManager.instance.GetSelectedItem(item);
-            if (canEat != null && canEat.consumable && InventoryManager.instance.GetSelectedItem(item) != null && _health < maxHealth)
+            if (Input.GetKey(KeyCode.Space) && !isAttacking && canTool||
+                holdButton.isHolding && !isAttacking && canTool)
             {
-                _health++;
-                InventoryManager.instance.GetSelectedItem(true);
-
-
-
-            }
-            else if (canEat != null && InventoryManager.instance.GetSelectedItem(item) != null && canEat.name == "Fruit") //HEART CONTAINER PLACEHOLDER
-            {
-
-                uiHealth.AddHeart();
-                InventoryManager.instance.GetSelectedItem(true);
-
-            }
-            else
-            {
-                return;
+                canTool = false;
+                StartCoroutine(Attack());
+                isAttacking = true;
+                
             }
         }
+        
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.Space) && handle != null && handle.type != ItemType.Tool && !isAttacking ||
+                Input.GetKeyDown(KeyCode.Space) && handle == null && !isAttacking)
+            {
+                StartCoroutine(Attack());
+                isAttacking = true;
 
+                // Handle consumable logic
+                Item canEat = InventoryManager.instance.GetSelectedItem(item);
+                if (canEat != null && canEat.consumable && _health < maxHealth)
+                {
+                    _health++;
+                    InventoryManager.instance.GetSelectedItem(true);
+                }
+                else if (canEat != null && canEat.name == "Fruit")
+                {
+                    uiHealth.AddHeart();
+                    InventoryManager.instance.GetSelectedItem(true);
+                }
+            }
+
+        }
 
         // Update last direction if moving
         if (movement != Vector2.zero)
@@ -183,14 +194,21 @@ public class Movement : MonoBehaviour, IDamageable
             lastDirection = movement;
             
         }
-        
-        
 
         // Set animator parameters for last direction
         animator.SetFloat("LastHorizontal", lastDirection.x);
         animator.SetFloat("LastVertical", lastDirection.y);
         uiHealth.UpdateHealth(_health, maxHealth);
     }
+
+
+
+    public bool holding = false;
+    public void isHolding()
+    {
+        holding =  true;
+    }
+
     private IEnumerator Attack()
     {
         Item slash = InventoryManager.instance.GetSelectedItem(false);
@@ -294,15 +312,16 @@ public class Movement : MonoBehaviour, IDamageable
         }
         else
         {
-            Debug.Log("No weapon");
+            Debug.Log("No weapon for slash");
         }
 
         isAttacking = true;
         animator.SetBool("isAttacking", true);
-
+        
         // Wait for attack time
         yield return new WaitForSeconds(attackTime);
-
+        canTool = true;
+       
         // Reset attacking flag and animation
         isAttacking = false;
         animator.SetBool("isAttacking", false);
@@ -320,10 +339,12 @@ public class Movement : MonoBehaviour, IDamageable
         
 
     }
-
+    
     public void OnButtonPress()
     {
-        if (!isAttacking)
+        Item handle = InventoryManager.instance.GetSelectedItem(false);
+        if (!isAttacking && handle != null && handle.type != ItemType.Tool ||
+           handle == null && !isAttacking)
         {
             StartCoroutine(Attack());
 
@@ -381,6 +402,7 @@ public class Movement : MonoBehaviour, IDamageable
 
     public void OnHit(float damage)
     {
+        animator.SetTrigger("Hurt");
         // Take damage
         Health -= damage;
         uiHealth.UpdateHealth(_health, maxHealth);
