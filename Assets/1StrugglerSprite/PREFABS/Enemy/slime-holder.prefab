@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 2027180826377905000}
   - component: {fileID: 5588748870831240129}
   - component: {fileID: 6774172877873006374}
+  - component: {fileID: 4651954982798364375}
   m_Layer: 0
   m_Name: optimizer
   m_TagString: Untagged
@@ -131,6 +132,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   self: {fileID: 1062958833324487605}
+--- !u!114 &4651954982798364375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8751915081616188910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e86fbad202526df49959e8e1974802a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  childTransform: {fileID: 8761831053679255371}
 --- !u!1001 &6846282895291456435
 PrefabInstance:
   m_ObjectHideFlags: 0

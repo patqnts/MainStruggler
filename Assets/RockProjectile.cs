@@ -6,13 +6,22 @@ public class RockProjectile : MonoBehaviour
     public float knockbackForce;
     private Rigidbody2D rb;
     public Animator animator;
+    public Animator cameraAnimator;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+         // Assumes the parent object has the cameraHolder
     }
 
-    
+     private void Start()
+    {
+        GameObject cameraHolder = GameObject.Find("cameraHolder"); // Assuming the cameraHolder is in the scene
+        if (cameraHolder != null)
+        {
+            cameraAnimator = cameraHolder.GetComponent<Animator>();
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -35,6 +44,10 @@ public class RockProjectile : MonoBehaviour
                 }
             }
             animator.SetTrigger("Drop");
+            if (cameraAnimator != null)
+            {
+                cameraAnimator.SetTrigger("Shake");
+            }
             // Destroy the projectile
             Destroy(gameObject,0.5f);
         }

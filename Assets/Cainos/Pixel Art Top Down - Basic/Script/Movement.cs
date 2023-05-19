@@ -101,8 +101,8 @@ public class Movement : MonoBehaviour, IDamageable
         // Get input for movement
          movement.x = joystick.Horizontal;
          movement.y = joystick.Vertical;
-        //movement.x = Input.GetAxisRaw("Horizontal");
-        // movement.y = Input.GetAxisRaw("Vertical");
+        movement.x = Input.GetAxisRaw("Horizontal");
+         movement.y = Input.GetAxisRaw("Vertical");
 
         // Set animator parameters for movement
         animator.SetFloat("Horizontal", movement.x);
@@ -333,13 +333,21 @@ public class Movement : MonoBehaviour, IDamageable
         if (!isAttacking)
         {
             rb.MovePosition(rb.position + movement.normalized * activeMoveSpeed * Time.fixedDeltaTime);
-            
         }
-
-        
-
+        else
+        {
+            // Perform a lunge while attacking with a non-tool item
+            if (isAttacking && InventoryManager.instance.GetSelectedItem(false)?.type == ItemType.Weapon)
+            {
+                Vector2 lungeDirection = lastDirection.normalized;
+                float lungeDistance = 7.0f; // Adjust the distance as desired
+                rb.MovePosition(rb.position + lungeDirection * lungeDistance * Time.fixedDeltaTime);
+            }
+        }
     }
-    
+
+
+
     public void OnButtonPress()
     {
         Item handle = InventoryManager.instance.GetSelectedItem(false);

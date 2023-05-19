@@ -28,6 +28,8 @@ public class GolemScript : MonoBehaviour, IDamageable
     public float throwCooldown = 2f;
     private float throwTimer = 0f;
 
+
+    public Animator cameraAnimator;
     public float Health
     {
         set
@@ -61,6 +63,13 @@ public class GolemScript : MonoBehaviour, IDamageable
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         npcManager = FindObjectOfType<NPCManager>();
+
+
+        GameObject cameraHolder = GameObject.Find("cameraHolder"); // Assuming the cameraHolder is in the scene
+        if (cameraHolder != null)
+        {
+            cameraAnimator = cameraHolder.GetComponent<Animator>();
+        }
     }
 
     private void Update()
@@ -161,13 +170,23 @@ public class GolemScript : MonoBehaviour, IDamageable
 
             // Trigger animation for the stone dropping
             stone.GetComponent<Animator>().SetTrigger("Drop");
-
+            if (cameraAnimator != null)
+            {
+                cameraAnimator.SetTrigger("Shake");
+            }
             // Destroy the stone after a certain time
             Destroy(stone, 5f);
+
         }
     }
 
-
+    public void walkShake()
+    {
+        if (cameraAnimator != null)
+        {
+            cameraAnimator.SetTrigger("Slight");
+        }
+    }
 
 
     public float coolDown = 0.25f;
@@ -177,6 +196,7 @@ public class GolemScript : MonoBehaviour, IDamageable
     {
         // Set attacking flag and play animation
         isAttacking = true;
+
         animator.SetBool("isAttacking", true);
         Timer = coolDown;
 
@@ -190,8 +210,24 @@ public class GolemScript : MonoBehaviour, IDamageable
 
     public void OnHit(float damage, Vector2 knockback)
     {
-        Health -= damage;
-        rb.AddForce(knockback);
+        Item weapon = InventoryManager.instance.GetSelectedItem(false);
+        if(weapon != null && weapon.type != ItemType.Tool )
+        {
+            float reducedDamage = damage * 0.05f;
+
+            Health -= reducedDamage;
+            rb.AddForce(knockback);
+            Debug.Log("Reduced");
+        }
+        else
+        {
+            float icreaseDamage = damage * 3.5f;
+
+            Health -= icreaseDamage;
+            rb.AddForce(knockback);
+            Debug.Log("Increased");
+        }
+        
 
         healthBar.UpdateHealthBar(_health, maxHealth);
         animator.SetTrigger("Hurt");

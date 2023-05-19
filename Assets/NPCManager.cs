@@ -57,6 +57,7 @@ public class NPCManager : MonoBehaviour
             int enemyIndex = Random.Range(0, enemyList.Count);
             GameObject enemy = Instantiate(enemyList[enemyIndex], worldPosition, Quaternion.identity,Container.transform);
 
+
             // Remove the location from the list of available locations
             availableLocations.RemoveAt(randomIndex);
 
