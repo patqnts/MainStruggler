@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Flame Sword
   m_EditorClassIdentifier: 
   prefab: {fileID: 9186392332181356639, guid: b1d9b8ff163dc9a44849e25c39f84cf1, type: 3}
-  slashTrailPrefab: {fileID: 1271498546720987143, guid: 672d052a4a3d7ce45b2032d7c1e2e9f2,
+  slashTrailPrefab: {fileID: 6737156372409974244, guid: 0e6cd573b5d79b04abc2073341efbe86,
     type: 3}
   tile: {fileID: 0}
   type: 2

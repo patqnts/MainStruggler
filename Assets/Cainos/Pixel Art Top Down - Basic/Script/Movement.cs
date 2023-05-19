@@ -340,7 +340,7 @@ public class Movement : MonoBehaviour, IDamageable
             if (isAttacking && InventoryManager.instance.GetSelectedItem(false)?.type == ItemType.Weapon)
             {
                 Vector2 lungeDirection = lastDirection.normalized;
-                float lungeDistance = 7.0f; // Adjust the distance as desired
+                float lungeDistance = 1.50f; // Adjust the distance as desired
                 rb.MovePosition(rb.position + lungeDirection * lungeDistance * Time.fixedDeltaTime);
             }
         }
