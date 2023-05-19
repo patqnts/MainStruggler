@@ -40,7 +40,7 @@ public class GolemScript : MonoBehaviour, IDamageable
             {
                 moveSpeed = 0;
                 hitCollider.enabled = false;
-                enemyHealthObject.SetActive(false);
+                //enemyHealthObject.SetActive(false);
                 animator.SetTrigger("Death");
                 npcManager.OnEnemyDestroyed();
                 Destroy(gameObject, 1.2f);
@@ -89,7 +89,7 @@ public class GolemScript : MonoBehaviour, IDamageable
         if (detectionZone.detectedObj.Count > 0)
         {
             animator.SetTrigger("Wake");
-            enemyHealthObject.SetActive(true);
+            
             if (animator.GetCurrentAnimatorStateInfo(0).IsName("Spawn") || animator.GetCurrentAnimatorStateInfo(0).IsName("Still"))
             {
                 movement = Vector2.zero;
@@ -135,7 +135,7 @@ public class GolemScript : MonoBehaviour, IDamageable
             isDetecting = false;
             movement = Vector2.zero;
             animator.SetBool("Detect", false);
-            enemyHealthObject.SetActive(false);
+            
         }
 
         Timer -= Time.deltaTime;
@@ -231,10 +231,7 @@ public class GolemScript : MonoBehaviour, IDamageable
 
         healthBar.UpdateHealthBar(_health, maxHealth);
         animator.SetTrigger("Hurt");
-        if (_health <= 0)
-        {
-            enemyHealthObject.SetActive(false);
-        }
+      
     }
 
     public void OnHit(float damage)

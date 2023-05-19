@@ -21,8 +21,8 @@ public class RockScript : MonoBehaviour, IDamageable
             {
                 collider.enabled = false;
                 animator.SetBool("Destroyed", true);
-                Destroy(gameObject, 1f);
-                DropItem();
+                DestroyTree();
+                
             }
         }
         get
@@ -31,6 +31,7 @@ public class RockScript : MonoBehaviour, IDamageable
         }
     }
     public float _health = 500;
+    public float maxHealth = 500;
 
     public void OnHit(float damage, Vector2 knockback)
     {
@@ -49,20 +50,33 @@ public class RockScript : MonoBehaviour, IDamageable
     void Start()
     {
         animator = GetComponent<Animator>();
+        _health = maxHealth;
     }
 
     // Update is called once per frame
-    void Update()
+   
+    private void DestroyTree()
     {
-
+        collider.enabled = false;
+        animator.SetBool("Destroyed", true);
+        DropItem();
+        StartCoroutine(RespawnTree());
     }
 
+    private IEnumerator RespawnTree()
+    {
+        yield return new WaitForSeconds(300f);
+
+        _health = maxHealth;
+        collider.enabled = true;
+        animator.SetBool("Destroyed", false);
+    }
     private void DropItem()
     {
-       
 
-            Instantiate(dropPrefab[Random.Range(0, dropPrefab.Length)], transform.position, Quaternion.identity);
+        Instantiate(dropPrefab[Random.Range(0, dropPrefab.Length)], transform.position, Quaternion.identity);
 
-        
+
     }
+  
 }

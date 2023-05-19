@@ -471,13 +471,14 @@ GameObject:
   m_Component:
   - component: {fileID: 1967497578426269115}
   - component: {fileID: 2177946984845242662}
+  - component: {fileID: 6412440184735086073}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1967497578426269115
 RectTransform:
   m_ObjectHideFlags: 0
@@ -552,6 +553,26 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!95 &6412440184735086073
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5213071154343924755}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d7c88337785b58f4f95615651c743f4a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6005342578448021299
 GameObject:
   m_ObjectHideFlags: 0
@@ -679,6 +700,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SlimeHealthUI: {fileID: 5213071154343924755}
   circleCollider2D: {fileID: 3559864063600491267}
+  detectedObj: []
 --- !u!1 &9011414974162946760
 GameObject:
   m_ObjectHideFlags: 0
@@ -750,7 +772,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0.0004272461, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}

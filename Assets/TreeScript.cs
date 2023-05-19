@@ -21,7 +21,7 @@ public class TreeScript : MonoBehaviour, IDamageable
             {
                 collider.enabled = false;
                 animator.SetBool("Destroyed", true);
-                Destroy(gameObject, 1f);
+                DestroyTree();
                 DropItem();
                 
             }
@@ -32,7 +32,8 @@ public class TreeScript : MonoBehaviour, IDamageable
         }
     }
     public float _health = 500;
-
+    public float maxHealth = 500;
+    
     public void OnHit(float damage, Vector2 knockback)
     {
         
@@ -50,12 +51,25 @@ public class TreeScript : MonoBehaviour, IDamageable
     void Start()
     {
         animator = GetComponent<Animator>();
+        _health = maxHealth;
+
     }
 
-    // Update is called once per frame
-    void Update()
+    private void DestroyTree()
     {
-        
+        collider.enabled = false;
+        animator.SetBool("Destroyed", true);
+       
+        StartCoroutine(RespawnTree());
+    }
+
+    private IEnumerator RespawnTree()
+    {
+        yield return new WaitForSeconds(300f);
+
+        _health = maxHealth;
+        collider.enabled = true;
+        animator.SetBool("Destroyed", false);
     }
     private void DropItem()
     {

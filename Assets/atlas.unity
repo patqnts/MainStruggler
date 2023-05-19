@@ -6474,7 +6474,7 @@ MonoBehaviour:
   - {fileID: 2736138971278135775, guid: 4bcd60e38cbd34b40884ac45ad63363b, type: 3}
   - {fileID: 2736138971278135775, guid: 166d34bb0543e7b46808b192da3b28cc, type: 3}
   - {fileID: 3081754911678330582, guid: a646581b1ff6c0c4c892d34706e82a0a, type: 3}
-  - {fileID: 8576634829336773482, guid: 7ad46620c9307914181a9baa2a2c0280, type: 3}
+  - {fileID: 2177926263589866154, guid: 5514009ea82d05f4cb6952b9034d75af, type: 3}
   seedCode: 0
 --- !u!114 &1967736707
 MonoBehaviour:
@@ -7193,9 +7193,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1957374977941793963, guid: 542bb31e53048a549a87497a9d046a3d,
         type: 3}
+      propertyPath: _health
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1957374977941793963, guid: 542bb31e53048a549a87497a9d046a3d,
+        type: 3}
       propertyPath: joystick
       value: 
       objectReference: {fileID: 1292976054}
+    - target: {fileID: 1957374977941793963, guid: 542bb31e53048a549a87497a9d046a3d,
+        type: 3}
+      propertyPath: maxHealth
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 1957374977941793963, guid: 542bb31e53048a549a87497a9d046a3d,
         type: 3}
       propertyPath: holdButton

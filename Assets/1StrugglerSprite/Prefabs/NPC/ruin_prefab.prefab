@@ -214,6 +214,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerEntered: 0
+  healthIncreaseRate: 1
 --- !u!58 &319112159859132637
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -6428,6 +6429,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bonfire
+      objectReference: {fileID: 0}
+    - target: {fileID: 9186079440119001156, guid: e0d4b053ebd9b1c42bc4dc80eb5cdf59,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9186079440119001156, guid: e0d4b053ebd9b1c42bc4dc80eb5cdf59,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9186079440119001156, guid: e0d4b053ebd9b1c42bc4dc80eb5cdf59,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0d4b053ebd9b1c42bc4dc80eb5cdf59, type: 3}

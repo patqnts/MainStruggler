@@ -133,6 +133,7 @@ MonoBehaviour:
   animator: {fileID: -3793105448501500391}
   collider: {fileID: 490399588900303665}
   _health: 1
+  maxHealth: 1
 --- !u!95 &-3793105448501500391
 Animator:
   serializedVersion: 4

@@ -12,7 +12,11 @@ public class RuinSavePoint : MonoBehaviour
 
     // Boolean flag to indicate if the player has entered the ruin
     public bool playerEntered = false;
+    // The player's health increase rate
+    public float healthIncreaseRate = 1f;
 
+    // Timer for health increase
+    private float healthIncreaseTimer = 0f;
     // Called when the object is first created
     private void Awake()
     {
@@ -26,7 +30,32 @@ public class RuinSavePoint : MonoBehaviour
         // Remove this ruin from the list of ruins
         ruins.Remove(this);
     }
+    private void Update()
+    {
+        if (playerEntered)
+        {
+            // Increase the healthIncreaseTimer
+            healthIncreaseTimer += Time.deltaTime;
 
+            // If enough time has passed, increase the player's health and reset the timer
+            if (healthIncreaseTimer >= 2f)
+            {
+                healthIncreaseTimer = 0f;
+                IncreasePlayerHealth();
+            }
+        }
+    }
+
+    // Increase the player's health by 1
+    private void IncreasePlayerHealth()
+    {
+        Movement playerHealth = FindObjectOfType<Movement>();
+        if (playerHealth != null && playerHealth._health < playerHealth.maxHealth)
+        {
+            playerHealth._health++;
+            Debug.Log("Player Health: " + playerHealth._health);
+        }
+    }
     // Called when a collider enters this trigger
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -62,6 +91,7 @@ public class RuinSavePoint : MonoBehaviour
             playerEntered = false;
         }
     }
+
 
     // Called when the player dies
     public static void PlayerDied()
