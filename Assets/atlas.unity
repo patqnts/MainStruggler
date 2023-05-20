@@ -419,7 +419,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &15555966
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1888,6 +1888,111 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &201291965
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 201291968}
+  - component: {fileID: 201291967}
+  - component: {fileID: 201291966}
+  m_Layer: 0
+  m_Name: Bomber
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!95 &201291966
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 201291965}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6e0e6d21be647d84d8265df404017660, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!212 &201291967
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 201291965}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: -493198432, guid: bd61130f6b22af641a8b9a070615c3d8, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 3, y: 3}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!4 &201291968
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 201291965}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &202560517
 GameObject:
   m_ObjectHideFlags: 0
@@ -3755,7 +3860,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 861957831}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.950001, y: 9.49, z: -10}
+  m_LocalPosition: {x: 82, y: 82, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4525,7 +4630,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1087680325
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6355,6 +6460,7 @@ GameObject:
   - component: {fileID: 1967736704}
   - component: {fileID: 1967736707}
   - component: {fileID: 1967736706}
+  - component: {fileID: 1967736708}
   m_Layer: 0
   m_Name: Cellular Automata
   m_TagString: Untagged
@@ -6391,6 +6497,7 @@ MonoBehaviour:
   tileset:
   - {fileID: 11400000, guid: 620dfa9381e2e6849bedc324f92199bc, type: 2}
   - {fileID: 11400000, guid: 851f473a2d78c3d45b0ff6e0d561f72b, type: 2}
+  - {fileID: 11400000, guid: 17b4351527baabd4a92c14d5924e2b31, type: 2}
   groundTilePositions: []
   player: {fileID: 7691808091801843775}
   camera: {fileID: 519420028}
@@ -6507,6 +6614,32 @@ MonoBehaviour:
   - {fileID: 3650326439081999691, guid: 02ab961b660b5c24fa6ae88864d9ddd1, type: 3}
   - {fileID: 1792641864401048566, guid: 29bcfb062684b9a45b1db70b71a65f22, type: 3}
   maxSpawnCount: 125
+--- !u!114 &1967736708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1967736703}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77dc3446e7e428f4987e945f6cde4468, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mapWidth: 100
+  mapHeight: 100
+  fillPercentage: 45
+  tilemap: {fileID: 1019895072}
+  treeTilemap: {fileID: 194258149}
+  tileset:
+  - {fileID: 11400000, guid: 620dfa9381e2e6849bedc324f92199bc, type: 2}
+  - {fileID: 11400000, guid: 851f473a2d78c3d45b0ff6e0d561f72b, type: 2}
+  - {fileID: 11400000, guid: fedab419fdbdeea488795e51c83727c9, type: 2}
+  treePrefabs:
+  - {fileID: 7641841797069218316, guid: c509704f090c88742842ffa5c04ebf8c, type: 3}
+  - {fileID: 7641841797069218316, guid: c509704f090c88742842ffa5c04ebf8c, type: 3}
+  - {fileID: 3081754911678330582, guid: a646581b1ff6c0c4c892d34706e82a0a, type: 3}
+  - {fileID: 7641841797069218316, guid: 1bb58e63a3dd3b74b8955d13eecd1d6f, type: 3}
 --- !u!1 &2019480824
 GameObject:
   m_ObjectHideFlags: 0
@@ -7211,6 +7344,11 @@ PrefabInstance:
       propertyPath: holdButton
       value: 
       objectReference: {fileID: 558330830}
+    - target: {fileID: 1957374977941793963, guid: 542bb31e53048a549a87497a9d046a3d,
+        type: 3}
+      propertyPath: cameraAnimator
+      value: 
+      objectReference: {fileID: 861957832}
     - target: {fileID: 2453463806826355806, guid: 542bb31e53048a549a87497a9d046a3d,
         type: 3}
       propertyPath: m_Sprite
@@ -7221,6 +7359,11 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2991616963592140970, guid: 542bb31e53048a549a87497a9d046a3d,
+        type: 3}
+      propertyPath: cameraAnimator
+      value: 
+      objectReference: {fileID: 861957832}
     - target: {fileID: 4626737821174681951, guid: 542bb31e53048a549a87497a9d046a3d,
         type: 3}
       propertyPath: m_RootOrder
@@ -7229,12 +7372,12 @@ PrefabInstance:
     - target: {fileID: 4626737821174681951, guid: 542bb31e53048a549a87497a9d046a3d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 14.94
+      value: 82
       objectReference: {fileID: 0}
     - target: {fileID: 4626737821174681951, guid: 542bb31e53048a549a87497a9d046a3d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9.14
+      value: 82
       objectReference: {fileID: 0}
     - target: {fileID: 4626737821174681951, guid: 542bb31e53048a549a87497a9d046a3d,
         type: 3}
@@ -10097,7 +10240,7 @@ PrefabInstance:
         type: 3}
       propertyPath: itemsToPickup.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: ec5bb8d077900264c89a9d880301e741,
+      objectReference: {fileID: 11400000, guid: aecb89e7a3fdbc643b2a89f01a92ed0a,
         type: 2}
     - target: {fileID: 6073206873279286799, guid: ff3895597b4a6c749be60261ed37df0b,
         type: 3}
@@ -10109,13 +10252,13 @@ PrefabInstance:
         type: 3}
       propertyPath: itemsToPickup.Array.data[2]
       value: 
-      objectReference: {fileID: 11400000, guid: aecb89e7a3fdbc643b2a89f01a92ed0a,
+      objectReference: {fileID: 11400000, guid: 05cadff7d250fc342b4d8e1bfe2e985a,
         type: 2}
     - target: {fileID: 6073206873279286799, guid: ff3895597b4a6c749be60261ed37df0b,
         type: 3}
       propertyPath: itemsToPickup.Array.data[3]
       value: 
-      objectReference: {fileID: 11400000, guid: f8040fdbd627f0f488cda72be0a389aa,
+      objectReference: {fileID: 11400000, guid: 7d8d6a5c29b87b146827eb61525215f1,
         type: 2}
     - target: {fileID: 6073206873279286799, guid: ff3895597b4a6c749be60261ed37df0b,
         type: 3}

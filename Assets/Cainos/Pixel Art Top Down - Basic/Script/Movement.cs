@@ -12,8 +12,8 @@ public class Movement : MonoBehaviour, IDamageable
     [SerializeField] private Joystick joystick;
 
     public Transform slashPos;
-    
-   
+
+    public Animator cameraAnimator;
 
     public float dashSpeed;
     public float dashLength = .5f, dashCooldown = 1f;
@@ -92,15 +92,19 @@ public class Movement : MonoBehaviour, IDamageable
        
         item = GetComponent<InventoryManager>();
         uiHealth.UpdateHealth(_health, maxHealth);
-        
+        GameObject cameraHolder = GameObject.Find("cameraHolder");
+        if (cameraHolder != null)
+        {
+            cameraAnimator = cameraHolder.GetComponent<Animator>();
+        }
     }
 
     private void Update()
     {
-        
+
         // Get input for movement
-         movement.x = joystick.Horizontal;
-         movement.y = joystick.Vertical;
+        //  movement.x = joystick.Horizontal;
+        //  movement.y = joystick.Vertical;
         movement.x = Input.GetAxisRaw("Horizontal");
          movement.y = Input.GetAxisRaw("Vertical");
 
@@ -398,8 +402,11 @@ public class Movement : MonoBehaviour, IDamageable
         // Take damage and apply knockback force
         Health -= damage;
         rb.AddForce(knockback);
-        
-       
+        if (cameraAnimator != null)
+        {
+            cameraAnimator.SetTrigger("Slight");
+        }
+
         // Play hurt animation
         animator.SetTrigger("Hurt");
         Debug.Log("Current health: " + _health);
@@ -410,6 +417,10 @@ public class Movement : MonoBehaviour, IDamageable
 
     public void OnHit(float damage)
     {
+        if (cameraAnimator != null)
+        {
+            cameraAnimator.SetTrigger("Slight");
+        }
         animator.SetTrigger("Hurt");
         // Take damage
         Health -= damage;

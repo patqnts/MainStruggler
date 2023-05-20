@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Knight-Sword
   m_EditorClassIdentifier: 
   prefab: {fileID: 1471064017145405185, guid: 56561cbb67721a04584ae9a06bb3b982, type: 3}
+  slashTrailPrefab: {fileID: 6195166278199147791, guid: 9f598a6030df2824d8f103ae0e074e73,
+    type: 3}
   tile: {fileID: 0}
   type: 2
   actionType: 0

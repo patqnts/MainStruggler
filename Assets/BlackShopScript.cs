@@ -44,7 +44,7 @@ public class BlackShopScript : MonoBehaviour
                 coinCost = 0;
                 break;
             case "Wooden Sword":
-                coinCost = 200;
+                coinCost = 5;
                 woodCost = 10;
                 stoneCost = 5;
                 break;
@@ -67,7 +67,7 @@ public class BlackShopScript : MonoBehaviour
                 stoneheartCost = 50;
                 break;
             case "Wood Gathering Tool":
-                coinCost = 100;
+                coinCost = 5;
                 woodCost = 5;
                 break;
             case "Stone Gathering Tool":

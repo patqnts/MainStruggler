@@ -160,6 +160,14 @@ public class Cellular : MonoBehaviour
                     {
                         flowergrasstilemap.SetTile(new Vector3Int(x, y, 0), oldgrass[Random.Range(0, 1)]);
                     }
+                    else
+                    {
+                        // 10% chance to spawn an old grass tile
+                        if (Random.Range(0, 100) < 10)
+                        {
+                            flowergrasstilemap.SetTile(new Vector3Int(x, y, 0), tileset[transition]);
+                        }
+                    }
                 }
 
 

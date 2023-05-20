@@ -9,7 +9,7 @@ public class AttackHitbox : MonoBehaviour
 
     public float damage = 1f;
 
-
+    public Animator cameraAnimator;
 
     public InventoryManager inventoryManager;
     private void Update()
@@ -19,7 +19,11 @@ public class AttackHitbox : MonoBehaviour
     void Start()
     {
         inventoryManager = FindObjectOfType<InventoryManager>();
-
+        GameObject cameraHolder = GameObject.Find("cameraHolder"); // Assuming the cameraHolder is in the scene
+        if (cameraHolder != null)
+        {
+            cameraAnimator = cameraHolder.GetComponent<Animator>();
+        }
         // Get the Collider2D component of the hitbox
         hitCollider = GetComponent<Collider2D>();
     }
@@ -37,6 +41,10 @@ public class AttackHitbox : MonoBehaviour
             Item selectedItem = inventoryManager.GetSelectedItem(false);
             if (collision.gameObject.CompareTag("Enemy"))
             {
+                if (cameraAnimator != null)
+                {
+                    cameraAnimator.SetTrigger("Slight");
+                }
                 if (selectedItem != null && selectedItem.type == ItemType.Weapon)
                 {
                     // WEAPON TO ENEMY
