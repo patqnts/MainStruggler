@@ -17,7 +17,8 @@ public class DetectionZone : MonoBehaviour
     {
         if(collision.gameObject.tag == Target)
         {
-            detectedObj.Add(collision); 
+            detectedObj.Add(collision);
+            Debug.Log("Player detected");
         }
         
     }
@@ -25,5 +26,6 @@ public class DetectionZone : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         detectedObj.Remove(collision);
+        Debug.Log("Player exit");
     }
 }

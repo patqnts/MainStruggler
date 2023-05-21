@@ -157,6 +157,36 @@ PrefabInstance:
       propertyPath: knockbackForce
       value: 2000
       objectReference: {fileID: 0}
+    - target: {fileID: 2581536050314328453, guid: 7ad46620c9307914181a9baa2a2c0280,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2581536050314328453, guid: 7ad46620c9307914181a9baa2a2c0280,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3820884061420869775, guid: 7ad46620c9307914181a9baa2a2c0280,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3820884061420869775, guid: 7ad46620c9307914181a9baa2a2c0280,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6686595316486598523, guid: 7ad46620c9307914181a9baa2a2c0280,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6686595316486598523, guid: 7ad46620c9307914181a9baa2a2c0280,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8576634829336773477, guid: 7ad46620c9307914181a9baa2a2c0280,
         type: 3}
       propertyPath: m_RootOrder

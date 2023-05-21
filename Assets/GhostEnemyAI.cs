@@ -7,7 +7,7 @@ public class GhostEnemyAI : MonoBehaviour, IDamageable
     public Rigidbody2D rb;
     Vector2 originalVelocity;
     public float damage = 1f;
-  
+    [SerializeField] private EnemyHealthBar healthBar;
     public Collider2D hitCollider;
     public Animator animator;
     public GameObject projectilePrefab;
@@ -68,7 +68,10 @@ public class GhostEnemyAI : MonoBehaviour, IDamageable
     public float chargeDashDuration;
     public float chargeDashCooldown;
     private float lastChargeDashTime= 5f;
-
+    private void Awake()
+    {
+        healthBar = GetComponentInChildren<EnemyHealthBar>();
+    }
     public void Start()
     {
         player = FindObjectOfType<Movement>();
@@ -223,26 +226,23 @@ public class GhostEnemyAI : MonoBehaviour, IDamageable
     {
         Health -= damage;
         rb.AddForce(knockback);
-
+        healthBar.UpdateHealthBar(_health, maxHealth);
         Debug.Log(Health);
     }
 
     public void OnHit(float damage)
     {
+        healthBar.UpdateHealthBar(_health, maxHealth);
         Health -= damage;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
+        if (collision.transform == transform)
+        {
+            return; // Ignore collisions with the same game object
+        } 
         IDamageable damageableObject = collision.gameObject.GetComponent<IDamageable>();
 
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            damageableObject.OnHit(damage);
-            // Push the player back
-            Vector2 pushDirection = (collision.transform.position - transform.position).normalized;
-            collision.gameObject.GetComponent<Rigidbody2D>().AddForce(pushDirection * (pushbackForce * 4));
-        }
     }
 }

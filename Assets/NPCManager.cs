@@ -14,6 +14,7 @@ public class NPCManager : MonoBehaviour
     public GameObject Crow;
     public GameObject Dogo;
     public GameObject Golem;
+    public GameObject Bomber;
     public GameObject Container;
     private List<Vector3Int> availableLocations;
     public List<GameObject> enemyList; // list of enemies to spawn
@@ -74,7 +75,21 @@ public class NPCManager : MonoBehaviour
 
 
 
+    public void SpawnBomber()
+    {
 
+        //Bomber 
+        int bomberSpawn = 0;
+        while (bomberSpawn < 1 && cellular.groundTilePositions.Count > 0)
+        {
+            int randomIndex = Random.Range(0, cellular.groundTilePositions.Count);
+            Vector3Int tilePosition = cellular.groundTilePositions[randomIndex];
+            Vector3 worldPosition = cellular.tilemap.CellToWorld(tilePosition) + new Vector3(0.5f, 0.5f, 0f); // add offset to center the ruin on the tile
+            Instantiate(Bomber, worldPosition, Quaternion.identity);
+            cellular.groundTilePositions.RemoveAt(randomIndex);
+            bomberSpawn++;
+        }
+    }
 
     public void SpawnQueen()
     {

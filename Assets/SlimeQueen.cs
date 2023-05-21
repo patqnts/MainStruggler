@@ -187,6 +187,7 @@ public class SlimeQueen : MonoBehaviour, IDamageable
 
     public void OnHit(float damage)
     {
+        healthBar.UpdateHealthBar(_health, maxHealth);
         Health -= damage;
     }
 
