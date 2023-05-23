@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8896da8197cf57e4bb7363cd4afe2a5e
+guid: 8455cf69d13668f4989db530107e4ac3
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -129,169 +129,127 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: burn_0
+      name: light-slash_0
       rect:
         serializedVersion: 2
-        x: 12
+        x: 0
         y: 0
-        width: 15
-        height: 23
-      alignment: 9
-      pivot: {x: 0.5, y: 0.08}
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 52946a874ee21c34e9b5112142aff8dd
-      internalID: 1472422837
+      spriteID: 0e0259e69cd55ce49bcd60e1052f5898
+      internalID: -127508244
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: burn_1
+      name: light-slash_1
       rect:
         serializedVersion: 2
-        x: 44
+        x: 64
         y: 0
-        width: 15
-        height: 24
-      alignment: 9
-      pivot: {x: 0.5, y: 0.08}
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 81314b203248b664396da8be23ba1de7
-      internalID: -2049586038
+      spriteID: 03e447323d568a54d851dfa2bc11eec9
+      internalID: 681577225
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: burn_2
+      name: light-slash_2
       rect:
         serializedVersion: 2
-        x: 70
+        x: 128
         y: 0
-        width: 22
-        height: 27
-      alignment: 9
-      pivot: {x: 0.5, y: 0.08}
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 17d0a80465304434abf98f9f43c8e6a0
-      internalID: -564800802
+      spriteID: 3d4157266ca307e48ae15729da57b5f2
+      internalID: 1334421820
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: burn_3
+      name: light-slash_3
       rect:
         serializedVersion: 2
-        x: 105
+        x: 192
         y: 0
-        width: 16
-        height: 25
-      alignment: 9
-      pivot: {x: 0.5, y: 0.08}
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4fc805abf942bf147a06be1ee2fd0d19
-      internalID: -512715906
+      spriteID: cc57ddd85c4c54f438bde0bd01629a2c
+      internalID: -1889542626
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: burn_4
+      name: light-slash_4
       rect:
         serializedVersion: 2
-        x: 109
-        y: 15
-        width: 4
-        height: 13
-      alignment: 9
-      pivot: {x: 0.5, y: 0.08}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 52402f8d45fbbd443bd028528af5eb8a
-      internalID: -578743140
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: burn_5
-      rect:
-        serializedVersion: 2
-        x: 134
+        x: 256
         y: 0
-        width: 21
-        height: 18
-      alignment: 9
-      pivot: {x: 0.5, y: 0.08}
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6a6a8312eadd74c4f830cd24df8ce303
-      internalID: 1967792766
+      spriteID: b596c68fdc06edd4592d3846ec298d70
+      internalID: -1319266179
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: burn_6
+      name: light-slash_5
       rect:
         serializedVersion: 2
-        x: 9
-        y: 9
-        width: 5
-        height: 5
-      alignment: 9
-      pivot: {x: 0.5, y: 0.08}
+        x: 320
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 64ceea2026feaba4099c927e143136a3
-      internalID: 1690052413
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: burn_7
-      rect:
-        serializedVersion: 2
-        x: 56
-        y: 9
-        width: 4
-        height: 5
-      alignment: 9
-      pivot: {x: 0.5, y: 0.08}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fe09d6c994df91f45970f7bedc2870f3
-      internalID: 1210222662
+      spriteID: 79723b99559539042b0b2ceb6476f1ee
+      internalID: 1764187266
       vertices: []
       indices: 
       edges: []
@@ -307,14 +265,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      burn_0: 1472422837
-      burn_3: -512715906
-      burn_7: 1210222662
-      burn_1: -2049586038
-      burn_2: -564800802
-      burn_5: 1967792766
-      burn_4: -578743140
-      burn_6: 1690052413
+      light-slash_5: 1764187266
+      light-slash_4: -1319266179
+      light-slash_1: 681577225
+      light-slash_3: -1889542626
+      light-slash_0: -127508244
+      light-slash_2: 1334421820
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

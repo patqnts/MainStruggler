@@ -289,4 +289,8 @@ public class BomberScript : MonoBehaviour, IDamageable
         isBurning = false;
     }
 
+    public void OnDark(float time)
+    {
+        throw new System.NotImplementedException();
+    }
 }

@@ -273,4 +273,17 @@ public class GhostEnemyAI : MonoBehaviour, IDamageable
         }
         isBurning = false;
     }
+
+    public void OnDark(float time)
+    {
+        StartCoroutine(Slow(time));
+
+    }
+
+    public IEnumerator Slow(float time)
+    {
+        rb.constraints = RigidbodyConstraints2D.FreezeAll;
+        yield return new WaitForSeconds(time);
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+    }
 }

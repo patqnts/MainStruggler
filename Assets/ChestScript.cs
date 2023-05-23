@@ -11,7 +11,7 @@ public class ChestScript : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-        int randInt = Random.RandomRange(2, 3);
+        int randInt = Random.Range(0, 3);
 
         
     }

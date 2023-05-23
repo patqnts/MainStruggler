@@ -23,10 +23,12 @@ MonoBehaviour:
   element: 1
   range: {x: 5, y: 4}
   weaponDamage: 25
+  lungeDistance: 1
   _stackable: 0
   maxStackCount: 1
   consumable: 0
   holdable: 1
+  struggler: 0
   description: 
   priceAmount: 5000
   materialRequirements: []

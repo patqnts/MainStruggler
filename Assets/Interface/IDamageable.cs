@@ -7,4 +7,6 @@ public interface IDamageable
 
     public void OnBurn(float damage, float time);
 
+    public void OnDark(float time);
+
 }

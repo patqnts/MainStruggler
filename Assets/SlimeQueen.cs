@@ -219,5 +219,17 @@ public class SlimeQueen : MonoBehaviour, IDamageable
             elapsedTime += 1f;
         }
     }
+    public void OnDark(float time)
+    {
+        StartCoroutine(Slow(time));
+
+    }
+
+    public IEnumerator Slow(float time)
+    {
+        rb.constraints = RigidbodyConstraints2D.FreezeAll;
+        yield return new WaitForSeconds(time);
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+    }
 
 }

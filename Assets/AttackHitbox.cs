@@ -66,9 +66,14 @@ public class AttackHitbox : MonoBehaviour
                             effect.transform.position = newPosition;
                             effect.transform.localScale = collision.transform.localScale;
 
-                            if (selectedItem.element == Element.Flame)
+                            if (selectedItem.element == Element.Flame) ///ELEMENT MODIFIER
                             {
                                 damageableObject.OnBurn(10, 4);
+                            }
+                            if(selectedItem.element == Element.Dark)
+                            {
+                                Debug.Log("DARKNESS");
+                                damageableObject.OnDark(1f);
                             }
 
                             Destroy(effect, 4f);

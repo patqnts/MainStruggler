@@ -15,15 +15,18 @@ MonoBehaviour:
   prefab: {fileID: 1471064017145405185, guid: a9946d91dfccb944685c6e4150507dac, type: 3}
   slashTrailPrefab: {fileID: 6261232830326983735, guid: 1dbd67d30c40eaa428a83faace194a9e,
     type: 3}
+  elementEffect: {fileID: 0}
   tile: {fileID: 0}
   type: 2
   actionType: 0
+  element: 3
   range: {x: 5, y: 4}
-  weaponDamage: 180
+  weaponDamage: 25
   _stackable: 0
   maxStackCount: 1
   consumable: 0
   holdable: 1
+  struggler: 0
   description: 'Light sword pero kulay pink eh noh.
 
     Ano magagawa mo ako developer.'

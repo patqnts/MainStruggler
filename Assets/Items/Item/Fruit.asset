@@ -13,15 +13,19 @@ MonoBehaviour:
   m_Name: Fruit
   m_EditorClassIdentifier: 
   prefab: {fileID: 1550321499018942001, guid: ca78e7b2dff31bf4d92f1240cf4ca434, type: 3}
+  slashTrailPrefab: {fileID: 0}
+  elementEffect: {fileID: 0}
   tile: {fileID: 0}
   type: 6
   actionType: 1
+  element: 0
   range: {x: 5, y: 4}
   weaponDamage: 1
   _stackable: 1
   maxStackCount: 99
-  consumable: 0
+  consumable: 1
   holdable: 0
+  struggler: 0
   description: Prutas. Nesfruta buko why not. Coconut
   priceAmount: 342
   materialRequirements:

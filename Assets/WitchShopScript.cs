@@ -36,7 +36,7 @@ public class WitchShopScript : MonoBehaviour
 
         switch (itemToBuy.name)
         {
-            case "BottleFilled":
+            case "Struggler Bottle":
                 coinCost = 0;
                
                 break;

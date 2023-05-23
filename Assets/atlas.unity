@@ -10205,7 +10205,7 @@ PrefabInstance:
         type: 3}
       propertyPath: itemsToPickup.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: 05ad4c8e02bbe5146ba6a1258458e6d9,
+      objectReference: {fileID: 11400000, guid: aecb89e7a3fdbc643b2a89f01a92ed0a,
         type: 2}
     - target: {fileID: 6073206873279286799, guid: ff3895597b4a6c749be60261ed37df0b,
         type: 3}

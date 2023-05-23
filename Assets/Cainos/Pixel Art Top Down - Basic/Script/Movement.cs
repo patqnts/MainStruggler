@@ -6,7 +6,7 @@ public class Movement : MonoBehaviour, IDamageable
 {
     [SerializeField] private float moveSpeed = 3f;
     [SerializeField] private float attackTime = 0.40f;
-    [SerializeField] private float eatTime = 1f;
+    
     [SerializeField] public Rigidbody2D rb;
     [SerializeField] public Animator animator;
     [SerializeField] private Joystick joystick;
@@ -105,8 +105,8 @@ public class Movement : MonoBehaviour, IDamageable
         // Get input for movement
           movement.x = joystick.Horizontal;
           movement.y = joystick.Vertical;
-        movement.x = Input.GetAxisRaw("Horizontal");
-         movement.y = Input.GetAxisRaw("Vertical");
+        // movement.x = Input.GetAxisRaw("Horizontal");
+        // movement.y = Input.GetAxisRaw("Vertical");
 
         // Set animator parameters for movement
         animator.SetFloat("Horizontal", movement.x);
@@ -176,19 +176,23 @@ public class Movement : MonoBehaviour, IDamageable
                 StartCoroutine(Attack());
                 isAttacking = true;
 
-                // Handle consumable logic
                 Item canEat = InventoryManager.instance.GetSelectedItem(item);
-                if (canEat != null && canEat.consumable && _health < maxHealth)
+
+                if (canEat != null && canEat.struggler && InventoryManager.instance.GetSelectedItem(item) != null && _health < maxHealth)
+                {
+                    Debug.Log("StrugglerHeal");
+
+                    uiHealth.StrugglerHeal();
+                    InventoryManager.instance.GetSelectedItem(true);
+                }
+                else if (canEat != null && canEat.consumable && InventoryManager.instance.GetSelectedItem(item) != null && _health < maxHealth)
                 {
                     _health++;
                     InventoryManager.instance.GetSelectedItem(true);
+
+
                 }
-                else if (canEat != null && canEat.name == "Fruit")
-                {
-                    uiHealth.AddHeart();
-                    InventoryManager.instance.GetSelectedItem(true);
-                }
-            }
+             }
 
         }
 
@@ -298,6 +302,8 @@ public class Movement : MonoBehaviour, IDamageable
                
                 // Instantiate the slash prefab
                 GameObject slashObject = Instantiate(slashHolder, slashPosition, slashRotation);
+
+
                 
                 // Adjust the sprite renderer flips based on the movement direction
                 SpriteRenderer slashSpriteRenderer = slashObject.GetComponent<SpriteRenderer>();
@@ -307,7 +313,24 @@ public class Movement : MonoBehaviour, IDamageable
                     slashSpriteRenderer.flipY = flipSpriteY;
                 }
 
-                Destroy(slashObject, 2f);
+
+
+                Rigidbody2D slashRigidbody = slashObject.GetComponent<Rigidbody2D>();
+                if (slashRigidbody != null && slash.element == Element.Light)   //LIGHT ELEMENT EFFECT
+                {
+                    Debug.Log("Light");
+                    // Apply forward movement to the slash prefab
+                    float moveSpeed = 5f; // Adjust the movement speed as needed
+                    Vector2 moveDirection = lastDirection.normalized;
+                    slashRigidbody.velocity = moveDirection * moveSpeed;
+                }
+                if (slash.element == Element.Wind)
+                {
+                    ghost.makeGhost = true;
+                }
+
+
+                Destroy(slashObject, .5f);
             }
             else
             {
@@ -325,8 +348,9 @@ public class Movement : MonoBehaviour, IDamageable
         // Wait for attack time
         yield return new WaitForSeconds(attackTime);
         canTool = true;
-       
+
         // Reset attacking flag and animation
+        ghost.makeGhost = false;
         isAttacking = false;
         animator.SetBool("isAttacking", false);
     }
@@ -344,7 +368,9 @@ public class Movement : MonoBehaviour, IDamageable
             if (isAttacking && InventoryManager.instance.GetSelectedItem(false)?.type == ItemType.Weapon)
             {
                 Vector2 lungeDirection = lastDirection.normalized;
-                float lungeDistance = 1.50f; // Adjust the distance as desired
+               Item weapon = InventoryManager.instance.GetSelectedItem(false);
+
+                float lungeDistance = weapon.lungeDistance; // Adjust the distance as desired
                 rb.MovePosition(rb.position + lungeDirection * lungeDistance * Time.fixedDeltaTime);
             }
         }
@@ -361,19 +387,20 @@ public class Movement : MonoBehaviour, IDamageable
             StartCoroutine(Attack());
 
             Item canEat = InventoryManager.instance.GetSelectedItem(item);
-            if (canEat != null && canEat.consumable && InventoryManager.instance.GetSelectedItem(item) != null && _health < maxHealth)
+
+            if (canEat != null && canEat.struggler && InventoryManager.instance.GetSelectedItem(item) != null && _health < maxHealth)
+            {
+                Debug.Log("StrugglerHeal");
+
+                uiHealth.StrugglerHeal();
+                InventoryManager.instance.GetSelectedItem(true);
+            }
+            else if (canEat != null && canEat.consumable && InventoryManager.instance.GetSelectedItem(item) != null && _health < maxHealth)
             {
                 _health++;
                 InventoryManager.instance.GetSelectedItem(true);
 
 
-
-            }
-            else if (canEat != null && InventoryManager.instance.GetSelectedItem(item) != null && canEat.name == "Fruit") //HEART CONTAINER PLACEHOLDER
-            {
-
-                uiHealth.AddHeart();
-                InventoryManager.instance.GetSelectedItem(true);
 
             }
             else
@@ -444,5 +471,17 @@ public class Movement : MonoBehaviour, IDamageable
 
             elapsedTime += 1f;
         }
+    }
+    public void OnDark(float time)
+    {
+        StartCoroutine(Slow(time));
+
+    }
+
+    public IEnumerator Slow(float time)
+    {
+        rb.constraints = RigidbodyConstraints2D.FreezeAll;
+        yield return new WaitForSeconds(time);
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 }

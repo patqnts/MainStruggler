@@ -18,6 +18,7 @@ public class Item : ScriptableObject
     public Element element;
     public Vector2Int range = new Vector2Int(5, 4);
     public float weaponDamage;
+    public float lungeDistance;
 
     [Header("Only UI")]
     public bool _stackable = true;
@@ -42,6 +43,7 @@ public class Item : ScriptableObject
 
     public bool consumable;
     public bool holdable;
+    public bool struggler;
 
     [TextAreaAttribute(15, 20)]
     public string description;

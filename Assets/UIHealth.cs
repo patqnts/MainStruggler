@@ -50,6 +50,12 @@ public class UIHealth : MonoBehaviour
         SetMaxHearts(player.maxHealth);
 
     }
+    public void StrugglerHeal()
+    {
+        Debug.Log("StrugglerHeal");
+        player._health = player.maxHealth;
+        SetMaxHearts(player.maxHealth);
+    }
     public void SetMaxHearts(float maxHealth)
     {
         maxHearts = Mathf.CeilToInt(maxHealth / 1f); // assuming each heart represents 2 health points

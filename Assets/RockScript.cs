@@ -98,4 +98,10 @@ public class RockScript : MonoBehaviour, IDamageable
         }
     }
 
+   
+
+    public void OnDark(float time)
+    {
+        throw new System.NotImplementedException();
+    }
 }

@@ -27,7 +27,7 @@ public class Plant : MonoBehaviour, IDamageable
             {
                 //rb.constraints = RigidbodyConstraints2D.FreezeAll;
                 moveSpeed = 0;
-                hasExploded = true;
+                
                 hitCollider.enabled = false;
                 animator.SetTrigger("Explode");
                 timer = 3f;
@@ -130,7 +130,7 @@ public class Plant : MonoBehaviour, IDamageable
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            if (!isDetecting)
+            if (!isDetecting && !hasExploded)
             {
                 Vector2 direction = (collision.transform.position - transform.position).normalized;
                 rb.velocity = direction * moveSpeed;
@@ -182,6 +182,18 @@ public class Plant : MonoBehaviour, IDamageable
             elapsedTime += 1f;
         }
         isBurning = false;
+    }
+    public void OnDark(float time)
+    {
+        StartCoroutine(Slow(time));
+
+    }
+
+    public IEnumerator Slow(float time)
+    {
+        rb.constraints = RigidbodyConstraints2D.FreezeAll;
+        yield return new WaitForSeconds(time);
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 
 

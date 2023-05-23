@@ -22,7 +22,7 @@ public class TreeScript : MonoBehaviour, IDamageable
                 collider.enabled = false;
                 animator.SetBool("Destroyed", true);
                 DestroyTree();
-                DropItem();
+               
                 
             }
         }
@@ -59,7 +59,7 @@ public class TreeScript : MonoBehaviour, IDamageable
     {
         collider.enabled = false;
         animator.SetBool("Destroyed", true);
-       
+        DropItem();
         StartCoroutine(RespawnTree());
     }
 
@@ -94,16 +94,26 @@ public class TreeScript : MonoBehaviour, IDamageable
     {
         isBurning = true;
         float elapsedTime = 0f;
-
+        float multiplier = 90f;
+         
         while (elapsedTime < time)
         {
-            yield return new WaitForSeconds(1f);
 
-            OnHit(damage);
-            Debug.Log("BURRRRN");
+            float increasedDamage = damage * multiplier;
+            
+            yield return new WaitForSeconds(1f);
+            OnHit(increasedDamage);
+            Debug.Log(increasedDamage);
 
             elapsedTime += 1f;
+            multiplier++;
         }
         isBurning = false;
+    }
+
+
+    public void OnDark(float time)
+    {
+        throw new System.NotImplementedException();
     }
 }
