@@ -3110,7 +3110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.4009434, g: 1, b: 0.98255175, a: 0.31764707}
+  m_Color: {r: 0.26415092, g: 0.26415092, b: 0.26415092, a: 0.31764707}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -5273,12 +5273,12 @@ PrefabInstance:
     - target: {fileID: 3881087803549984436, guid: ec536a7718376554185e4a856d5ae230,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.35
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3881087803549984436, guid: ec536a7718376554185e4a856d5ae230,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.35
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3881087803549984436, guid: ec536a7718376554185e4a856d5ae230,
         type: 3}
@@ -5323,12 +5323,12 @@ PrefabInstance:
     - target: {fileID: 3881087803549984436, guid: ec536a7718376554185e4a856d5ae230,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: -29
       objectReference: {fileID: 0}
     - target: {fileID: 3881087803549984436, guid: ec536a7718376554185e4a856d5ae230,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -38
       objectReference: {fileID: 0}
     - target: {fileID: 3881087803549984436, guid: ec536a7718376554185e4a856d5ae230,
         type: 3}
@@ -6537,10 +6537,21 @@ MonoBehaviour:
   Bomber: {fileID: 1945518369354374529, guid: fbf054325a72a4a448d4aac83bd85a2b, type: 3}
   Container: {fileID: 1830182417}
   enemyList:
-  - {fileID: 7627692086151174695, guid: 7c1097dd31e992a40a0043ac80509bf1, type: 3}
-  - {fileID: 7884328161490689696, guid: 4f62cacb9942a174b93151ee96831ee3, type: 3}
+  - {fileID: 3650326439081999691, guid: 81ceead0bb4cc314a85e2b82fa2dfd6e, type: 3}
+  - {fileID: 3650326439081999691, guid: 46054f695ef00544e84d591cade939a7, type: 3}
+  - {fileID: 3650326439081999691, guid: 05c21e64f9079224ca1497744a5b4306, type: 3}
   - {fileID: 3650326439081999691, guid: 02ab961b660b5c24fa6ae88864d9ddd1, type: 3}
-  - {fileID: 1792641864401048566, guid: 29bcfb062684b9a45b1db70b71a65f22, type: 3}
+  - {fileID: 3650326439081999691, guid: 8bf264cb1fd298b49bc45d477cd9a985, type: 3}
+  - {fileID: 7627692086151174695, guid: fc7808a5e48a2734cbdc5a1d73b9decd, type: 3}
+  - {fileID: 7627692086151174695, guid: 3ac4b9968f108b249a4a46dbb904e240, type: 3}
+  - {fileID: 7627692086151174695, guid: 2850c0ceb3e9be841ba9dbb30261327d, type: 3}
+  - {fileID: 7627692086151174695, guid: 7c1097dd31e992a40a0043ac80509bf1, type: 3}
+  - {fileID: 7627692086151174695, guid: 06b89e24f3bf0d340a1b90682837aca6, type: 3}
+  - {fileID: 7884328161490689696, guid: 85fa985ebe6288e4a84dc3faec5a00b8, type: 3}
+  - {fileID: 7884328161490689696, guid: 75f15c49120ba72469cc27f3af567484, type: 3}
+  - {fileID: 7884328161490689696, guid: 3d9e20681391cd947abd3db99af5933c, type: 3}
+  - {fileID: 7884328161490689696, guid: 4f62cacb9942a174b93151ee96831ee3, type: 3}
+  - {fileID: 7884328161490689696, guid: b3bfb62a32f29cd4392252959d85dd3b, type: 3}
   maxSpawnCount: 125
 --- !u!114 &1967736708
 MonoBehaviour:

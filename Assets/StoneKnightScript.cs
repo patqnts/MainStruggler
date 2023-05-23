@@ -72,6 +72,7 @@ public class StoneKnightScript : MonoBehaviour, IDamageable
             enemyHealthObject.SetActive(true);
             if (animator.GetCurrentAnimatorStateInfo(0).IsName("Spawn") || animator.GetCurrentAnimatorStateInfo(0).IsName("Still"))
             {
+                Debug.Log("IDLE STONE");
                 movement = Vector2.zero;
             }
             else
@@ -101,7 +102,7 @@ public class StoneKnightScript : MonoBehaviour, IDamageable
         else
         {
             isDetecting = false;
-            movement = Vector2.zero;
+            
             animator.SetBool("Detect", false);
             enemyHealthObject.SetActive(false);
         }
@@ -149,8 +150,43 @@ public class StoneKnightScript : MonoBehaviour, IDamageable
 
     public void OnHit(float damage)
     {
-        healthBar.UpdateHealthBar(_health, maxHealth);
         Health -= damage;
+
+
+        healthBar.UpdateHealthBar(_health, maxHealth);
+        animator.SetTrigger("Hurt");
+        if (_health <= 0)
+        {
+            enemyHealthObject.SetActive(false);
+        }
     }
-    
+    private Coroutine burnCoroutine;
+
+    public void OnBurn(float damage, float time)
+    {
+        if (burnCoroutine == null)
+        {
+            burnCoroutine = StartCoroutine(ApplyBurnDamage(damage, time));
+            Debug.Log("BURRRRN");
+        }
+    }
+
+    private IEnumerator ApplyBurnDamage(float damage, float time)
+    {
+        float elapsedTime = 0f;
+
+        while (elapsedTime < time)
+        {
+            yield return new WaitForSeconds(1f);
+
+            OnHit(damage);
+            Debug.Log("BURRRRN");
+
+            elapsedTime += 1f;
+        }
+
+        burnCoroutine = null;
+    }
+
+
 }

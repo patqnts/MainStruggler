@@ -15,11 +15,14 @@ MonoBehaviour:
   prefab: {fileID: 9186392332181356639, guid: b1d9b8ff163dc9a44849e25c39f84cf1, type: 3}
   slashTrailPrefab: {fileID: 6737156372409974244, guid: 0e6cd573b5d79b04abc2073341efbe86,
     type: 3}
+  elementEffect: {fileID: 4704997326843700060, guid: c9219efeb758c164b95e0cba3c19c0ab,
+    type: 3}
   tile: {fileID: 0}
   type: 2
   actionType: 0
+  element: 1
   range: {x: 5, y: 4}
-  weaponDamage: 160
+  weaponDamage: 25
   _stackable: 0
   maxStackCount: 1
   consumable: 0

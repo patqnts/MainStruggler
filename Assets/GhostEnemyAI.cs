@@ -245,4 +245,32 @@ public class GhostEnemyAI : MonoBehaviour, IDamageable
         IDamageable damageableObject = collision.gameObject.GetComponent<IDamageable>();
 
     }
+
+    private bool isBurning = false;
+    public void OnBurn(float damage, float time)
+    {
+        if (!isBurning)
+        {
+            StartCoroutine(ApplyBurnDamage(damage, time));
+        }
+
+        Debug.Log("BURRRRN");
+    }
+
+    private IEnumerator ApplyBurnDamage(float damage, float time)
+    {
+        isBurning = true;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < time)
+        {
+            yield return new WaitForSeconds(1f);
+
+            OnHit(damage);
+            Debug.Log("BURRRRN");
+
+            elapsedTime += 1f;
+        }
+        isBurning = false;
+    }
 }

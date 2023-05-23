@@ -78,5 +78,24 @@ public class RockScript : MonoBehaviour, IDamageable
 
 
     }
-  
+
+    public void OnBurn(float damage, float time)
+    {
+        StartCoroutine(ApplyBurnDamage(damage, time));
+    }
+
+    private IEnumerator ApplyBurnDamage(float damage, float time)
+    {
+        float elapsedTime = 0f;
+
+        while (elapsedTime < time)
+        {
+            yield return new WaitForSeconds(1f);
+
+            OnHit(damage);
+
+            elapsedTime += 1f;
+        }
+    }
+
 }

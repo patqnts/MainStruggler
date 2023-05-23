@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5459350709481073603}
   m_Layer: 0
-  m_Name: slime-holder
-  m_TagString: Untagged
+  m_Name: lightslime-holder
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -227,6 +227,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Slime Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 7741348560205771440, guid: 4565dfb6d1e604e43b729933b83ea473,
+        type: 3}
+      propertyPath: m_SpriteLibraryAsset
+      value: 
+      objectReference: {fileID: 7108339969198208228, guid: 7a462ca0b0b2de743a82761e92207564,
+        type: 3}
+    - target: {fileID: 7763015380849478520, guid: 4565dfb6d1e604e43b729933b83ea473,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -363215461, guid: dc48f6f4ca748f548b37d1e7e063af26,
+        type: 3}
     - target: {fileID: 8676599529843382892, guid: 4565dfb6d1e604e43b729933b83ea473,
         type: 3}
       propertyPath: m_AnchorMax.x

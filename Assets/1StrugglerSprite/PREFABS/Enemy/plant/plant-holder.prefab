@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 2894763657756847822}
   m_Layer: 0
   m_Name: plant-holder
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -156,6 +156,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: plant_
+      objectReference: {fileID: 0}
+    - target: {fileID: 7401251658839098977, guid: e5bddcd5512b8dd4887e4689be374b5e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7401251658839098988, guid: e5bddcd5512b8dd4887e4689be374b5e,
         type: 3}

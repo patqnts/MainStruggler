@@ -105,8 +105,8 @@ public class Movement : MonoBehaviour, IDamageable
         // Get input for movement
           movement.x = joystick.Horizontal;
           movement.y = joystick.Vertical;
-        //movement.x = Input.GetAxisRaw("Horizontal");
-        // movement.y = Input.GetAxisRaw("Vertical");
+        movement.x = Input.GetAxisRaw("Horizontal");
+         movement.y = Input.GetAxisRaw("Vertical");
 
         // Set animator parameters for movement
         animator.SetFloat("Horizontal", movement.x);
@@ -236,7 +236,7 @@ public class Movement : MonoBehaviour, IDamageable
                         flipSpriteX = true;
                         slashRotation = Quaternion.Euler(0f, 0f, 50f);
                         //slashRotation = Quaternion.Euler(0f, 0f, -50f); flipx lower right
-                        Debug.Log("up right");
+                      
                     }
                     else if (lastDirection.y < 0)
                     {
@@ -244,13 +244,13 @@ public class Movement : MonoBehaviour, IDamageable
                         slashRotation = Quaternion.Euler(0f, 0f, -50f);
                         flipSpriteX = true;
                         slashPosition.x += 0.3f;
-                        Debug.Log("down right");
+                       
                     }
                     else
                     {
                         slashPosition.x += 0.5f;
                         flipSpriteX = true;
-                        Debug.Log(" right");
+                       
                     }
                     
                 }
@@ -262,7 +262,7 @@ public class Movement : MonoBehaviour, IDamageable
                     {
                         slashPosition.x -= 0.5f;
                         slashRotation = Quaternion.Euler(0f, 0f, -50f);
-                        Debug.Log("up left");
+
                     }
                     else if(lastDirection.y < 0)
                     {
@@ -270,12 +270,12 @@ public class Movement : MonoBehaviour, IDamageable
                         slashPosition.x -= 0.3f;
                         slashRotation = Quaternion.Euler(0f, 0f, -160f);
                         flipSpriteX = true;
-                        Debug.Log("down left");
+
                     }
                     else
                     {
                         slashPosition.x -= 0.5f;
-                        Debug.Log(" left");
+                       
                     }
 
                     
@@ -283,7 +283,7 @@ public class Movement : MonoBehaviour, IDamageable
                 }
                 else if (movement.y > 0 || lastDirection.y > 0) // Moving up
                 {
-                    Debug.Log("up ");
+
                     slashRotation = Quaternion.Euler(0f, 0f, -110f);
                     flipSpriteY = true;
                 }
@@ -292,13 +292,13 @@ public class Movement : MonoBehaviour, IDamageable
                     slashPosition.y -= .6f;
                     slashRotation = Quaternion.Euler(0f, 0f, -110f);
                     flipSpriteX = true;
-                    Debug.Log("down");
+                    
                 }
                 
                
                 // Instantiate the slash prefab
                 GameObject slashObject = Instantiate(slashHolder, slashPosition, slashRotation);
-                Debug.Log("movement: " + lastDirection.x + "movement: " + lastDirection.y + "Rotation: " + slashRotation.z);
+                
                 // Adjust the sprite renderer flips based on the movement direction
                 SpriteRenderer slashSpriteRenderer = slashObject.GetComponent<SpriteRenderer>();
                 if (slashSpriteRenderer != null)
@@ -425,5 +425,24 @@ public class Movement : MonoBehaviour, IDamageable
         // Take damage
         Health -= damage;
         uiHealth.UpdateHealth(_health, maxHealth);
+    }
+
+    public void OnBurn(float damage, float time)
+    {
+        StartCoroutine(ApplyBurnDamage(damage, time));
+    }
+
+    private IEnumerator ApplyBurnDamage(float damage, float time)
+    {
+        float elapsedTime = 0f;
+
+        while (elapsedTime < time)
+        {
+            yield return new WaitForSeconds(1f);
+
+            OnHit(damage);
+
+            elapsedTime += 1f;
+        }
     }
 }

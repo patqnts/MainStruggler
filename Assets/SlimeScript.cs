@@ -134,7 +134,53 @@ public class SlimeScript : MonoBehaviour, IDamageable
     public void OnHit(float damage)
     {
         Health -= damage;
+        enemyHealthBar.UpdateHealthBar(_health, maxHealth);
 
+        // Create a new GameObject with the floating damage value
+        var floatingDamageGO = Instantiate(floatingDamage, transform.position, Quaternion.identity);
+        floatingDamageGO.GetComponent<TextMesh>().text = damage.ToString();
+
+        // Destroy the floating damage after a set amount of time
+        Destroy(floatingDamageGO, 1f);
+
+        
+        animator.SetTrigger("Hurt");
+        Debug.Log(Health);
+        if (_health <= 0)
+        {
+            enemyHealthObject.SetActive(false);
+            Destroy(floatingDamageGO, 1f);
+        }
+
+    }
+
+    private bool isBurning = false;
+    public void OnBurn(float damage, float time)
+    {
+        if (!isBurning)
+        {
+            StartCoroutine(ApplyBurnDamage(damage, time));
+        }
+
+        Debug.Log("BURRRRN");
+    }
+
+    private IEnumerator ApplyBurnDamage(float damage, float time)
+    {
+
+        float elapsedTime = 0f;
+
+        while (elapsedTime < time)
+        {
+            isBurning = true;
+            yield return new WaitForSeconds(1f);
+
+            OnHit(damage);
+            Debug.Log(isBurning);
+
+            elapsedTime += 1f;
+        }
+        isBurning = false;
     }
     private void OnCollisionEnter2D(Collision2D collision)
     { 
@@ -160,6 +206,6 @@ public class SlimeScript : MonoBehaviour, IDamageable
                  
         }
     }
-    
 
+   
 }

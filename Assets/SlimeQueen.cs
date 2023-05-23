@@ -201,5 +201,23 @@ public class SlimeQueen : MonoBehaviour, IDamageable
             collision.gameObject.GetComponent<Rigidbody2D>().AddForce(pushDirection * (pushbackForce*4));
         }
     }
+    public void OnBurn(float damage, float time)
+    {
+        StartCoroutine(ApplyBurnDamage(damage, time));
+    }
+
+    private IEnumerator ApplyBurnDamage(float damage, float time)
+    {
+        float elapsedTime = 0f;
+
+        while (elapsedTime < time)
+        {
+            yield return new WaitForSeconds(1f);
+
+            OnHit(damage);
+
+            elapsedTime += 1f;
+        }
+    }
 
 }

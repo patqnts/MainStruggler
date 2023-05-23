@@ -51,7 +51,7 @@ GameObject:
   - component: {fileID: 336463137349850326}
   - component: {fileID: -2720673834522353090}
   - component: {fileID: 820322812841753753}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Golem
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -1203,7 +1203,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.28537735, g: 0.5, b: 0.3256191, a: 1}
+  m_Color: {r: 0.3773585, g: 0.3773585, b: 0.3773585, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

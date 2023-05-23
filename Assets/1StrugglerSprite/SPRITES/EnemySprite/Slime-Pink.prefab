@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: -3091652599486298254}
   - component: {fileID: -3360342340869045018}
   - component: {fileID: 8556581981458530054}
+  - component: {fileID: 2902552769633183877}
+  - component: {fileID: 7315023780962705679}
   m_Layer: 0
   m_Name: Slime-Pink
   m_TagString: Enemy
@@ -78,7 +80,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: -272798361, guid: 25711e426ccb76f4e8b9738ec5ca90e2, type: 3}
+  m_Sprite: {fileID: -1859221295, guid: 25711e426ccb76f4e8b9738ec5ca90e2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -107,10 +109,18 @@ MonoBehaviour:
   knockbackForce: 500
   animator: {fileID: 8556581981458530054}
   isFacingRight: 1
+  alarm: {fileID: 0}
   moveSpeed: 30
-  dropPrefab: {fileID: 593067995031978350, guid: 05d3517b392834643848e1e375a2306e,
-    type: 3}
+  attackRange: 0.5
+  dropPrefab:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  enemyHealthBar: {fileID: 0}
+  enemyHealthObject: {fileID: 0}
+  floatingDamage: {fileID: 0}
   _health: 10
+  maxHealth: 10
 --- !u!61 &-3091652599486298254
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -178,6 +188,36 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2902552769633183877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1363388602532327987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c29cff538c195c249b69c6f2236de67b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Library: []
+  m_SpriteLibraryAsset: {fileID: 7108339969198208228, guid: 8e9e21f52cf60e64f9046b6f80961dd5,
+    type: 3}
+--- !u!114 &7315023780962705679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1363388602532327987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed8b1ae4e4e52b34ea557c1c11e076fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_CategoryHash: 0
+  m_labelHash: 0
+  m_SpriteKey: 1.2362407e-29
 --- !u!1 &6883036874599419818
 GameObject:
   m_ObjectHideFlags: 0

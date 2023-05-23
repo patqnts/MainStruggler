@@ -863,6 +863,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 593067995031978350, guid: 05d3517b392834643848e1e375a2306e,
         type: 3}
+    - target: {fileID: 7315023780962705679, guid: f16c1066f3300ee4b90ab75a2d566255,
+        type: 3}
+      propertyPath: m_SpriteKey
+      value: 4.4884686e-12
+      objectReference: {fileID: 0}
     - target: {fileID: 7328376061788675789, guid: f16c1066f3300ee4b90ab75a2d566255,
         type: 3}
       propertyPath: m_RootOrder

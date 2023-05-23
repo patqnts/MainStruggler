@@ -9,11 +9,13 @@ public class Item : ScriptableObject
 {
     public GameObject prefab; // Add the prefab property to the Item class
     public GameObject slashTrailPrefab;
+    public GameObject elementEffect;
 
     [Header("Only gameplay")]
     public TileBase tile;
     public ItemType type;
     public ActionType actionType;
+    public Element element;
     public Vector2Int range = new Vector2Int(5, 4);
     public float weaponDamage;
 
@@ -85,5 +87,5 @@ public enum Element
     Dark,
     Light,
     Wind,
-    Water
+    
 }

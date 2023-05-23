@@ -48,6 +48,32 @@ public class AttackHitbox : MonoBehaviour
                 if (selectedItem != null && selectedItem.type == ItemType.Weapon)
                 {
                     // WEAPON TO ENEMY
+                    GameObject elementEffect = selectedItem.elementEffect;
+                    if (elementEffect != null)
+                    {
+                        // Check if there is already an effect attached to the enemy
+                        ElementEffect existingEffect = collision.gameObject.GetComponentInChildren<ElementEffect>();
+
+                        if (existingEffect == null)
+                        {
+                            // No existing effect, instantiate a new one
+                            GameObject effect = Instantiate(elementEffect, collision.transform);
+
+                            // Set the position and scale of the effect
+                            float yOffset = 0.3f; // Modify this value as needed
+                            Vector3 newPosition = collision.transform.position;
+                            newPosition.y += yOffset;
+                            effect.transform.position = newPosition;
+                            effect.transform.localScale = collision.transform.localScale;
+
+                            if (selectedItem.element == Element.Flame)
+                            {
+                                damageableObject.OnBurn(10, 4);
+                            }
+
+                            Destroy(effect, 4f);
+                        }
+                    }
                     damage = selectedItem.weaponDamage;
                 }
                 else if (selectedItem != null && selectedItem.type == ItemType.Tool)
@@ -61,7 +87,7 @@ public class AttackHitbox : MonoBehaviour
                     damage = 1f;
                 }
             }
-            else if (collision.gameObject.CompareTag("Tree") || collision.gameObject.CompareTag("Rock"))
+            else if (collision.gameObject.CompareTag("Tree"))
             {
                 if (selectedItem != null && selectedItem.type == ItemType.Tool)
                 {
@@ -72,12 +98,51 @@ public class AttackHitbox : MonoBehaviour
                 {
                     // WEAPON TO TREES AND ROCK
                     damage = selectedItem.weaponDamage * .05f;
+                    GameObject elementEffect = selectedItem.elementEffect;
+                    if (elementEffect != null)
+                    {
+                        // Check if there is already an effect attached to the enemy
+                        ElementEffect existingEffect = collision.gameObject.GetComponentInChildren<ElementEffect>();
+
+                        if (existingEffect == null)
+                        {
+                            // No existing effect, instantiate a new one
+                            GameObject effect = Instantiate(elementEffect, collision.transform);
+
+                            // Set the position and scale of the effect
+                            float yOffset = 0.3f; // Modify this value as needed
+                            Vector3 newPosition = collision.transform.position;
+                            newPosition.y += yOffset;
+                            effect.transform.position = newPosition;
+                            effect.transform.localScale = collision.transform.localScale;
+
+                            if (selectedItem.element == Element.Flame)
+                            {
+                                damageableObject.OnBurn(10, 4);
+                            }
+
+                            Destroy(effect, 4f);
+                        }
+                    }
                 }
                 else
                 {
                     // Hand only
                     damage = 1f;
                 } 
+            }
+            else if (collision.gameObject.CompareTag("Rock"))
+            {
+                if (selectedItem != null && selectedItem.type == ItemType.Tool)
+                {
+                    // TOOL TO TREES AND ROCK
+                    damage = selectedItem.weaponDamage;
+                }
+                else
+                {
+                    // Hand only
+                    damage = 1f;
+                }
             }
 
 

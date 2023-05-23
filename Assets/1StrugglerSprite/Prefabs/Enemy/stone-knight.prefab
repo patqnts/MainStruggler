@@ -695,6 +695,8 @@ GameObject:
   - component: {fileID: 8576634829336773472}
   - component: {fileID: 8576634829336773479}
   - component: {fileID: 8576634829336773478}
+  - component: {fileID: 907414101232833131}
+  - component: {fileID: 7918169010376993771}
   m_Layer: 10
   m_Name: stone-knight
   m_TagString: Enemy
@@ -762,7 +764,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 1405567373, guid: 3cfaddf75a6e6cc4c9a5bbba51227b8b, type: 3}
+  m_Sprite: {fileID: 972211417, guid: 3cfaddf75a6e6cc4c9a5bbba51227b8b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -864,6 +866,36 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &907414101232833131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8576634829336773482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c29cff538c195c249b69c6f2236de67b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Library: []
+  m_SpriteLibraryAsset: {fileID: 7108339969198208228, guid: 99f09371e7e1e174ebc1f4b073e8ec9c,
+    type: 3}
+--- !u!114 &7918169010376993771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8576634829336773482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed8b1ae4e4e52b34ea557c1c11e076fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_CategoryHash: 0
+  m_labelHash: 0
+  m_SpriteKey: 8.0986556e-26
 --- !u!1 &8576634829556078622
 GameObject:
   m_ObjectHideFlags: 0

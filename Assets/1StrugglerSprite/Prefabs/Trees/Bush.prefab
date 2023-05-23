@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -4452850678887081640}
   m_Layer: 10
   m_Name: Bush
-  m_TagString: Rock
+  m_TagString: Tree
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
