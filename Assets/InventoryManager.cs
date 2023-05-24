@@ -236,6 +236,7 @@ public class InventoryManager : MonoBehaviour
                 {
                     itemInSlot.RefreshCount();
                 }
+                weaponHolder.GetComponent<Animator>().enabled = false;
                 weaponHolder.GetComponent<SpriteRenderer>().sprite = null;
             }
             return item;

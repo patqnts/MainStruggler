@@ -10,7 +10,7 @@ public class UIHealth : MonoBehaviour
     private Image[] hearts;
     public Movement player;
 
-   
+
 
     void Start()
     {
@@ -29,7 +29,7 @@ public class UIHealth : MonoBehaviour
     {
         float fillAmount = Mathf.Clamp01(currentHealth / maxHealth);
         int filledHearts = Mathf.CeilToInt(fillAmount * maxHearts);
-        
+
 
         for (int i = 0; i < hearts.Length; i++)
         {
@@ -59,7 +59,7 @@ public class UIHealth : MonoBehaviour
     public void SetMaxHearts(float maxHealth)
     {
         maxHearts = Mathf.CeilToInt(maxHealth / 1f); // assuming each heart represents 2 health points
-                                                            // delete existing heart images if the number of hearts is less than maxHearts
+                                                     // delete existing heart images if the number of hearts is less than maxHearts
         while (hearts.Length < maxHearts)
         {
             Instantiate(emptyHeartPrefab, heartsContainer);

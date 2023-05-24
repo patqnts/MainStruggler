@@ -106,8 +106,8 @@ public class Movement : MonoBehaviour, IDamageable
         // Get input for movement
           movement.x = joystick.Horizontal;
           movement.y = joystick.Vertical;
-          movement.x = Input.GetAxisRaw("Horizontal");
-          movement.y = Input.GetAxisRaw("Vertical");
+        // movement.x = Input.GetAxisRaw("Horizontal");
+        // movement.y = Input.GetAxisRaw("Vertical");
 
         // Set animator parameters for movement
         animator.SetFloat("Horizontal", movement.x);
@@ -174,6 +174,7 @@ public class Movement : MonoBehaviour, IDamageable
             if (Input.GetKeyDown(KeyCode.Space) && handle != null && handle.type != ItemType.Tool && !isAttacking ||
                 Input.GetKeyDown(KeyCode.Space) && handle == null && !isAttacking)
             {
+                
                 StartCoroutine(Attack());
                 isAttacking = true;
 
@@ -385,6 +386,7 @@ public class Movement : MonoBehaviour, IDamageable
 
     public void OnButtonPress()
     {
+        uiHealth.AddHeart();
         Item handle = InventoryManager.instance.GetSelectedItem(false);
         if (!isAttacking && handle != null && handle.type != ItemType.Tool ||
            handle == null && !isAttacking)

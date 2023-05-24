@@ -4,13 +4,18 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class InventorySlot : MonoBehaviour, IDropHandler
+public class InventorySlot : MonoBehaviour, IDropHandler, IPointerDownHandler, IPointerUpHandler
 {
     public Image image;
     public Color selectedColor, notSelectedColor;
     public int slot;
-    
 
+    public Image itemImage;
+    public Text itemNameText;
+    public Text itemDescriptionText;
+    public Text itemDurabilityText;
+    public GameObject itemInfoWindow;
+    private InventoryItem currentItem;
 
     private void Awake()
     {
@@ -19,12 +24,12 @@ public class InventorySlot : MonoBehaviour, IDropHandler
     public void Select()
     {
         image.color = selectedColor;
-        
+       
     }
     public void Deselect()
     {
         image.color = notSelectedColor;
-       
+        
     }
     public void OnDrop(PointerEventData eventData)
     {
@@ -307,7 +312,10 @@ public class InventorySlot : MonoBehaviour, IDropHandler
         if (transform.childCount == 0) return;
         InventoryManager.instance.ChangeSelectedSlot(slot);
         Debug.Log(slot);
+        
+        
         float currentTime = Time.time;
+
         if (currentTime - lastClickTime < 0.25f && clickCount >= 2)
         {
             // Show the confirmation box
@@ -325,5 +333,29 @@ public class InventorySlot : MonoBehaviour, IDropHandler
             lastClickTime = currentTime;
         }
     }
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        InventoryItem itemInSlot = GetComponentInChildren<InventoryItem>();
+        if (itemInSlot != null)
+        {
+            // Access the item in the inventory slot
+            Item selected = itemInSlot.item;
 
+            // Update the UI elements with item information
+            itemImage.sprite = selected.image;
+            itemNameText.text = selected.name;
+            itemDescriptionText.text = selected.description;
+            itemDurabilityText.text = "Durability: " + itemInSlot.durability.ToString();
+
+            // Show the item info window
+            itemInfoWindow.SetActive(true);
+        }
+        Debug.Log("Show details");
+    }
+
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        // Hide the item information when the button is deselected
+        itemInfoWindow.SetActive(false);
+    }
 }
