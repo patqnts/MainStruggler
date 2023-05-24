@@ -20,6 +20,10 @@ public class Item : ScriptableObject
     public float weaponDamage;
     public float lungeDistance;
 
+    public bool hasDurability; // Flag to indicate if the weapon has durability
+    public int maxDurability; // Maximum durability value
+
+
     [Header("Only UI")]
     public bool _stackable = true;
     public bool stackable
@@ -52,8 +56,8 @@ public class Item : ScriptableObject
 
     [Header("Both")]
     public Sprite image;
+    public int durability; // Current durability value
 
-   
 }
 
 [System.Serializable]

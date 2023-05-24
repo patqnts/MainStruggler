@@ -104,7 +104,7 @@ public class BlackShopScript : MonoBehaviour
             return;
         }
 
-        bool added = inventoryManager.AddItem(itemToBuy);
+        bool added = inventoryManager.AddItem(itemToBuy, itemToBuy.maxDurability);
         if (added)
         {
             inventoryManager.RemoveItem("Coin", coinCost);

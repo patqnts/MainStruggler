@@ -118,3 +118,4 @@ MonoBehaviour:
   collider: {fileID: 9061668225178378009}
   moveSpeed: 4
   item: {fileID: 11400000, guid: e3510b3edb877554d8d467d7d7f4c4ba, type: 2}
+  itemCount: 1

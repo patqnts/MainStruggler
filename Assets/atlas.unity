@@ -6553,6 +6553,7 @@ MonoBehaviour:
   - {fileID: 7884328161490689696, guid: 4f62cacb9942a174b93151ee96831ee3, type: 3}
   - {fileID: 7884328161490689696, guid: b3bfb62a32f29cd4392252959d85dd3b, type: 3}
   maxSpawnCount: 125
+  combat: {fileID: 0}
 --- !u!114 &1967736708
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7266,7 +7267,7 @@ PrefabInstance:
     - target: {fileID: 1957374977941793963, guid: 542bb31e53048a549a87497a9d046a3d,
         type: 3}
       propertyPath: _health
-      value: 25
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1957374977941793963, guid: 542bb31e53048a549a87497a9d046a3d,
         type: 3}
@@ -7281,13 +7282,18 @@ PrefabInstance:
     - target: {fileID: 1957374977941793963, guid: 542bb31e53048a549a87497a9d046a3d,
         type: 3}
       propertyPath: maxHealth
-      value: 25
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1957374977941793963, guid: 542bb31e53048a549a87497a9d046a3d,
         type: 3}
       propertyPath: holdButton
       value: 
       objectReference: {fileID: 558330830}
+    - target: {fileID: 1957374977941793963, guid: 542bb31e53048a549a87497a9d046a3d,
+        type: 3}
+      propertyPath: combatManager
+      value: 
+      objectReference: {fileID: 7691808091801843781}
     - target: {fileID: 1957374977941793963, guid: 542bb31e53048a549a87497a9d046a3d,
         type: 3}
       propertyPath: cameraAnimator
@@ -10981,3 +10987,15 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2453463805545497983}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7691808091801843781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7691808091801843775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca9db74dfb9f9af4d88e20aaa5edac48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

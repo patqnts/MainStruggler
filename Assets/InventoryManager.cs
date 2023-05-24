@@ -48,6 +48,20 @@ public class InventoryManager : MonoBehaviour
             selected.text = "";
         }
 
+       
+    }
+    public void ReduceDurability()
+    {
+        
+            Item selectedItem = GetSelectedItem(false);
+            if (selectedItem != null && selectedItem.hasDurability)
+            {
+                CombatManager combatManager = FindObjectOfType<CombatManager>();
+                InventoryItem selectedInventoryItem = inventorySlots[selectedSlot].GetComponentInChildren<InventoryItem>();
+                combatManager.ReduceDurability(selectedInventoryItem, 1);
+           
+            }
+        
 
     }
     public void SetFairySlot(int newValue)
@@ -103,28 +117,34 @@ public class InventoryManager : MonoBehaviour
         }
         else // No item is selected or the selected item is not holdable
         {
-            if(selectedItem != null)
-            {
-                SpriteRenderer weaponSpriteRenderer = weaponHolder.GetComponent<SpriteRenderer>();
-                Animator weaponAnimator = weaponHolder.GetComponent<Animator>();
-                weaponAnimator.enabled = false; // turn off the animator
-                weaponSpriteRenderer.sprite = null; // remove the sprite
-            }
+            
+                weaponHolder.GetComponent<SpriteRenderer>().sprite = null;
+                weaponHolder.GetComponent<Animator>().enabled = false; ;
+           
+               
+            
             
         }
     }
 
-    public void SpawnNewItem(Item item, InventorySlot slot)
+    public void SpawnNewItem(Item item, InventorySlot slot, int durability)
     {
         GameObject newItemGo = Instantiate(inventoryItemPrefab, slot.transform);
         InventoryItem inventoryItem = newItemGo.GetComponent<InventoryItem>();
-        inventoryItem.InitialiseItem(item);
+        inventoryItem.InitialiseItem(item); // Call the method with the item parameter
+        inventoryItem.durability = durability; // Set the durability value separately
     }
 
 
-    public bool AddItem(Item item)
+
+
+    public bool AddItem(Item item, int durability)
     {
-        //same item stacking in inventory
+        CombatManager combatManager = FindObjectOfType<CombatManager>();
+
+        bool addedToInventory = false;
+
+        // Same item stacking in inventory
         for (int i = 0; i < inventorySlots.Length; i++)
         {
             InventorySlot slot = inventorySlots[i];
@@ -132,29 +152,45 @@ public class InventoryManager : MonoBehaviour
             if (itemInSlot != null &&
                 itemInSlot.item == item &&
                 itemInSlot.count < item.maxStackCount &&
-                itemInSlot.item.stackable == true)
+                itemInSlot.item.stackable && itemInSlot.item.type != ItemType.Weapon)
             {
                 itemInSlot.count++;
                 itemInSlot.RefreshCount();
-                return true;
+                addedToInventory = true;
+                break;
             }
         }
 
-        //finding empty slot
-        for (int i = 0; i < inventorySlots.Length; i++)
+        // Finding empty slot
+        if (!addedToInventory)
         {
-            InventorySlot slot = inventorySlots[i];
-            InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
-            if (itemInSlot == null)
+            for (int i = 0; i < inventorySlots.Length; i++)
             {
-                SpawnNewItem(item, slot);
-                return true;
+                InventorySlot slot = inventorySlots[i];
+                InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
+                if (itemInSlot == null)
+                {
+                    SpawnNewItem(item, slot, durability); // Pass the durability value
+                    addedToInventory = true;
+                    break;
+                }
             }
         }
-        return false;
+
+        // If the item was successfully added to the inventory, add it to the CombatManager with its durability
+        if (addedToInventory && item.hasDurability)
+        {
+            combatManager.AddItemWithDurability(item, durability);
+            Debug.Log(item + " Durability: " + durability);
+        }
+
+        return addedToInventory;
     }
 
-  
+
+
+
+
 
 
     public Item GetFairySlot(bool use)
@@ -200,6 +236,7 @@ public class InventoryManager : MonoBehaviour
                 {
                     itemInSlot.RefreshCount();
                 }
+                weaponHolder.GetComponent<SpriteRenderer>().sprite = null;
             }
             return item;
         }
@@ -257,34 +294,46 @@ public class InventoryManager : MonoBehaviour
 
     public void DropAllItems(Transform dropLocation)
     {
-        // Keep track of items that have already been dropped
         HashSet<string> itemsDropped = new HashSet<string>();
 
         for (int i = 0; i < inventorySlots.Length; i++)
         {
             InventorySlot slot = inventorySlots[i];
-            InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
-            if (itemInSlot != null && !itemsDropped.Contains(itemInSlot.item.name))
+            InventoryItem[] itemsInSlot = slot.GetComponentsInChildren<InventoryItem>();
+
+            foreach (InventoryItem itemInSlot in itemsInSlot)
             {
-                // Instantiate a new instance of the item's prefab at the drop location
-                GameObject itemObject = Instantiate(itemInSlot.item.prefab, dropLocation.position, Quaternion.identity);
-
-                // If the item is stackable, remove only one instance of the item from the player's inventory
-                if (itemInSlot.item.stackable)
+                if (itemInSlot != null && itemInSlot.item.name != "Coin" && !itemsDropped.Contains(itemInSlot.item.name))
                 {
-                    RemoveItem(itemInSlot.item.name, 1);
+                    if (!itemInSlot.item.stackable)
+                    {
+                        // Drop non-stackable items individually
+                        GameObject itemObject = Instantiate(itemInSlot.item.prefab, dropLocation.position, Quaternion.identity);
+                        Loot loot = itemObject.GetComponent<Loot>();
+                        loot.Initialize(itemInSlot.item, 1, itemInSlot.durability); // Drop a single item with its durability
+                        RemoveItem(itemInSlot.item.name, 1); // Remove a single item from the inventory
+                        itemsDropped.Add(itemInSlot.item.name); // Add the item to the dropped items set
+                    }
+                    else
+                    {
+                        // Drop stackable items entirely
+                        int itemCount = GetItemCount(itemInSlot.item.name);
+                        GameObject itemObject = Instantiate(itemInSlot.item.prefab, dropLocation.position, Quaternion.identity);
+                        Loot loot = itemObject.GetComponent<Loot>();
+                        loot.Initialize(itemInSlot.item, itemCount, itemInSlot.durability); // Drop the entire item stack with its durability
+                        RemoveItem(itemInSlot.item.name, itemCount); // Remove the entire item stack from the inventory
+                        itemsDropped.Add(itemInSlot.item.name); // Add the item to the dropped items set
+                    }
                 }
-                // If the item is not stackable, remove all instances of the item from the player's inventory
-                else
-                {
-                    RemoveItem(itemInSlot.item.name, itemInSlot.count);
-                }
-
-                // Add the item to the set of items that have already been dropped
-                itemsDropped.Add(itemInSlot.item.name);
             }
         }
     }
+
+
+
+
+
+
 
     public bool isInventoryEmpty()
     {

@@ -34,7 +34,7 @@ public class SlimeQueenHealthUI : MonoBehaviour
                 if (slimeHealthAnimator != null)
                 {
                     slimeHealthAnimator.SetTrigger("Disappear");
-                    Debug.Log("Disappearing");
+                   
                     StartCoroutine(DeactivateSlimeHealthUI());
                     isDelayedDeactivation = true;
                     timer = 0f; // Reset the timer

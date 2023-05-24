@@ -35,7 +35,7 @@ public class SlimeScript : MonoBehaviour, IDamageable
                 npcManager.OnEnemyDestroyed();
                 DropItem();
                 Destroy(gameObject,1.2f);
-               
+                InventoryManager.instance.ReduceDurability();
 
 
             }

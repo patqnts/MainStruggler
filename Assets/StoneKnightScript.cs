@@ -14,7 +14,7 @@ public class StoneKnightScript : MonoBehaviour, IDamageable
   
     private Vector2 lastDirection = Vector2.zero;
     public bool isDetecting;
-
+   
     public float attackRange = 1.5f;
     [SerializeField] private EnemyHealthBar healthBar;
     public GameObject enemyHealthObject;
@@ -32,6 +32,7 @@ public class StoneKnightScript : MonoBehaviour, IDamageable
                 hitCollider.enabled = false;
                 enemyHealthObject.SetActive(false);
                 animator.SetTrigger("Death");
+                InventoryManager.instance.ReduceDurability();
                 npcManager.OnEnemyDestroyed();
                 Destroy(gameObject, 1.2f);
             }
@@ -51,6 +52,7 @@ public class StoneKnightScript : MonoBehaviour, IDamageable
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         npcManager = FindObjectOfType<NPCManager>();
+        
     }
     private void Update()
     {
@@ -72,7 +74,7 @@ public class StoneKnightScript : MonoBehaviour, IDamageable
             enemyHealthObject.SetActive(true);
             if (animator.GetCurrentAnimatorStateInfo(0).IsName("Spawn") || animator.GetCurrentAnimatorStateInfo(0).IsName("Still"))
             {
-                Debug.Log("IDLE STONE");
+                
                 movement = Vector2.zero;
             }
             else

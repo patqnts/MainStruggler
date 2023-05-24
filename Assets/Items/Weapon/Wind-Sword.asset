@@ -22,6 +22,8 @@ MonoBehaviour:
   range: {x: 5, y: 4}
   weaponDamage: 20
   lungeDistance: 5
+  hasDurability: 1
+  maxDurability: 5
   _stackable: 0
   maxStackCount: 1
   consumable: 0
@@ -31,3 +33,4 @@ MonoBehaviour:
   priceAmount: 0
   materialRequirements: []
   image: {fileID: 1960569439, guid: 51721a244c2b3b2448a18bd0044dee35, type: 3}
+  durability: 5

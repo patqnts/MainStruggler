@@ -7,13 +7,18 @@ public class Loot : MonoBehaviour
     [SerializeField] private SpriteRenderer sr;
     [SerializeField] private CircleCollider2D collider;
     [SerializeField] private float moveSpeed;
+    [SerializeField] public int durability;
+
     // Start is called before the first frame update
     public Item item;
+    public int itemCount; // New variable to store the item count
 
 
-    public void Initialize(Item item)
+    public void Initialize(Item item, int count, int durability) // Added durability parameter
     {
         this.item = item;
+        this.itemCount = count;
+        this.durability = durability; // Assign durability value
         sr.sprite = item.image;
     }
 
@@ -21,15 +26,15 @@ public class Loot : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            bool canAdd = InventoryManager.instance.AddItem(item);
-            if (canAdd)
+            for (int x = 0; x < itemCount; x++)
             {
-                StartCoroutine(MoveAndCollect(other.transform));
+                bool canAdd = InventoryManager.instance.AddItem(item, durability); // Pass durability to AddItem
+                if (canAdd)
+                {
+                    StartCoroutine(MoveAndCollect(other.transform));
+                }
             }
-                
-          
-        }    
-        
+        }
     }
 
     private IEnumerator MoveAndCollect(Transform target)
@@ -42,12 +47,6 @@ public class Loot : MonoBehaviour
             Destroy(gameObject,0.5f);
         }
        // InventoryManager.instance.AddItem(item);
-        Debug.Log("Item Received:" + item);
-        
-
-
-
-            
+        Debug.Log("Item Received:" + item); 
     }
-    
 }

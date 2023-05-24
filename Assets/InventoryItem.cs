@@ -16,6 +16,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler,IEnd
     [HideInInspector] public Transform parentAfterDrag;
     [HideInInspector] public Transform originalParent;
     public InventoryManager inventoryManager;
+    public int durability;
 
 
 
@@ -28,28 +29,28 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler,IEnd
         if (newItem != null)
         {
             item = newItem;
+            durability = newItem.durability;
             image.sprite = item.image;
 
-            if (//InventoryManager.instance.GetSelectedItem(false) == null ||
-                !InventoryManager.instance.GetSelectedItem(false).holdable &&
-                InventoryManager.instance.GetSelectedItem(false) != null && 
-                item.holdable == true &&
-                InventoryManager.instance.GetSelectedItem(false).type == ItemType.Weapon || 
-                
-                InventoryManager.instance.GetSelectedItem(false) != null &&
-                item.holdable == true && InventoryManager.instance.GetSelectedItem(false).type == ItemType.Tool)
-            {
-                // Instantiate the prefab and set its parent to the weapon holder
-                Sprite itemSprite = newItem.prefab.GetComponent<SpriteRenderer>().sprite;
-                InventoryManager.instance.weaponHolder.GetComponent<SpriteRenderer>().sprite = itemSprite;
+            Item selectedItem = InventoryManager.instance.GetSelectedItem(false);
 
-                // Destroy the spawned item that was previously in the hand
-            }
-            else
+            if (selectedItem != null)
             {
-                if (InventoryManager.instance.GetSelectedItem(false) != null && InventoryManager.instance.GetSelectedItem(false).holdable)
+                if (!selectedItem.holdable && selectedItem.type == ItemType.Weapon || selectedItem.type == ItemType.Tool)
                 {
-                    Sprite selectedSprite = InventoryManager.instance.GetSelectedItem(false).prefab.GetComponent<SpriteRenderer>().sprite;
+                    Sprite itemSprite = newItem.prefab.GetComponent<SpriteRenderer>().sprite;
+                    if (itemSprite != null)
+                    {
+                        InventoryManager.instance.weaponHolder.GetComponent<SpriteRenderer>().sprite = itemSprite;
+                    }
+                    else
+                    {
+                        Debug.Log("Weapon spawn is not in the selected slot.");
+                    }
+                }
+                else if (selectedItem.holdable)
+                {
+                    Sprite selectedSprite = selectedItem.prefab.GetComponent<SpriteRenderer>().sprite;
                     InventoryManager.instance.weaponHolder.GetComponent<SpriteRenderer>().sprite = selectedSprite;
                 }
                 else
@@ -57,10 +58,15 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler,IEnd
                     InventoryManager.instance.weaponHolder.GetComponent<SpriteRenderer>().sprite = null;
                 }
             }
+            else
+            {
+                InventoryManager.instance.weaponHolder.GetComponent<SpriteRenderer>().sprite = null;
+            }
 
             RefreshCount();
         }
     }
+
     public void RefreshCount()
     {
         bool textActive = count > 1;

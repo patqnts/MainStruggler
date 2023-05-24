@@ -14,14 +14,14 @@ public class DemoScript : MonoBehaviour
 
         if (id == 0)       
         {
-            for (int x = 0; x < 9999; x++)
+            for (int x = 0; x < 999; x++)
             {
-                inventoryManager.AddItem(itemsToPickup[id]);
+                inventoryManager.AddItem(itemsToPickup[id], itemsToPickup.Length);
             }
         }
         else
         {
-            bool result = inventoryManager.AddItem(itemsToPickup[id]);
+            bool result = inventoryManager.AddItem(itemsToPickup[id], itemsToPickup.Length);
             if (result == true)
             {
                 Debug.Log("added");

@@ -29,13 +29,12 @@ public class GameOverDialog : MonoBehaviour
         {
             player.DropItemPlayer();
 
-            if (InventoryManager.instance.isInventoryEmpty())
-            {
+           
                 // All items have been dropped, so show the game over box
                 gameOverBox.SetActive(true);
                 InventoryManager.instance.weaponHolder.GetComponent<SpriteRenderer>().sprite = null;
                 InventoryManager.instance.weaponHolder.GetComponent<Animator>().runtimeAnimatorController = null;
-            }
+            
         }
     }
 }

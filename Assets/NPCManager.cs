@@ -20,7 +20,7 @@ public class NPCManager : MonoBehaviour
     public List<GameObject> enemyList; // list of enemies to spawn
     public int maxSpawnCount;
     private int currentSpawnCount = 0;
-
+    public CombatManager combat;
     private void Awake()
     {
         cellular = GetComponent<Cellular>();
@@ -28,6 +28,7 @@ public class NPCManager : MonoBehaviour
 
     private void Start()
     {
+        combat = FindObjectOfType<CombatManager>();
         // Get all available locations on the map
         availableLocations = new List<Vector3Int>();
         foreach (var position in cellular.tilemap.cellBounds.allPositionsWithin)
@@ -69,6 +70,7 @@ public class NPCManager : MonoBehaviour
     }
     public void OnEnemyDestroyed()
     {
+       // combat.KillEnemy();
         currentSpawnCount--;
         Debug.Log("Enemy Alive: " + currentSpawnCount);
     }

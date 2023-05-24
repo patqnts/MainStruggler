@@ -10,7 +10,7 @@ public class Movement : MonoBehaviour, IDamageable
     [SerializeField] public Rigidbody2D rb;
     [SerializeField] public Animator animator;
     [SerializeField] private Joystick joystick;
-
+    public CombatManager combatManager;
     public Transform slashPos;
 
     public Animator cameraAnimator;
@@ -37,6 +37,7 @@ public class Movement : MonoBehaviour, IDamageable
     public float _health;
     public UIHealth uiHealth;
     public float maxHealth;
+    public InventoryItem selectedItem;
     public float Health
     {
         set
@@ -105,8 +106,8 @@ public class Movement : MonoBehaviour, IDamageable
         // Get input for movement
           movement.x = joystick.Horizontal;
           movement.y = joystick.Vertical;
-        // movement.x = Input.GetAxisRaw("Horizontal");
-        // movement.y = Input.GetAxisRaw("Vertical");
+          movement.x = Input.GetAxisRaw("Horizontal");
+          movement.y = Input.GetAxisRaw("Vertical");
 
         // Set animator parameters for movement
         animator.SetFloat("Horizontal", movement.x);
@@ -220,6 +221,7 @@ public class Movement : MonoBehaviour, IDamageable
     private IEnumerator Attack()
     {
         Item slash = InventoryManager.instance.GetSelectedItem(false);
+        
 
         if (slash != null && slash.type == ItemType.Weapon)
         {
@@ -324,33 +326,36 @@ public class Movement : MonoBehaviour, IDamageable
                     Vector2 moveDirection = lastDirection.normalized;
                     slashRigidbody.velocity = moveDirection * moveSpeed;
                 }
-                if (slash.element == Element.Wind)
-                {
-                    ghost.makeGhost = true;
-                }
+               
 
 
                 Destroy(slashObject, .5f);
             }
             else
             {
+            
                 Debug.Log("No Slash Prefab");
+            }
+            if (slash.element == Element.Wind)
+            {
+                ghost.makeGhost = true;
             }
         }
         else
         {
+         
             Debug.Log("No weapon for slash");
         }
-
+        
         isAttacking = true;
         animator.SetBool("isAttacking", true);
         
         // Wait for attack time
         yield return new WaitForSeconds(attackTime);
         canTool = true;
-
+       
         // Reset attacking flag and animation
-        ghost.makeGhost = false;
+        ghost.makeGhost =false;
         isAttacking = false;
         animator.SetBool("isAttacking", false);
     }
