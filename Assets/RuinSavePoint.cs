@@ -6,7 +6,7 @@ public class RuinSavePoint : MonoBehaviour
 {
     // Static list to keep track of all the ruins in the game
     private static List<RuinSavePoint> ruins = new List<RuinSavePoint>();
-
+  
     // Keep track of the last ruin the player entered
     private static RuinSavePoint lastRuin = null;
 
@@ -59,6 +59,13 @@ public class RuinSavePoint : MonoBehaviour
     // Called when a collider enters this trigger
     private void OnTriggerEnter2D(Collider2D other)
     {
+        SaveSystem saveSystem = FindObjectOfType<SaveSystem>();
+        Cellular cellular = FindObjectOfType<Cellular>();
+        if (saveSystem != null)
+        {
+            saveSystem.SavePlayer(cellular.text);
+            Debug.Log(cellular.text);
+        }
         // If the collider is the player, set the flag to true and update the last ruin
         if (other.CompareTag("Player"))
         {
@@ -69,7 +76,7 @@ public class RuinSavePoint : MonoBehaviour
         else if (other.CompareTag("Tree") || other.CompareTag("Rock"))
         {
             Destroy(other.gameObject);
-            Debug.Log("Tree Destoryed");
+            
         }
         else if (other.CompareTag("Enemy"))
         {
@@ -96,6 +103,13 @@ public class RuinSavePoint : MonoBehaviour
     // Called when the player dies
     public static void PlayerDied()
     {
+         SaveSystem saveSystem = FindObjectOfType<SaveSystem>();
+        Cellular cellular = FindObjectOfType<Cellular>();
+        if (saveSystem != null)
+        {
+            saveSystem.SavePlayer(cellular.text);
+            Debug.Log(cellular.text);
+        }
         // If a last ruin has been set, teleport the player to it
         if (lastRuin != null)
         {

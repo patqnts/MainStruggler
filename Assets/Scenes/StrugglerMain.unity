@@ -5923,6 +5923,7 @@ MonoBehaviour:
   cellular: {fileID: 1967736704}
   itemDatabase: {fileID: 1023781786}
   currentSaveSlotIndex: 0
+  loadSystem: {fileID: 0}
 --- !u!224 &1292976053 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3881087803549984436, guid: ec536a7718376554185e4a856d5ae230,
@@ -7311,6 +7312,7 @@ MonoBehaviour:
   - {fileID: 6639703773389676179, guid: ba8664cb07604b448bcd0b18e4cf2186, type: 3}
   - {fileID: 6639703773389676179, guid: ba8664cb07604b448bcd0b18e4cf2186, type: 3}
   - {fileID: 6639703773389676179, guid: 5b315993da5fc544f8d7100f19e0bed7, type: 3}
+  text: game
   seedCodex: 0
 --- !u!4 &1967736705
 Transform:

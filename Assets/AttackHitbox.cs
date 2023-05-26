@@ -43,7 +43,7 @@ public class AttackHitbox : MonoBehaviour
             {
                 if (cameraAnimator != null)
                 {
-                    cameraAnimator.SetTrigger("Hit");
+                    cameraAnimator.SetTrigger("Slight");
                 }
                 if (selectedItem != null && selectedItem.type == ItemType.Weapon)
                 {

@@ -4,7 +4,7 @@ using UnityEngine.Tilemaps;
 
 public class Cellular : MonoBehaviour
 {
-    public LoadSystem loadSystem;
+   public LoadSystem loadSystem;
 
     [Header("1ST TERRAIN")]
   
@@ -49,10 +49,10 @@ public class Cellular : MonoBehaviour
 
         text = loadSystem.selectedProfileId;
 
-       // loadSystem.LoadPlayer(text); // 
+      
 
 
-        Debug.Log(loadSystem.selectedProfileId);
+     //   Debug.Log(loadSystem.selectedProfileId);
         // Reset seedCode in PlayerPrefs
         PlayerPrefs.DeleteKey("seedCode");
 

@@ -42,7 +42,10 @@ public class LoadSystem : MonoBehaviour
         }
         player = FindObjectOfType<Movement>();
     }
-
+    private void Update()
+    {
+        seedCode = FindObjectOfType<InputField>();
+    }
     public void LoadPlayerAndGameScene()
     {
         // Store the seed code value before loading the next scene
@@ -54,12 +57,16 @@ public class LoadSystem : MonoBehaviour
             }
             else
             {
+                seedCode.text = "0";
+                SceneManager.LoadScene("StrugglerMain");
                 Debug.LogError("Invalid seed code input!");
             }
         }
         else
         {
-            Debug.LogError("Missing seed code input!");
+
+            SceneManager.LoadScene("StrugglerMain");
+           
         }
     }
 
@@ -87,6 +94,7 @@ public class LoadSystem : MonoBehaviour
                 seedCode.text = data.mapSeed.ToString();
                 lastSeedCode = data.mapSeed;
             }
+           
 
             if (player != null)
             {
