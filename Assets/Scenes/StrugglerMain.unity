@@ -5922,6 +5922,7 @@ MonoBehaviour:
   inventoryManager: {fileID: 1848573413}
   cellular: {fileID: 1967736704}
   itemDatabase: {fileID: 1023781786}
+  currentSaveSlotIndex: 0
 --- !u!224 &1292976053 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3881087803549984436, guid: ec536a7718376554185e4a856d5ae230,
@@ -7268,6 +7269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95781be4bde78fd43b14773e9edd2c09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loadSystem: {fileID: 0}
   mapWidth: 165
   mapHeight: 165
   smoothnessIterations: 20
@@ -8448,7 +8450,7 @@ PrefabInstance:
     - target: {fileID: 1957374977941793963, guid: 542bb31e53048a549a87497a9d046a3d,
         type: 3}
       propertyPath: isJoypad
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1957374977941793963, guid: 542bb31e53048a549a87497a9d046a3d,
         type: 3}
@@ -12056,6 +12058,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -308.65
       objectReference: {fileID: 0}
+    - target: {fileID: 6073206872040970488, guid: ff3895597b4a6c749be60261ed37df0b,
+        type: 3}
+      propertyPath: m_Name
+      value: save
+      objectReference: {fileID: 0}
     - target: {fileID: 6073206872040970489, guid: ff3895597b4a6c749be60261ed37df0b,
         type: 3}
       propertyPath: m_SizeDelta.x
@@ -12074,7 +12081,7 @@ PrefabInstance:
     - target: {fileID: 6073206872040970489, guid: ff3895597b4a6c749be60261ed37df0b,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 51.4087
+      value: 23.9
       objectReference: {fileID: 0}
     - target: {fileID: 6073206872040970490, guid: ff3895597b4a6c749be60261ed37df0b,
         type: 3}
@@ -12089,7 +12096,7 @@ PrefabInstance:
     - target: {fileID: 6073206872040970490, guid: ff3895597b4a6c749be60261ed37df0b,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6073206872040970490, guid: ff3895597b4a6c749be60261ed37df0b,
         type: 3}
@@ -12105,6 +12112,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: SaveSystem, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6073206872040970490, guid: ff3895597b4a6c749be60261ed37df0b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6073206872040970490, guid: ff3895597b4a6c749be60261ed37df0b,
         type: 3}
@@ -12513,6 +12525,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6073206873615651074, guid: ff3895597b4a6c749be60261ed37df0b,
+        type: 3}
+      propertyPath: m_Name
+      value: Menu
+      objectReference: {fileID: 0}
     - target: {fileID: 6073206873615651075, guid: ff3895597b4a6c749be60261ed37df0b,
         type: 3}
       propertyPath: m_SizeDelta.x
@@ -12531,7 +12548,7 @@ PrefabInstance:
     - target: {fileID: 6073206873615651075, guid: ff3895597b4a6c749be60261ed37df0b,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 25.6347
+      value: 47.5
       objectReference: {fileID: 0}
     - target: {fileID: 6073206873615651100, guid: ff3895597b4a6c749be60261ed37df0b,
         type: 3}
@@ -12551,7 +12568,7 @@ PrefabInstance:
     - target: {fileID: 6073206873615651100, guid: ff3895597b4a6c749be60261ed37df0b,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LoadPlayer
+      value: BackToMenu
       objectReference: {fileID: 0}
     - target: {fileID: 6073206873615651100, guid: ff3895597b4a6c749be60261ed37df0b,
         type: 3}
@@ -12887,7 +12904,9 @@ PrefabInstance:
     - target: {fileID: 6073206873735447983, guid: ff3895597b4a6c749be60261ed37df0b,
         type: 3}
       propertyPath: m_Text
-      value: LOAD
+      value: 'Menu
+
+'
       objectReference: {fileID: 0}
     - target: {fileID: 6073206873832057621, guid: ff3895597b4a6c749be60261ed37df0b,
         type: 3}

@@ -4,6 +4,7 @@ using UnityEngine.Tilemaps;
 
 public class Cellular : MonoBehaviour
 {
+    public LoadSystem loadSystem;
 
     [Header("1ST TERRAIN")]
   
@@ -31,7 +32,7 @@ public class Cellular : MonoBehaviour
     public GameObject camera;
     public GameObject[] treePrefabs;
     
-
+    public string text;
 
     private int seedCode = 0;
     public int seedCodex;
@@ -43,11 +44,21 @@ public class Cellular : MonoBehaviour
     }
     private void Start()
     {
+        
+        loadSystem = FindObjectOfType<LoadSystem>();
+
+        text = loadSystem.selectedProfileId;
+
+       // loadSystem.LoadPlayer(text); // 
+
+
+        Debug.Log(loadSystem.selectedProfileId);
         // Reset seedCode in PlayerPrefs
         PlayerPrefs.DeleteKey("seedCode");
 
         // GenerateMap will use the new seed value
-        seedCode = seedCodex;
+        seedCode = loadSystem.lastSeedCode;
+        seedCodex = seedCode;;
 
         // Save the new seed value
         PlayerPrefs.SetInt("seedCode", seedCode);
@@ -75,6 +86,7 @@ public class Cellular : MonoBehaviour
 
         RuinSavePoint.PlayerDied();
         Bottle();
+        loadSystem.LoadPlayer(text);
     }
     public void Bottle()
     {
@@ -154,8 +166,9 @@ public class Cellular : MonoBehaviour
     {
         if (seedCode == 0)
         {
-            map = new int[mapWidth, mapHeight];
-            FillMapRandomly();
+            seedCode = Random.Range(1, int.MaxValue); // Generate a random seed code
+            GenerateMapUsingSeed();
+            seedCodex = seedCode;
         }
         else
         {

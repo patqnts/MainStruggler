@@ -11,10 +11,17 @@ public class SaveSystem : MonoBehaviour
     public ItemDatabase itemDatabase; // Reference to the ItemDatabase
 
     private const string PlayerDataPath = "/PlayerDatas.json";
+    public int currentSaveSlotIndex = 0;
 
-
-    public void SavePlayer()
+    public LoadSystem loadSystem;
+    private void Start()
     {
+        loadSystem = FindObjectOfType<LoadSystem>();
+    }
+    //public void SavePlayer(string profileId)
+    public void SavePlayer(string profileId)
+    {
+        profileId = loadSystem.selectedProfileId;
         PlayerData data = new PlayerData();
         data._health = player._health;
         data.moveSpeed = player.moveSpeed;
@@ -47,59 +54,40 @@ public class SaveSystem : MonoBehaviour
             Debug.Log("Equipment Item: " + equipmentData.itemName);
         }
 
-        string json = JsonUtility.ToJson(data);
-        string savePath = Application.persistentDataPath + PlayerDataPath;
-        File.WriteAllText(savePath, json);
 
+        string json = JsonUtility.ToJson(data, true);
+
+        string directoryPath = Path.Combine(Application.persistentDataPath, profileId);
+        Directory.CreateDirectory(directoryPath);
+
+        string filePath = Path.Combine(directoryPath, Path.GetFileName(PlayerDataPath));
+        File.WriteAllText(filePath, json);
+
+
+
+
+
+
+        Debug.Log(Application.persistentDataPath);
         Debug.Log("Player saved!");
         Debug.Log("Health: " + data._health);
         Debug.Log("Move Speed: " + data.moveSpeed);
         Debug.Log("Position: " + data.playerPos);
         Debug.Log("Inventory Items saved: " + data.inventoryItems.Count);
+        Debug.Log("Map seedcode: " + data.mapSeed);
     }
 
-    public void LoadPlayer()
+    public void BackToMenu()
     {
-        string path = Application.persistentDataPath + "/PlayerDatas.json";
-
-        if (File.Exists(path))
+        // Destroy the LoadSystem instance
+        LoadSystem loadSystem = FindObjectOfType<LoadSystem>();
+        if (loadSystem != null)
         {
-            string json = File.ReadAllText(path);
-            PlayerData data = JsonUtility.FromJson<PlayerData>(json);
-            cellular.seedCodex = data.mapSeed;
-            player._health = data._health;
-            player.moveSpeed = data.moveSpeed;
-            player.transform.position = data.playerPos;
-            
-            inventoryManager.ClearInventory();
-
-            Debug.Log("Inventory Items Count: " + data.inventoryItems.Count);
-
-            foreach (var itemData in data.inventoryItems)
-            {
-                Item item = itemDatabase.GetItemByName(itemData.itemName); // Use the ItemDatabase reference to get the item
-                Debug.Log("Passed: " + item);
-                if (item != null)
-                {
-                    bool itemAdded = inventoryManager.AddItem(item, itemData.durability, itemData.count);
-                    Debug.Log("Item: " + item.name);
-                    if (!itemAdded)
-                    {
-                        Debug.LogWarning("No available slots to add the item: " + itemData.itemName);
-                    }
-                }
-            }
-            inventoryManager.ChangeSelectedSlot(0);
-            Debug.Log("Player loaded!");
-            Debug.Log("Health: " + data._health);
-            Debug.Log("Move Speed: " + data.moveSpeed);
-            Debug.Log("Position: " + data.playerPos);
-            Debug.Log("Inventory Items loaded: " + data.inventoryItems.Count);
+            Destroy(loadSystem.gameObject);
         }
-        else
-        {
-            Debug.Log("No player data found.");
-        }
+
+        // Load the first scene of your game
+        SceneManager.LoadScene(0);
     }
 
 }
