@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour, IDamageable
 {
-    [SerializeField] private float moveSpeed = 3f;
+    [SerializeField] public float moveSpeed = 3f;
     [SerializeField] private float attackTime = 0.40f;
     
     [SerializeField] public Rigidbody2D rb;
@@ -14,6 +14,7 @@ public class Movement : MonoBehaviour, IDamageable
     public Transform slashPos;
 
     public Animator cameraAnimator;
+    public Animator indicatorAnimator;
 
     public float dashSpeed;
     public float dashLength = .5f, dashCooldown = 1f;
@@ -38,6 +39,8 @@ public class Movement : MonoBehaviour, IDamageable
     public UIHealth uiHealth;
     public float maxHealth;
     public InventoryItem selectedItem;
+
+    public bool isJoypad = false;
     public float Health
     {
         set
@@ -98,16 +101,29 @@ public class Movement : MonoBehaviour, IDamageable
         {
             cameraAnimator = cameraHolder.GetComponent<Animator>();
         }
+        GameObject healthAnimator = GameObject.Find("Indicators");
+        if (healthAnimator != null)
+        {
+            indicatorAnimator = healthAnimator.GetComponent<Animator>();
+        }
+        
     }
 
     private void Update()
     {
 
         // Get input for movement
-          movement.x = joystick.Horizontal;
-          movement.y = joystick.Vertical;
-        // movement.x = Input.GetAxisRaw("Horizontal");
-        // movement.y = Input.GetAxisRaw("Vertical");
+        if (isJoypad)
+        {
+            movement.x = joystick.Horizontal;
+            movement.y = joystick.Vertical;
+        }
+        else
+        {
+            movement.x = Input.GetAxisRaw("Horizontal");
+            movement.y = Input.GetAxisRaw("Vertical");
+        }
+         
 
         // Set animator parameters for movement
         animator.SetFloat("Horizontal", movement.x);
@@ -183,6 +199,7 @@ public class Movement : MonoBehaviour, IDamageable
                 if (canEat != null && canEat.struggler && InventoryManager.instance.GetSelectedItem(item) != null && _health < maxHealth)
                 {
                     Debug.Log("StrugglerHeal");
+                    indicatorAnimator.SetTrigger("Heal");
 
                     uiHealth.StrugglerHeal();
                     InventoryManager.instance.GetSelectedItem(true);
@@ -191,6 +208,8 @@ public class Movement : MonoBehaviour, IDamageable
                 {
                     _health++;
                     InventoryManager.instance.GetSelectedItem(true);
+                    indicatorAnimator.SetTrigger("Heal");
+                    Debug.Log("Heal ANimator");
 
 
                 }
@@ -222,8 +241,8 @@ public class Movement : MonoBehaviour, IDamageable
     private IEnumerator Attack()
     {
         Item slash = InventoryManager.instance.GetSelectedItem(false);
-        
 
+       
         if (slash != null && slash.type == ItemType.Weapon)
         {
             GameObject slashHolder = slash.slashTrailPrefab;
@@ -386,7 +405,7 @@ public class Movement : MonoBehaviour, IDamageable
 
     public void OnButtonPress()
     {
-        uiHealth.AddHeart();
+       
         Item handle = InventoryManager.instance.GetSelectedItem(false);
         if (!isAttacking && handle != null && handle.type != ItemType.Tool ||
            handle == null && !isAttacking)
@@ -398,13 +417,14 @@ public class Movement : MonoBehaviour, IDamageable
             if (canEat != null && canEat.struggler && InventoryManager.instance.GetSelectedItem(item) != null && _health < maxHealth)
             {
                 Debug.Log("StrugglerHeal");
-
+                indicatorAnimator.SetTrigger("Heal");
                 uiHealth.StrugglerHeal();
                 InventoryManager.instance.GetSelectedItem(true);
             }
             else if (canEat != null && canEat.consumable && InventoryManager.instance.GetSelectedItem(item) != null && _health < maxHealth)
             {
                 _health++;
+                indicatorAnimator.SetTrigger("Heal");
                 InventoryManager.instance.GetSelectedItem(true);
 
 

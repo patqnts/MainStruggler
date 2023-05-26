@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1662d66746d5b7841a5171ab4c6f819a, type: 3}
+  m_Name: Wisp
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 4191672269759716003, guid: c90042187362ca7429af48dc4fec5f9d, type: 3}
+  slashTrailPrefab: {fileID: 0}
+  elementEffect: {fileID: 0}
+  tile: {fileID: 0}
+  type: 5
+  actionType: 1
+  element: 0
+  range: {x: 5, y: 4}
+  weaponDamage: 5
+  lungeDistance: 0
+  hasDurability: 0
+  maxDurability: 0
+  _stackable: 1
+  maxStackCount: 999999
+  consumable: 0
+  holdable: 0
+  struggler: 0
+  description: Wind
+  priceAmount: 0
+  materialRequirements: []
+  image: {fileID: 1742163200, guid: 2340f790cb4b5c54c8875e37046117c6, type: 3}
+  durability: 0

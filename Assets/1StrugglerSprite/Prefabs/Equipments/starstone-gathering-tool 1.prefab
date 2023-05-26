@@ -102,7 +102,9 @@ MonoBehaviour:
   sr: {fileID: 8772386301943041240}
   collider: {fileID: 8772386301943041242}
   moveSpeed: 5
+  durability: 200
   item: {fileID: 11400000, guid: f8040fdbd627f0f488cda72be0a389aa, type: 2}
+  itemCount: 0
 --- !u!58 &8772386301943041242
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -26,16 +26,14 @@ public class Loot : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            for (int x = 0; x < itemCount; x++)
+            bool canAdd = InventoryManager.instance.AddItem(item, durability, itemCount); // Pass itemCount to AddItem
+            if (canAdd)
             {
-                bool canAdd = InventoryManager.instance.AddItem(item, durability); // Pass durability to AddItem
-                if (canAdd)
-                {
-                    StartCoroutine(MoveAndCollect(other.transform));
-                }
+                StartCoroutine(MoveAndCollect(other.transform));
             }
         }
     }
+
 
     private IEnumerator MoveAndCollect(Transform target)
     {

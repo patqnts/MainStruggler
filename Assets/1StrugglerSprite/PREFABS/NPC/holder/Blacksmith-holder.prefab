@@ -143,6 +143,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Blacksmith
       objectReference: {fileID: 0}
+    - target: {fileID: 4459535538568217136, guid: d7bbfde9c0c5730408dbe97f7120723f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6136770634840989458, guid: d7bbfde9c0c5730408dbe97f7120723f,
         type: 3}
       propertyPath: m_RootOrder

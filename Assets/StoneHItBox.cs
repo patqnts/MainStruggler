@@ -8,6 +8,8 @@ public class StoneHItBox : MonoBehaviour
     public float knockbackForce = 5000f;
 
     public float damage = 1f;
+    public bool isFire = false;
+    public bool isDark = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,8 +31,14 @@ public class StoneHItBox : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Player"))
         {
-            
-
+            if (isDark)
+            {
+                damageableObject.OnDark(1f);
+            }
+            else if (isFire)
+            {
+                damageableObject.OnBurn(1, 2);
+            }
             damageableObject.OnHit(damage, knockback);
         }
             

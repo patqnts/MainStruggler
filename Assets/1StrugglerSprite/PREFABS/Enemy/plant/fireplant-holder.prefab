@@ -168,6 +168,21 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 7401251658839098987, guid: e5bddcd5512b8dd4887e4689be374b5e,
+        type: 3}
+      propertyPath: isFire
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7401251658839098987, guid: e5bddcd5512b8dd4887e4689be374b5e,
+        type: 3}
+      propertyPath: isElemental
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7401251658839098987, guid: e5bddcd5512b8dd4887e4689be374b5e,
+        type: 3}
+      propertyPath: explosionDamage
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7401251658839098988, guid: e5bddcd5512b8dd4887e4689be374b5e,
         type: 3}
       propertyPath: m_RootOrder

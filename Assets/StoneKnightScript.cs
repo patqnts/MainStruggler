@@ -20,6 +20,7 @@ public class StoneKnightScript : MonoBehaviour, IDamageable
     public GameObject enemyHealthObject;
     public float _health,maxHealth = 10f;
     private NPCManager npcManager;
+    public bool isElemental;
     public float Health
     {
         set
@@ -33,8 +34,23 @@ public class StoneKnightScript : MonoBehaviour, IDamageable
                 enemyHealthObject.SetActive(false);
                 animator.SetTrigger("Death");
                 InventoryManager.instance.ReduceDurability();
-                npcManager.OnEnemyDestroyed();
-                Destroy(gameObject, 1.2f);
+
+                if (isElemental)
+                {
+                    Debug.Log("elemental monster dies -1");
+                    npcManager.OnElementalDestroyed();
+                }
+                else
+                {
+                    Debug.Log("Normal monster dies -1");
+                    npcManager.OnEnemyDestroyed();
+                }
+                
+                if (transform.parent != null)
+                {
+                    Destroy(transform.parent.gameObject, 1.2f);
+                }
+                
             }
         }
         get

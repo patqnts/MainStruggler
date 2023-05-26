@@ -12,16 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1662d66746d5b7841a5171ab4c6f819a, type: 3}
   m_Name: Lumos Wood
   m_EditorClassIdentifier: 
-  prefab: {fileID: 9061668225178378007, guid: 34ef1725ec3680144bb6758b5a7ef42d, type: 3}
+  prefab: {fileID: 9061668225178378007, guid: 111a59bda80d31e4fbe37482f3ce8e87, type: 3}
+  slashTrailPrefab: {fileID: 0}
+  elementEffect: {fileID: 0}
   tile: {fileID: 0}
   type: 4
   actionType: 1
+  element: 0
   range: {x: 1, y: 1}
   weaponDamage: 0
+  lungeDistance: 0
+  hasDurability: 0
+  maxDurability: 0
   _stackable: 1
   maxStackCount: 999
   consumable: 0
   holdable: 0
+  struggler: 0
   description: Kahoy
   priceAmount: 999999
   materialRequirements:
@@ -29,4 +36,5 @@ MonoBehaviour:
     requiredAmount: 12313
   - materialSprite: {fileID: -566052409, guid: 73567c2e5b46e5141a21c3dc36e27ad0, type: 3}
     requiredAmount: 99999
-  image: {fileID: 1269202101, guid: 73567c2e5b46e5141a21c3dc36e27ad0, type: 3}
+  image: {fileID: 1420595539, guid: 73567c2e5b46e5141a21c3dc36e27ad0, type: 3}
+  durability: 0

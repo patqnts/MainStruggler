@@ -15,15 +15,21 @@ MonoBehaviour:
   prefab: {fileID: 8772386301943041245, guid: 878d71947c561b04280b95f94d15841d, type: 3}
   slashTrailPrefab: {fileID: 1271498546720987143, guid: bd8b87de4e01b6a42a137f4233bc3dcc,
     type: 3}
+  elementEffect: {fileID: 0}
   tile: {fileID: 0}
   type: 2
   actionType: 0
+  element: 0
   range: {x: 5, y: 4}
   weaponDamage: 25
+  lungeDistance: 0
+  hasDurability: 1
+  maxDurability: 50
   _stackable: 1
   maxStackCount: 3
   consumable: 0
   holdable: 1
+  struggler: 0
   description: 'A sword made of ...  wood.
 
 
@@ -39,3 +45,4 @@ MonoBehaviour:
   - materialSprite: {fileID: 618154134, guid: b118e8567b28b334db77b832e5862f9d, type: 3}
     requiredAmount: 0
   image: {fileID: 1633866421, guid: d9a09ae36fc993c438ece0f13525844d, type: 3}
+  durability: 50

@@ -46,7 +46,7 @@ public class TravelerShopScript : MonoBehaviour
         }
 
 
-        bool added = inventoryManager.AddItem(itemToBuy, itemToBuy.maxDurability);
+        bool added = inventoryManager.AddItem(itemToBuy, itemToBuy.maxDurability,1);
         if (added)
         {
             if (coin > 0)

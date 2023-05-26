@@ -200,8 +200,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8576634829336773472, guid: 7ad46620c9307914181a9baa2a2c0280,
         type: 3}
+      propertyPath: coolDown
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8576634829336773472, guid: 7ad46620c9307914181a9baa2a2c0280,
+        type: 3}
       propertyPath: maxHealth
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8576634829336773472, guid: 7ad46620c9307914181a9baa2a2c0280,
+        type: 3}
+      propertyPath: moveSpeed
+      value: 1300
+      objectReference: {fileID: 0}
+    - target: {fileID: 8576634829336773472, guid: 7ad46620c9307914181a9baa2a2c0280,
+        type: 3}
+      propertyPath: isElemental
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8576634829336773476, guid: 7ad46620c9307914181a9baa2a2c0280,
         type: 3}

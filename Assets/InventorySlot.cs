@@ -333,29 +333,49 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IPointerDownHandler, I
             lastClickTime = currentTime;
         }
     }
+    private bool isPointerDown = false;
+    private float holdDuration = .5f;
+    private Coroutine holdCoroutine;
+
     public void OnPointerDown(PointerEventData eventData)
     {
-        InventoryItem itemInSlot = GetComponentInChildren<InventoryItem>();
-        if (itemInSlot != null)
-        {
-            // Access the item in the inventory slot
-            Item selected = itemInSlot.item;
-
-            // Update the UI elements with item information
-            itemImage.sprite = selected.image;
-            itemNameText.text = selected.name;
-            itemDescriptionText.text = selected.description;
-            itemDurabilityText.text = "Durability: " + itemInSlot.durability.ToString();
-
-            // Show the item info window
-            itemInfoWindow.SetActive(true);
-        }
-        Debug.Log("Show details");
+        holdCoroutine = StartCoroutine(StartHoldTimer());
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        // Hide the item information when the button is deselected
+        isPointerDown = false;
+        if (holdCoroutine != null)
+        {
+            StopCoroutine(holdCoroutine);
+        }
         itemInfoWindow.SetActive(false);
     }
+
+    private IEnumerator StartHoldTimer()
+    {
+        isPointerDown = true;
+        yield return new WaitForSeconds(holdDuration);
+
+        if (isPointerDown)
+        {
+            InventoryItem itemInSlot = GetComponentInChildren<InventoryItem>();
+            if (itemInSlot != null)
+            {
+                // Access the item in the inventory slot
+                Item selected = itemInSlot.item;
+
+                // Update the UI elements with item information
+                itemImage.sprite = selected.image;
+                itemNameText.text = selected.name;
+                itemDescriptionText.text = selected.description;
+                itemDurabilityText.text = "Durability: " + itemInSlot.durability.ToString() + "/"+itemInSlot.item.maxDurability;
+
+                // Show the item info window
+                itemInfoWindow.SetActive(true);
+            }
+        }
+    }
+
+
 }

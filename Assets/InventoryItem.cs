@@ -24,13 +24,14 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler,IEnd
     {
         inventoryManager = FindObjectOfType<InventoryManager>();
     }
-    public void InitialiseItem(Item newItem)
+    public void InitialiseItem(Item newItem, int itemCount)
     {
         if (newItem != null)
         {
             item = newItem;
             durability = newItem.durability;
             image.sprite = item.image;
+            count = itemCount;
 
             Item selectedItem = InventoryManager.instance.GetSelectedItem(false);
 

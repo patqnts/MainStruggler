@@ -108,7 +108,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6896801459838904488}
   m_Layer: 0
-  m_Name: Rock-holder
+  m_Name: rock-hold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -198,6 +198,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7702984526162720605, guid: db98e8bed7f025644bb08db03c08ab2b,
+        type: 3}
+      propertyPath: dropPrefab.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7702984526162720605, guid: db98e8bed7f025644bb08db03c08ab2b,
+        type: 3}
+      propertyPath: dropPrefab.Array.data[0]
+      value: 
+      objectReference: {fileID: 60820714438538513, guid: 3e241f4ac8bceb04884641f4988c0919,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db98e8bed7f025644bb08db03c08ab2b, type: 3}
 --- !u!4 &4498795141535398215 stripped

@@ -154,6 +154,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 361236075700595859, guid: 7ad46620c9307914181a9baa2a2c0280,
         type: 3}
+      propertyPath: isFire
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 361236075700595859, guid: 7ad46620c9307914181a9baa2a2c0280,
+        type: 3}
       propertyPath: knockbackForce
       value: 2000
       objectReference: {fileID: 0}
@@ -202,6 +207,11 @@ PrefabInstance:
         type: 3}
       propertyPath: maxHealth
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8576634829336773472, guid: 7ad46620c9307914181a9baa2a2c0280,
+        type: 3}
+      propertyPath: isElemental
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8576634829336773476, guid: 7ad46620c9307914181a9baa2a2c0280,
         type: 3}

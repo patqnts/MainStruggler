@@ -16,10 +16,21 @@ public class NPCManager : MonoBehaviour
     public GameObject Golem;
     public GameObject Bomber;
     public GameObject Container;
+    public GameObject ElementalContainer;
+
+    
     private List<Vector3Int> availableLocations;
+
+    [Header("Normal Monsters")]
     public List<GameObject> enemyList; // list of enemies to spawn
-    public int maxSpawnCount;
+    public int maxSpawnCount = 140;
     private int currentSpawnCount = 0;
+
+    [Header("Elemetal Monsters")]
+    public List<GameObject> elementalList; // list of enemies to spawn
+    public int elementalMaxSpawnCount = 6;
+    private int elementalCurrentSpawnCount = 0;
+
     public CombatManager combat;
     private void Awake()
     {
@@ -65,14 +76,39 @@ public class NPCManager : MonoBehaviour
 
             // Increment the spawn count
             currentSpawnCount++;
+           // Debug.Log("Normal Enemies: " + currentSpawnCount);
             
+        }
+
+        if(elementalCurrentSpawnCount < elementalMaxSpawnCount && availableLocations.Count > 0)
+        {
+            // Get a random location from the list of available locations
+            int randomIndex = Random.Range(0, availableLocations.Count);
+            Vector3Int location = availableLocations[randomIndex];
+            Vector3 worldPosition = cellular.tilemap.CellToWorld(location) + new Vector3(0.5f, 0.5f, 0f);
+
+            // Get a random enemy from the list of enemies
+            int enemyIndex = Random.Range(0, elementalList.Count);
+            GameObject enemy = Instantiate(elementalList[enemyIndex], worldPosition, Quaternion.identity, ElementalContainer.transform);
+
+            availableLocations.RemoveAt(randomIndex);
+
+            //Debug.Log("Elemental Enemies: " + elementalCurrentSpawnCount);
+
+            elementalCurrentSpawnCount++;
         }
     }
     public void OnEnemyDestroyed()
     {
        // combat.KillEnemy();
         currentSpawnCount--;
-        Debug.Log("Enemy Alive: " + currentSpawnCount);
+        //Debug.Log("Enemy Alive: " + currentSpawnCount);
+    }
+
+    public void OnElementalDestroyed()
+    {
+        elementalCurrentSpawnCount--;
+        //Debug.Log("Enemy Alive: " + elementalCurrentSpawnCount);
     }
 
 
@@ -148,7 +184,8 @@ public class NPCManager : MonoBehaviour
             blacksmithSpawn++;
         }
     }
-    
+
+
     public void SpawnWitch()
     {
         //WITCH
@@ -259,17 +296,33 @@ public class NPCManager : MonoBehaviour
         }
     }
 
-    public void SpawnRuin()
+   
+
+    public void SpawnDogo()
     {
-        
-        int ruinspawn = 0;
-        while (ruinspawn < 3 && cellular.groundTilePositions.Count > 0)
+
+        int dogspawn = 0;
+        while (dogspawn < 1 && cellular.groundTilePositions.Count > 0)
+        {
+            int randomIndex = Random.Range(0, cellular.groundTilePositions.Count);
+            Vector3Int tilePosition = cellular.groundTilePositions[randomIndex];
+            Vector3 worldPosition = cellular.tilemap.CellToWorld(tilePosition) + new Vector3(0.5f, 0.5f, 0f); // add offset to center the ruin on the tile
+            Instantiate(Dogo, worldPosition, Quaternion.identity);
+            cellular.groundTilePositions.RemoveAt(randomIndex);
+            dogspawn++;
+        }
+    }
+
+    public void SpawnRuin1()
+    {
+
+        int ruinSpawn = 0;
+        while (ruinSpawn < 1 && cellular.groundTilePositions.Count > 0)
         {
             int randomIndex = Random.Range(0, cellular.groundTilePositions.Count);
             Vector3Int tilePosition = cellular.groundTilePositions[randomIndex];
             Vector3 worldPosition = cellular.tilemap.CellToWorld(tilePosition) + new Vector3(0.5f, 0.5f, 0f); // add offset to center the ruin on the tile
 
-            // Check water distance
             bool isNearWater = false;
             int distance = 2; // Adjust the distance here (e.g., 1 for a 3x3 square, 2 for a 5x5 square)
 
@@ -290,30 +343,102 @@ public class NPCManager : MonoBehaviour
             }
 
             // Skip this tile if it's near water
-            if (isNearWater)
+            if (isNearWater || tilePosition.y < 20 || tilePosition.y > 40)
             {
                 continue;
             }
 
             Instantiate(bonFire, worldPosition, Quaternion.identity);
             cellular.groundTilePositions.RemoveAt(randomIndex);
-            ruinspawn++;
+            ruinSpawn++;
         }
-    }
 
-    public void SpawnDogo()
+    }
+    public void SpawnRuin2()
     {
 
-        int dogspawn = 0;
-        while (dogspawn < 1 && cellular.groundTilePositions.Count > 0)
+        int ruinSpawn = 0;
+        while (ruinSpawn < 1 && cellular.groundTilePositions.Count > 0)
         {
             int randomIndex = Random.Range(0, cellular.groundTilePositions.Count);
             Vector3Int tilePosition = cellular.groundTilePositions[randomIndex];
             Vector3 worldPosition = cellular.tilemap.CellToWorld(tilePosition) + new Vector3(0.5f, 0.5f, 0f); // add offset to center the ruin on the tile
-            Instantiate(Dogo, worldPosition, Quaternion.identity);
+
+            bool isNearWater = false;
+            int distance = 2; // Adjust the distance here (e.g., 1 for a 3x3 square, 2 for a 5x5 square)
+
+            for (int x = tilePosition.x - distance; x <= tilePosition.x + distance; x++)
+            {
+                for (int y = tilePosition.y - distance; y <= tilePosition.y + distance; y++)
+                {
+                    if (cellular.waterTilemap.GetTile(new Vector3Int(x, y, 0)) != null)
+                    {
+                        isNearWater = true;
+                        break;
+                    }
+                }
+                if (isNearWater)
+                {
+                    break;
+                }
+            }
+
+            // Skip this tile if it's near water
+            if (isNearWater || tilePosition.y < 60 || tilePosition.y > 90)
+            {
+                continue;
+            }
+
+            Instantiate(bonFire, worldPosition, Quaternion.identity);
             cellular.groundTilePositions.RemoveAt(randomIndex);
-            dogspawn++;
+            ruinSpawn++;
         }
+
     }
+
+    public void SpawnRuin3()
+    {
+
+        int ruinSpawn = 0;
+        while (ruinSpawn < 1 && cellular.groundTilePositions.Count > 0)
+        {
+            int randomIndex = Random.Range(0, cellular.groundTilePositions.Count);
+            Vector3Int tilePosition = cellular.groundTilePositions[randomIndex];
+            Vector3 worldPosition = cellular.tilemap.CellToWorld(tilePosition) + new Vector3(0.5f, 0.5f, 0f); // add offset to center the ruin on the tile
+
+            bool isNearWater = false;
+            int distance = 2; // Adjust the distance here (e.g., 1 for a 3x3 square, 2 for a 5x5 square)
+
+            for (int x = tilePosition.x - distance; x <= tilePosition.x + distance; x++)
+            {
+                for (int y = tilePosition.y - distance; y <= tilePosition.y + distance; y++)
+                {
+                    if (cellular.waterTilemap.GetTile(new Vector3Int(x, y, 0)) != null)
+                    {
+                        isNearWater = true;
+                        break;
+                    }
+                }
+                if (isNearWater)
+                {
+                    break;
+                }
+            }
+
+            // Skip this tile if it's near water
+            if (isNearWater || tilePosition.y < 110 || tilePosition.y > 140)
+            {
+                continue;
+            }
+
+            Instantiate(bonFire, worldPosition, Quaternion.identity);
+            cellular.groundTilePositions.RemoveAt(randomIndex);
+            ruinSpawn++;
+        }
+
+    }
+
+
+
 
 }

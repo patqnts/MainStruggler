@@ -10,7 +10,7 @@ public class InventoryManager : MonoBehaviour
     public InventorySlot[] equipmentSlots;
     public GameObject inventoryItemPrefab;
     public GameObject weaponHolder;
-   
+
     public GameObject fairyHolder;
     public int fairySlot = 7;
     public int selectedSlot = -1;
@@ -35,8 +35,6 @@ public class InventoryManager : MonoBehaviour
             {
                 ChangeSelectedSlot(number - 1);
             }
-            
-
         }
         Item selectedItem = GetSelectedItem(false);
         if (selectedItem != null)
@@ -47,22 +45,18 @@ public class InventoryManager : MonoBehaviour
         {
             selected.text = "";
         }
-
-       
     }
     public void ReduceDurability()
     {
-        
-            Item selectedItem = GetSelectedItem(false);
-            if (selectedItem != null && selectedItem.hasDurability)
-            {
-                CombatManager combatManager = FindObjectOfType<CombatManager>();
-                InventoryItem selectedInventoryItem = inventorySlots[selectedSlot].GetComponentInChildren<InventoryItem>();
-                combatManager.ReduceDurability(selectedInventoryItem, 1);
-           
-            }
-        
 
+        Item selectedItem = GetSelectedItem(false);
+        if (selectedItem != null && selectedItem.hasDurability)
+        {
+            CombatManager combatManager = FindObjectOfType<CombatManager>();
+            InventoryItem selectedInventoryItem = inventorySlots[selectedSlot].GetComponentInChildren<InventoryItem>();
+            combatManager.ReduceDurability(selectedInventoryItem, 1);
+
+        }
     }
     public void SetFairySlot(int newValue)
     {
@@ -111,34 +105,28 @@ public class InventoryManager : MonoBehaviour
             else
             {
                 weaponAnimator.enabled = false; // turn off the animator
-                weaponSpriteRenderer.sprite = null;        
-                
+                weaponSpriteRenderer.sprite = null;
+
             }
         }
         else // No item is selected or the selected item is not holdable
         {
-            
-                weaponHolder.GetComponent<SpriteRenderer>().sprite = null;
-                weaponHolder.GetComponent<Animator>().enabled = false; ;
-           
-               
-            
-            
+
+            weaponHolder.GetComponent<SpriteRenderer>().sprite = null;
+            weaponHolder.GetComponent<Animator>().enabled = false;
         }
     }
 
-    public void SpawnNewItem(Item item, InventorySlot slot, int durability)
+    public void SpawnNewItem(Item item, InventorySlot slot, int durability, int count)
     {
         GameObject newItemGo = Instantiate(inventoryItemPrefab, slot.transform);
         InventoryItem inventoryItem = newItemGo.GetComponent<InventoryItem>();
-        inventoryItem.InitialiseItem(item); // Call the method with the item parameter
+        inventoryItem.InitialiseItem(item, count); // Pass the count value
         inventoryItem.durability = durability; // Set the durability value separately
     }
 
 
-
-
-    public bool AddItem(Item item, int durability)
+    public bool AddItem(Item item, int durability, int count)
     {
         CombatManager combatManager = FindObjectOfType<CombatManager>();
 
@@ -154,14 +142,24 @@ public class InventoryManager : MonoBehaviour
                 itemInSlot.count < item.maxStackCount &&
                 itemInSlot.item.stackable && itemInSlot.item.type != ItemType.Weapon)
             {
-                itemInSlot.count++;
-                itemInSlot.RefreshCount();
-                addedToInventory = true;
-                break;
+                int spaceAvailable = item.maxStackCount - itemInSlot.count;
+                if (count <= spaceAvailable)
+                {
+                    itemInSlot.count += count;
+                    itemInSlot.RefreshCount();
+                    addedToInventory = true;
+                    break;
+                }
+                else
+                {
+                    itemInSlot.count = item.maxStackCount;
+                    itemInSlot.RefreshCount();
+                    count -= spaceAvailable;
+                }
             }
         }
 
-        // Finding empty slot
+        // Finding empty slot for remaining items
         if (!addedToInventory)
         {
             for (int i = 0; i < inventorySlots.Length; i++)
@@ -170,9 +168,14 @@ public class InventoryManager : MonoBehaviour
                 InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
                 if (itemInSlot == null)
                 {
-                    SpawnNewItem(item, slot, durability); // Pass the durability value
+                    int countToSpawn = Mathf.Min(count, item.maxStackCount);
+                    SpawnNewItem(item, slot, durability, countToSpawn); // Pass the count value
+                    count -= countToSpawn;
                     addedToInventory = true;
-                    break;
+                    if (count <= 0)
+                    {
+                        break;
+                    }
                 }
             }
         }
@@ -186,12 +189,6 @@ public class InventoryManager : MonoBehaviour
 
         return addedToInventory;
     }
-
-
-
-
-
-
 
     public Item GetFairySlot(bool use)
     {
@@ -225,10 +222,10 @@ public class InventoryManager : MonoBehaviour
         if (itemInSlot != null)
         {
             Item item = itemInSlot.item;
-            if(use == true)
+            if (use == true)
             {
                 itemInSlot.count--;
-                if(itemInSlot.count <= 0)
+                if (itemInSlot.count <= 0)
                 {
                     Destroy(itemInSlot.gameObject);
                 }
@@ -246,17 +243,17 @@ public class InventoryManager : MonoBehaviour
 
 
     public InventoryItem GetInventoryItem(string itemName)
-{
-    for (int i = 0; i < inventorySlots.Length; i++)
     {
-        InventorySlot slot = inventorySlots[i];
-        InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
-        if (itemInSlot != null && itemInSlot.item.name == itemName)
+        for (int i = 0; i < inventorySlots.Length; i++)
         {
-            return itemInSlot;
+            InventorySlot slot = inventorySlots[i];
+            InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
+            if (itemInSlot != null && itemInSlot.item.name == itemName)
+            {
+                return itemInSlot;
+            }
         }
-    }
-    return null;
+        return null;
     }
 
     public void RemoveItem(string itemName, int count)
@@ -276,9 +273,6 @@ public class InventoryManager : MonoBehaviour
         }
 
     }
-
-   
-
     public int GetItemCount(string itemName)
     {
         int count = 0;
@@ -311,30 +305,109 @@ public class InventoryManager : MonoBehaviour
                         // Drop non-stackable items individually
                         GameObject itemObject = Instantiate(itemInSlot.item.prefab, dropLocation.position, Quaternion.identity);
                         Loot loot = itemObject.GetComponent<Loot>();
-                        loot.Initialize(itemInSlot.item, 1, itemInSlot.durability); // Drop a single item with its durability
-                        RemoveItem(itemInSlot.item.name, 1); // Remove a single item from the inventory
-                        itemsDropped.Add(itemInSlot.item.name); // Add the item to the dropped items set
+                        loot.Initialize(itemInSlot.item, 1, itemInSlot.durability);
+                        RemoveSingleItem(itemInSlot);
                     }
                     else
                     {
-                        // Drop stackable items entirely
-                        int itemCount = GetItemCount(itemInSlot.item.name);
+                        // Calculate the total count of stackable items
+                        int totalCount = GetTotalItemCount(itemInSlot);
+
+                        // Drop stackable items as a single stack
                         GameObject itemObject = Instantiate(itemInSlot.item.prefab, dropLocation.position, Quaternion.identity);
                         Loot loot = itemObject.GetComponent<Loot>();
-                        loot.Initialize(itemInSlot.item, itemCount, itemInSlot.durability); // Drop the entire item stack with its durability
-                        RemoveItem(itemInSlot.item.name, itemCount); // Remove the entire item stack from the inventory
-                        itemsDropped.Add(itemInSlot.item.name); // Add the item to the dropped items set
+                        loot.Initialize(itemInSlot.item, totalCount, itemInSlot.durability);
+                        RemoveStackableItems(itemInSlot, totalCount);
                     }
+
+                    itemsDropped.Add(itemInSlot.item.name);
                 }
             }
         }
     }
 
+    private void RemoveStackableItems(InventoryItem itemInSlot, int count)
+    {
+        int remainingCount = count;
 
+        while (remainingCount > 0)
+        {
+            if (itemInSlot.count <= remainingCount)
+            {
+                remainingCount -= itemInSlot.count;
+                RemoveSingleItem(itemInSlot);
+            }
+            else
+            {
+                itemInSlot.count -= remainingCount;
+                itemInSlot.RefreshCount();
+                remainingCount = 0;
+            }
+        }
+    }
 
+    private void RemoveSingleItem(InventoryItem itemInSlot)
+    {
+        itemInSlot.transform.SetParent(null);
+        Destroy(itemInSlot.gameObject);
+    }
 
+    private int GetTotalItemCount(InventoryItem itemInSlot)
+    {
+        int totalCount = itemInSlot.count;
 
+        InventorySlot slot = itemInSlot.GetComponentInParent<InventorySlot>();
+        InventoryItem[] itemsInSlot = slot.GetComponentsInChildren<InventoryItem>();
 
+        foreach (InventoryItem item in itemsInSlot)
+        {
+            if (item != itemInSlot && item.item == itemInSlot.item)
+            {
+                totalCount += item.count;
+            }
+        }
+
+        return totalCount;
+    }
+
+    public InventoryItem GetItemPrefabByName(string itemName)
+    {
+        foreach (InventorySlot slot in inventorySlots)
+        {
+            InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
+            if (itemInSlot != null && itemInSlot.item.name == itemName)
+            {
+                return itemInSlot;
+            }
+        }
+        return null;
+    }
+
+    public Item GetItemByName(string itemName)
+    {
+        foreach (InventorySlot slot in inventorySlots)
+        {
+            InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
+            if (itemInSlot != null && itemInSlot.item.name == itemName)
+            {
+                return itemInSlot.item;
+            }
+        }
+        return null;
+    }
+
+    public void ClearInventory()
+    {
+        foreach (var slot in inventorySlots)
+        {
+            // Destroy any existing item in the slot
+            InventoryItem item = slot.GetComponentInChildren<InventoryItem>();
+            if (item != null)
+            {
+                Destroy(item.gameObject);
+            }
+        }
+    }
 
     public bool isInventoryEmpty()
     {

@@ -20,6 +20,7 @@ public class SlimeScript : MonoBehaviour, IDamageable
     [SerializeField] private EnemyHealthBar enemyHealthBar;
     public GameObject enemyHealthObject;
     public GameObject floatingDamage;
+    public bool isElemental;
     public float Health
     {
         set
@@ -32,9 +33,24 @@ public class SlimeScript : MonoBehaviour, IDamageable
 
                 hitCollider.enabled = false;
                 animator.SetTrigger("Death");
-                npcManager.OnEnemyDestroyed();
+
+                if (isElemental)
+                {
+                    Debug.Log("elemental monster dies -1");
+                    npcManager.OnElementalDestroyed();
+                }
+                else
+                {
+                    Debug.Log("Normal monster dies -1");
+                    npcManager.OnEnemyDestroyed();
+                }
+               
+
                 DropItem();
-                Destroy(gameObject,1.2f);
+                if (transform.parent != null)
+                {
+                    Destroy(transform.parent.gameObject, 1.2f);
+                }
                 InventoryManager.instance.ReduceDurability();
 
 

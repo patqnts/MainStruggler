@@ -17,6 +17,10 @@ public class Plant : MonoBehaviour, IDamageable
     public float _health = 3f;
     private NPCManager npcManager;
     public bool isFacingRight = true;
+
+    public bool isElemental;
+    public bool isFire = false;
+    public bool isDark = false;
     public float Health
     {
         set
@@ -31,9 +35,22 @@ public class Plant : MonoBehaviour, IDamageable
                 hitCollider.enabled = false;
                 animator.SetTrigger("Explode");
                 timer = 3f;
-               
-                Destroy(gameObject, 2f);
 
+                if (isElemental)
+                {
+                    Debug.Log("Elemental monster dies -1");
+                    npcManager.OnElementalDestroyed();
+                }
+                else
+                {
+                    Debug.Log("Normal monster dies -1");
+                    npcManager.OnEnemyDestroyed();
+                }
+
+                if (transform.parent != null)
+                {
+                    Destroy(transform.parent.gameObject, 1.2f);
+                }
 
             }
         }
@@ -46,7 +63,7 @@ public class Plant : MonoBehaviour, IDamageable
     private bool hasDetectedPlayer = false;
     private bool hasExploded = false;
     public bool isDetecting = false; // New variable
-    private float explosionTimer = 3f;
+    public float explosionTimer = 3f;
     private float timer = 0f;
    
     public Transform explosionPoint;
@@ -92,7 +109,7 @@ public class Plant : MonoBehaviour, IDamageable
                 // Disable collider and destroy object after animation finishes
                 if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1 && !animator.IsInTransition(0))
                 {
-                    npcManager.OnEnemyDestroyed();
+                   
                     hitCollider.enabled = false;
                     Destroy(gameObject, 1f);
                 }
@@ -151,7 +168,15 @@ public class Plant : MonoBehaviour, IDamageable
         knockback.y = Random.Range(-1f, 1f) * knocks;
         if (collision.gameObject.CompareTag("Player")|| collision.gameObject.CompareTag("Enemy"))
         {
-            damageableObject.OnHit(damage, knockback);
+            if (isDark)
+            {
+                damageableObject.OnDark(1f);
+            }
+            else if (isFire)
+            {
+                damageableObject.OnBurn(1, 2);
+            }
+            damageableObject.OnHit(explosionDamage, knockback);
            
         }
 

@@ -17,8 +17,8 @@ public class Cellular : MonoBehaviour
     //COLLIDER TILEMAP
     public Tilemap waterTilemap;
     //ruin prefab
-    
-    
+
+    public GameObject bottle;
    
 
     public TileBase[] grassflowers;
@@ -33,8 +33,8 @@ public class Cellular : MonoBehaviour
     
 
 
-    public int seedCode = 0;
-
+    private int seedCode = 0;
+    public int seedCodex;
     private void Update()
     {
         PlayerPrefs.SetInt("seedCode", seedCode);
@@ -43,9 +43,17 @@ public class Cellular : MonoBehaviour
     }
     private void Start()
     {
+        // Reset seedCode in PlayerPrefs
+        PlayerPrefs.DeleteKey("seedCode");
 
-        seedCode = PlayerPrefs.GetInt("seedCode", 0);
+        // GenerateMap will use the new seed value
+        seedCode = seedCodex;
 
+        // Save the new seed value
+        PlayerPrefs.SetInt("seedCode", seedCode);
+        PlayerPrefs.Save();
+
+        // Generate the map
         GenerateMap();
         camera.transform.position = player.transform.position;
 
@@ -54,27 +62,76 @@ public class Cellular : MonoBehaviour
         npcManager.SpawnDogo();
         npcManager.SpawnMerchant();
         npcManager.SpawnSmith();
-        npcManager.SpawnRuin();
+
+        npcManager.SpawnRuin1();
+        npcManager.SpawnRuin2();
+        npcManager.SpawnRuin3();
+
+
         npcManager.SpawnWitch();
         npcManager.SpawnGolem();
         npcManager.SpawnBomber();
 
 
         RuinSavePoint.PlayerDied();
+        Bottle();
     }
-   
+    public void Bottle()
+    {
+        // Get the player's position.
+        Vector3 playerPosition = player.transform.position;
+
+        // Generate a random position within 6-8 units of the player.
+        Vector3 randomPosition = playerPosition + new Vector3(
+            Random.Range(-6, 8),
+            Random.Range(-6, 8),
+            0f
+        );
+
+        // Check if the random position is on a ground tile.
+        bool isOnGroundTile = false;
+        for (int x = -1; x <= 1; x++)
+        {
+            for (int y = -1; y <= 1; y++)
+            {
+                if (tilemap.GetTile(new Vector3Int((int)randomPosition.x + x, (int)randomPosition.y + y, 0)) != null)
+                {
+                    isOnGroundTile = true;
+                    break;
+                }
+            }
+            if (isOnGroundTile)
+            {
+                break;
+            }
+        }
+
+        // If the random position is on a ground tile, instantiate the prefab.
+        if (isOnGroundTile)
+        {
+            Instantiate(bottle, randomPosition, Quaternion.identity);
+        }
+
+
+    }
+
     private void GenerateMapUsingSeed()
     {
-       
+        Random.InitState(seedCode); // Initialize the random number generator with the seed code
+
+        map = new int[mapWidth, mapHeight];
+        FillMapRandomly();
+
+        Vector2 center = new Vector2(mapWidth / 2, mapHeight / 2);
+        float maxDistance = Mathf.Min(center.x - 9, center.y - 9); // Subtract tiles from center coordinates
+
         for (int x = 0; x < mapWidth; x++)
         {
             for (int y = 0; y < mapHeight; y++)
             {
-                // Generate a random number using the stored seed code
-                float randomValue = Random.Range(0f, 1f);
-                if (randomValue < fillPercentage / 100f)
+                if (Vector2.Distance(new Vector2(x, y), center) <= maxDistance)
                 {
-                    map[x, y] = 1;
+                    map[x, y] = Random.Range(0, 100) < fillPercentage ? 1 : 0;
                 }
                 else
                 {
@@ -82,11 +139,15 @@ public class Cellular : MonoBehaviour
                 }
             }
         }
+
         for (int i = 0; i < smoothnessIterations; i++)
         {
             SmoothMap();
         }
     }
+
+
+
 
 
     private void GenerateMap()

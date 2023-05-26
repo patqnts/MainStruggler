@@ -162,6 +162,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 7401251658839098987, guid: e5bddcd5512b8dd4887e4689be374b5e,
+        type: 3}
+      propertyPath: explosionDamage
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7401251658839098988, guid: e5bddcd5512b8dd4887e4689be374b5e,
         type: 3}
       propertyPath: m_RootOrder
@@ -222,6 +227,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7401251658839098991, guid: e5bddcd5512b8dd4887e4689be374b5e,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1571027513, guid: 39ec35c4ad4602848a973643c7094ee0,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5bddcd5512b8dd4887e4689be374b5e, type: 3}
 --- !u!1 &8458383143582337539 stripped
