@@ -34,7 +34,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler,IEnd
             count = itemCount;
 
             Item selectedItem = InventoryManager.instance.GetSelectedItem(false);
-
+            Item selectedFairy = InventoryManager.instance.GetFairySlot(false);
             if (selectedItem != null)
             {
                 if (!selectedItem.holdable && selectedItem.type == ItemType.Weapon || selectedItem.type == ItemType.Tool)
@@ -59,9 +59,37 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler,IEnd
                     InventoryManager.instance.weaponHolder.GetComponent<SpriteRenderer>().sprite = null;
                 }
             }
+            if (selectedFairy != null)
+            {
+                if (selectedFairy.type == ItemType.Fairy)
+                {
+                    Animator fairyAnimator = selectedFairy.prefab.GetComponent<Animator>();
+                    Sprite itemSprite = selectedFairy.prefab.GetComponent<SpriteRenderer>().sprite;
+                    if (itemSprite != null)
+                    {
+                        InventoryManager.instance.fairyHolder.GetComponent<SpriteRenderer>().sprite = itemSprite;
+                    }
+                    if (fairyAnimator != null)
+                    {
+                        InventoryManager.instance.fairyHolder.GetComponent<Animator>().runtimeAnimatorController = fairyAnimator.runtimeAnimatorController;
+                        Debug.Log("Fairy - to Empty slot : fairy animator continue");
+                    }
+                    else
+                    {
+                        InventoryManager.instance.fairyHolder.GetComponent<Animator>().runtimeAnimatorController = null;
+                        InventoryManager.instance.fairyHolder.GetComponent<SpriteRenderer>().sprite = null;
+                    }
+                }
+                else
+                {
+                    InventoryManager.instance.fairyHolder.GetComponent<Animator>().runtimeAnimatorController = null;
+                    InventoryManager.instance.fairyHolder.GetComponent<SpriteRenderer>().sprite = null;
+                }
+            }
             else
             {
                 InventoryManager.instance.weaponHolder.GetComponent<SpriteRenderer>().sprite = null;
+                InventoryManager.instance.fairyHolder.GetComponent<SpriteRenderer>().sprite = null;
             }
 
             RefreshCount();

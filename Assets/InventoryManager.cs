@@ -159,6 +159,18 @@ public class InventoryManager : MonoBehaviour
             }
         }
 
+        // Check if the item is a Fairy and handle accordingly
+        if (!addedToInventory && item.type == ItemType.Fairy)
+        {
+            // Check if equipmentSlots[7] is empty
+            InventoryItem equipmentItem = equipmentSlots[7].GetComponentInChildren<InventoryItem>();
+            if (equipmentItem == null)
+            {
+                SpawnNewItem(item, equipmentSlots[7], durability, count); // Add item to equipmentSlots[7]
+                addedToInventory = true;
+            }
+        }
+
         // Finding empty slot for remaining items
         if (!addedToInventory)
         {
@@ -186,13 +198,14 @@ public class InventoryManager : MonoBehaviour
             combatManager.AddItemWithDurability(item, durability);
             Debug.Log(item + " Durability: " + durability);
         }
-
+        //ChangeSelectedSlot(0);
         return addedToInventory;
     }
 
+
     public Item GetFairySlot(bool use)
     {
-        InventorySlot slot = equipmentSlots[fairySlot];
+        InventorySlot slot = equipmentSlots[7];
         InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
 
         if (itemInSlot != null)
@@ -407,6 +420,14 @@ public class InventoryManager : MonoBehaviour
                 Destroy(item.gameObject);
             }
         }
+
+        
+            InventoryItem fairyitem = equipmentSlots[7].GetComponentInChildren<InventoryItem>();
+            if (fairyitem != null)
+            {
+                Destroy(fairyitem.gameObject);
+            }
+        
     }
 
     public bool isInventoryEmpty()
