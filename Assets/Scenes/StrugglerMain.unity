@@ -3997,7 +3997,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.50966895, g: 0.20518868, b: 0.8207547, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4146,7 +4146,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: df4223605ce02d340b4ca7f7684f7815, type: 3}
+    m_Font: {fileID: 12800000, guid: a054eb57a58246648a89b953dff93fcf, type: 3}
     m_FontSize: 14
     m_FontStyle: 1
     m_BestFit: 0
@@ -5953,7 +5953,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 4117849712275761620}
   inventoryManager: {fileID: 1848573413}
-  cellular: {fileID: 1967736704}
+  golem: {fileID: 0}
+  slime: {fileID: 0}
+  bomber: {fileID: 0}
+  dogo: {fileID: 0}
   itemDatabase: {fileID: 1023781786}
   currentSaveSlotIndex: 0
   loadSystem: {fileID: 0}
@@ -6277,7 +6280,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: df4223605ce02d340b4ca7f7684f7815, type: 3}
+    m_Font: {fileID: 12800000, guid: a054eb57a58246648a89b953dff93fcf, type: 3}
     m_FontSize: 56
     m_FontStyle: 1
     m_BestFit: 0
@@ -6369,7 +6372,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: df4223605ce02d340b4ca7f7684f7815, type: 3}
+    m_Font: {fileID: 12800000, guid: a054eb57a58246648a89b953dff93fcf, type: 3}
     m_FontSize: 14
     m_FontStyle: 1
     m_BestFit: 0
@@ -7345,7 +7348,13 @@ MonoBehaviour:
   - {fileID: 6639703773389676179, guid: ba8664cb07604b448bcd0b18e4cf2186, type: 3}
   - {fileID: 6639703773389676179, guid: ba8664cb07604b448bcd0b18e4cf2186, type: 3}
   text: 
+  seedCode: 0
   seedCodex: 0
+  newLoad: 0
+  isDeadGolem: 0
+  isDeadSlime: 0
+  isDeadBomber: 0
+  isDeadDogo: 0
 --- !u!4 &1967736705
 Transform:
   m_ObjectHideFlags: 0
@@ -8250,6 +8259,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 4117849712275761620}
   inactiveObjectName: reload
+  inactiveObjectInventory: 
 --- !u!1 &2095061916
 GameObject:
   m_ObjectHideFlags: 0
@@ -8484,13 +8494,18 @@ PrefabInstance:
     - target: {fileID: 1957374977941793963, guid: 542bb31e53048a549a87497a9d046a3d,
         type: 3}
       propertyPath: isJoypad
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1957374977941793963, guid: 542bb31e53048a549a87497a9d046a3d,
         type: 3}
       propertyPath: joystick
       value: 
       objectReference: {fileID: 1292976054}
+    - target: {fileID: 1957374977941793963, guid: 542bb31e53048a549a87497a9d046a3d,
+        type: 3}
+      propertyPath: Inventory
+      value: 
+      objectReference: {fileID: 6073206873377076461}
     - target: {fileID: 1957374977941793963, guid: 542bb31e53048a549a87497a9d046a3d,
         type: 3}
       propertyPath: maxHealth
@@ -13364,6 +13379,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff3895597b4a6c749be60261ed37df0b, type: 3}
+--- !u!1 &6073206873377076461 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6073206872393807753, guid: ff3895597b4a6c749be60261ed37df0b,
+    type: 3}
+  m_PrefabInstance: {fileID: 6073206873377076460}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7077703536207336480 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4626737821174681951, guid: 542bb31e53048a549a87497a9d046a3d,

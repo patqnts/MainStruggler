@@ -6,15 +6,18 @@ public class GameOverDialog : MonoBehaviour
 {
     // Start is called before the first frame update
     private GameObject gameOverBox;
+   
     public Movement player;
 
     public string inactiveObjectName = "reload";
+    public string inactiveObjectInventory = "MainInventoryGroup";
     void Start()
     {
         player = FindObjectOfType<Movement>();
         GameObject canvas = GameObject.Find("Main User Interface");
         // Find the inactive GameObject by name
         gameOverBox = canvas.transform.Find(inactiveObjectName).gameObject;
+        
 
         if (gameOverBox != null)
         {
@@ -27,6 +30,8 @@ public class GameOverDialog : MonoBehaviour
     {
         if (player.isDead)
         {
+
+
             player.DropItemPlayer();
 
            

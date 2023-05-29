@@ -38,6 +38,15 @@ public class Cellular : MonoBehaviour
     public int seedCodex;
 
     public bool newLoad = false;
+
+    public bool isDeadGolem;
+    public bool isDeadSlime;
+    public bool isDeadBomber;
+    public bool isDeadDogo;
+
+
+
+
     private void Update()
     {
         //PlayerPrefs.SetInt("seedCode", seedCode);
@@ -70,9 +79,9 @@ public class Cellular : MonoBehaviour
         GenerateMap();
         camera.transform.position = player.transform.position;
 
-        npcManager.SpawnQueen();
+        
         npcManager.SpawnCrow();
-        npcManager.SpawnDogo();
+        npcManager.SpawnWitch();
         npcManager.SpawnMerchant();
         npcManager.SpawnSmith();
 
@@ -81,9 +90,23 @@ public class Cellular : MonoBehaviour
         npcManager.SpawnRuin3();
 
 
-        npcManager.SpawnWitch();
-        npcManager.SpawnGolem();
-        npcManager.SpawnBomber();
+        if (isDeadDogo == false)
+        {
+            npcManager.SpawnDogo();
+        }           
+        if (isDeadSlime == false)
+        {
+            npcManager.SpawnQueen();
+        }        
+        if (isDeadGolem == false)
+        {
+            npcManager.SpawnGolem();
+        }          
+        if (isDeadBomber == false)
+        {
+            npcManager.SpawnBomber();
+        }
+           
 
 
        
@@ -97,6 +120,7 @@ public class Cellular : MonoBehaviour
         else
         {
             //loadSystem.LoadPlayer(text);
+            Bottle();
             Debug.Log("wala lang");
         }
         

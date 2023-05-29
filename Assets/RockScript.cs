@@ -43,8 +43,12 @@ public class RockScript : MonoBehaviour, IDamageable
 
     public void OnHit(float damage)
     {
-        Health -= (damage * .7f);
-        Debug.Log("rock health" + Health);
+        if(_health >= 0)
+        {
+            Health -= (damage * .7f);
+            Debug.Log("rock health" + Health);
+        }
+        
     }
 
     void Start()
@@ -59,6 +63,7 @@ public class RockScript : MonoBehaviour, IDamageable
     {
         collider.enabled = false;
         animator.SetBool("Destroyed", true);
+
         DropItem();
         StartCoroutine(RespawnTree());
     }
@@ -88,7 +93,7 @@ public class RockScript : MonoBehaviour, IDamageable
     {
         float elapsedTime = 0f;
 
-        while (elapsedTime < time)
+        while (elapsedTime < time && _health > 0)
         {
             yield return new WaitForSeconds(1f);
 

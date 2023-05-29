@@ -30,6 +30,8 @@ public class GhostEnemyAI : MonoBehaviour, IDamageable
             {
                 if (isSecondPhase)
                 {
+                    Cellular cellular = FindObjectOfType<Cellular>();
+                    cellular.isDeadDogo = true;
                     isAlive = false;
                     rb.constraints = RigidbodyConstraints2D.FreezeAll;
                     hitCollider.enabled = false;
@@ -74,6 +76,7 @@ public class GhostEnemyAI : MonoBehaviour, IDamageable
     }
     public void Start()
     {
+        
         player = FindObjectOfType<Movement>();
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();

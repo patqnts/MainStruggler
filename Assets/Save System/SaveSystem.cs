@@ -8,6 +8,11 @@ public class SaveSystem : MonoBehaviour
 {
     public Movement player;
     public InventoryManager inventoryManager;
+
+    public GolemScript golem;
+    public SlimeQueen slime;
+    public BomberScript bomber;
+    public DogoTotemScripts dogo;
    
     public ItemDatabase itemDatabase; // Reference to the ItemDatabase
 
@@ -18,18 +23,53 @@ public class SaveSystem : MonoBehaviour
     private void Start()
     {
         loadSystem = FindObjectOfType<LoadSystem>();
+        
     }
     //public void SavePlayer(string profileId)
     public void SavePlayer(string profileId)
     {
         Cellular cellular = FindObjectOfType<Cellular>();
         profileId = cellular.text;
-
+        golem = FindObjectOfType<GolemScript>();
+        slime = FindObjectOfType<SlimeQueen>();
+        bomber = FindObjectOfType<BomberScript>();
+        dogo = FindObjectOfType<DogoTotemScripts>();
         PlayerData data = new PlayerData();
-        data._health = player._health;
-        data.moveSpeed = player.moveSpeed;
+
+        //Player
+        data._health = player._health;      
         data.playerPos = player.transform.position;
         data.mapSeed = cellular.seedCodex;
+
+
+
+        data.isDeadGolem = cellular.isDeadGolem;
+        data.isDeadSlime = cellular.isDeadSlime;
+        data.isDeadBomber = cellular.isDeadBomber;
+        data.isDeadDogo = cellular.isDeadDogo;
+        //Boss
+        if(data.isDeadGolem == false)
+        {
+            data.golemPos = golem.transform.position;
+
+        }
+        if (data.isDeadBomber == false)
+        {
+            data.bomberPos = golem.transform.position;
+
+        }
+        if (data.isDeadSlime == false)
+        {
+            data.slimePos = golem.transform.position;
+
+        }
+        if (data.isDeadDogo == false)
+        {
+            data.dogoPos = golem.transform.position;
+
+        }
+
+
 
         // Save inventory items
         foreach (var slot in inventoryManager.inventorySlots)
@@ -43,6 +83,10 @@ public class SaveSystem : MonoBehaviour
                 itemData.count = item.count;
                 data.inventoryItems.Add(itemData);
                 Debug.Log("Item: " + itemData.itemName);
+            }
+            else
+            {
+                Debug.Log("No item in the inventory");
             }
         }
         // Save equipment item in equipmentSlots[7]
@@ -66,8 +110,8 @@ public class SaveSystem : MonoBehaviour
         string screenshotPath = Path.Combine(Application.persistentDataPath,"/"+cellular.text+ "/savepoint.png"); //ANDROID VERSION
         ScreenCapture.CaptureScreenshot(screenshotPath);
 
-        string screenshotPathS = Path.Combine(Application.persistentDataPath, cellular.text ,"savepoint.png");
-        ScreenCapture.CaptureScreenshot(screenshotPathS);
+       // string screenshotPathS = Path.Combine(Application.persistentDataPath, cellular.text ,"savepoint.png");
+        //ScreenCapture.CaptureScreenshot(screenshotPathS);
         
 
 
@@ -80,7 +124,7 @@ public class SaveSystem : MonoBehaviour
         Debug.Log(Application.persistentDataPath);
         Debug.Log("Player saved!");
         Debug.Log("Health: " + data._health);
-        Debug.Log("Move Speed: " + data.moveSpeed);
+      
         Debug.Log("Position: " + data.playerPos);
         Debug.Log("Inventory Items saved: " + data.inventoryItems.Count);
         Debug.Log("Map seedcode: " + data.mapSeed);

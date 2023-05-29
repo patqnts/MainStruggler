@@ -37,6 +37,8 @@ public class SlimeQueen : MonoBehaviour, IDamageable
 
             if (_health <= 0)
             {
+                Cellular cellular = FindObjectOfType<Cellular>();
+                cellular.isDeadSlime = true;
                 rb.constraints = RigidbodyConstraints2D.FreezeAll;
                 collider.enabled = false;
                 //enemyHealthObject.SetActive(false);

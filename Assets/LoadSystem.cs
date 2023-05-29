@@ -12,7 +12,10 @@ public class LoadSystem : MonoBehaviour
     
     public InputField seedCode;
     public int lastSeedCode;
-
+    public GolemScript golem;
+    public SlimeQueen slime;
+    public BomberScript bomber;
+    public DogoTotemScripts dogo;
 
     public Dropdown selectedSlot;
     
@@ -39,7 +42,9 @@ public class LoadSystem : MonoBehaviour
         {
            // LoadPlayer(passedText);
         }
+      
         
+
     }
 
     public void LoadPlayerAndGameScene(string profileId)
@@ -83,6 +88,10 @@ public class LoadSystem : MonoBehaviour
 
             
             player = FindObjectOfType<Movement>();
+            golem = FindObjectOfType<GolemScript>();
+            slime = FindObjectOfType<SlimeQueen>();
+            bomber = FindObjectOfType<BomberScript>();
+            dogo = FindObjectOfType<DogoTotemScripts>();
 
             InventoryManager inventoryManager = FindObjectOfType<InventoryManager>();
             ItemDatabase itemDatabase = FindObjectOfType<ItemDatabase>();
@@ -94,15 +103,40 @@ public class LoadSystem : MonoBehaviour
                 cellular.seedCode = data.mapSeed;
                 lastSeedCode = cellular.seedCode;
                 Debug.Log(data.mapSeed + " is existing");
+
+                // BOSS BOOL
                 
+
             }
             
             if (player != null)
             {
-                
+                cellular.isDeadGolem = data.isDeadGolem;
+                cellular.isDeadSlime = data.isDeadSlime;
+                cellular.isDeadBomber = data.isDeadBomber;
+                cellular.isDeadDogo = data.isDeadDogo;
                 player._health = data._health;
-                player.moveSpeed = data.moveSpeed;
+               
                 player.transform.position = data.playerPos;
+
+                if(data.isDeadGolem = false)
+                {
+                    golem.transform.position = data.golemPos;
+                }
+
+                if (data.isDeadSlime = false)
+                {
+                    slime.transform.position = data.slimePos;
+                }
+                if (data.isDeadBomber = false)
+                {
+                    bomber.transform.position = data.bomberPos;
+                }
+                if (data.isDeadDogo = false)
+                {
+                    dogo.transform.position = data.dogoPos;
+                }
+
                 Debug.Log(data.playerPos);
                 
             }
@@ -133,7 +167,7 @@ public class LoadSystem : MonoBehaviour
             Debug.Log("Player loaded!");
             Debug.Log("Map seed: " + data.mapSeed);
             Debug.Log("Health: " + data._health);
-            Debug.Log("Move Speed: " + data.moveSpeed);
+            
             Debug.Log("Position: " + data.playerPos);
             Debug.Log("Inventory Items loaded: " + data.inventoryItems.Count);
             player.transform.position = data.playerPos;

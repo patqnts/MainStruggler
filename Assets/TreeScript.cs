@@ -44,8 +44,11 @@ public class TreeScript : MonoBehaviour, IDamageable
 
     public void OnHit(float damage)
     {
-        Health -= (damage * .7f);
-        Debug.Log("Tree healt" + Health);
+        if (_health >= 0)
+        {
+            Health -= (damage * .7f);
+            Debug.Log("rock health" + Health);
+        }
     }
 
     void Start()
@@ -82,7 +85,7 @@ public class TreeScript : MonoBehaviour, IDamageable
     private bool isBurning = false;
     public void OnBurn(float damage, float time)
     {
-        if (!isBurning)
+        if (!isBurning && _health > 0)
         {
             StartCoroutine(ApplyBurnDamage(damage, time));
         }
@@ -96,7 +99,7 @@ public class TreeScript : MonoBehaviour, IDamageable
         float elapsedTime = 0f;
         float multiplier = 90f;
          
-        while (elapsedTime < time)
+        while (elapsedTime < time && _health > 0)
         {
 
             float increasedDamage = damage * multiplier;

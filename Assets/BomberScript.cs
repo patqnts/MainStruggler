@@ -42,6 +42,8 @@ public class BomberScript : MonoBehaviour, IDamageable
 
             if (_health <= 0)
             {
+                Cellular cellular = FindObjectOfType<Cellular>();
+                cellular.isDeadDogo = true;
                 moveSpeed = 0;
                 rb.constraints = RigidbodyConstraints2D.FreezeAll;
                 hitCollider.enabled = false;

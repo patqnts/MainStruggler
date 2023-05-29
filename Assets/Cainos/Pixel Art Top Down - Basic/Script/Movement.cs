@@ -40,6 +40,8 @@ public class Movement : MonoBehaviour, IDamageable
     public float maxHealth;
     public InventoryItem selectedItem;
 
+
+    public GameObject Inventory;
     public bool isJoypad = false;
     public float Health
     {
@@ -74,6 +76,7 @@ public class Movement : MonoBehaviour, IDamageable
     }
     public void DropItemPlayer()
     {
+        Inventory.SetActive(true);
         InventoryManager.instance.DropAllItems(dropPos);
     }
     public void Respawn()

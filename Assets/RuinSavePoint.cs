@@ -105,7 +105,7 @@ public class RuinSavePoint : MonoBehaviour
     {
         SaveSystem saveSystem = FindObjectOfType<SaveSystem>();
         Cellular cellular = FindObjectOfType<Cellular>();
-        if (saveSystem != null)
+        if (saveSystem != null && cellular != null)
         {
             saveSystem.SavePlayer(cellular.text);
             Debug.Log(cellular.text);

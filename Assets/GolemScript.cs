@@ -38,6 +38,8 @@ public class GolemScript : MonoBehaviour, IDamageable
 
             if (_health <= 0)
             {
+                Cellular cellular = FindObjectOfType<Cellular>();
+                cellular.isDeadGolem = true;
                 moveSpeed = 0;
                 hitCollider.enabled = false;
                 //enemyHealthObject.SetActive(false);
