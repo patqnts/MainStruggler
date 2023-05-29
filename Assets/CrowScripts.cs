@@ -59,8 +59,13 @@ public class CrowScripts : MonoBehaviour
 
 
             }
-            NoticeUI.SetActive(true);
-            notice.SetActive(true);
+            
+            if(NoticeUI != null)
+            {
+                NoticeUI.SetActive(true);
+                notice.SetActive(true);
+            }
+           
 
 
 
