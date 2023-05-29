@@ -2,12 +2,13 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
+using UnityEngine.Android;
 
 public class SaveSystem : MonoBehaviour
 {
     public Movement player;
     public InventoryManager inventoryManager;
-    public Cellular cellular;
+   
     public ItemDatabase itemDatabase; // Reference to the ItemDatabase
 
     private const string PlayerDataPath = "/PlayerDatas.json";
@@ -21,7 +22,9 @@ public class SaveSystem : MonoBehaviour
     //public void SavePlayer(string profileId)
     public void SavePlayer(string profileId)
     {
-        profileId = loadSystem.selectedProfileId;
+        Cellular cellular = FindObjectOfType<Cellular>();
+        profileId = cellular.text;
+
         PlayerData data = new PlayerData();
         data._health = player._health;
         data.moveSpeed = player.moveSpeed;
@@ -54,18 +57,24 @@ public class SaveSystem : MonoBehaviour
             Debug.Log("Equipment Item: " + equipmentData.itemName);
         }
 
-
         string json = JsonUtility.ToJson(data, true);
+        
 
         string directoryPath = Path.Combine(Application.persistentDataPath, profileId);
         Directory.CreateDirectory(directoryPath);
 
+        string screenshotPath = Path.Combine(Application.persistentDataPath,"/"+cellular.text+ "/savepoint.png"); //ANDROID VERSION
+        ScreenCapture.CaptureScreenshot(screenshotPath);
+
+        string screenshotPathS = Path.Combine(Application.persistentDataPath, cellular.text ,"savepoint.png");
+        ScreenCapture.CaptureScreenshot(screenshotPathS);
+        
+
+
+        Debug.Log("Screenshot saved: " + screenshotPath);
+
         string filePath = Path.Combine(directoryPath, Path.GetFileName(PlayerDataPath));
         File.WriteAllText(filePath, json);
-
-
-
-
 
 
         Debug.Log(Application.persistentDataPath);
@@ -75,6 +84,7 @@ public class SaveSystem : MonoBehaviour
         Debug.Log("Position: " + data.playerPos);
         Debug.Log("Inventory Items saved: " + data.inventoryItems.Count);
         Debug.Log("Map seedcode: " + data.mapSeed);
+        Debug.Log("ProfileId: " + cellular.text);
     }
 
     public void BackToMenu()

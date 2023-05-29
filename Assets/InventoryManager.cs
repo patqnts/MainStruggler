@@ -418,6 +418,7 @@ public class InventoryManager : MonoBehaviour
             if (item != null)
             {
                 Destroy(item.gameObject);
+                Debug.Log("Destroyed item: " + item.name);
             }
         }
 

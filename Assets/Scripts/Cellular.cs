@@ -34,12 +34,14 @@ public class Cellular : MonoBehaviour
     
     public string text;
 
-    private int seedCode = 0;
+    public int seedCode = 0;
     public int seedCodex;
+
+    public bool newLoad = false;
     private void Update()
     {
-        PlayerPrefs.SetInt("seedCode", seedCode);
-        PlayerPrefs.Save();
+        //PlayerPrefs.SetInt("seedCode", seedCode);
+       // PlayerPrefs.Save();
 
     }
     private void Start()
@@ -47,18 +49,18 @@ public class Cellular : MonoBehaviour
         
         loadSystem = FindObjectOfType<LoadSystem>();
 
-        text = loadSystem.selectedProfileId;
+        text = loadSystem.passedText;
 
-      
+        loadSystem.LoadPlayer(text);
 
 
-     //   Debug.Log(loadSystem.selectedProfileId);
+        //   Debug.Log(loadSystem.selectedProfileId);
         // Reset seedCode in PlayerPrefs
         PlayerPrefs.DeleteKey("seedCode");
 
         // GenerateMap will use the new seed value
         seedCode = loadSystem.lastSeedCode;
-        seedCodex = seedCode;;
+        seedCodex = seedCode;
 
         // Save the new seed value
         PlayerPrefs.SetInt("seedCode", seedCode);
@@ -84,9 +86,20 @@ public class Cellular : MonoBehaviour
         npcManager.SpawnBomber();
 
 
-        RuinSavePoint.PlayerDied();
-        Bottle();
-        loadSystem.LoadPlayer(text);
+       
+       // loadSystem.LoadPlayer(text);
+        if (newLoad)
+        {
+            RuinSavePoint.PlayerDied();
+            Bottle();
+            //loadSystem.LoadPlayer(text);
+        }
+        else
+        {
+            //loadSystem.LoadPlayer(text);
+            Debug.Log("wala lang");
+        }
+        
     }
     public void Bottle()
     {
@@ -166,14 +179,21 @@ public class Cellular : MonoBehaviour
     {
         if (seedCode == 0)
         {
+           
             seedCode = Random.Range(1, int.MaxValue); // Generate a random seed code
             GenerateMapUsingSeed();
             seedCodex = seedCode;
+            Debug.Log("SEED = 0");
+            newLoad = true;
+            //RuinSavePoint.PlayerDied();
+
         }
         else
         {
+            
             Random.InitState(seedCode);
             GenerateMapUsingSeed();
+            Debug.Log("SEED = " + seedCode);
         }
         SmoothMap();
 

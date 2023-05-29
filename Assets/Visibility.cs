@@ -15,6 +15,7 @@ public class Visibility : MonoBehaviour
         if(self != null)
         {
             self.SetActive(true);
+          
         }
         else
         {
@@ -29,6 +30,7 @@ public class Visibility : MonoBehaviour
         if (self != null)
         {
             self.SetActive(false);
+          
         }
         else
         {

@@ -15,9 +15,11 @@ public class LoadSystem : MonoBehaviour
 
 
     public Dropdown selectedSlot;
-    public string selectedProfileId = "";
+    
     private static LoadSystem instance;
     public Movement player;
+    public string passedText = "";
+    
     private void Awake()
     {
         // Make sure only one instance of LoadSystem exists
@@ -30,41 +32,31 @@ public class LoadSystem : MonoBehaviour
         instance = this;
         DontDestroyOnLoad(gameObject);
     }
-
     private void Start()
     {
-        seedCode = FindObjectOfType<InputField>();
-        // Set the seed code value from the last session
-        if (seedCode != null)
+        Cellular cellular = FindObjectOfType<Cellular>();
+        if(cellular != null)
         {
-            //seedCode.text = lastSeedCode.ToString();
-            seedCode.text = "123";
+           // LoadPlayer(passedText);
         }
-        player = FindObjectOfType<Movement>();
+        
     }
-    private void Update()
+
+    public void LoadPlayerAndGameScene(string profileId)
     {
-        seedCode = FindObjectOfType<InputField>();
-    }
-    public void LoadPlayerAndGameScene()
-    {
+        passedText = profileId;
+        
         // Store the seed code value before loading the next scene
-        if (seedCode != null && !string.IsNullOrEmpty(seedCode.text))
+        if (seedCode != null)// && !string.IsNullOrEmpty(seedCode.text))
         {
-            if (int.TryParse(seedCode.text, out lastSeedCode))
-            {
-                SceneManager.LoadScene("StrugglerMain");
-            }
-            else
-            {
-                seedCode.text = "0";
-                SceneManager.LoadScene("StrugglerMain");
-                Debug.LogError("Invalid seed code input!");
-            }
-        }
+            Debug.Log("SEED = NOT NULL");
+            SceneManager.LoadScene("StrugglerMain");
+
+        }       
         else
         {
-
+            Debug.Log("SEED =  NULL");
+            lastSeedCode = 0 ;
             SceneManager.LoadScene("StrugglerMain");
            
         }
@@ -72,30 +64,39 @@ public class LoadSystem : MonoBehaviour
 
     public void LoadPlayer(string profileId)
     {
-        profileId = selectedSlot.options[selectedSlot.value].text;
-        selectedProfileId = profileId;
+        
+        profileId = passedText;
+      
+        //profileId = selectedSlot.options[selectedSlot.value].text;
+
         string directoryPath = Path.Combine(Application.persistentDataPath, profileId);
         string filePath = Path.Combine(directoryPath, Path.GetFileName(PlayerDataPath));
         Debug.Log(filePath);
 
+       // string screenshotPath = Path.Combine(directoryPath, "/screenshot.png");
+        //ScreenCapture.CaptureScreenshot(screenshotPath);
+      //  Debug.Log("Screenshot saved: " + screenshotPath);
         if (File.Exists(filePath))
         {
             string json = File.ReadAllText(filePath);
             PlayerData data = JsonUtility.FromJson<PlayerData>(json);
 
-            Cellular cellular = FindObjectOfType<Cellular>();
+            
             player = FindObjectOfType<Movement>();
+
             InventoryManager inventoryManager = FindObjectOfType<InventoryManager>();
             ItemDatabase itemDatabase = FindObjectOfType<ItemDatabase>();
+            Cellular cellular = FindObjectOfType<Cellular>();
             player.transform.position = data.playerPos;
-            if (cellular != null && seedCode != null)
+            if (data != null && cellular != null)// && seedCode != null)
             {
-                cellular.seedCodex = data.mapSeed;
-                seedCode.text = data.mapSeed.ToString();
-                lastSeedCode = data.mapSeed;
+              
+                cellular.seedCode = data.mapSeed;
+                lastSeedCode = cellular.seedCode;
+                Debug.Log(data.mapSeed + " is existing");
+                
             }
-           
-
+            
             if (player != null)
             {
                 
@@ -139,6 +140,10 @@ public class LoadSystem : MonoBehaviour
         }
         else
         {
+            Cellular cellular = FindObjectOfType<Cellular>();
+            Debug.Log(cellular.seedCode + " is null");
+           
+            
             Debug.Log("No player data found.");
         }
     }

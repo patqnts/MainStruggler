@@ -67,7 +67,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: df4223605ce02d340b4ca7f7684f7815, type: 3}
+    m_Font: {fileID: 12800000, guid: a054eb57a58246648a89b953dff93fcf, type: 3}
     m_FontSize: 12
     m_FontStyle: 1
     m_BestFit: 1
@@ -175,4 +175,6 @@ MonoBehaviour:
   item: {fileID: 0}
   count: 1
   parentAfterDrag: {fileID: 0}
+  originalParent: {fileID: 0}
   inventoryManager: {fileID: 0}
+  durability: 0

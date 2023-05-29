@@ -103,7 +103,7 @@ public class RuinSavePoint : MonoBehaviour
     // Called when the player dies
     public static void PlayerDied()
     {
-         SaveSystem saveSystem = FindObjectOfType<SaveSystem>();
+        SaveSystem saveSystem = FindObjectOfType<SaveSystem>();
         Cellular cellular = FindObjectOfType<Cellular>();
         if (saveSystem != null)
         {

@@ -2103,6 +2103,12 @@ PrefabInstance:
       propertyPath: m_Text
       value: '          Steel Gathering Tool'
       objectReference: {fileID: 0}
+    - target: {fileID: 230212361709630521, guid: b6e6f8d9d3f05cc4ca0e0bc43607ffdf,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: a054eb57a58246648a89b953dff93fcf,
+        type: 3}
     - target: {fileID: 379453959065628735, guid: b6e6f8d9d3f05cc4ca0e0bc43607ffdf,
         type: 3}
       propertyPath: m_IsActive
@@ -2395,6 +2401,18 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2114311399901910786, guid: b6e6f8d9d3f05cc4ca0e0bc43607ffdf,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: a054eb57a58246648a89b953dff93fcf,
+        type: 3}
+    - target: {fileID: 2136834282194299018, guid: b6e6f8d9d3f05cc4ca0e0bc43607ffdf,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: a054eb57a58246648a89b953dff93fcf,
+        type: 3}
     - target: {fileID: 2136834282194299018, guid: b6e6f8d9d3f05cc4ca0e0bc43607ffdf,
         type: 3}
       propertyPath: m_FontData.m_FontStyle
@@ -2528,6 +2546,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2906946593468389264, guid: b6e6f8d9d3f05cc4ca0e0bc43607ffdf,
         type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: a054eb57a58246648a89b953dff93fcf,
+        type: 3}
+    - target: {fileID: 2906946593468389264, guid: b6e6f8d9d3f05cc4ca0e0bc43607ffdf,
+        type: 3}
       propertyPath: m_FontData.m_BestFit
       value: 0
       objectReference: {fileID: 0}
@@ -2641,6 +2665,12 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -50
       objectReference: {fileID: 0}
+    - target: {fileID: 3393926980263977904, guid: b6e6f8d9d3f05cc4ca0e0bc43607ffdf,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: a054eb57a58246648a89b953dff93fcf,
+        type: 3}
     - target: {fileID: 3417172379028173321, guid: b6e6f8d9d3f05cc4ca0e0bc43607ffdf,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -2678,6 +2708,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3546107998921344530, guid: b6e6f8d9d3f05cc4ca0e0bc43607ffdf,
         type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: a054eb57a58246648a89b953dff93fcf,
+        type: 3}
+    - target: {fileID: 3546107998921344530, guid: b6e6f8d9d3f05cc4ca0e0bc43607ffdf,
+        type: 3}
       propertyPath: m_FontData.m_Alignment
       value: 4
       objectReference: {fileID: 0}
@@ -2691,6 +2727,12 @@ PrefabInstance:
       propertyPath: m_Text
       value: '          Starstone Gathering Tool'
       objectReference: {fileID: 0}
+    - target: {fileID: 3611135473990363238, guid: b6e6f8d9d3f05cc4ca0e0bc43607ffdf,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: a054eb57a58246648a89b953dff93fcf,
+        type: 3}
     - target: {fileID: 3611135473990363238, guid: b6e6f8d9d3f05cc4ca0e0bc43607ffdf,
         type: 3}
       propertyPath: m_FontData.m_BestFit
@@ -2746,6 +2788,12 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4019188231318488588, guid: b6e6f8d9d3f05cc4ca0e0bc43607ffdf,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: a054eb57a58246648a89b953dff93fcf,
+        type: 3}
     - target: {fileID: 4086755091921797022, guid: b6e6f8d9d3f05cc4ca0e0bc43607ffdf,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -2836,6 +2884,12 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -32.5
       objectReference: {fileID: 0}
+    - target: {fileID: 4174751717090585267, guid: b6e6f8d9d3f05cc4ca0e0bc43607ffdf,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: a054eb57a58246648a89b953dff93fcf,
+        type: 3}
     - target: {fileID: 4218131574217481290, guid: b6e6f8d9d3f05cc4ca0e0bc43607ffdf,
         type: 3}
       propertyPath: m_Enabled
@@ -2871,6 +2925,12 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -251.92
       objectReference: {fileID: 0}
+    - target: {fileID: 4410605672917724761, guid: b6e6f8d9d3f05cc4ca0e0bc43607ffdf,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: a054eb57a58246648a89b953dff93fcf,
+        type: 3}
     - target: {fileID: 4523828526878005017, guid: b6e6f8d9d3f05cc4ca0e0bc43607ffdf,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -3157,6 +3217,12 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5840650353803092230, guid: b6e6f8d9d3f05cc4ca0e0bc43607ffdf,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: a054eb57a58246648a89b953dff93fcf,
+        type: 3}
     - target: {fileID: 5964606802403733060, guid: b6e6f8d9d3f05cc4ca0e0bc43607ffdf,
         type: 3}
       propertyPath: m_Enabled
@@ -3167,6 +3233,12 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6136277140244243593, guid: b6e6f8d9d3f05cc4ca0e0bc43607ffdf,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: a054eb57a58246648a89b953dff93fcf,
+        type: 3}
     - target: {fileID: 6184826890042528896, guid: b6e6f8d9d3f05cc4ca0e0bc43607ffdf,
         type: 3}
       propertyPath: m_Enabled
@@ -3278,6 +3350,12 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6777177124054465503, guid: b6e6f8d9d3f05cc4ca0e0bc43607ffdf,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: a054eb57a58246648a89b953dff93fcf,
+        type: 3}
     - target: {fileID: 7028359003262586728, guid: b6e6f8d9d3f05cc4ca0e0bc43607ffdf,
         type: 3}
       propertyPath: m_IsActive
@@ -3598,6 +3676,12 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -50
       objectReference: {fileID: 0}
+    - target: {fileID: 7365907262019434494, guid: b6e6f8d9d3f05cc4ca0e0bc43607ffdf,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: a054eb57a58246648a89b953dff93fcf,
+        type: 3}
     - target: {fileID: 7402740570094631254, guid: b6e6f8d9d3f05cc4ca0e0bc43607ffdf,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -3639,6 +3723,12 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7576099418108305765, guid: b6e6f8d9d3f05cc4ca0e0bc43607ffdf,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: a054eb57a58246648a89b953dff93fcf,
+        type: 3}
     - target: {fileID: 7693719560673677070, guid: b6e6f8d9d3f05cc4ca0e0bc43607ffdf,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -3745,6 +3835,12 @@ PrefabInstance:
       propertyPath: m_Text
       value: '          Stone Gathering Tool'
       objectReference: {fileID: 0}
+    - target: {fileID: 8029161792578721971, guid: b6e6f8d9d3f05cc4ca0e0bc43607ffdf,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: a054eb57a58246648a89b953dff93fcf,
+        type: 3}
     - target: {fileID: 8189451749335315047, guid: b6e6f8d9d3f05cc4ca0e0bc43607ffdf,
         type: 3}
       propertyPath: m_IsActive

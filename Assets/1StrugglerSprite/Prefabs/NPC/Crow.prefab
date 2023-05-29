@@ -392,7 +392,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: df4223605ce02d340b4ca7f7684f7815, type: 3}
+    m_Font: {fileID: 12800000, guid: a054eb57a58246648a89b953dff93fcf, type: 3}
     m_FontSize: 47
     m_FontStyle: 0
     m_BestFit: 0
@@ -962,6 +962,8 @@ MonoBehaviour:
   detectionZone: {fileID: 8440567280106266000}
   isLookingRight: 0
   isLookingLeft: 0
+  dashAbility: {fileID: 0}
+  inactiveObjectName: Dash
   notice: {fileID: 5653431554175772898}
   NoticeUI: {fileID: 1839863958855547361}
   isAttacking: 0

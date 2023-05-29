@@ -434,6 +434,8 @@ MonoBehaviour:
   hitCollider: {fileID: 5981352956023515500}
   knockbackForce: 5000
   damage: 1
+  isFire: 0
+  isDark: 0
 --- !u!1 &1437646707404213046
 GameObject:
   m_ObjectHideFlags: 0
@@ -1211,7 +1213,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 2eced769e8c0daf4ab5098434f2f66db, type: 3}
+    m_Font: {fileID: 12800000, guid: a7ea0ebf5308a2840b611ffb7ff5785d, type: 3}
     m_FontSize: 127
     m_FontStyle: 1
     m_BestFit: 0
