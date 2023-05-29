@@ -93,24 +93,43 @@ public class Cellular : MonoBehaviour
         if (isDeadDogo == false)
         {
             npcManager.SpawnDogo();
-        }           
+        }
+        else
+        {
+            isDeadDogo = true;
+        }
+
         if (isDeadSlime == false)
         {
             npcManager.SpawnQueen();
-        }        
+        }
+        else
+        {
+            isDeadSlime = true;
+        }
+
         if (isDeadGolem == false)
         {
             npcManager.SpawnGolem();
-        }          
+        }
+        else
+        {
+            isDeadGolem = true;
+        }
+
         if (isDeadBomber == false)
         {
             npcManager.SpawnBomber();
         }
-           
+        else
+        {
+            isDeadBomber = true;
+        }
 
 
-       
-       // loadSystem.LoadPlayer(text);
+
+
+        // loadSystem.LoadPlayer(text);
         if (newLoad)
         {
             RuinSavePoint.PlayerDied();
