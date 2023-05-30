@@ -19,6 +19,7 @@ public class PlayerData
         inventoryItems = new List<InventoryItemData>();
     }
 
+    public bool isAcquiredWisp;
     //BOSS-DATA
 
     public Vector2 golemPos;

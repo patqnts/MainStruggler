@@ -35,14 +35,17 @@ public class SaveSystem : MonoBehaviour
         bomber = FindObjectOfType<BomberScript>();
         dogo = FindObjectOfType<DogoTotemScripts>();
         PlayerData data = new PlayerData();
+        BottleScript bottle = FindObjectOfType<BottleScript>();
 
         //Player
         data._health = player._health;      
         data.playerPos = player.transform.position;
         data.mapSeed = cellular.seedCodex;
 
+        //BottleofWisp spawn
+        data.isAcquiredWisp = cellular.wispBottleisBroken;
 
-
+        //boss spawn
         data.isDeadGolem = cellular.isDeadGolem;
         data.isDeadSlime = cellular.isDeadSlime;
         data.isDeadBomber = cellular.isDeadBomber;

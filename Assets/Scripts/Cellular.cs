@@ -44,7 +44,7 @@ public class Cellular : MonoBehaviour
     public bool isDeadBomber;
     public bool isDeadDogo;
 
-
+    public bool wispBottleisBroken;
 
 
     private void Update()
@@ -139,8 +139,16 @@ public class Cellular : MonoBehaviour
         else
         {
             //loadSystem.LoadPlayer(text);
-            Bottle();
-            Debug.Log("wala lang");
+            if (!wispBottleisBroken)
+            {
+                Bottle();
+            }
+            else
+            {
+                Debug.Log("wisp is already acquired");
+            }
+        
+            
         }
         
     }

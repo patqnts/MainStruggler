@@ -12,6 +12,7 @@ TagManager:
   - Target
   - Water
   - Object
+  - No Postprocess
   layers:
   - Default
   - TransparentFX
@@ -24,7 +25,7 @@ TagManager:
   - NPC
   - Enemy
   - Ignore
-  - 
+  - No Post
   - 
   - 
   - 

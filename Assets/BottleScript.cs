@@ -9,7 +9,7 @@ public class BottleScript : MonoBehaviour, IDamageable
     public GameObject[] dropPrefab;
     public Animator animator;
     public Collider2D collider;
-
+    
 
     public float Health
     {
@@ -21,6 +21,8 @@ public class BottleScript : MonoBehaviour, IDamageable
             {
                 collider.enabled = false;
                 animator.SetBool("Broken", true);
+                Cellular cellular = FindObjectOfType<Cellular>();
+                cellular.wispBottleisBroken = true;
                 DropItem();
 
             }

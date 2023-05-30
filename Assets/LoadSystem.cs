@@ -16,7 +16,7 @@ public class LoadSystem : MonoBehaviour
     public SlimeQueen slime;
     public BomberScript bomber;
     public DogoTotemScripts dogo;
-
+    public BottleScript bottle;
     public Dropdown selectedSlot;
     
     private static LoadSystem instance;
@@ -86,6 +86,7 @@ public class LoadSystem : MonoBehaviour
             string json = File.ReadAllText(filePath);
             PlayerData data = JsonUtility.FromJson<PlayerData>(json);
 
+            bottle = FindObjectOfType<BottleScript>();
             
             player = FindObjectOfType<Movement>();
             golem = FindObjectOfType<GolemScript>();
@@ -99,7 +100,7 @@ public class LoadSystem : MonoBehaviour
             player.transform.position = data.playerPos;
             if (data != null && cellular != null)// && seedCode != null)
             {
-              
+                cellular.wispBottleisBroken = data.isAcquiredWisp;
                 cellular.seedCode = data.mapSeed;
                 lastSeedCode = cellular.seedCode;
                 Debug.Log(data.mapSeed + " is existing");
