@@ -242,7 +242,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -1483115583, guid: 4d9c37db6d32fa04abaa2351d2602712,
+      objectReference: {fileID: 341447565, guid: 4d9c37db6d32fa04abaa2351d2602712,
         type: 3}
     - target: {fileID: 8676599529843382892, guid: 4565dfb6d1e604e43b729933b83ea473,
         type: 3}
@@ -253,6 +253,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9143806331379663001, guid: 4565dfb6d1e604e43b729933b83ea473,
+        type: 3}
+      propertyPath: _health
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 9143806331379663001, guid: 4565dfb6d1e604e43b729933b83ea473,
+        type: 3}
+      propertyPath: maxHealth
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 9143806331379663001, guid: 4565dfb6d1e604e43b729933b83ea473,
         type: 3}
@@ -281,7 +291,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_CategoryHash: 0
   m_labelHash: 0
-  m_SpriteKey: 1.2362407e-29
+  m_SpriteKey: 0
 --- !u!4 &8761831053679255371 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2781717066076898552, guid: 4565dfb6d1e604e43b729933b83ea473,
