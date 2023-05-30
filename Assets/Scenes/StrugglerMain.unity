@@ -2626,9 +2626,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 9d7ed4d5d4728374f8035f191adbff5b, type: 3}
+  m_audioClip: {fileID: 8300000, guid: d7181f436264b534899c29e938d5735d, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.449
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -7483,6 +7483,7 @@ MonoBehaviour:
   isDeadSlime: 0
   isDeadBomber: 0
   isDeadDogo: 0
+  wispBottleisBroken: 0
 --- !u!4 &1967736705
 Transform:
   m_ObjectHideFlags: 0
