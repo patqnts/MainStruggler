@@ -166,7 +166,7 @@ public class Plant : MonoBehaviour, IDamageable
         Vector2 direction = transform.right * (isFacingRight ? 1 : -1);
         Vector2 knockback = direction * knocks;
         knockback.y = Random.Range(-1f, 1f) * knocks;
-        if (collision.gameObject.CompareTag("Player")|| collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Player"))
         {
             if (isDark)
             {

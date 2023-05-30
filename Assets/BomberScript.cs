@@ -147,7 +147,28 @@ public class BomberScript : MonoBehaviour, IDamageable
         Timer -= Time.deltaTime;
         
     }
-
+    public bool isStomping = false;
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        IDamageable damageableObject = collision.gameObject.GetComponent<IDamageable>();
+        if (collision.CompareTag("Player") && collision.gameObject != null)
+        {
+            if (isStomping)
+            {
+                damageableObject.OnHit(1f);
+                damageableObject.OnDark(1.5f);
+            }
+            
+        }
+    }
+    public void Stomp()
+    {
+        isStomping = true;
+    }
+    public void StompEnd()
+    {
+        isStomping = false;
+    }
     private IEnumerator SummonPlantBomb(Vector2 playerPos)
     {
         animator.SetTrigger("Summon");
@@ -211,7 +232,7 @@ public class BomberScript : MonoBehaviour, IDamageable
         Debug.Log("Reset");
     }
 
-
+    
     public void OnHit(float damage, Vector2 knockback)
     {
         Item weapon = InventoryManager.instance.GetSelectedItem(false);
