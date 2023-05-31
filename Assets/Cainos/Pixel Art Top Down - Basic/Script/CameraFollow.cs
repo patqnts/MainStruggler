@@ -13,6 +13,7 @@ namespace Cainos.PixelArtTopDown_Basic
         private Vector3 offset;
 
         private Vector3 targetPos;
+        
 
         private void Start()
         {
