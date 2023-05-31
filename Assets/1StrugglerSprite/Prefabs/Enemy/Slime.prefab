@@ -657,6 +657,8 @@ MonoBehaviour:
   hitCollider: {fileID: 8960037788323341303}
   knockbackForce: 2500
   damage: 1
+  isFire: 0
+  isDark: 0
 --- !u!1001 &1787763202622205794
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -866,7 +868,7 @@ PrefabInstance:
     - target: {fileID: 7315023780962705679, guid: f16c1066f3300ee4b90ab75a2d566255,
         type: 3}
       propertyPath: m_SpriteKey
-      value: 4.4884686e-12
+      value: 0.0000000011197
       objectReference: {fileID: 0}
     - target: {fileID: 7328376061788675789, guid: f16c1066f3300ee4b90ab75a2d566255,
         type: 3}
