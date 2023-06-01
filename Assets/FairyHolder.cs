@@ -49,4 +49,34 @@ public class FairyHolder : MonoBehaviour
             }
         }
     }
+
+    public void BlackTarget()
+    {
+        GameObject blackTargetObject = GameObject.Find("BlackTarget"); // Find the game object named "BlackTarget"
+
+        if (blackTargetObject != null)
+        {
+            // Set the target to the transform of the blackTargetObject
+            target = blackTargetObject.transform;
+        }
+        else
+        {
+            Debug.LogWarning("BlackTarget game object not found in the hierarchy.");
+        }
+    }
+
+    public void ReturnToPlayer()
+    {
+        GameObject fairyFollow = GameObject.Find("fairy-follow"); // Find the game object named "BlackTarget"
+
+        if (fairyFollow != null)
+        {
+            // Set the target to the transform of the blackTargetObject
+            target = fairyFollow.transform;
+        }
+        else
+        {
+            Debug.LogWarning("BlackTarget game object not found in the hierarchy.");
+        }
+    }
 }
