@@ -63,7 +63,7 @@ public class RuinSavePoint : MonoBehaviour
         Cellular cellular = FindObjectOfType<Cellular>();
         if (saveSystem != null)
         {
-            saveSystem.SavePlayer(cellular.text);
+            //saveSystem.SavePlayer(cellular.text);
             Debug.Log(cellular.text);
         }
         // If the collider is the player, set the flag to true and update the last ruin

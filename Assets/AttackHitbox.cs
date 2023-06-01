@@ -149,9 +149,23 @@ public class AttackHitbox : MonoBehaviour
                     damage = 1f;
                 }
             }
-
+            if (InventoryManager.instance.GetFairySlot(false) != null &&
+             InventoryManager.instance.GetFairySlot(false).element == Element.Light)
+            {
+                if (Random.value <= 0.3f) // 30% chance for critical strike
+                {
+                    damage *= 1.5f; // Multiply damage by 1.5
+                    Debug.Log("Critical");
+                }
+                else
+                {
+                    damage *= 1;
+                }
+            }
+            
 
             damageableObject.OnHit(damage, knockback);
+
         }
         else
         {

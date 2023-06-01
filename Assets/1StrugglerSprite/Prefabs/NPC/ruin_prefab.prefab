@@ -495,6 +495,7 @@ GameObject:
   - component: {fileID: 5068957798234187096}
   - component: {fileID: 1726816809494934080}
   - component: {fileID: -6109946194172172418}
+  - component: {fileID: 7402004173600859663}
   m_Layer: 10
   m_Name: ruin_prefab
   m_TagString: Untagged
@@ -620,6 +621,35 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &7402004173600859663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1458452475300343260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 0000000003819490b75c53d0c93960fdb391b5f91f12af87
+  m_ShapePath:
+  - {x: -1.4140167, y: 0.10669327, z: 0}
+  - {x: -0.32537842, y: 0.17354584, z: 0}
+  - {x: 1.1699829, y: 2.9716072, z: 0}
+  - {x: 2.1419678, y: 2.6236115, z: 0}
+  - {x: 0.21188354, y: 0.26233292, z: 0}
+  - {x: 1.1335907, y: 0.19216156, z: 0}
+  m_ShapePathHash: 146588765
+  m_Mesh: {fileID: 0}
+  m_InstanceId: 28470
 --- !u!1 &1831484879048167304
 GameObject:
   m_ObjectHideFlags: 0
@@ -883,6 +913,7 @@ GameObject:
   - component: {fileID: 7341644160567720400}
   - component: {fileID: 8165547222873764184}
   - component: {fileID: 2068395300935905693}
+  - component: {fileID: 9024409644439323601}
   m_Layer: 10
   m_Name: GameObject
   m_TagString: Untagged
@@ -952,6 +983,33 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &9024409644439323601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2641646312200018652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 0
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 0000000003819490b75c53d0c93960fdb391b5f91f12af87
+  m_ShapePath:
+  - {x: -0.13038635, y: -0.31911469, z: 0}
+  - {x: -0.11314392, y: 1.2229576, z: 0}
+  - {x: 0.11947632, y: 1.2574043, z: 0}
+  - {x: 0.17120361, y: -0.3277359, z: 0}
+  m_ShapePathHash: -636347115
+  m_Mesh: {fileID: 0}
+  m_InstanceId: 28548
 --- !u!1 &3788377636353849797
 GameObject:
   m_ObjectHideFlags: 0
@@ -6491,6 +6549,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cebedef69098f54081eaf6d724eff78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wispLight2D: {fileID: 0}
+  cycle: {fileID: 0}
 --- !u!4 &8578741974333929798 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6667897548885555071, guid: e0d4b053ebd9b1c42bc4dc80eb5cdf59,

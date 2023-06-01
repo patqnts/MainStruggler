@@ -13,16 +13,27 @@ MonoBehaviour:
   m_Name: Dark Wisp
   m_EditorClassIdentifier: 
   prefab: {fileID: 593067995031978350, guid: 65b3e12c51b8e724b93c1c32be359897, type: 3}
+  slashTrailPrefab: {fileID: 0}
+  elementEffect: {fileID: 0}
   tile: {fileID: 0}
   type: 5
   actionType: 1
+  element: 2
   range: {x: 5, y: 4}
   weaponDamage: 5
-  _stackable: 1
+  lungeDistance: 0
+  hasDurability: 0
+  maxDurability: 0
+  _stackable: 0
   maxStackCount: 999999
   consumable: 0
   holdable: 0
-  description: Dark Wisp
+  struggler: 0
+  description: 'A companion that will guide you through your journey.
+
+    Stun/Root
+    resistance.'
   priceAmount: 0
   materialRequirements: []
   image: {fileID: 1992216871, guid: c3c53e49058f269459a6b8b47db0943e, type: 3}
+  durability: 0

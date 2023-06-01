@@ -10,27 +10,30 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1662d66746d5b7841a5171ab4c6f819a, type: 3}
-  m_Name: Wisp
+  m_Name: Light Wisp
   m_EditorClassIdentifier: 
-  prefab: {fileID: 4191672269759716003, guid: c90042187362ca7429af48dc4fec5f9d, type: 3}
+  prefab: {fileID: 593067995031978350, guid: 68184821fb59f9c4887ce75028e67657, type: 3}
   slashTrailPrefab: {fileID: 0}
   elementEffect: {fileID: 0}
   tile: {fileID: 0}
   type: 5
   actionType: 1
-  element: 0
+  element: 3
   range: {x: 5, y: 4}
   weaponDamage: 5
   lungeDistance: 0
   hasDurability: 0
   maxDurability: 0
-  _stackable: 1
+  _stackable: 0
   maxStackCount: 999999
   consumable: 0
   holdable: 0
   struggler: 0
-  description: Wind
+  description: 'A companion that will guide you through your journey.
+
+    30% critical
+    damage.'
   priceAmount: 0
   materialRequirements: []
-  image: {fileID: 1742163200, guid: 2340f790cb4b5c54c8875e37046117c6, type: 3}
+  image: {fileID: 63631467, guid: c3c53e49058f269459a6b8b47db0943e, type: 3}
   durability: 0

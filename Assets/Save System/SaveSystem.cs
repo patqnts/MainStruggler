@@ -13,6 +13,7 @@ public class SaveSystem : MonoBehaviour
     public SlimeQueen slime;
     public BomberScript bomber;
     public DogoTotemScripts dogo;
+    public CrowScripts crow;
    
     public ItemDatabase itemDatabase; // Reference to the ItemDatabase
 
@@ -34,14 +35,19 @@ public class SaveSystem : MonoBehaviour
         slime = FindObjectOfType<SlimeQueen>();
         bomber = FindObjectOfType<BomberScript>();
         dogo = FindObjectOfType<DogoTotemScripts>();
+        crow = FindObjectOfType<CrowScripts>();
         PlayerData data = new PlayerData();
         BottleScript bottle = FindObjectOfType<BottleScript>();
 
         //Player
-        data._health = player._health;      
+        data._health = player._health;
+        
         data.playerPos = player.transform.position;
         data.mapSeed = cellular.seedCodex;
-
+        if (data != null && crow != null)
+        {
+            data.isDashUnlocked = crow.dashUnlocked;
+        }
         //BottleofWisp spawn
         data.isAcquiredWisp = cellular.wispBottleisBroken;
 
@@ -51,24 +57,24 @@ public class SaveSystem : MonoBehaviour
         data.isDeadBomber = cellular.isDeadBomber;
         data.isDeadDogo = cellular.isDeadDogo;
         //Boss
-        if(data.isDeadGolem == false)
+        if(golem != null)
         {
             data.golemPos = golem.transform.position;
 
         }
-        if (data.isDeadBomber == false)
+        if (bomber != null)
         {
-            data.bomberPos = golem.transform.position;
+            data.bomberPos = bomber.transform.position;
 
         }
-        if (data.isDeadSlime == false)
+        if (slime != null)
         {
-            data.slimePos = golem.transform.position;
+            data.slimePos = slime.transform.position;
 
         }
-        if (data.isDeadDogo == false)
+        if (dogo != null)
         {
-            data.dogoPos = golem.transform.position;
+            data.dogoPos = dogo.transform.position;
 
         }
 
@@ -138,6 +144,14 @@ public class SaveSystem : MonoBehaviour
     {
         // Destroy the LoadSystem instance
         LoadSystem loadSystem = FindObjectOfType<LoadSystem>();
+
+        SaveSystem saveSystem = FindObjectOfType<SaveSystem>();
+        Cellular cellular = FindObjectOfType<Cellular>();
+        if (saveSystem != null)
+        {
+            saveSystem.SavePlayer(cellular.text);
+            Debug.Log(cellular.text);
+        }
         if (loadSystem != null)
         {
             Destroy(loadSystem.gameObject);

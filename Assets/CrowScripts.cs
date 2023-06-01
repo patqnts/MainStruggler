@@ -17,8 +17,8 @@ public class CrowScripts : MonoBehaviour
     private float attackTimer = 0f;
     private float attackInterval = 2f;
     private int numAttacks = 0;
-    
 
+    public bool dashUnlocked;
     public GameObject notice;
     public GameObject NoticeUI;
     public bool isAttacking = false;
@@ -27,11 +27,22 @@ public class CrowScripts : MonoBehaviour
         player = FindObjectOfType<Movement>();
         GameObject canvas = GameObject.Find("Controller");
         dashAbility = canvas.transform.Find(inactiveObjectName).gameObject;
-
+        LoadSystem load = FindObjectOfType<LoadSystem>();
+        dashUnlocked = load.dashPassValue;
         if (dashAbility != null)
         {
-            dashAbility.SetActive(false);
+            if (dashUnlocked)
+            {
+                dashAbility.SetActive(true);
+            }
+            else
+            {
+                dashAbility.SetActive(false);
+            }
+            
         }
+
+        
     }
     void Update()
     {
@@ -87,7 +98,9 @@ public class CrowScripts : MonoBehaviour
                         numAttacks = 0;
                         dashAbility.SetActive(true);
                         Debug.Log("Success");
-                        
+                        dashUnlocked = true;
+
+
                     }
                 }
 
@@ -115,6 +128,8 @@ public class CrowScripts : MonoBehaviour
             isAttacking = false;
         }
 
+
+        
     }
 
 

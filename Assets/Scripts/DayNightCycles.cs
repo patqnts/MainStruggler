@@ -9,7 +9,7 @@ public class DayNightCycles : MonoBehaviour
     [SerializeField] private float nightLength = 300f; // Night length in seconds
     [SerializeField] public float transitionLength = 10f; // Transition length in seconds
     private Light2D localLight2D; // Local Light2D component to control the look of the game
-
+   
     private Color dayColor = Color.white; // Color for day
     private Color nightColor = new Color(0.365f, 0.537f, 1f); // Color for night
     private float dayIntensity = 1f; // Intensity for day
@@ -38,7 +38,7 @@ public class DayNightCycles : MonoBehaviour
         {
             isNight = true;
             timeOfDay = 0f;
-
+           
             StartCoroutine(TransitionToNight());
         }
 
@@ -80,7 +80,7 @@ public class DayNightCycles : MonoBehaviour
                 localLight2D.color = Color.Lerp(middleColor, endColor, (normalizedTime - 0.5f) * 2f);
             }
 
-            Debug.Log("Night values");
+            
             yield return null;
         }
 
@@ -88,8 +88,7 @@ public class DayNightCycles : MonoBehaviour
         localLight2D.color = endColor;
     }
 
-
-
+    
 
 
     private IEnumerator TransitionToDay()
@@ -107,7 +106,7 @@ public class DayNightCycles : MonoBehaviour
             float normalizedTime = t / transitionLength;
             localLight2D.intensity = Mathf.Lerp(startIntensity, endIntensity, normalizedTime);
             localLight2D.color = Color.Lerp(startColor, endColor, normalizedTime);
-            Debug.Log("Day values");
+           
             yield return null;
         }
 

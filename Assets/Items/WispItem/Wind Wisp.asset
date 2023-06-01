@@ -13,16 +13,27 @@ MonoBehaviour:
   m_Name: Wind Wisp
   m_EditorClassIdentifier: 
   prefab: {fileID: 593067995031978350, guid: e9277c35d7735a141aa01b3ff92e30cb, type: 3}
+  slashTrailPrefab: {fileID: 0}
+  elementEffect: {fileID: 0}
   tile: {fileID: 0}
   type: 5
   actionType: 1
+  element: 4
   range: {x: 5, y: 4}
   weaponDamage: 5
-  _stackable: 1
+  lungeDistance: 0
+  hasDurability: 0
+  maxDurability: 0
+  _stackable: 0
   maxStackCount: 999999
   consumable: 0
   holdable: 0
-  description: Wind
+  struggler: 0
+  description: 'A companion that will guide you through your journey.
+
+    Movement
+    speed increase.'
   priceAmount: 0
   materialRequirements: []
   image: {fileID: -946105692, guid: c3c53e49058f269459a6b8b47db0943e, type: 3}
+  durability: 0

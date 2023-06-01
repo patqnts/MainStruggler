@@ -9,6 +9,7 @@ public class PlayerData
 
 
    public float _health;
+    public bool isDashUnlocked;
   
    public Vector2 playerPos;
 

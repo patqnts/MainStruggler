@@ -43,6 +43,7 @@ public class Movement : MonoBehaviour, IDamageable
 
     public GameObject Inventory;
     public bool isJoypad = false;
+    
     public float Health
     {
         set
@@ -110,11 +111,24 @@ public class Movement : MonoBehaviour, IDamageable
             indicatorAnimator = healthAnimator.GetComponent<Animator>();
         }
         
+        
     }
 
     private void Update()
     {
-
+        if (InventoryManager.instance.GetFairySlot(false) != null &&
+            InventoryManager.instance.GetFairySlot(false).element == Element.Wind)
+        {
+            moveSpeed = 3.2f;
+        }
+        else
+        {
+            if (InventoryManager.instance.GetFairySlot(false) == null)
+            {
+                moveSpeed = 2.5f;
+            }
+            moveSpeed = 2.5f;
+        }
         // Get input for movement
         if (isJoypad)
         {
@@ -133,6 +147,8 @@ public class Movement : MonoBehaviour, IDamageable
         animator.SetFloat("Vertical", movement.y);
         animator.SetFloat("Speed", movement.sqrMagnitude);
 
+
+        
         //Dash logic
         if (Input.GetKeyDown(KeyCode.LeftShift) && !isAttacking && movement != Vector2.zero && dashCounter <= 0)
         {
@@ -388,6 +404,7 @@ public class Movement : MonoBehaviour, IDamageable
     {
         if (!isAttacking)
         {
+
             rb.MovePosition(rb.position + movement.normalized * activeMoveSpeed * Time.fixedDeltaTime);
         }
         else
@@ -486,7 +503,19 @@ public class Movement : MonoBehaviour, IDamageable
 
     public void OnBurn(float damage, float time)
     {
-        StartCoroutine(ApplyBurnDamage(damage, time));
+        if (InventoryManager.instance.GetFairySlot(false) != null && 
+            InventoryManager.instance.GetFairySlot(false).element != Element.Flame)
+        {
+            StartCoroutine(ApplyBurnDamage(damage, time));
+        }
+        else
+        {
+            if(InventoryManager.instance.GetFairySlot(false) == null)
+            {
+                StartCoroutine(ApplyBurnDamage(damage, time));
+            }
+        }
+        
     }
 
     private IEnumerator ApplyBurnDamage(float damage, float time)
@@ -504,7 +533,19 @@ public class Movement : MonoBehaviour, IDamageable
     }
     public void OnDark(float time)
     {
-        StartCoroutine(Slow(time));
+        if (InventoryManager.instance.GetFairySlot(false) != null &&
+            InventoryManager.instance.GetFairySlot(false).element != Element.Dark)
+        {
+            StartCoroutine(Slow(time));
+        }
+        else
+        {
+            if (InventoryManager.instance.GetFairySlot(false) == null)
+            {
+                StartCoroutine(Slow(time));
+            }
+        }
+        
 
     }
 

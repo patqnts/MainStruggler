@@ -16,12 +16,14 @@ public class LoadSystem : MonoBehaviour
     public SlimeQueen slime;
     public BomberScript bomber;
     public DogoTotemScripts dogo;
+    public CrowScripts crow;
     public BottleScript bottle;
     public Dropdown selectedSlot;
     
     private static LoadSystem instance;
     public Movement player;
     public string passedText = "";
+    public bool dashPassValue;
     
     private void Awake()
     {
@@ -42,6 +44,7 @@ public class LoadSystem : MonoBehaviour
         {
            // LoadPlayer(passedText);
         }
+        
       
         
 
@@ -93,10 +96,12 @@ public class LoadSystem : MonoBehaviour
             slime = FindObjectOfType<SlimeQueen>();
             bomber = FindObjectOfType<BomberScript>();
             dogo = FindObjectOfType<DogoTotemScripts>();
+            crow = FindObjectOfType<CrowScripts>();
 
             InventoryManager inventoryManager = FindObjectOfType<InventoryManager>();
             ItemDatabase itemDatabase = FindObjectOfType<ItemDatabase>();
             Cellular cellular = FindObjectOfType<Cellular>();
+
             player.transform.position = data.playerPos;
             if (data != null && cellular != null)// && seedCode != null)
             {
@@ -109,7 +114,11 @@ public class LoadSystem : MonoBehaviour
                 
 
             }
-            
+            if(crow != null&& data != null)
+            {
+                crow.dashUnlocked = data.isDashUnlocked;
+                
+            }
             if (player != null)
             {
                 cellular.isDeadGolem = data.isDeadGolem;
@@ -117,6 +126,7 @@ public class LoadSystem : MonoBehaviour
                 cellular.isDeadBomber = data.isDeadBomber;
                 cellular.isDeadDogo = data.isDeadDogo;
                 player._health = data._health;
+                
                
                 player.transform.position = data.playerPos;
 
@@ -168,10 +178,11 @@ public class LoadSystem : MonoBehaviour
             Debug.Log("Player loaded!");
             Debug.Log("Map seed: " + data.mapSeed);
             Debug.Log("Health: " + data._health);
-            
+            Debug.Log("dash ability: " + data.isDashUnlocked);
             Debug.Log("Position: " + data.playerPos);
             Debug.Log("Inventory Items loaded: " + data.inventoryItems.Count);
             player.transform.position = data.playerPos;
+            dashPassValue = data.isDashUnlocked;
         }
         else
         {

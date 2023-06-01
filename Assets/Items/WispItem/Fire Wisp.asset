@@ -10,19 +10,29 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1662d66746d5b7841a5171ab4c6f819a, type: 3}
-  m_Name: Light Wisp
+  m_Name: Fire Wisp
   m_EditorClassIdentifier: 
-  prefab: {fileID: 593067995031978350, guid: 68184821fb59f9c4887ce75028e67657, type: 3}
+  prefab: {fileID: 593067995031978350, guid: 8e0e77a846708b34a96cee87ac318dcc, type: 3}
+  slashTrailPrefab: {fileID: 0}
+  elementEffect: {fileID: 0}
   tile: {fileID: 0}
   type: 5
   actionType: 1
+  element: 1
   range: {x: 5, y: 4}
   weaponDamage: 5
-  _stackable: 1
+  lungeDistance: 0
+  hasDurability: 0
+  maxDurability: 0
+  _stackable: 0
   maxStackCount: 999999
   consumable: 0
   holdable: 0
-  description: Light
+  struggler: 0
+  description: 'A companion that will guide you through your journey.
+
+    Burn resistance.'
   priceAmount: 0
   materialRequirements: []
-  image: {fileID: 63631467, guid: c3c53e49058f269459a6b8b47db0943e, type: 3}
+  image: {fileID: -536975744, guid: c3c53e49058f269459a6b8b47db0943e, type: 3}
+  durability: 0
