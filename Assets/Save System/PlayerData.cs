@@ -5,11 +5,12 @@ using System.IO;
 [System.Serializable]
 public class PlayerData
 {
-   // PLAYER DATA
-
+    // PLAYER DATA
+    public bool isNight;
+    public float timeOfDay;
 
    public float _health;
-    public bool isDashUnlocked;
+   public bool isDashUnlocked;
   
    public Vector2 playerPos;
 

@@ -15,8 +15,8 @@ public class DayNightCycles : MonoBehaviour
     private float dayIntensity = 1f; // Intensity for day
     private float nightIntensity = 0.5f; // Intensity for night
 
-    private float timeOfDay = 0f; // Current time of day in seconds
-    public bool isNight = false; // Whether it's currently night time
+    public float timeOfDay = 0f; // Current time of day in seconds
+    public bool isNight; // Whether it's currently night time
 
     private void Start()
     {
@@ -24,9 +24,30 @@ public class DayNightCycles : MonoBehaviour
         localLight2D = GetComponent<Light2D>();
 
         // Set the initial color and intensity of the Local Light2D component to represent day time
-        localLight2D.color = dayColor;
-        localLight2D.intensity = dayIntensity;
+        LoadSystem load = FindObjectOfType<LoadSystem>();
+         
     }
+    public void InitializeDayNightCycles()
+    {
+        // Get the Local Light2D component
+        localLight2D = GetComponent<Light2D>();
+
+        // Set the initial color and intensity of the Local Light2D component to represent day time
+        if (!isNight)
+        {
+            localLight2D.color = dayColor;
+            localLight2D.intensity = dayIntensity;
+
+            Debug.Log("is day: IS NIGHT IS " + isNight);
+        }
+        else
+        {
+            localLight2D.color = nightColor;
+            localLight2D.intensity = nightIntensity;
+            Debug.Log("is night IS NIGHT IS " + isNight);
+        }
+    }
+
 
     private void Update()
     {

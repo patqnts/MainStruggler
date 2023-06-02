@@ -5655,10 +5655,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b1586ec71657a747bfb0b3e2ec8be86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dayLength: 10
-  nightLength: 100
-  transitionLength: 5
-  endingLight: {fileID: 0}
+  dayLength: 20
+  nightLength: 20
+  transitionLength: 10
+  timeOfDay: 0
   isNight: 0
 --- !u!4 &1030907121 stripped
 Transform:

@@ -38,8 +38,12 @@ public class SaveSystem : MonoBehaviour
         crow = FindObjectOfType<CrowScripts>();
         PlayerData data = new PlayerData();
         BottleScript bottle = FindObjectOfType<BottleScript>();
+        DayNightCycles time = FindObjectOfType<DayNightCycles>();
 
         //Player
+        data.isNight = time.isNight;
+        data.timeOfDay = time.timeOfDay;
+
         data._health = player._health;
         
         data.playerPos = player.transform.position;
@@ -138,6 +142,8 @@ public class SaveSystem : MonoBehaviour
         Debug.Log("Inventory Items saved: " + data.inventoryItems.Count);
         Debug.Log("Map seedcode: " + data.mapSeed);
         Debug.Log("ProfileId: " + cellular.text);
+        Debug.Log("is night: " + data.isNight);
+        Debug.Log("Time of Day: " + data.timeOfDay);
     }
 
     public void BackToMenu()

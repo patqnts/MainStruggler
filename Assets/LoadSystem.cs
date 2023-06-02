@@ -19,12 +19,12 @@ public class LoadSystem : MonoBehaviour
     public CrowScripts crow;
     public BottleScript bottle;
     public Dropdown selectedSlot;
-    
+    public DayNightCycles time;
     private static LoadSystem instance;
     public Movement player;
     public string passedText = "";
     public bool dashPassValue;
-    
+  
     private void Awake()
     {
         // Make sure only one instance of LoadSystem exists
@@ -97,22 +97,29 @@ public class LoadSystem : MonoBehaviour
             bomber = FindObjectOfType<BomberScript>();
             dogo = FindObjectOfType<DogoTotemScripts>();
             crow = FindObjectOfType<CrowScripts>();
+            time = FindObjectOfType<DayNightCycles>();
 
             InventoryManager inventoryManager = FindObjectOfType<InventoryManager>();
             ItemDatabase itemDatabase = FindObjectOfType<ItemDatabase>();
             Cellular cellular = FindObjectOfType<Cellular>();
+            
 
             player.transform.position = data.playerPos;
             if (data != null && cellular != null)// && seedCode != null)
             {
+                
                 cellular.wispBottleisBroken = data.isAcquiredWisp;
                 cellular.seedCode = data.mapSeed;
                 lastSeedCode = cellular.seedCode;
                 Debug.Log(data.mapSeed + " is existing");
-
-                // BOSS BOOL
+            }
+            if (time != null && data != null)
+            {
                 
-
+                time.isNight = data.isNight;
+                time.timeOfDay = data.timeOfDay;
+                time.InitializeDayNightCycles(); // Assigning day/night time color
+               
             }
             if(crow != null&& data != null)
             {
@@ -181,8 +188,11 @@ public class LoadSystem : MonoBehaviour
             Debug.Log("dash ability: " + data.isDashUnlocked);
             Debug.Log("Position: " + data.playerPos);
             Debug.Log("Inventory Items loaded: " + data.inventoryItems.Count);
+            Debug.Log("is Night: " + data.isNight);
+            Debug.Log("Time of day: " + data.timeOfDay);
             player.transform.position = data.playerPos;
             dashPassValue = data.isDashUnlocked;
+            
         }
         else
         {
