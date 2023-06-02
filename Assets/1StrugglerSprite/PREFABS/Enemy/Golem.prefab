@@ -221,6 +221,8 @@ MonoBehaviour:
   enemyHealthObject: {fileID: 7915852163822042233}
   _health: 1000
   maxHealth: 1000
+  dropPrefab:
+  - {fileID: 9061668225178378007, guid: 25fe04a7ec5a1b54fbce79afddc59380, type: 3}
   stonePrefab: {fileID: 1766724209424863414, guid: f0ba6202b04c054468d659c8137332ad,
     type: 3}
   throwPoint: {fileID: 8810965869763599021}

@@ -18,6 +18,7 @@ public class SlimeScript : MonoBehaviour, IDamageable
     public float attackRange = 0.5f;
     public GameObject[] dropPrefab;
     [SerializeField] private EnemyHealthBar enemyHealthBar;
+   
     public GameObject enemyHealthObject;
     public GameObject floatingDamage;
     public bool isElemental;
@@ -33,7 +34,7 @@ public class SlimeScript : MonoBehaviour, IDamageable
 
                 hitCollider.enabled = false;
                 animator.SetTrigger("Death");
-
+                
                 if (isElemental)
                 {
                     Debug.Log("elemental monster dies -1");
@@ -50,6 +51,7 @@ public class SlimeScript : MonoBehaviour, IDamageable
                 if (transform.parent != null)
                 {
                     Destroy(transform.parent.gameObject, 1.2f);
+                    
                 }
                 InventoryManager.instance.ReduceDurability();
 
@@ -142,6 +144,7 @@ public class SlimeScript : MonoBehaviour, IDamageable
         if (_health <= 0)
         {
             enemyHealthObject.SetActive(false);
+            
             Destroy(floatingDamageGO, 1f);
         }
     }
@@ -186,7 +189,7 @@ public class SlimeScript : MonoBehaviour, IDamageable
 
         float elapsedTime = 0f;
 
-        while (elapsedTime < time)
+        while (elapsedTime < time && _health > 0)
         {
             isBurning = true;
             yield return new WaitForSeconds(1f);

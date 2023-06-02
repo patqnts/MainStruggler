@@ -23,6 +23,7 @@ public class SlimeQueen : MonoBehaviour, IDamageable
     public Collider2D collider;
     private float projectileTimer = 0f;
     private List<GameObject> slimeMinions = new List<GameObject>();
+    public GameObject[] dropPrefab;
 
 
 
@@ -42,6 +43,8 @@ public class SlimeQueen : MonoBehaviour, IDamageable
                 rb.constraints = RigidbodyConstraints2D.FreezeAll;
                 collider.enabled = false;
                 //enemyHealthObject.SetActive(false);
+
+                DropItem();
                 animator.SetTrigger("Death");
                 Destroy(gameObject, 2.3f);
 
@@ -51,6 +54,18 @@ public class SlimeQueen : MonoBehaviour, IDamageable
         get
         {
             return _health;
+        }
+    }
+    private void DropItem()
+    {
+        if (dropPrefab != null)
+        {
+            for (int x = 0; x < 1; x++)
+            {
+                Instantiate(dropPrefab[Random.Range(0, dropPrefab.Length)], transform.position, Quaternion.identity);
+            }
+            
+
         }
     }
     private void Awake()
@@ -129,28 +144,30 @@ public class SlimeQueen : MonoBehaviour, IDamageable
     }
 
 
-   
+
 
     private void ShootSlime()
     {
         // Shoot projectiles at the player
         if (playerDetectionZone.detectedObj.Count > 0)
         {
-
             for (int i = 0; i < 3; i++)
             {
                 Vector2 direction = (playerDetectionZone.detectedObj[0].transform.position - transform.position).normalized;
                 GameObject projectile = Instantiate(slimeMinionPrefab, transform.position, Quaternion.identity);
-                projectile.GetComponent<Rigidbody2D>().velocity = direction * projectileSpeed;
+
+                Rigidbody2D projectileRigidbody = projectile.GetComponentInChildren<Rigidbody2D>();
+                projectileRigidbody.velocity = direction * projectileSpeed;
 
                 // Convert the direction to Vector3 before adding it to the position
                 Vector3 projectileOffset = new Vector3(direction.x, direction.y, 0f);
                 projectile.transform.position += projectileOffset;
-                projectile.GetComponent<Rigidbody2D>().velocity = direction * projectileSpeed;
-                
+
+                projectileRigidbody.velocity = direction * projectileSpeed;
             }
         }
     }
+
     private void ShootProjectiles()
     {
         // Shoot projectiles at the player
@@ -212,7 +229,7 @@ public class SlimeQueen : MonoBehaviour, IDamageable
     {
         float elapsedTime = 0f;
 
-        while (elapsedTime < time)
+        while (elapsedTime < time && _health > 0)
         {
             yield return new WaitForSeconds(1f);
 

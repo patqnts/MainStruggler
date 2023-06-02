@@ -17,7 +17,7 @@ public class Plant : MonoBehaviour, IDamageable
     public float _health = 3f;
     private NPCManager npcManager;
     public bool isFacingRight = true;
-
+    public GameObject[] dropPrefab;
     public bool isElemental;
     public bool isFire = false;
     public bool isDark = false;
@@ -35,7 +35,7 @@ public class Plant : MonoBehaviour, IDamageable
                 hitCollider.enabled = false;
                 animator.SetTrigger("Explode");
                 timer = 3f;
-
+                
                 if (isElemental)
                 {
                     Debug.Log("Elemental monster dies -1");
@@ -49,6 +49,7 @@ public class Plant : MonoBehaviour, IDamageable
 
                 if (transform.parent != null)
                 {
+                    
                     Destroy(transform.parent.gameObject, 1.2f);
                 }
 
@@ -59,7 +60,15 @@ public class Plant : MonoBehaviour, IDamageable
             return _health;
         }
     }
+    private void DropItem()
+    {
+        if (dropPrefab != null)
+        {
 
+            Instantiate(dropPrefab[Random.Range(0, dropPrefab.Length)], transform.position, Quaternion.identity);
+
+        }
+    }
     private bool hasDetectedPlayer = false;
     private bool hasExploded = false;
     public bool isDetecting = false; // New variable
@@ -99,9 +108,9 @@ public class Plant : MonoBehaviour, IDamageable
                 hitCollider.enabled = false;
                 moveSpeed = 0f;
                 rb.constraints = RigidbodyConstraints2D.FreezeAll;
-                
-                // Change detection zone radius
 
+                // Change detection zone radius
+                DropItem();
 
                 // Play explosion animation
                 animator.SetTrigger("Explode");
@@ -111,6 +120,7 @@ public class Plant : MonoBehaviour, IDamageable
                 {
                    
                     hitCollider.enabled = false;
+                    
                     Destroy(gameObject, 1f);
                 }
             }

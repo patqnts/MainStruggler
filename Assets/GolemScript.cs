@@ -21,7 +21,7 @@ public class GolemScript : MonoBehaviour, IDamageable
     public GameObject enemyHealthObject;
     public float _health, maxHealth = 10f;
     private NPCManager npcManager;
-
+    public GameObject[] dropPrefab;
     public GameObject stonePrefab;
     public Transform throwPoint;
     public float throwForce = 500f;
@@ -42,6 +42,7 @@ public class GolemScript : MonoBehaviour, IDamageable
                 cellular.isDeadGolem = true;
                 moveSpeed = 0;
                 hitCollider.enabled = false;
+                DropItem();
                 //enemyHealthObject.SetActive(false);
                 animator.SetTrigger("Death");
                 npcManager.OnEnemyDestroyed();
@@ -53,7 +54,15 @@ public class GolemScript : MonoBehaviour, IDamageable
             return _health;
         }
     }
+    private void DropItem()
+    {
+        if (dropPrefab != null)
+        {
 
+            Instantiate(dropPrefab[Random.Range(0, dropPrefab.Length)], transform.position, Quaternion.identity);
+
+        }
+    }
     private void Awake()
     {
         healthBar = GetComponentInChildren<EnemyHealthBar>();
@@ -266,7 +275,7 @@ public class GolemScript : MonoBehaviour, IDamageable
 
         float elapsedTime = 0f;
 
-        while (elapsedTime < time)
+        while (elapsedTime < time && _health > 0)
         {
             isBurning = true;
             yield return new WaitForSeconds(1f);

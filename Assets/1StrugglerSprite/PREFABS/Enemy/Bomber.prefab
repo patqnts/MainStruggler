@@ -698,9 +698,12 @@ MonoBehaviour:
   _health: 500
   maxHealth: 500
   throwCooldown: 5
+  dropPrefab:
+  - {fileID: 9061668225178378007, guid: 1e4f95339ee60c845b253504014c5418, type: 3}
   Timer: 0
   cameraAnimator: {fileID: 0}
   jumpRange: 10
+  isStomping: 0
   treeDamage: 5000
 --- !u!1 &2749401187049598813
 GameObject:

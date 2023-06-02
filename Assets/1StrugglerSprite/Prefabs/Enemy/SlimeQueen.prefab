@@ -256,7 +256,7 @@ MonoBehaviour:
   _health: 2500
   maxHealth: 2500
   playerDetectionZone: {fileID: 3559810121155677841}
-  slimeMinionPrefab: {fileID: 5891413548151957510, guid: 4565dfb6d1e604e43b729933b83ea473,
+  slimeMinionPrefab: {fileID: 7627692086151174695, guid: 7c1097dd31e992a40a0043ac80509bf1,
     type: 3}
   projectileCooldown: 10
   stunDuration: 2
@@ -267,6 +267,8 @@ MonoBehaviour:
   projectileKnockbackForce: 200
   pushbackForce: 2000
   collider: {fileID: 923861142236718806}
+  dropPrefab:
+  - {fileID: 9061668225178378007, guid: 28cee69fe9017c542a6c40056ec8e13a, type: 3}
   healthBar: {fileID: 5499484775879350026}
   enemyHealthObject: {fileID: 5213071154343924755}
 --- !u!1 &2752355789045632790

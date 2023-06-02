@@ -14,7 +14,7 @@ public class StoneKnightScript : MonoBehaviour, IDamageable
   
     private Vector2 lastDirection = Vector2.zero;
     public bool isDetecting;
-   
+    public GameObject[] dropPrefab;
     public float attackRange = 1.5f;
     [SerializeField] private EnemyHealthBar healthBar;
     public GameObject enemyHealthObject;
@@ -34,7 +34,7 @@ public class StoneKnightScript : MonoBehaviour, IDamageable
                 enemyHealthObject.SetActive(false);
                 animator.SetTrigger("Death");
                 InventoryManager.instance.ReduceDurability();
-
+                DropItem();
                 if (isElemental)
                 {
                     Debug.Log("elemental monster dies -1");
@@ -56,6 +56,15 @@ public class StoneKnightScript : MonoBehaviour, IDamageable
         get
         {
             return _health;
+        }
+    }
+    private void DropItem()
+    {
+        if (dropPrefab != null)
+        {
+
+            Instantiate(dropPrefab[Random.Range(0, dropPrefab.Length)], transform.position, Quaternion.identity);
+
         }
     }
     private void Awake()
@@ -162,6 +171,7 @@ public class StoneKnightScript : MonoBehaviour, IDamageable
         animator.SetTrigger("Hurt");
         if(_health <= 0)
         {
+
             enemyHealthObject.SetActive(false);
         }
     }
@@ -193,7 +203,7 @@ public class StoneKnightScript : MonoBehaviour, IDamageable
     {
         float elapsedTime = 0f;
 
-        while (elapsedTime < time)
+        while (elapsedTime < time && _health > 0)
         {
             yield return new WaitForSeconds(1f);
 

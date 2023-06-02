@@ -26,14 +26,14 @@ public class BomberScript : MonoBehaviour, IDamageable
     public float _health, maxHealth = 10f;
     private NPCManager npcManager;
     public float throwCooldown = 2f;
-    
+    public GameObject[] dropPrefab;
 
     public float Timer;
     public Animator cameraAnimator;
 
     private float followDistance = 2.5f;
     public float jumpRange = 7f;
-
+    
     public float Health
     {
         set
@@ -48,6 +48,10 @@ public class BomberScript : MonoBehaviour, IDamageable
                 rb.constraints = RigidbodyConstraints2D.FreezeAll;
                 hitCollider.enabled = false;
                 //enemyHealthObject.SetActive(false);
+                for (int x = 0; x < 1; x++)
+                {
+                    DropItem();
+                }
                 animator.SetTrigger("Death");
                 npcManager.OnEnemyDestroyed();
                 Destroy(gameObject, 1.2f);
@@ -58,7 +62,15 @@ public class BomberScript : MonoBehaviour, IDamageable
             return _health;
         }
     }
+    private void DropItem()
+    {
+        if (dropPrefab != null)
+        {
 
+            Instantiate(dropPrefab[Random.Range(0, dropPrefab.Length)], transform.position, Quaternion.identity);
+
+        }
+    }
     private void Awake()
     {
         healthBar = GetComponentInChildren<EnemyHealthBar>();
@@ -299,7 +311,7 @@ public class BomberScript : MonoBehaviour, IDamageable
         
         float elapsedTime = 0f;
 
-        while (elapsedTime < time)
+        while (elapsedTime < time && _health > 0)
         {
             isBurning = true;
             yield return new WaitForSeconds(1f);

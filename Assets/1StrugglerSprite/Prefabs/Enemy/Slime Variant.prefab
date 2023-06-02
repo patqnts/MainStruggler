@@ -283,6 +283,11 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 8246536292799838062, guid: 4ebd970acd42878459ae870a88e88019,
         type: 3}
+      propertyPath: healthbarObject
+      value: 
+      objectReference: {fileID: 1423044947828045115}
+    - target: {fileID: 8246536292799838062, guid: 4ebd970acd42878459ae870a88e88019,
+        type: 3}
       propertyPath: enemyHealthObject
       value: 
       objectReference: {fileID: 34205716944113442}

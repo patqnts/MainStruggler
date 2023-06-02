@@ -183,6 +183,17 @@ PrefabInstance:
       propertyPath: explosionDamage
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7401251658839098987, guid: e5bddcd5512b8dd4887e4689be374b5e,
+        type: 3}
+      propertyPath: dropPrefab.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7401251658839098987, guid: e5bddcd5512b8dd4887e4689be374b5e,
+        type: 3}
+      propertyPath: dropPrefab.Array.data[0]
+      value: 
+      objectReference: {fileID: 9061668225178378007, guid: 9bf5e480bf5525d48b45a347b1c2afca,
+        type: 3}
     - target: {fileID: 7401251658839098988, guid: e5bddcd5512b8dd4887e4689be374b5e,
         type: 3}
       propertyPath: m_RootOrder
