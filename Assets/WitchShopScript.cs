@@ -50,8 +50,12 @@ public class WitchShopScript : MonoBehaviour
                 break;
             case "Flame Sword":
                 coinCost = 0;
-                
+
                 break;
+            case "Wind Sword":
+                coinCost = 0;
+                break;
+
             case "Wind Wisp":
                 coinCost = 0;
                 
