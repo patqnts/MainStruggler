@@ -186,8 +186,14 @@ PrefabInstance:
     - target: {fileID: 7402004173600859663, guid: 440a4aa22b0e4a449ac094e0418f96d3,
         type: 3}
       propertyPath: m_InstanceId
-      value: -377304
+      value: -3486232
       objectReference: {fileID: 0}
+    - target: {fileID: 7869210544808441069, guid: 440a4aa22b0e4a449ac094e0418f96d3,
+        type: 3}
+      propertyPath: strugglerBottle
+      value: 
+      objectReference: {fileID: 11400000, guid: 90346ddc1fdc6e3419f9fc15e8923e61,
+        type: 2}
     - target: {fileID: 7894600375102866605, guid: 440a4aa22b0e4a449ac094e0418f96d3,
         type: 3}
       propertyPath: m_RootOrder
@@ -246,7 +252,7 @@ PrefabInstance:
     - target: {fileID: 9024409644439323601, guid: 440a4aa22b0e4a449ac094e0418f96d3,
         type: 3}
       propertyPath: m_InstanceId
-      value: -377322
+      value: -3486250
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 23523084966837972, guid: 440a4aa22b0e4a449ac094e0418f96d3, type: 3}

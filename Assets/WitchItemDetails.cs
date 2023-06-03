@@ -23,8 +23,6 @@ public class WitchItemDetails : MonoBehaviour
         witchShop = FindObjectOfType<WitchShopScript>();
 
     }
-
-
     private void Cycle()
     {
         foreach (var materialImage in materialImages)

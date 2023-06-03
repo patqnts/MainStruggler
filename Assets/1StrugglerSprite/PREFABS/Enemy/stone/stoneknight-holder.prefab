@@ -197,6 +197,23 @@ PrefabInstance:
       propertyPath: maxHealth
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 8576634829336773472, guid: 7ad46620c9307914181a9baa2a2c0280,
+        type: 3}
+      propertyPath: dropPrefab.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8576634829336773472, guid: 7ad46620c9307914181a9baa2a2c0280,
+        type: 3}
+      propertyPath: dropPrefab.Array.data[0]
+      value: 
+      objectReference: {fileID: 60820714438538513, guid: 3e241f4ac8bceb04884641f4988c0919,
+        type: 3}
+    - target: {fileID: 8576634829336773472, guid: 7ad46620c9307914181a9baa2a2c0280,
+        type: 3}
+      propertyPath: dropPrefab.Array.data[1]
+      value: 
+      objectReference: {fileID: 593067995031978350, guid: 05d3517b392834643848e1e375a2306e,
+        type: 3}
     - target: {fileID: 8576634829336773477, guid: 7ad46620c9307914181a9baa2a2c0280,
         type: 3}
       propertyPath: m_RootOrder

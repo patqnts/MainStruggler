@@ -616,14 +616,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 2.5
   attackTime: 0.25
-  eatTime: 1
   rb: {fileID: 6945892883196980476}
   animator: {fileID: 644582279169489442}
   joystick: {fileID: 0}
+  combatManager: {fileID: 0}
   slashPos: {fileID: 2453463805921333274}
+  cameraAnimator: {fileID: 0}
+  indicatorAnimator: {fileID: 0}
   dashSpeed: 10
   dashLength: 0.2
   dashCooldown: 1
+  holdButton: {fileID: 0}
   ghost: {fileID: 5238459194029620539}
   dropPos: {fileID: 4626737821174681951}
   collider: {fileID: 6771661738551601369}
@@ -631,6 +634,10 @@ MonoBehaviour:
   _health: 5
   uiHealth: {fileID: 0}
   maxHealth: 5
+  selectedItem: {fileID: 0}
+  Inventory: {fileID: 0}
+  isJoypad: 0
+  holding: 0
 --- !u!95 &644582279169489442
 Animator:
   serializedVersion: 4
@@ -740,4 +747,5 @@ MonoBehaviour:
   hitCollider: {fileID: 4857781640998776319}
   knockbackForce: 500
   damage: 1
+  cameraAnimator: {fileID: 0}
   inventoryManager: {fileID: 0}

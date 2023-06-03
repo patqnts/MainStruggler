@@ -43,7 +43,7 @@ public class SaveSystem : MonoBehaviour
         //Player
         data.isNight = time.isNight;
         data.timeOfDay = time.timeOfDay;
-
+        data.maxHealth = player.maxHealth;
         data._health = player._health;
         
         data.playerPos = player.transform.position;

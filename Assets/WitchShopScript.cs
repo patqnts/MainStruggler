@@ -12,7 +12,7 @@ public class WitchShopScript : MonoBehaviour
     int coin;
     int stoneheart;
     public int Intest = -1;
-
+    public GameObject strugglerBottle;
     private void Start()
     {
         inventoryManager = FindObjectOfType<InventoryManager>();
@@ -32,7 +32,11 @@ public class WitchShopScript : MonoBehaviour
         int stoneheartCost = 0;
         int starstoneCost = 0;
         int steelIngotCost = 0;
-
+        if (itemToBuy.name == "Struggler Bottle" && InventoryManager.instance.GetInventoryItem("Struggler Bottle") != null)
+        {
+            Debug.Log("Item already exists in inventory. Cannot buy another one.");
+            return; // Exit the method if the item already exists in the inventory
+        }
 
         switch (itemToBuy.name)
         {
@@ -73,6 +77,11 @@ public class WitchShopScript : MonoBehaviour
                 coinCost = 0;
                 
                 break;
+
+            case "Heart Container":
+                coinCost = 0;
+
+                break;
             default:
                 Debug.Log("Invalid item name");
                 return;
@@ -89,6 +98,10 @@ public class WitchShopScript : MonoBehaviour
             return;
         }
 
+        
+        
+
+        
         bool added = inventoryManager.AddItem(itemToBuy,itemToBuy.maxDurability,1);
         if (added)
         {

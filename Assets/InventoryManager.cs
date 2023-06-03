@@ -238,8 +238,9 @@ public class InventoryManager : MonoBehaviour
             if (use == true)
             {
                 itemInSlot.count--;
-                if (itemInSlot.count <= 0)
+                if (itemInSlot.count <= 0 && itemInSlot != item.struggler)
                 {
+                    Debug.Log("DestroyL " + itemInSlot);
                     Destroy(itemInSlot.gameObject);
                 }
                 else
@@ -311,7 +312,8 @@ public class InventoryManager : MonoBehaviour
 
             foreach (InventoryItem itemInSlot in itemsInSlot)
             {
-                if (itemInSlot != null && itemInSlot.item.name != "Coin" && !itemsDropped.Contains(itemInSlot.item.name))
+                if (itemInSlot != null && itemInSlot.item.name != "Struggler Bottle" 
+                    && itemInSlot.item.name != "Coin" && !itemsDropped.Contains(itemInSlot.item.name))
                 {
                     if (!itemInSlot.item.stackable)
                     {

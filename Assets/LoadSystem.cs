@@ -69,7 +69,6 @@ public class LoadSystem : MonoBehaviour
            
         }
     }
-
     public void LoadPlayer(string profileId)
     {
         
@@ -89,8 +88,7 @@ public class LoadSystem : MonoBehaviour
             string json = File.ReadAllText(filePath);
             PlayerData data = JsonUtility.FromJson<PlayerData>(json);
 
-            bottle = FindObjectOfType<BottleScript>();
-            
+            bottle = FindObjectOfType<BottleScript>();          
             player = FindObjectOfType<Movement>();
             golem = FindObjectOfType<GolemScript>();
             slime = FindObjectOfType<SlimeQueen>();
@@ -132,9 +130,8 @@ public class LoadSystem : MonoBehaviour
                 cellular.isDeadSlime = data.isDeadSlime;
                 cellular.isDeadBomber = data.isDeadBomber;
                 cellular.isDeadDogo = data.isDeadDogo;
-                player._health = data._health;
-                
-               
+                player.maxHealth = data.maxHealth;
+                player._health = data._health;  
                 player.transform.position = data.playerPos;
 
                 if(data.isDeadGolem = false)
@@ -154,9 +151,7 @@ public class LoadSystem : MonoBehaviour
                 {
                     dogo.transform.position = data.dogoPos;
                 }
-
-                Debug.Log(data.playerPos);
-                
+                Debug.Log(data.playerPos);    
             }
 
             if (inventoryManager != null)

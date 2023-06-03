@@ -5,7 +5,7 @@ using UnityEngine;
 public class CombatManager : MonoBehaviour
 {
     public Dictionary<Item, int> itemDurabilityMap = new Dictionary<Item, int>();
-
+    public Animator animator;
     // Add item with initial durability to the dictionary
     public void AddItemWithDurability(Item item, int durability)
     {
@@ -14,7 +14,10 @@ public class CombatManager : MonoBehaviour
             itemDurabilityMap[item] = durability;
         }
     }
-
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
     // Reduce durability of an item
     public void ReduceDurability(InventoryItem inventoryItem, int amount)
     {
@@ -45,6 +48,7 @@ public class CombatManager : MonoBehaviour
     // Handle item break event
     private void HandleItemBreak(Item item)
     {
+        animator.SetTrigger("Destroy");
         InventoryManager.instance.GetSelectedItem(true);
         // Item broke, perform any necessary actions
     }

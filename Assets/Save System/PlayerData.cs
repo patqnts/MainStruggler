@@ -8,7 +8,7 @@ public class PlayerData
     // PLAYER DATA
     public bool isNight;
     public float timeOfDay;
-
+    public float maxHealth;
    public float _health;
    public bool isDashUnlocked;
   

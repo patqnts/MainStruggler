@@ -215,13 +215,20 @@ public class Movement : MonoBehaviour, IDamageable
 
                 Item canEat = InventoryManager.instance.GetSelectedItem(item);
 
-                if (canEat != null && canEat.struggler && InventoryManager.instance.GetSelectedItem(item) != null && _health < maxHealth)
+                if (canEat != null && 
+                    canEat.struggler && 
+                    InventoryManager.instance.GetSelectedItem(item) != null 
+                    && _health < maxHealth&&
+                    InventoryManager.instance.GetItemCount("Struggler Bottle") >= 1)
                 {
                     Debug.Log("StrugglerHeal");
                     indicatorAnimator.SetTrigger("Heal");
 
                     uiHealth.StrugglerHeal();
-                    InventoryManager.instance.GetSelectedItem(true);
+                   
+                         InventoryManager.instance.GetSelectedItem(true);
+                    
+                   
                 }
                 else if (canEat != null && canEat.consumable && InventoryManager.instance.GetSelectedItem(item) != null && _health < maxHealth)
                 {
@@ -434,11 +441,19 @@ public class Movement : MonoBehaviour, IDamageable
 
             Item canEat = InventoryManager.instance.GetSelectedItem(item);
 
-            if (canEat != null && canEat.struggler && InventoryManager.instance.GetSelectedItem(item) != null && _health < maxHealth)
+            if (canEat != null && InventoryManager.instance.GetItemCount("Struggler Bottle") >= 1 && 
+                canEat.struggler && InventoryManager.instance.GetSelectedItem(item) != null && _health < maxHealth)
             {
                 Debug.Log("StrugglerHeal");
                 indicatorAnimator.SetTrigger("Heal");
                 uiHealth.StrugglerHeal();
+                InventoryManager.instance.GetSelectedItem(true);
+            }
+            else if (canEat != null && InventoryManager.instance.GetSelectedItem(item).name == "Heart Container")
+            {
+                Debug.Log("Heart Container");
+                indicatorAnimator.SetTrigger("Heal");
+                uiHealth.AddHeart();
                 InventoryManager.instance.GetSelectedItem(true);
             }
             else if (canEat != null && canEat.consumable && InventoryManager.instance.GetSelectedItem(item) != null && _health < maxHealth)
@@ -446,9 +461,6 @@ public class Movement : MonoBehaviour, IDamageable
                 _health++;
                 indicatorAnimator.SetTrigger("Heal");
                 InventoryManager.instance.GetSelectedItem(true);
-
-
-
             }
             else
             {

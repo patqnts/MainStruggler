@@ -12,11 +12,12 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler,IEnd
     public Text countTxt;
 
     [HideInInspector] public Item item;
-    [HideInInspector] public int count = 1;
+    public int count = 1;
     [HideInInspector] public Transform parentAfterDrag;
     [HideInInspector] public Transform originalParent;
     public InventoryManager inventoryManager;
     public int durability;
+    public Sprite emptyBottle;
 
 
 
@@ -101,6 +102,15 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler,IEnd
         bool textActive = count > 1;
         countTxt.gameObject.SetActive(textActive);
         countTxt.text = count.ToString();
+        if(item.name == "Struggler Bottle" && count <= 0)
+        {
+            count = 0;
+            image.sprite = emptyBottle;
+        }
+        else
+        {
+            image.sprite = item.image;
+        }
     }
     public void OnBeginDrag(PointerEventData eventData)
 {

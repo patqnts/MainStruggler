@@ -143,6 +143,17 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 0.356
       objectReference: {fileID: 0}
+    - target: {fileID: 2694150275487380242, guid: 081f7da41793b3d4c9091cfdef278408,
+        type: 3}
+      propertyPath: dropPrefab.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2694150275487380242, guid: 081f7da41793b3d4c9091cfdef278408,
+        type: 3}
+      propertyPath: dropPrefab.Array.data[1]
+      value: 
+      objectReference: {fileID: 3396009678439204717, guid: acc8f81c2f236594aae730138a983065,
+        type: 3}
     - target: {fileID: 2694150275487380243, guid: 081f7da41793b3d4c9091cfdef278408,
         type: 3}
       propertyPath: m_RootOrder

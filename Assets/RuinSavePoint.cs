@@ -45,7 +45,7 @@ public class RuinSavePoint : MonoBehaviour
             }
         }
     }
-
+    public Item strugglerBottle;
     // Increase the player's health by 1
     private void IncreasePlayerHealth()
     {
@@ -53,7 +53,13 @@ public class RuinSavePoint : MonoBehaviour
         if (playerHealth != null && playerHealth._health < playerHealth.maxHealth)
         {
             playerHealth._health++;
+            
             Debug.Log("Player Health: " + playerHealth._health);
+        }
+        if (InventoryManager.instance.GetInventoryItem("Struggler Bottle") != null &&
+            InventoryManager.instance.GetItemCount("Struggler Bottle") < 4)
+        {
+            InventoryManager.instance.AddItem(strugglerBottle, 1, 1);
         }
     }
     // Called when a collider enters this trigger

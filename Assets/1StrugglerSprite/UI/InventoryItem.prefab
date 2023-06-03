@@ -178,3 +178,4 @@ MonoBehaviour:
   originalParent: {fileID: 0}
   inventoryManager: {fileID: 0}
   durability: 0
+  emptyBottle: {fileID: 1420380874, guid: 51721a244c2b3b2448a18bd0044dee35, type: 3}
