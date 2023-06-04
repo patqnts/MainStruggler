@@ -62,9 +62,10 @@ public class StoneKnightScript : MonoBehaviour, IDamageable
     {
         if (dropPrefab != null)
         {
-
-            Instantiate(dropPrefab[Random.Range(0, dropPrefab.Length)], transform.position, Quaternion.identity);
-
+            foreach (var prefab in dropPrefab)
+            {
+                Instantiate(prefab, transform.position, Quaternion.identity);
+            }
         }
     }
     private void Awake()

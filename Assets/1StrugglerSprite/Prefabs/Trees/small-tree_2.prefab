@@ -219,6 +219,7 @@ MonoBehaviour:
   - {fileID: 1550321499018942001, guid: ca78e7b2dff31bf4d92f1240cf4ca434, type: 3}
   collider: {fileID: 7450600725748136562}
   _health: 500
+  maxHealth: 500
 --- !u!95 &8756361532932407537
 Animator:
   serializedVersion: 4
@@ -272,7 +273,7 @@ GameObject:
   - component: {fileID: 7293134279157143932}
   - component: {fileID: 8538539024130846857}
   - component: {fileID: 2514738388394077354}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TX Shadow Bush T4
   m_TagString: Untagged
   m_Icon: {fileID: 0}

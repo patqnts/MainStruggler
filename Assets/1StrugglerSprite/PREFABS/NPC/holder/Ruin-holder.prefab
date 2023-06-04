@@ -158,6 +158,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: ruin_prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 2817008514012130067, guid: 440a4aa22b0e4a449ac094e0418f96d3,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 34f14d6aa72b76744a54fc102c297c0d,
+        type: 3}
+    - target: {fileID: 3569655498465170420, guid: 440a4aa22b0e4a449ac094e0418f96d3,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3569655498465170420, guid: 440a4aa22b0e4a449ac094e0418f96d3,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5056051828260004230, guid: 440a4aa22b0e4a449ac094e0418f96d3,
         type: 3}
       propertyPath: m_Enabled
@@ -186,7 +202,7 @@ PrefabInstance:
     - target: {fileID: 7402004173600859663, guid: 440a4aa22b0e4a449ac094e0418f96d3,
         type: 3}
       propertyPath: m_InstanceId
-      value: -3486232
+      value: -4308882
       objectReference: {fileID: 0}
     - target: {fileID: 7869210544808441069, guid: 440a4aa22b0e4a449ac094e0418f96d3,
         type: 3}
@@ -249,10 +265,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7975186799883535385, guid: 440a4aa22b0e4a449ac094e0418f96d3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9024409644439323601, guid: 440a4aa22b0e4a449ac094e0418f96d3,
         type: 3}
       propertyPath: m_InstanceId
-      value: -3486250
+      value: -4308900
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 23523084966837972, guid: 440a4aa22b0e4a449ac094e0418f96d3, type: 3}

@@ -184,7 +184,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4376164072663266623}
   - component: {fileID: 7410960780765712425}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TX Shadow Pot B
   m_TagString: Untagged
   m_Icon: {fileID: 0}

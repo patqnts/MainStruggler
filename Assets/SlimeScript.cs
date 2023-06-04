@@ -219,10 +219,11 @@ public class SlimeScript : MonoBehaviour, IDamageable
     private void DropItem()
     {
         if (dropPrefab != null)
-        {    
-            
-                Instantiate(dropPrefab[Random.Range(0,dropPrefab.Length)], transform.position, Quaternion.identity);
-                 
+        {
+            foreach (var prefab in dropPrefab)
+            {
+                Instantiate(prefab, transform.position, Quaternion.identity);
+            }
         }
     }
 

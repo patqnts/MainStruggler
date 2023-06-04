@@ -34,6 +34,11 @@ public class TravelerShopScript : MonoBehaviour
                 coin = 0;
                 stoneheart = 0;
                 break;
+
+            case "Island Map":
+                coin = 0;
+                stoneheart = 0;
+                break;
             default:
                 Debug.Log("Invalid item name");
                 return;

@@ -8,7 +8,7 @@ public class BlackShopScript : MonoBehaviour
 
 
     public InventoryManager inventoryManager;
-  
+    public Animator animator;
     public Item[] itemList;
     int coin;
     int stoneheart;
@@ -17,7 +17,7 @@ public class BlackShopScript : MonoBehaviour
     private void Start()
     {
         inventoryManager = FindObjectOfType<InventoryManager>();
-
+        animator = GetComponentInParent<Animator>();
     }
 
 
@@ -101,6 +101,7 @@ public class BlackShopScript : MonoBehaviour
             inventoryManager.GetItemCount("Steel") < steelIngotCost)
         {
             Debug.Log("Not enough resources to buy " + itemToBuy.name);
+            animator.SetTrigger("NotEnough");
             return;
         }
 

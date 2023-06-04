@@ -32,6 +32,10 @@ public class WitchShopScript : MonoBehaviour
         int stoneheartCost = 0;
         int starstoneCost = 0;
         int steelIngotCost = 0;
+        int darkOrbisCost = 0;
+        int lightOrbisCost = 0;
+        int fireOrbisCost = 0;
+        int windOrbisCost = 0;
         if (itemToBuy.name == "Struggler Bottle" && InventoryManager.instance.GetInventoryItem("Struggler Bottle") != null)
         {
             Debug.Log("Item already exists in inventory. Cannot buy another one.");
@@ -79,7 +83,10 @@ public class WitchShopScript : MonoBehaviour
                 break;
 
             case "Heart Container":
-                coinCost = 0;
+                darkOrbisCost = 1;
+                lightOrbisCost = 1;
+                fireOrbisCost = 1;
+                windOrbisCost = 1;
 
                 break;
             default:
@@ -92,7 +99,12 @@ public class WitchShopScript : MonoBehaviour
            inventoryManager.GetItemCount("Stone") < stoneCost ||
            inventoryManager.GetItemCount("Stoneheart") < stoneheartCost ||
            inventoryManager.GetItemCount("Starstone") < starstoneCost ||
-           inventoryManager.GetItemCount("Steel") < steelIngotCost)
+           inventoryManager.GetItemCount("Steel") < steelIngotCost ||
+
+           inventoryManager.GetItemCount("Dark Orbis") < darkOrbisCost ||
+           inventoryManager.GetItemCount("Light Orbis") < lightOrbisCost ||
+           inventoryManager.GetItemCount("Fire Orbis") < fireOrbisCost ||
+           inventoryManager.GetItemCount("Wind Orbis") < windOrbisCost) 
         {
             Debug.Log("Not enough resources to buy " + itemToBuy.name);
             return;
@@ -111,6 +123,11 @@ public class WitchShopScript : MonoBehaviour
             inventoryManager.RemoveItem("Stoneheart", stoneheartCost);
             inventoryManager.RemoveItem("Starstone", starstoneCost);
             inventoryManager.RemoveItem("Steel", steelIngotCost);
+
+            inventoryManager.RemoveItem("Dark Orbis", darkOrbisCost);
+            inventoryManager.RemoveItem("Light Orbis", lightOrbisCost);
+            inventoryManager.RemoveItem("Fire Orbis", fireOrbisCost);
+            inventoryManager.RemoveItem("Wind Orbis", windOrbisCost);
             Debug.Log("Bought " + itemToBuy.name);
         }
         else

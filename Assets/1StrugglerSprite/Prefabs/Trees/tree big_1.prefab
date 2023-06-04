@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 5784851553872334225}
   - component: {fileID: 6883866487097468675}
   - component: {fileID: 88812198448005987}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TX Shadow Bush T4
   m_TagString: Untagged
   m_Icon: {fileID: 0}

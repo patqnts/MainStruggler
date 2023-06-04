@@ -66,9 +66,10 @@ public class BomberScript : MonoBehaviour, IDamageable
     {
         if (dropPrefab != null)
         {
-
-            Instantiate(dropPrefab[Random.Range(0, dropPrefab.Length)], transform.position, Quaternion.identity);
-
+            foreach (var prefab in dropPrefab)
+            {
+                Instantiate(prefab, transform.position, Quaternion.identity);
+            }
         }
     }
     private void Awake()
@@ -297,7 +298,7 @@ public class BomberScript : MonoBehaviour, IDamageable
     private bool isBurning = false;
     public void OnBurn(float damage, float time)
     {
-        if (!isBurning)
+        if (!isBurning && _health > 0)
         {
             Debug.Log("BURRRRN");
             StartCoroutine(ApplyBurnDamage(damage, time));

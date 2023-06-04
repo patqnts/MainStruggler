@@ -60,12 +60,10 @@ public class SlimeQueen : MonoBehaviour, IDamageable
     {
         if (dropPrefab != null)
         {
-            for (int x = 0; x < 1; x++)
+            foreach (var prefab in dropPrefab)
             {
-                Instantiate(dropPrefab[Random.Range(0, dropPrefab.Length)], transform.position, Quaternion.identity);
+                Instantiate(prefab, transform.position, Quaternion.identity);
             }
-            
-
         }
     }
     private void Awake()
@@ -222,7 +220,11 @@ public class SlimeQueen : MonoBehaviour, IDamageable
     }
     public void OnBurn(float damage, float time)
     {
-        StartCoroutine(ApplyBurnDamage(damage, time));
+        if(_health > 0)
+        {
+            StartCoroutine(ApplyBurnDamage(damage, time));
+        }
+        
     }
 
     private IEnumerator ApplyBurnDamage(float damage, float time)
