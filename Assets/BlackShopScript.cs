@@ -44,49 +44,49 @@ public class BlackShopScript : MonoBehaviour
                 coinCost = 0;
                 break;
             case "Wooden Sword":
-                coinCost = 5;
-                woodCost = 10;
-                stoneCost = 5;
+                coinCost = 0;
+                woodCost = 0;
+                
                 break;
             case "Stone Sword":
-                coinCost = 400;
-                stoneCost = 25;
-                woodCost = 10;
+                coinCost = 0;
+                stoneCost = 0;
+                woodCost = 0;
                 break;
             case "Steel Sword":
-                coinCost = 800;
-                stoneCost = 50;
-                woodCost = 40;
-                stoneheartCost = 20;
+                coinCost = 0;
+                stoneCost = 0;
+                woodCost = 0;
+                stoneheartCost = 0;
                 break;
             case "Starstone Sword":
-                coinCost = 1600;
-                starstoneCost = 3;
-                stoneCost = 150;
-                woodCost = 200;
-                stoneheartCost = 50;
+                coinCost = 0;
+                starstoneCost = 0;
+                stoneCost = 0;
+                woodCost = 0;
+                stoneheartCost = 0;
                 break;
             case "Wood Gathering Tool":
-                coinCost = 5;
-                woodCost = 5;
+                coinCost = 0;
+                woodCost = 0;
                 break;
             case "Stone Gathering Tool":
-                coinCost = 400;
-                stoneCost = 25;
-                woodCost = 15;
+                coinCost = 0;
+                stoneCost = 0;
+                woodCost = 0;
                 break;
             case "Steel Gathering Tool":
-                coinCost = 800;
-                stoneCost = 50;
-                woodCost = 100;
-                stoneheartCost = 10;
+                coinCost = 0;
+                stoneCost = 0;
+                woodCost = 0;
+                stoneheartCost = 0;
                 break;
             case "Starstone Gathering Tool":
-                coinCost = 1600;
-                starstoneCost = 3;
-                stoneCost = 150;
-                woodCost = 150;
-                steelIngotCost = 50;
+                coinCost = 0;
+                starstoneCost = 0;
+                stoneCost = 0;
+                woodCost = 0;
+                steelIngotCost = 0;
                 break;
             default:
                 Debug.Log("Invalid item name");

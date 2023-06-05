@@ -24,7 +24,7 @@ public class LoadSystem : MonoBehaviour
     public Movement player;
     public string passedText = "";
     public bool dashPassValue;
-  
+    public ImageLoader imageLoader;
     private void Awake()
     {
         // Make sure only one instance of LoadSystem exists
@@ -44,13 +44,14 @@ public class LoadSystem : MonoBehaviour
         {
            // LoadPlayer(passedText);
         }
-        
-      
-        
+        imageLoader = FindObjectOfType<ImageLoader>();
+        imageLoader.DeleteSaveData("rogue");
+
 
     }
     public void LoadPlayerWithDefaultSeed(string profileId)
     {
+        
         passedText = profileId;
         lastSeedCode = 0; // Set the seed code to 0
 
