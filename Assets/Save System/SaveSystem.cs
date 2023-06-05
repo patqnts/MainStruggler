@@ -166,5 +166,18 @@ public class SaveSystem : MonoBehaviour
         // Load the first scene of your game
         SceneManager.LoadScene(0);
     }
+    public void BackToMenuRogue()
+    {
+        // Destroy the LoadSystem instance
+        LoadSystem loadSystem = FindObjectOfType<LoadSystem>();
+
+        if (loadSystem != null)
+        {
+            Destroy(loadSystem.gameObject);
+        }
+
+        // Load the first scene of your game
+        SceneManager.LoadScene(0);
+    }
 
 }

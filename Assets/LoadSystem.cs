@@ -49,6 +49,15 @@ public class LoadSystem : MonoBehaviour
         
 
     }
+    public void LoadPlayerWithDefaultSeed(string profileId)
+    {
+        passedText = profileId;
+        lastSeedCode = 0; // Set the seed code to 0
+
+        SceneManager.LoadScene("Rogue");
+        // Load the player with the default seed code (0)
+       
+    }
 
     public void LoadPlayerAndGameScene(string profileId)
     {
@@ -64,7 +73,7 @@ public class LoadSystem : MonoBehaviour
         else
         {
             Debug.Log("SEED =  NULL");
-            lastSeedCode = 0 ;
+            lastSeedCode = 0;
             SceneManager.LoadScene("StrugglerMain");
            
         }
