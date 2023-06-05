@@ -1367,7 +1367,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: d7181f436264b534899c29e938d5735d, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.614
-  m_Pitch: -0.92
+  m_Pitch: 0.39
   Loop: 1
   Mute: 0
   Spatialize: 0
@@ -4508,7 +4508,7 @@ PrefabInstance:
     - target: {fileID: 1957374977941793963, guid: 542bb31e53048a549a87497a9d046a3d,
         type: 3}
       propertyPath: isJoypad
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1957374977941793963, guid: 542bb31e53048a549a87497a9d046a3d,
         type: 3}
@@ -5797,6 +5797,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 90346ddc1fdc6e3419f9fc15e8923e61,
         type: 2}
+    - target: {fileID: 3598347495661435883, guid: 8ef06e093be54ca4b828cc3f1ff86d07,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3598347495749753533, guid: 8ef06e093be54ca4b828cc3f1ff86d07,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -6030,6 +6035,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 12800000, guid: a054eb57a58246648a89b953dff93fcf,
         type: 3}
+    - target: {fileID: 3598347496742383171, guid: 8ef06e093be54ca4b828cc3f1ff86d07,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3598347496744353487, guid: 8ef06e093be54ca4b828cc3f1ff86d07,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3598347496789746861, guid: 8ef06e093be54ca4b828cc3f1ff86d07,
         type: 3}
       propertyPath: m_Sprite
@@ -6137,9 +6152,24 @@ PrefabInstance:
       propertyPath: m_FontData.m_FontStyle
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3598347497105501470, guid: 8ef06e093be54ca4b828cc3f1ff86d07,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3598347497315592027, guid: 8ef06e093be54ca4b828cc3f1ff86d07,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3598347497384978068, guid: 8ef06e093be54ca4b828cc3f1ff86d07,
         type: 3}
       propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3598347497621127637, guid: 8ef06e093be54ca4b828cc3f1ff86d07,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3598347497645632518, guid: 8ef06e093be54ca4b828cc3f1ff86d07,

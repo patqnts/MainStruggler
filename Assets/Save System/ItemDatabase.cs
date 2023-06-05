@@ -1,7 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
+using System.Collections.Generic;
+using System.Collections;
+using UnityEngine.UI;
+using System;
+using System.Text;
 public class ItemDatabase : MonoBehaviour
 {
     [SerializeField]
@@ -42,11 +46,15 @@ public class ItemDatabase : MonoBehaviour
 
     private void Awake()
     {
-       
-        // Debug log to check the items
+        StringBuilder itemText = new StringBuilder();
+
+        // Append each item name to the StringBuilder
         foreach (Item item in items)
         {
-            Debug.Log("Item: " + item.name);
+            itemText.Append("Item: ").Append(item.name).Append(Environment.NewLine);
         }
+
+        // Print the final text
+        Debug.Log(itemText.ToString());
     }
 }
