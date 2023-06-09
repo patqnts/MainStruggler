@@ -10,6 +10,7 @@ public class Movement : MonoBehaviour, IDamageable
     [SerializeField] public Rigidbody2D rb;
     [SerializeField] public Animator animator;
     [SerializeField] private Joystick joystick;
+    
     public CombatManager combatManager;
     public Transform slashPos;
 
@@ -67,6 +68,7 @@ public class Movement : MonoBehaviour, IDamageable
             return _health;
         }
     }
+   
     public void Dead()
     {
         
@@ -375,7 +377,7 @@ public class Movement : MonoBehaviour, IDamageable
                
 
 
-                Destroy(slashObject, .5f);
+                Destroy(slashObject, 1.3f);
             }
             else
             {
@@ -452,7 +454,7 @@ public class Movement : MonoBehaviour, IDamageable
             else if (canEat != null && InventoryManager.instance.GetSelectedItem(item).name == "Heart Container")
             {
                 Debug.Log("Heart Container");
-                indicatorAnimator.SetTrigger("Heal");
+                indicatorAnimator.SetTrigger("Up");
                 uiHealth.AddHeart();
                 InventoryManager.instance.GetSelectedItem(true);
             }

@@ -223,6 +223,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3728009086471846088}
     m_Modifications:
+    - target: {fileID: -1230153388520640911, guid: 100da967bc563c24cabc2673d7e5e034,
+        type: 3}
+      propertyPath: _health
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: -1230153388520640911, guid: 100da967bc563c24cabc2673d7e5e034,
+        type: 3}
+      propertyPath: maxHealth
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: -1230153388520640911, guid: 100da967bc563c24cabc2673d7e5e034,
+        type: 3}
+      propertyPath: dropPrefab.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4027228275867527574, guid: 100da967bc563c24cabc2673d7e5e034,
         type: 3}
       propertyPath: m_Layer
@@ -232,6 +247,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Rock-medium-prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 5222905200065525755, guid: 100da967bc563c24cabc2673d7e5e034,
+        type: 3}
+      propertyPath: m_Pitch
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8042753433669373356, guid: 100da967bc563c24cabc2673d7e5e034,
         type: 3}

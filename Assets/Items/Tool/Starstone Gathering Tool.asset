@@ -20,10 +20,10 @@ MonoBehaviour:
   actionType: 0
   element: 0
   range: {x: 5, y: 4}
-  weaponDamage: 200
+  weaponDamage: 40
   lungeDistance: 0
   hasDurability: 1
-  maxDurability: 200
+  maxDurability: 60
   _stackable: 0
   maxStackCount: 1
   consumable: 0
@@ -34,13 +34,13 @@ MonoBehaviour:
   materialRequirements:
   - materialSprite: {fileID: -1781302341, guid: 73567c2e5b46e5141a21c3dc36e27ad0,
       type: 3}
-    requiredAmount: 3
+    requiredAmount: 30
   - materialSprite: {fileID: -1191300391, guid: 73567c2e5b46e5141a21c3dc36e27ad0,
       type: 3}
     requiredAmount: 50
   - materialSprite: {fileID: 1543865707, guid: 51721a244c2b3b2448a18bd0044dee35, type: 3}
-    requiredAmount: 150
+    requiredAmount: 200
   - materialSprite: {fileID: 130203420, guid: 51721a244c2b3b2448a18bd0044dee35, type: 3}
     requiredAmount: 150
   image: {fileID: -206602940, guid: d9a09ae36fc993c438ece0f13525844d, type: 3}
-  durability: 200
+  durability: 60

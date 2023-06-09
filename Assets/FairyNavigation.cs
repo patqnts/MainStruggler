@@ -7,6 +7,7 @@ public class FairyNavigation : MonoBehaviour
     // Start is called before the first frame update
     public GameObject FairyUI;
     public bool isOpen = false;
+    public GameObject mapCam;
     void Start()
     {
         
@@ -23,11 +24,13 @@ public class FairyNavigation : MonoBehaviour
         {
             isOpen = true;
             FairyUI.SetActive(true);
+            mapCam.SetActive(true);
         }
         else
         {
             isOpen = false;
             FairyUI.SetActive(false);
+            mapCam.SetActive(false);
         }
     }
 }

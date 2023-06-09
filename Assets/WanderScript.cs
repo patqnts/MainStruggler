@@ -7,7 +7,7 @@ public class WanderScript : MonoBehaviour
 {
     public Rigidbody2D rb;
     public Animator animator;
-
+    public AudioSource footsteps;
     [SerializeField] private float moveSpeed = 1.5f;
     [SerializeField] private Vector2 decisionTime = new Vector2(1f, 4f);
     
@@ -30,7 +30,10 @@ public class WanderScript : MonoBehaviour
         decisionTimeCount = Random.Range(decisionTime.x, decisionTime.y);
         currentDirection = ChooseMoveDirection();
     }
-
+    public void FootSteps()
+    {
+        footsteps.Play();
+    }
     private void Update()
     {
         if (decisionTimeCount > 0f)

@@ -36,6 +36,9 @@ public class WitchShopScript : MonoBehaviour
         int lightOrbisCost = 0;
         int fireOrbisCost = 0;
         int windOrbisCost = 0;
+        int swordCost = 0;
+
+        int wispCost = 0;
         if (itemToBuy.name == "Struggler Bottle" && InventoryManager.instance.GetInventoryItem("Struggler Bottle") != null)
         {
             Debug.Log("Item already exists in inventory. Cannot buy another one.");
@@ -49,37 +52,53 @@ public class WitchShopScript : MonoBehaviour
                
                 break;
             case "Light Longsword":
-                coinCost = 0;
+                coinCost = 5000;
+                lightOrbisCost = 10;
+                swordCost = 1;
                 
                 break;
             case "Dark Longsword":
-                coinCost = 0;
-               
+                coinCost = 5000;
+                darkOrbisCost = 10;
+                swordCost = 1;
+
                 break;
             case "Flame Sword":
-                coinCost = 0;
+                coinCost = 5000;
+                fireOrbisCost = 10;
+                swordCost = 1;
 
                 break;
             case "Wind Sword":
-                coinCost = 0;
+                coinCost = 5000;
+                windOrbisCost = 10;
+                swordCost = 1;
                 break;
 
             case "Wind Wisp":
-                coinCost = 0;
+                coinCost = 1500;
+                wispCost = 1;
+                windOrbisCost = 10;
                 
                 break;
             case "Light Wisp":
-                coinCost = 0;
-                
+                coinCost = 1500;
+                wispCost = 1;
+                lightOrbisCost = 10;
+
                 break;
 
             case "Fire Wisp":
-                coinCost = 0;
-              
+                coinCost = 1500;
+                wispCost = 1;
+                fireOrbisCost = 10;
+
                 break;
             case "Dark Wisp":
-                coinCost = 0;
-                
+                coinCost = 1500;
+                wispCost = 1;
+                darkOrbisCost = 10;
+
                 break;
 
             case "Heart Container":
@@ -104,7 +123,10 @@ public class WitchShopScript : MonoBehaviour
            inventoryManager.GetItemCount("Dark Orbis") < darkOrbisCost ||
            inventoryManager.GetItemCount("Light Orbis") < lightOrbisCost ||
            inventoryManager.GetItemCount("Fire Orbis") < fireOrbisCost ||
-           inventoryManager.GetItemCount("Wind Orbis") < windOrbisCost) 
+           inventoryManager.GetItemCount("Wind Orbis") < windOrbisCost||
+
+           inventoryManager.GetItemCount("Wisp") < wispCost ||
+            inventoryManager.GetItemCount("Starstone Sword") < swordCost) 
         {
             Debug.Log("Not enough resources to buy " + itemToBuy.name);
             return;
@@ -128,6 +150,8 @@ public class WitchShopScript : MonoBehaviour
             inventoryManager.RemoveItem("Light Orbis", lightOrbisCost);
             inventoryManager.RemoveItem("Fire Orbis", fireOrbisCost);
             inventoryManager.RemoveItem("Wind Orbis", windOrbisCost);
+            inventoryManager.RemoveItem("Starstone Sword", swordCost);
+            inventoryManager.RemoveItem("Wisp", wispCost);
             Debug.Log("Bought " + itemToBuy.name);
         }
         else

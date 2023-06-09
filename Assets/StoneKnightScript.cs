@@ -21,6 +21,16 @@ public class StoneKnightScript : MonoBehaviour, IDamageable
     public float _health,maxHealth = 10f;
     private NPCManager npcManager;
     public bool isElemental;
+
+    public AudioSource[] stone;
+    public void PlayWake()
+    {
+        stone[0].Play();
+    }
+    public void DeathSound()
+    {
+        stone[1].Play();
+    }
     public float Health
     {
         set
@@ -32,9 +42,10 @@ public class StoneKnightScript : MonoBehaviour, IDamageable
                 moveSpeed = 0;
                 hitCollider.enabled = false;
                 enemyHealthObject.SetActive(false);
+                DeathSound();
                 animator.SetTrigger("Death");
                 InventoryManager.instance.ReduceDurability();
-                DropItem();
+                //DropItem();
                 if (isElemental)
                 {
                     Debug.Log("elemental monster dies -1");
@@ -97,6 +108,7 @@ public class StoneKnightScript : MonoBehaviour, IDamageable
         if (detectionZone.detectedObj.Count > 0)
         {
             animator.SetTrigger("Wake");
+            PlayWake();
             enemyHealthObject.SetActive(true);
             if (animator.GetCurrentAnimatorStateInfo(0).IsName("Spawn") || animator.GetCurrentAnimatorStateInfo(0).IsName("Still"))
             {

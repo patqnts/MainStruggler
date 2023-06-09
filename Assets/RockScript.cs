@@ -9,8 +9,9 @@ public class RockScript : MonoBehaviour, IDamageable
     public GameObject[] dropPrefab;
     public Animator animator;
     public Collider2D collider;
+    public TreeSoundManager treeSoundManager;
 
-    
+
     public float Health
     {
         set
@@ -21,6 +22,7 @@ public class RockScript : MonoBehaviour, IDamageable
             {
                 collider.enabled = false;
                 animator.SetBool("Destroyed", true);
+                InventoryManager.instance.ReduceDurability();
                 DestroyTree();
                 
             }
@@ -33,12 +35,35 @@ public class RockScript : MonoBehaviour, IDamageable
     public float _health = 500;
     public float maxHealth = 500;
 
+
+    public void TreeHit(AudioClip treeHit)
+    {
+        AudioSource audioSource = gameObject.AddComponent<AudioSource>();
+
+        audioSource.clip = treeHit;
+
+        // Modify pitch
+        audioSource.pitch = 1.25f;
+
+        // Modify spatial blend
+        audioSource.spatialBlend = 0.4f;
+
+        // Modify rolloff
+        audioSource.minDistance = 1f;
+        audioSource.maxDistance = 2f;
+        audioSource.rolloffMode = AudioRolloffMode.Linear;
+
+        // Play the audio
+        audioSource.Play();
+    }
+
     public void OnHit(float damage, Vector2 knockback)
     {
 
         Health -= (damage * .7f);
         Debug.Log("rock health" + Health);
         animator.SetTrigger("Hit");
+        treeSoundManager.TreeHit();
     }
 
     public void OnHit(float damage)
@@ -47,6 +72,7 @@ public class RockScript : MonoBehaviour, IDamageable
         {
             Health -= (damage * .7f);
             Debug.Log("rock health" + Health);
+            treeSoundManager.TreeHit();
         }
         
     }
@@ -61,6 +87,7 @@ public class RockScript : MonoBehaviour, IDamageable
    
     private void DestroyTree()
     {
+        treeSoundManager.TreeDestroyed();
         collider.enabled = false;
         animator.SetBool("Destroyed", true);
 

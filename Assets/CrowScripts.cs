@@ -84,7 +84,9 @@ public class CrowScripts : MonoBehaviour
             {
                 // Reduce the player's health every attackInterval seconds
                 animator.SetBool("Attack", true);
+                player.rb.constraints = RigidbodyConstraints2D.FreezeAll;
                 attackTimer += Time.deltaTime;
+                
                 if (attackTimer >= attackInterval)
                 {
                     attackTimer = 0f;
@@ -92,7 +94,7 @@ public class CrowScripts : MonoBehaviour
 
                     numAttacks++;
 
-                    if (numAttacks >= 2)
+                    if (numAttacks >= 10)
                     {
                         StopAttack();
                         numAttacks = 0;
@@ -109,7 +111,8 @@ public class CrowScripts : MonoBehaviour
             }
             else
             {
-               StopAttack();
+               
+                StopAttack();
                
               
              
@@ -139,12 +142,13 @@ public class CrowScripts : MonoBehaviour
         if(detectionZone.detectedObj.Count > 0 && !player.isDead)
         {
             isAttacking = true;
-            //player.rb.constraints = RigidbodyConstraints2D.FreezeAll;
+           
             player.animator.SetBool("Crow", true);
 
         }
         else
         {
+            player.rb.constraints = RigidbodyConstraints2D.FreezeRotation;
             StopAttack();
         }
         
@@ -156,6 +160,7 @@ public class CrowScripts : MonoBehaviour
 
     public void StopAttack()
     {
+        numAttacks = 0;
         animator.SetBool("Attack", false);
         isAttacking = false;
         player.animator.SetBool("Crow", false);

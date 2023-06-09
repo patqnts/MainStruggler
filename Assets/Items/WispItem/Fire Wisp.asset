@@ -25,14 +25,19 @@ MonoBehaviour:
   hasDurability: 0
   maxDurability: 0
   _stackable: 0
-  maxStackCount: 999999
+  maxStackCount: 1
   consumable: 0
   holdable: 0
   struggler: 0
   description: 'A companion that will guide you through your journey.
 
     Burn resistance.'
-  priceAmount: 0
-  materialRequirements: []
+  priceAmount: 1500
+  materialRequirements:
+  - materialSprite: {fileID: 212047172, guid: 2340f790cb4b5c54c8875e37046117c6, type: 3}
+    requiredAmount: 1
+  - materialSprite: {fileID: -1885814087, guid: 7e4f01963cb573f4ab3e60dc5f04e90a,
+      type: 3}
+    requiredAmount: 10
   image: {fileID: -536975744, guid: c3c53e49058f269459a6b8b47db0943e, type: 3}
   durability: 0

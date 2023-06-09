@@ -5,7 +5,7 @@ using UnityEngine;
 public class TreeScript : MonoBehaviour, IDamageable
 {
     // Start is called before the first frame update
-
+    public TreeSoundManager treeSoundManager;
 
     public Animator animator;
     public GameObject[] dropPrefab;
@@ -19,6 +19,7 @@ public class TreeScript : MonoBehaviour, IDamageable
 
             if (_health <= 0)
             {
+                InventoryManager.instance.ReduceDurability();
                 collider.enabled = false;
                 animator.SetBool("Destroyed", true);
                 DestroyTree();
@@ -33,10 +34,10 @@ public class TreeScript : MonoBehaviour, IDamageable
     }
     public float _health = 500;
     public float maxHealth = 500;
-    
+
     public void OnHit(float damage, Vector2 knockback)
     {
-        
+        treeSoundManager.TreeHit();
         Health -= (damage * .7f);
         Debug.Log("Tree healt" + Health);
         animator.SetTrigger("Hit");
@@ -46,6 +47,7 @@ public class TreeScript : MonoBehaviour, IDamageable
     {
         if (_health >= 0)
         {
+            treeSoundManager.TreeHit();
             Health -= (damage * .7f);
             Debug.Log("rock health" + Health);
         }
@@ -60,6 +62,7 @@ public class TreeScript : MonoBehaviour, IDamageable
 
     private void DestroyTree()
     {
+        treeSoundManager.TreeDestroyed();
         collider.enabled = false;
         animator.SetBool("Destroyed", true);
         DropItem();

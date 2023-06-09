@@ -139,7 +139,7 @@ public class GhostEnemyAI : MonoBehaviour, IDamageable
             animator.SetTrigger("Attack");
             GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
             Vector2 direction = (playerPoss - enemyPos).normalized;
-            projectile.GetComponent<Rigidbody2D>().AddForce(direction * 600);
+            projectile.GetComponent<Rigidbody2D>().AddForce(direction * 450);
             Destroy(projectile, 5f);
         }
     }

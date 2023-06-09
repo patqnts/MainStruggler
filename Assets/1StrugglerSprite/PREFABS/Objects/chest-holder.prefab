@@ -146,13 +146,25 @@ PrefabInstance:
     - target: {fileID: 2694150275487380242, guid: 081f7da41793b3d4c9091cfdef278408,
         type: 3}
       propertyPath: dropPrefab.Array.size
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2694150275487380242, guid: 081f7da41793b3d4c9091cfdef278408,
         type: 3}
       propertyPath: dropPrefab.Array.data[1]
       value: 
-      objectReference: {fileID: 3396009678439204717, guid: acc8f81c2f236594aae730138a983065,
+      objectReference: {fileID: 60820714438538513, guid: 3e241f4ac8bceb04884641f4988c0919,
+        type: 3}
+    - target: {fileID: 2694150275487380242, guid: 081f7da41793b3d4c9091cfdef278408,
+        type: 3}
+      propertyPath: dropPrefab.Array.data[2]
+      value: 
+      objectReference: {fileID: 9061668225178378007, guid: 34ef1725ec3680144bb6758b5a7ef42d,
+        type: 3}
+    - target: {fileID: 2694150275487380242, guid: 081f7da41793b3d4c9091cfdef278408,
+        type: 3}
+      propertyPath: dropPrefab.Array.data[3]
+      value: 
+      objectReference: {fileID: 1550321499018942001, guid: ca78e7b2dff31bf4d92f1240cf4ca434,
         type: 3}
     - target: {fileID: 2694150275487380243, guid: 081f7da41793b3d4c9091cfdef278408,
         type: 3}
@@ -213,6 +225,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2694150275487380252, guid: 081f7da41793b3d4c9091cfdef278408,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2694150275487380252, guid: 081f7da41793b3d4c9091cfdef278408,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2694150275487380252, guid: 081f7da41793b3d4c9091cfdef278408,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2694150275487380254, guid: 081f7da41793b3d4c9091cfdef278408,
         type: 3}

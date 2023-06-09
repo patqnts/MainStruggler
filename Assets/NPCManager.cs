@@ -18,7 +18,9 @@ public class NPCManager : MonoBehaviour
     public GameObject Container;
     public GameObject ElementalContainer;
 
-    
+
+   
+
     private List<Vector3Int> availableLocations;
 
     [Header("Normal Monsters")]
@@ -30,6 +32,16 @@ public class NPCManager : MonoBehaviour
     public List<GameObject> elementalList; // list of enemies to spawn
     public int elementalMaxSpawnCount = 6;
     private int elementalCurrentSpawnCount = 0;
+
+    [Header("Fly Totem")]
+    public List<GameObject> flyTotemList; // list of enemies to spawn
+    public int flyMax = 6;
+    private int flyCurrent = 0;
+
+    [Header("Slime Totem")]
+    public List<GameObject> slimeTotemList; // list of enemies to spawn
+    public int slimeMax = 6;
+    private int slimeCurrent = 0;
 
     public CombatManager combat;
     private void Awake()
@@ -65,19 +77,13 @@ public class NPCManager : MonoBehaviour
             int randomIndex = Random.Range(0, availableLocations.Count);
             Vector3Int location = availableLocations[randomIndex];
             Vector3 worldPosition = cellular.tilemap.CellToWorld(location) + new Vector3(0.5f, 0.5f, 0f);
-
             // Get a random enemy from the list of enemies
             int enemyIndex = Random.Range(0, enemyList.Count);
             GameObject enemy = Instantiate(enemyList[enemyIndex], worldPosition, Quaternion.identity,Container.transform);
-
-
             // Remove the location from the list of available locations
             availableLocations.RemoveAt(randomIndex);
-
             // Increment the spawn count
             currentSpawnCount++;
-           // Debug.Log("Normal Enemies: " + currentSpawnCount);
-            
         }
 
         if(elementalCurrentSpawnCount < elementalMaxSpawnCount && availableLocations.Count > 0)
@@ -97,6 +103,47 @@ public class NPCManager : MonoBehaviour
 
             elementalCurrentSpawnCount++;
         }
+
+
+        if (flyCurrent < flyMax && availableLocations.Count > 0)
+        {
+            // Get a random location from the list of available locations
+            int randomIndex = Random.Range(0, availableLocations.Count);
+            Vector3Int location = availableLocations[randomIndex];
+            Vector3 worldPosition = cellular.tilemap.CellToWorld(location) + new Vector3(0.5f, 0.5f, 0f);
+            // Get a random enemy from the list of enemies
+            int enemyIndex = Random.Range(0, enemyList.Count);
+            GameObject enemy = Instantiate(flyTotemList[0], worldPosition, Quaternion.identity, Container.transform);
+            // Remove the location from the list of available locations
+            availableLocations.RemoveAt(randomIndex);
+            // Increment the spawn count
+            flyCurrent++;
+        }
+
+        if (slimeCurrent < slimeMax && availableLocations.Count > 0)
+        {
+            // Get a random location from the list of available locations
+            int randomIndex = Random.Range(0, availableLocations.Count);
+            Vector3Int location = availableLocations[randomIndex];
+            Vector3 worldPosition = cellular.tilemap.CellToWorld(location) + new Vector3(0.5f, 0.5f, 0f);
+            // Get a random enemy from the list of enemies
+            int enemyIndex = Random.Range(0, enemyList.Count);
+            GameObject enemy = Instantiate(slimeTotemList[0], worldPosition, Quaternion.identity, Container.transform);
+            // Remove the location from the list of available locations
+            availableLocations.RemoveAt(randomIndex);
+            // Increment the spawn count
+            slimeCurrent++;
+        }
+    }
+
+    public void OnFlyDestroyed()
+    {
+        flyCurrent--;
+    }
+
+    public void OnSlimeDestroyed()
+    {
+        slimeCurrent--;
     }
     public void OnEnemyDestroyed()
     {

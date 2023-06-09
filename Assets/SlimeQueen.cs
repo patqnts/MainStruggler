@@ -44,7 +44,7 @@ public class SlimeQueen : MonoBehaviour, IDamageable
                 collider.enabled = false;
                 //enemyHealthObject.SetActive(false);
 
-                DropItem();
+                //DropItem();
                 animator.SetTrigger("Death");
                 Destroy(gameObject, 2.3f);
 

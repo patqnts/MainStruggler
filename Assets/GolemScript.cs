@@ -42,7 +42,7 @@ public class GolemScript : MonoBehaviour, IDamageable
                 cellular.isDeadGolem = true;
                 moveSpeed = 0;
                 hitCollider.enabled = false;
-                DropItem();
+                //DropItem();
                 //enemyHealthObject.SetActive(false);
                 animator.SetTrigger("Death");
                 npcManager.OnEnemyDestroyed();

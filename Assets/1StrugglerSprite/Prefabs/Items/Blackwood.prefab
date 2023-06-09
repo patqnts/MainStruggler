@@ -119,4 +119,4 @@ MonoBehaviour:
   moveSpeed: 4
   durability: 0
   item: {fileID: 11400000, guid: e3510b3edb877554d8d467d7d7f4c4ba, type: 2}
-  itemCount: 2
+  itemCount: 8

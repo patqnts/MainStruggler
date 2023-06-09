@@ -9,7 +9,7 @@ public class BottleScript : MonoBehaviour, IDamageable
     public GameObject[] dropPrefab;
     public Animator animator;
     public Collider2D collider;
-    
+    public AudioSource brokenSound;
 
     public float Health
     {
@@ -37,7 +37,7 @@ public class BottleScript : MonoBehaviour, IDamageable
 
     public void OnHit(float damage, Vector2 knockback)
     {
-
+        brokenSound.Play();
         Health -= damage;
         
     }
@@ -45,7 +45,7 @@ public class BottleScript : MonoBehaviour, IDamageable
     public void OnHit(float damage)
     {
         Health -= damage;
-        
+        brokenSound.Play();
     }
 
     void Start()

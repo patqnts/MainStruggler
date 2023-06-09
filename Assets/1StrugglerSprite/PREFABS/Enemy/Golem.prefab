@@ -219,8 +219,8 @@ MonoBehaviour:
   throwRange: 10
   healthBar: {fileID: 1950425565587949940}
   enemyHealthObject: {fileID: 7915852163822042233}
-  _health: 1000
-  maxHealth: 1000
+  _health: 2000
+  maxHealth: 2000
   dropPrefab:
   - {fileID: 9061668225178378007, guid: 25fe04a7ec5a1b54fbce79afddc59380, type: 3}
   - {fileID: 9077758531394121762, guid: 74cbd16b424155b45af65b8da75bff20, type: 3}

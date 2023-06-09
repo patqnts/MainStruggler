@@ -48,10 +48,9 @@ public class BomberScript : MonoBehaviour, IDamageable
                 rb.constraints = RigidbodyConstraints2D.FreezeAll;
                 hitCollider.enabled = false;
                 //enemyHealthObject.SetActive(false);
-                for (int x = 0; x < 1; x++)
-                {
-                    DropItem();
-                }
+                
+                   
+                
                 animator.SetTrigger("Death");
                 npcManager.OnEnemyDestroyed();
                 Destroy(gameObject, 1.2f);
@@ -62,7 +61,7 @@ public class BomberScript : MonoBehaviour, IDamageable
             return _health;
         }
     }
-    private void DropItem()
+    public void DropItem() // inserted to death animation
     {
         if (dropPrefab != null)
         {

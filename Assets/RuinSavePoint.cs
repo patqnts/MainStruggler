@@ -70,7 +70,7 @@ public class RuinSavePoint : MonoBehaviour
         if (saveSystem != null)
         {
             //saveSystem.SavePlayer(cellular.text);
-            Debug.Log(cellular.text);
+            //Debug.Log(cellular.text);
         }
         // If the collider is the player, set the flag to true and update the last ruin
         if (other.CompareTag("Player"))

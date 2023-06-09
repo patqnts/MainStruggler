@@ -31,7 +31,8 @@ public class Cellular : MonoBehaviour
     public GameObject player;
     public GameObject camera;
     public GameObject[] treePrefabs;
-    
+    public GameObject[] rockPrefabs;
+
     public string text;
 
     public int seedCode = 0;
@@ -347,7 +348,7 @@ public class Cellular : MonoBehaviour
         }
         float treePrefabSize = 2f;
         // Add trees to the ground tiles
-        int numTrees = Mathf.RoundToInt(groundTilePositions.Count / 3); // 10% of the ground tiles will have trees
+        int numTrees = Mathf.RoundToInt(groundTilePositions.Count / 4); // 10% of the ground tiles will have trees
         for (int i = 0; i < numTrees; i++)
         {
             // Find a random ground tile
@@ -400,6 +401,74 @@ public class Cellular : MonoBehaviour
 
                 // Set the tree as a child of the Cellular object
                 tree.transform.SetParent(transform);
+
+                // Remove the ground tile from the list of available positions so that another tree isn't placed on the same tile
+                groundTilePositions.RemoveAt(randomIndex);
+            }
+            else
+            {
+                // Try again if the position is not clear
+                continue;
+            }
+        }
+
+
+
+        float rockPrefabSize = 2f;
+        // Add trees to the ground tiles
+        int numRocks = Mathf.RoundToInt(groundTilePositions.Count / 3); // 10% of the ground tiles will have trees
+        for (int i = 0; i < numRocks; i++)
+        {
+            // Find a random ground tile
+            int randomIndex = Random.Range(0, groundTilePositions.Count);
+            Vector3Int tilePosition = groundTilePositions[randomIndex];
+
+            // Check if the position is near water
+            bool isNearWater = false;
+            for (int x = tilePosition.x - 1; x <= tilePosition.x + 1; x++)
+            {
+                for (int y = tilePosition.y - 1; y <= tilePosition.y + 1; y++)
+                {
+                    if (waterTilemap.GetTile(new Vector3Int(x, y, 0)) != null)
+                    {
+                        isNearWater = true;
+                        break;
+                    }
+                }
+                if (isNearWater)
+                {
+                    break;
+                }
+            }
+
+            // Skip this tile if it's near water
+            if (isNearWater)
+            {
+                continue;
+            }
+
+            Vector3 rockPosition = tilemap.CellToWorld(tilePosition) + new Vector3(0.5f, 0.5f, 0f); // add offset to center the tree on the tile
+
+            // Check if the position is clear of other objects
+            Collider2D[] overlaps = Physics2D.OverlapCircleAll(rockPosition, rockPrefabSize);
+            bool canPlaceRock = true;
+            foreach (Collider2D overlap in overlaps)
+            {
+                if (overlap.gameObject.CompareTag("Rock") || overlap.gameObject.CompareTag("Tree"))
+                {
+                    canPlaceRock = false;
+                    break;
+                }
+            }
+
+            if (canPlaceRock)
+            {
+                // Instantiate the selected tree prefab
+                int randomRockIndex = Random.Range(0, rockPrefabs.Length);
+                GameObject rock = Instantiate(rockPrefabs[randomRockIndex], rockPosition, Quaternion.identity);
+
+                // Set the tree as a child of the Cellular object
+                rock.transform.SetParent(transform);
 
                 // Remove the ground tile from the list of available positions so that another tree isn't placed on the same tile
                 groundTilePositions.RemoveAt(randomIndex);

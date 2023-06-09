@@ -22,6 +22,30 @@ public class SlimeScript : MonoBehaviour, IDamageable
     public GameObject enemyHealthObject;
     public GameObject floatingDamage;
     public bool isElemental;
+    public SlimeHorde horde;
+    public FlyTotem flyhord;
+    public bool isHorde = false;
+    public bool isHorde2 = false;
+    private CircleCollider2D detectionCollider;
+    public AudioSource[] audio;
+   
+    public void DeathSound()
+    {
+        audio[0].Play();
+    }
+    public void BoingSound()
+    {
+        audio[1].Play();
+    }
+    public void HurtSound()
+    {
+        audio[2].Play();
+    }
+    public void AttackSound()
+    {
+        audio[3].Play();
+    }
+
     public float Health
     {
         set
@@ -45,14 +69,26 @@ public class SlimeScript : MonoBehaviour, IDamageable
                     Debug.Log("Normal monster dies -1");
                     npcManager.OnEnemyDestroyed();
                 }
-               
 
-                DropItem();
+                if (isHorde)
+                {
+                    Debug.Log("IS HORDE");
+                    horde.PrefabDestroyed();
+                }
+                if (isHorde2)
+                {
+                    Debug.Log("IS HORDE2");
+                    flyhord.PrefabDestroyed();
+                }
+
+                // DropItem();
                 if (transform.parent != null)
                 {
                     Destroy(transform.parent.gameObject, 1.2f);
                     
                 }
+
+                
                 InventoryManager.instance.ReduceDurability();
 
 
@@ -76,6 +112,14 @@ public class SlimeScript : MonoBehaviour, IDamageable
         animator = GetComponent<Animator>();
         spawner = FindObjectOfType<SlimeSpawner>();
         npcManager = FindObjectOfType<NPCManager>();
+        horde = FindObjectOfType<SlimeHorde>();
+        flyhord = FindObjectOfType<FlyTotem>();
+        if (isHorde || isHorde2)
+        {
+            detectionCollider = detectionZone.GetComponent<CircleCollider2D>();
+            detectionCollider.radius = 8f;
+        }
+        
     }
 
     

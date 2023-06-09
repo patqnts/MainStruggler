@@ -152,6 +152,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8918913678874877784}
     m_Modifications:
+    - target: {fileID: 906567648443939765, guid: ff13ae384beb8b94b87a1ce79d31909c,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 906567648443939765, guid: ff13ae384beb8b94b87a1ce79d31909c,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2781717066076898552, guid: ff13ae384beb8b94b87a1ce79d31909c,
         type: 3}
       propertyPath: m_RootOrder
@@ -212,11 +222,33 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3396651458705418413, guid: ff13ae384beb8b94b87a1ce79d31909c,
+        type: 3}
+      propertyPath: m_Radius
+      value: 5.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3518801454607935627, guid: ff13ae384beb8b94b87a1ce79d31909c,
+        type: 3}
+      propertyPath: dropPrefab.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3518801454607935627, guid: ff13ae384beb8b94b87a1ce79d31909c,
+        type: 3}
+      propertyPath: dropPrefab.Array.data[1]
+      value: 
+      objectReference: {fileID: 593067995031978350, guid: 05d3517b392834643848e1e375a2306e,
+        type: 3}
     - target: {fileID: 5891413548151957510, guid: ff13ae384beb8b94b87a1ce79d31909c,
         type: 3}
       propertyPath: m_Name
       value: fly
       objectReference: {fileID: 0}
+    - target: {fileID: 7763015380849478520, guid: ff13ae384beb8b94b87a1ce79d31909c,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -448282997, guid: 1a900b7384c36e54cbc9018037898539,
+        type: 3}
     - target: {fileID: 8676599529843382892, guid: ff13ae384beb8b94b87a1ce79d31909c,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -237,7 +269,18 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 9143806331379663001, guid: ff13ae384beb8b94b87a1ce79d31909c,
+        type: 3}
+      propertyPath: isHorde
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9143806331379663001, guid: ff13ae384beb8b94b87a1ce79d31909c,
+        type: 3}
+      propertyPath: isHorde2
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5652404483395315790, guid: ff13ae384beb8b94b87a1ce79d31909c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ff13ae384beb8b94b87a1ce79d31909c, type: 3}
 --- !u!4 &1258484563357349679 stripped
 Transform:

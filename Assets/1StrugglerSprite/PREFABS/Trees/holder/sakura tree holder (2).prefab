@@ -198,6 +198,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: sakura
       objectReference: {fileID: 0}
+    - target: {fileID: 9061440883242720348, guid: 258e6369974e4cb4d863f6140b11ef5f,
+        type: 3}
+      propertyPath: dropPrefab.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9061440883242720348, guid: 258e6369974e4cb4d863f6140b11ef5f,
+        type: 3}
+      propertyPath: dropPrefab.Array.data[3]
+      value: 
+      objectReference: {fileID: 1550321499018942001, guid: ca78e7b2dff31bf4d92f1240cf4ca434,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 258e6369974e4cb4d863f6140b11ef5f, type: 3}
 --- !u!4 &886279522543236383 stripped
