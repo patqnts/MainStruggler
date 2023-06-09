@@ -14,7 +14,7 @@ public class SlimeQueenHealthUI : MonoBehaviour
 
     private void Start()
     {
-      // animator = GetComponent<Animator>();
+        // animator = GetComponent<Animator>();
     }
     private void Update()
     {
@@ -34,12 +34,12 @@ public class SlimeQueenHealthUI : MonoBehaviour
                 if (slimeHealthAnimator != null)
                 {
                     slimeHealthAnimator.SetTrigger("Disappear");
-                   
+
                     StartCoroutine(DeactivateSlimeHealthUI());
                     isDelayedDeactivation = true;
                     timer = 0f; // Reset the timer
                 }
-                
+
             }
         }
     }
@@ -48,7 +48,7 @@ public class SlimeQueenHealthUI : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            
+
             SlimeHealthUI.gameObject.SetActive(true);
             detectedObj.Add(collision);
         }
@@ -57,13 +57,13 @@ public class SlimeQueenHealthUI : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         detectedObj.Remove(collision);
-       
+
     }
 
     private IEnumerator DeactivateSlimeHealthUI()
     {
-      
-        yield return new WaitForSeconds(1.5f); // Wait for 1 second
+
+        yield return new WaitForSeconds(3.5f); // Wait for 1 second
 
         SlimeHealthUI.gameObject.SetActive(false);
     }

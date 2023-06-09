@@ -29,6 +29,8 @@ public class GolemScript : MonoBehaviour, IDamageable
     private float throwTimer = 0f;
 
 
+    public AudioSource[] golemSounds;
+
     public Animator cameraAnimator;
     public float Health
     {
@@ -53,6 +55,15 @@ public class GolemScript : MonoBehaviour, IDamageable
         {
             return _health;
         }
+    }
+    public void Steps()
+    {
+        golemSounds[0].Play();
+    }
+
+    public void Punch()
+    {
+        golemSounds[1].Play();
     }
     private void DropItem()
     {
