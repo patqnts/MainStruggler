@@ -2745,6 +2745,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3598347497053982334}
   - component: {fileID: 3598347497053982335}
+  - component: {fileID: 1100045240647168564}
   m_Layer: 5
   m_Name: reload
   m_TagString: Untagged
@@ -2787,6 +2788,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 3598347497053982329}
+--- !u!95 &1100045240647168564
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3598347497053982329}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5284959673cde244294209c596381f6d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3598347497077840760
 GameObject:
   m_ObjectHideFlags: 0
@@ -4829,6 +4850,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FairyUI: {fileID: 1350355611739925040}
   isOpen: 0
+  mapCam: {fileID: 0}
 --- !u!1 &6422520091036808360
 GameObject:
   m_ObjectHideFlags: 0

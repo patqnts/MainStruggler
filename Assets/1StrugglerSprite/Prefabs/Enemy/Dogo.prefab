@@ -789,8 +789,8 @@ MonoBehaviour:
     type: 3}
   moveSpeed: 600
   pushbackForce: 1000
-  _health: 2000
-  maxHealth: 2000
+  _health: 2500
+  maxHealth: 2500
   isAttacking: 0
   isSecondPhase: 0
   isAlive: 0
@@ -929,7 +929,6 @@ MonoBehaviour:
   SlimeHealthUI: {fileID: 1219301589181128641}
   circleCollider2D: {fileID: 5424591522412117795}
   detectedObj: []
-  audioSource: {fileID: 3464478651994840018}
 --- !u!82 &3464478651994840018
 AudioSource:
   m_ObjectHideFlags: 0
@@ -941,10 +940,10 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: f1e00b619c71f58419709245cbc2ca19, type: 3}
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_Volume: 0.8
-  m_Pitch: 1
-  Loop: 0
+  m_Pitch: -2
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

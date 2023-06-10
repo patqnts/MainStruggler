@@ -52,6 +52,7 @@ GameObject:
   - component: {fileID: -2720673834522353090}
   - component: {fileID: 820322812841753753}
   - component: {fileID: 3027831478851412283}
+  - component: {fileID: 4183988216526249007}
   m_Layer: 10
   m_Name: Golem
   m_TagString: Enemy
@@ -220,8 +221,8 @@ MonoBehaviour:
   throwRange: 10
   healthBar: {fileID: 1950425565587949940}
   enemyHealthObject: {fileID: 7915852163822042233}
-  _health: 2000
-  maxHealth: 2000
+  _health: 1500
+  maxHealth: 1500
   dropPrefab:
   - {fileID: 9061668225178378007, guid: 25fe04a7ec5a1b54fbce79afddc59380, type: 3}
   - {fileID: 9077758531394121762, guid: 74cbd16b424155b45af65b8da75bff20, type: 3}
@@ -245,8 +246,10 @@ MonoBehaviour:
   throwPoint: {fileID: 8810965869763599021}
   throwForce: 10
   throwCooldown: 7
+  SlimeHealthUI: {fileID: 7915852163822042233}
   golemSounds:
   - {fileID: 3027831478851412283}
+  - {fileID: 4183988216526249007}
   cameraAnimator: {fileID: 0}
   coolDown: 2
   Timer: 0
@@ -264,6 +267,102 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: d499ac3d4b2bdff45ae06ebad68f6ecf, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.689
+  m_Pitch: 1.2
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 10
+  Pan2D: 0
+  rolloffMode: 1
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.916
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!82 &4183988216526249007
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 384921432218952113}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 92ec06a8395750e4b9c893450527533a, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
   m_Pitch: 1.2
   Loop: 0
   Mute: 0
@@ -601,7 +700,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 6
+  m_Radius: 5
 --- !u!114 &2186680968020302718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1165,7 +1264,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

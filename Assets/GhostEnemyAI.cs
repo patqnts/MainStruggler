@@ -245,8 +245,18 @@ public class GhostEnemyAI : MonoBehaviour, IDamageable
         {
             return; // Ignore collisions with the same game object
         } 
-        IDamageable damageableObject = collision.gameObject.GetComponent<IDamageable>();
+        
 
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        IDamageable damageableObject = collision.gameObject.GetComponent<IDamageable>();
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            damageableObject.OnBurn(1, 2);
+            damageableObject.OnDark(1.5f);
+        }
     }
 
     private bool isBurning = false;

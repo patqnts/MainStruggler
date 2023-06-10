@@ -31,6 +31,14 @@ public class StoneKnightScript : MonoBehaviour, IDamageable
     {
         stone[1].Play();
     }
+    public void HitSound()
+    {
+        stone[2].Play();
+    }
+    public void AttackSound()
+    {
+        stone[3].Play();
+    }
     public float Health
     {
         set
@@ -108,7 +116,7 @@ public class StoneKnightScript : MonoBehaviour, IDamageable
         if (detectionZone.detectedObj.Count > 0)
         {
             animator.SetTrigger("Wake");
-            PlayWake();
+            //PlayWake();
             enemyHealthObject.SetActive(true);
             if (animator.GetCurrentAnimatorStateInfo(0).IsName("Spawn") || animator.GetCurrentAnimatorStateInfo(0).IsName("Still"))
             {
@@ -156,6 +164,7 @@ public class StoneKnightScript : MonoBehaviour, IDamageable
         // Set attacking flag and play animation
         isAttacking = true;
         animator.SetBool("isAttacking", true);
+       // AttackSound();
         Timer = coolDown;
         //hel
 
@@ -179,12 +188,12 @@ public class StoneKnightScript : MonoBehaviour, IDamageable
     {
         Health -= damage;
         rb.AddForce(knockback);
-       
+        HitSound();
         healthBar.UpdateHealthBar(_health, maxHealth);
         animator.SetTrigger("Hurt");
         if(_health <= 0)
         {
-
+            
             enemyHealthObject.SetActive(false);
         }
     }
@@ -196,6 +205,7 @@ public class StoneKnightScript : MonoBehaviour, IDamageable
 
         healthBar.UpdateHealthBar(_health, maxHealth);
         animator.SetTrigger("Hurt");
+        HitSound();
         if (_health <= 0)
         {
             enemyHealthObject.SetActive(false);

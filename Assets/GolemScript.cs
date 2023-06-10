@@ -28,7 +28,7 @@ public class GolemScript : MonoBehaviour, IDamageable
     public float throwCooldown = 2f;
     private float throwTimer = 0f;
 
-
+    public GameObject SlimeHealthUI;
     public AudioSource[] golemSounds;
 
     public Animator cameraAnimator;
@@ -47,8 +47,14 @@ public class GolemScript : MonoBehaviour, IDamageable
                 //DropItem();
                 //enemyHealthObject.SetActive(false);
                 animator.SetTrigger("Death");
+
+                Animator slimeHealthAnimator = SlimeHealthUI.GetComponent<Animator>();
+                if (slimeHealthAnimator != null)
+                {
+                    slimeHealthAnimator.SetTrigger("Disappear");
+                }
                 npcManager.OnEnemyDestroyed();
-                Destroy(gameObject, 1.2f);
+                Destroy(gameObject, 3.2f);
             }
         }
         get
@@ -111,7 +117,7 @@ public class GolemScript : MonoBehaviour, IDamageable
 
         if (detectionZone.detectedObj.Count > 0)
         {
-            animator.SetTrigger("Wake");
+           // animator.SetTrigger("Wake");
             
             if (animator.GetCurrentAnimatorStateInfo(0).IsName("Spawn") || animator.GetCurrentAnimatorStateInfo(0).IsName("Still"))
             {

@@ -27,6 +27,7 @@ public class FlyScript : MonoBehaviour, IDamageable
     public bool isHorde = false;
     public bool isHorde2 = false;
     private CircleCollider2D detectionCollider;
+    public AudioSource[] flySounds;
     public float Health
     {
         set
@@ -39,7 +40,7 @@ public class FlyScript : MonoBehaviour, IDamageable
 
                 hitCollider.enabled = false;
                 animator.SetTrigger("Death");
-
+                flySounds[0].Play();
                 if (isElemental)
                 {
                     Debug.Log("elemental monster dies -1");
@@ -140,7 +141,7 @@ public class FlyScript : MonoBehaviour, IDamageable
             else if (Time.time - lastProjectileTime >= projectileCooldown)
             {
                 // Shoot a projectile if enough time has passed since the last shot
-                animator.SetTrigger("Shoot");
+                animator.SetTrigger("Attack");
                 ShootProjectile();
                 lastProjectileTime = Time.time;
             }
@@ -233,17 +234,7 @@ public class FlyScript : MonoBehaviour, IDamageable
         isBurning = false;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            animator.SetBool("Attack", true);
-        }
-        else
-        {
-            animator.SetTrigger("Attack");
-        }
-    }
+   
 
     private void ShootProjectile()
     {

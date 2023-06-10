@@ -129,7 +129,6 @@ Transform:
   - {fileID: 1631250655554074132}
   - {fileID: 8773195469979617798}
   - {fileID: 8297462647440040626}
-  - {fileID: 7101942697242522829}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -241,13 +240,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8427796093128592954}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -0.6, z: 0}
   m_LocalScale: {x: 1.1125, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1046521729260779190}
-  m_RootOrder: 3
+  m_Father: {fileID: 1631250655554074132}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4369609876648545208
 SpriteRenderer:
@@ -327,6 +326,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6879979497718674707, guid: b3d400678dc9720419ad1e5c0d3b723b,
+        type: 3}
+      propertyPath: m_TagString
+      value: Rock
       objectReference: {fileID: 0}
     - target: {fileID: 6879979497718674710, guid: b3d400678dc9720419ad1e5c0d3b723b,
         type: 3}
@@ -427,18 +431,18 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 94c2a81e83ceb864eb3fbdc6cd2c294e, type: 3}
+  m_audioClip: {fileID: 8300000, guid: bebe920cb54ab4341a46a4fb3ed67ca3, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1.25
+  m_Volume: 0.35
+  m_Pitch: 2
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 2
+  DopplerLevel: 0
+  MinDistance: 0.5
+  MaxDistance: 7
   Pan2D: 0
   rolloffMode: 1
   BypassEffects: 0
@@ -473,7 +477,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.691
+      value: 0.813
       inSlope: 0
       outSlope: 0
       tangentMode: 0

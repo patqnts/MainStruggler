@@ -29,7 +29,7 @@ public class SlimeQueen : MonoBehaviour, IDamageable
 
     [SerializeField] private EnemyHealthBar healthBar;
     public GameObject enemyHealthObject;
-
+    public GameObject SlimeHealthUI;
     public float Health
     {
         set
@@ -43,10 +43,19 @@ public class SlimeQueen : MonoBehaviour, IDamageable
                 rb.constraints = RigidbodyConstraints2D.FreezeAll;
                 collider.enabled = false;
                 //enemyHealthObject.SetActive(false);
-
+                for(int x=0; x<20; x++)
+                {
+                    GameObject projectile = Instantiate(slimeMinionPrefab, transform.position, Quaternion.identity);
+                }
+                
+                Animator slimeHealthAnimator = SlimeHealthUI.GetComponent<Animator>();
+                if (slimeHealthAnimator != null)
+                {
+                    slimeHealthAnimator.SetTrigger("Disappear");
+                }
                 //DropItem();
                 animator.SetTrigger("Death");
-                Destroy(gameObject, 2.3f);
+                Destroy(gameObject, 3.3f);
 
                 
             }

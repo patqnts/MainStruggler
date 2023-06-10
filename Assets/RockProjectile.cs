@@ -7,6 +7,8 @@ public class RockProjectile : MonoBehaviour
     private Rigidbody2D rb;
     public Animator animator;
     public Animator cameraAnimator;
+
+    public AudioSource boulderSound;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -22,7 +24,10 @@ public class RockProjectile : MonoBehaviour
             cameraAnimator = cameraHolder.GetComponent<Animator>();
         }
     }
-
+    public void BoulderDrop()
+    {
+        boulderSound.Play();
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
@@ -46,10 +51,11 @@ public class RockProjectile : MonoBehaviour
             animator.SetTrigger("Drop");
             if (cameraAnimator != null)
             {
+               
                 cameraAnimator.SetTrigger("Shake");
             }
             // Destroy the projectile
-            Destroy(gameObject,0.5f);
+            Destroy(gameObject,1.2f);
         }
     }
 }

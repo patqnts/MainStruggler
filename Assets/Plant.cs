@@ -21,6 +21,8 @@ public class Plant : MonoBehaviour, IDamageable
     public bool isElemental;
     public bool isFire = false;
     public bool isDark = false;
+
+    public AudioSource[] audio;
     public float Health
     {
         set
@@ -59,6 +61,19 @@ public class Plant : MonoBehaviour, IDamageable
         {
             return _health;
         }
+    }
+
+    public void Jump()
+    {
+        audio[0].Play();
+    }
+    public void Clock()
+    {
+        audio[1].Play();
+    }
+    public void Explode()
+    {
+        audio[2].Play();
     }
     private void DropItem()
     {
@@ -99,7 +114,7 @@ public class Plant : MonoBehaviour, IDamageable
         {
             timer += Time.deltaTime;
             animator.SetTrigger("Run");
-
+            
             if (timer >= explosionTimer)
             {
                 hasExploded = true;
@@ -149,7 +164,7 @@ public class Plant : MonoBehaviour, IDamageable
             // hitCollider.enabled = false;
             animator.SetTrigger("Detect");
             hasDetectedPlayer = true;
-            
+            Clock();
         }
     }
 

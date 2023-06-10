@@ -6,10 +6,15 @@ public class CharacterSoundManager : MonoBehaviour
 {
     // Start is called before the first frame update
     public AudioSource footsteps;
-    public AudioSource woosh;
+    public AudioSource hit;
     public void FootSteps()
     {
         footsteps.Play();
+    }
+
+    public void ReceiveHitSound()
+    {
+        hit.Play();
     }
    
 

@@ -111,7 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e86fbad202526df49959e8e1974802a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  childTransform: {fileID: 6965714795894703853}
+  childTransform: {fileID: 7759435656440978639}
 --- !u!1 &3650326439081999691
 GameObject:
   m_ObjectHideFlags: 0
@@ -140,7 +140,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6965714795894703853}
+  - {fileID: 7759435656440978639}
   - {fileID: 1517164687849276526}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -304,9 +304,9 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1706129084341290376}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &6965714795894703853 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8576634829336773477, guid: 7ad46620c9307914181a9baa2a2c0280,
+--- !u!224 &7759435656440978639 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8935826392751937863, guid: 7ad46620c9307914181a9baa2a2c0280,
     type: 3}
   m_PrefabInstance: {fileID: 1706129084341290376}
   m_PrefabAsset: {fileID: 0}

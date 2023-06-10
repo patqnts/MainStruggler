@@ -27,7 +27,7 @@ public class BomberScript : MonoBehaviour, IDamageable
     private NPCManager npcManager;
     public float throwCooldown = 2f;
     public GameObject[] dropPrefab;
-
+    public GameObject SlimeHealthUI;
     public float Timer;
     public Animator cameraAnimator;
 
@@ -48,12 +48,16 @@ public class BomberScript : MonoBehaviour, IDamageable
                 rb.constraints = RigidbodyConstraints2D.FreezeAll;
                 hitCollider.enabled = false;
                 //enemyHealthObject.SetActive(false);
-                
-                   
-                
-                animator.SetTrigger("Death");
+                Animator slimeHealthAnimator = SlimeHealthUI.GetComponent<Animator>();
+                if (slimeHealthAnimator != null)
+                {
+                    slimeHealthAnimator.SetTrigger("Disappear");
+                }
+
+
+                    animator.SetTrigger("Death");
                 npcManager.OnEnemyDestroyed();
-                Destroy(gameObject, 1.2f);
+                Destroy(gameObject, 3.2f);
             }
         }
         get

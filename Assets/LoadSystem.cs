@@ -63,20 +63,23 @@ public class LoadSystem : MonoBehaviour
     public void LoadPlayerAndGameScene(string profileId)
     {
         passedText = profileId;
-        
-        // Store the seed code value before loading the next scene
-        if (seedCode != null)// && !string.IsNullOrEmpty(seedCode.text))
+        StartCoroutine(LoadSceneAfterDelay());
+    }
+
+    private IEnumerator LoadSceneAfterDelay()
+    {
+        yield return new WaitForSeconds(3f); // Wait for 3 seconds
+
+        if (seedCode != null)
         {
             Debug.Log("SEED = NOT NULL");
             SceneManager.LoadScene("StrugglerMain");
-
-        }       
+        }
         else
         {
-            Debug.Log("SEED =  NULL");
+            Debug.Log("SEED = NULL");
             lastSeedCode = 0;
             SceneManager.LoadScene("StrugglerMain");
-           
         }
     }
     public void LoadPlayer(string profileId)
