@@ -192,8 +192,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tree:
-  - {fileID: -3920199805996660178}
   - {fileID: 7691794455753044732}
+  - {fileID: -3920199805996660178}
 --- !u!82 &7691794455753044732
 AudioSource:
   m_ObjectHideFlags: 0
@@ -204,7 +204,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: f1f91ec3939893b4aa6846d9520f8b33, type: 3}
+  m_audioClip: {fileID: 8300000, guid: c44ac9ff6ad9ced45a64e3fa17a9abde, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1.25
@@ -300,9 +300,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: c44ac9ff6ad9ced45a64e3fa17a9abde, type: 3}
+  m_audioClip: {fileID: 8300000, guid: a78c5ac9c4b1023418c19d289bc3afff, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.008
+  m_Volume: 1
   m_Pitch: 1.25
   Loop: 0
   Mute: 0

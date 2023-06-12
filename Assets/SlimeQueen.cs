@@ -25,7 +25,7 @@ public class SlimeQueen : MonoBehaviour, IDamageable
     private List<GameObject> slimeMinions = new List<GameObject>();
     public GameObject[] dropPrefab;
 
-
+    public AudioSource[] slimeQueenAudios;
 
     [SerializeField] private EnemyHealthBar healthBar;
     public GameObject enemyHealthObject;
@@ -66,6 +66,18 @@ public class SlimeQueen : MonoBehaviour, IDamageable
         {
             return _health;
         }
+    }
+    public void Boing()
+    {
+        slimeQueenAudios[0].Play();
+    }
+    public void Hit()
+    {
+        slimeQueenAudios[1].Play();
+    }
+    public void Death()
+    {
+        slimeQueenAudios[2].Play();
     }
     private void DropItem()
     {

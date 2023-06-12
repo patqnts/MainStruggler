@@ -13,9 +13,13 @@ public class WitchShopScript : MonoBehaviour
     int stoneheart;
     public int Intest = -1;
     public GameObject strugglerBottle;
+    public Animator animator;
+
+    public AudioSource[] witchSounds;
     private void Start()
     {
         inventoryManager = FindObjectOfType<InventoryManager>();
+        animator = GetComponentInParent<Animator>();
     }
     public void BuyItem()
     {
@@ -41,6 +45,7 @@ public class WitchShopScript : MonoBehaviour
         int wispCost = 0;
         if (itemToBuy.name == "Struggler Bottle" && InventoryManager.instance.GetInventoryItem("Struggler Bottle") != null)
         {
+            witchSounds[1].Play();
             Debug.Log("Item already exists in inventory. Cannot buy another one.");
             return; // Exit the method if the item already exists in the inventory
         }
@@ -128,6 +133,8 @@ public class WitchShopScript : MonoBehaviour
            inventoryManager.GetItemCount("Wisp") < wispCost ||
             inventoryManager.GetItemCount("Starstone Sword") < swordCost) 
         {
+            animator.SetTrigger("NotEnough");
+            witchSounds[1].Play();
             Debug.Log("Not enough resources to buy " + itemToBuy.name);
             return;
         }
@@ -139,6 +146,7 @@ public class WitchShopScript : MonoBehaviour
         bool added = inventoryManager.AddItem(itemToBuy,itemToBuy.maxDurability,1);
         if (added)
         {
+            witchSounds[0].Play();
             inventoryManager.RemoveItem("Coin", coinCost);
             inventoryManager.RemoveItem("Wood", woodCost);
             inventoryManager.RemoveItem("Stone", stoneCost);
@@ -156,6 +164,7 @@ public class WitchShopScript : MonoBehaviour
         }
         else
         {
+            witchSounds[1].Play();
             Debug.Log("Inventory is full");
         }
     }

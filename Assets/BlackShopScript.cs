@@ -27,7 +27,16 @@ public class BlackShopScript : MonoBehaviour
         int steelIngotCount = inventoryManager.GetItemCount("Steel");
     }
 
+    public AudioSource[] ShopSounds;
 
+    public void Bought()
+    {
+        ShopSounds[0].Play();
+    }
+    public void NotEnough()
+    {
+        ShopSounds[1].Play();
+    }
     public void BuyItem()
     {
         if (Intest < 0 || Intest >= itemList.Length)
@@ -109,12 +118,14 @@ public class BlackShopScript : MonoBehaviour
         {
             Debug.Log("Not enough resources to buy " + itemToBuy.name);
             animator.SetTrigger("NotEnough");
+            NotEnough();
             return;
         }
 
         bool added = inventoryManager.AddItem(itemToBuy, itemToBuy.maxDurability,1);
         if (added)
         {
+            Bought();
             inventoryManager.RemoveItem("Coin", coinCost);
             inventoryManager.RemoveItem("Wood", woodCost);
             inventoryManager.RemoveItem("Stone", stoneCost);
@@ -125,6 +136,7 @@ public class BlackShopScript : MonoBehaviour
         }
         else
         {
+            NotEnough();
             Debug.Log("Inventory is full");
         }
     }

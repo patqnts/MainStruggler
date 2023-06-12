@@ -15,7 +15,7 @@ public class NPCDetection : MonoBehaviour
 
     private GameObject inactiveObject;
     private GameObject InventoryBag;
-
+    public AudioSource mooSound;
 
 
 
@@ -46,8 +46,9 @@ public class NPCDetection : MonoBehaviour
         {
             notice.gameObject.SetActive(true);
             noticeButtonUI.gameObject.SetActive(true);
-            
-            
+            mooSound.Play();
+
+
         }
        
     }

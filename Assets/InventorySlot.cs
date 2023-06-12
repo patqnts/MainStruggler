@@ -16,7 +16,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IPointerDownHandler, I
     public Text itemDurabilityText;
     public GameObject itemInfoWindow;
     private InventoryItem currentItem;
-
+    public AudioSource dropSound;
     private void Awake()
     {
         Deselect();
@@ -33,6 +33,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IPointerDownHandler, I
     }
     public void OnDrop(PointerEventData eventData)
     {
+        dropSound.Play();
         // Get the InventoryItem component from the dragged object
         InventoryItem droppedItem = eventData.pointerDrag.GetComponent<InventoryItem>();
        

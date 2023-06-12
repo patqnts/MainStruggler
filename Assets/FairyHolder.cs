@@ -8,7 +8,7 @@ public class FairyHolder : MonoBehaviour
     public Transform target; // the target to follow
     public float distance = 1f; // the distance to maintain from the target
     public float speed = 5f; // the speed at which to follow the target
-
+    public Transform playerPos;
     private Vector3 targetPosition; // the position to move towards
     public Light2D wispLight2D; // Reference to the Light2D component
     public SpriteRenderer tite;
@@ -19,12 +19,21 @@ public class FairyHolder : MonoBehaviour
     private bool isDroppingProjectiles = false; // Flag to track if the fairy is currently dropping projectiles
     private Coroutine projectileCoroutine; // Coroutine reference to stop the projectile dropping
 
+    private TrailRenderer trailRenderer; // Reference to the Trail Renderer component
+    public int trailLength = 10; // Number of positions to store in the trail
+    private Vector3[] trailPositions; // Array to store the trail positions
+
     void Start()
     {
         // Get the Light2D component from the FairyHolder GameObject
         wispLight2D = GetComponent<Light2D>();
         tite = GetComponent<SpriteRenderer>();
         cycle = FindObjectOfType<DayNightCycles>();
+
+        // Initialize the trail renderer and positions array
+        trailRenderer = GetComponent<TrailRenderer>();
+        trailPositions = new Vector3[trailLength];
+        trailRenderer.emitting = false;
     }
 
     void Update()
@@ -34,6 +43,9 @@ public class FairyHolder : MonoBehaviour
 
         // use lerp to smoothly move towards the target position
         transform.position = Vector3.Lerp(transform.position, targetPosition, speed * Time.deltaTime);
+
+        // Update the trail renderer positions
+        UpdateTrailRenderer();
 
         // Check if the Sprite Renderer is null
         if (tite.sprite != null && cycle.isNight)
@@ -52,6 +64,21 @@ public class FairyHolder : MonoBehaviour
                 wispLight2D.intensity = 0f;
             }
         }
+    }
+
+    private void UpdateTrailRenderer()
+    {
+        // Shift the positions array
+        for (int i = trailPositions.Length - 1; i > 0; i--)
+        {
+            trailPositions[i] = trailPositions[i - 1];
+        }
+
+        // Set the first position to the current Wisp position
+        trailPositions[0] = playerPos.position;
+
+        // Update the trail renderer positions
+        trailRenderer.SetPositions(trailPositions);
     }
 
     public void BlackTarget()
@@ -129,31 +156,33 @@ public class FairyHolder : MonoBehaviour
             // Start the coroutine to drop projectiles every 1 second
             projectileCoroutine = StartCoroutine(DropProjectilesCoroutine());
             isDroppingProjectiles = true;
+            trailRenderer.emitting = true;
         }
     }
 
     private void StopDroppingProjectiles()
     {
+        trailRenderer.emitting = false;
         if (isDroppingProjectiles)
         {
             // Stop the coroutine and reset the flags
             StopCoroutine(projectileCoroutine);
             isDroppingProjectiles = false;
+           
         }
     }
 
     private IEnumerator DropProjectilesCoroutine()
-{
-    while (true)
     {
-        // Instantiate the projectile at the current position of the fairy
-        GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+        while (true)
+        {
+            // Instantiate the projectile at the current position of the fairy
+            GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
 
-        // Destroy the projectile after 5 seconds
-        Destroy(projectile, 8f);
+            // Destroy the projectile after 5 seconds
+            Destroy(projectile, 8f);
 
-        yield return new WaitForSeconds(1f); // Wait for 1 second before dropping the next projectile
+            yield return new WaitForSeconds(1f); // Wait for 1 second before dropping the next projectile
+        }
     }
-}
-
 }

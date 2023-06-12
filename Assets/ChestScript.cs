@@ -8,6 +8,7 @@ public class ChestScript : MonoBehaviour
     public Animator animator;
     public GameObject[] dropPrefab;
     public bool isOpen = false;
+    public AudioSource openSound;
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -25,6 +26,7 @@ public class ChestScript : MonoBehaviour
         {
             animator.SetTrigger("Open");
             DropItem();
+            openSound.Play();
             isOpen = true;
         }
     }

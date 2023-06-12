@@ -246,6 +246,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chest
       objectReference: {fileID: 0}
+    - target: {fileID: 3379277048498393731, guid: 081f7da41793b3d4c9091cfdef278408,
+        type: 3}
+      propertyPath: m_Pitch
+      value: 1.81
+      objectReference: {fileID: 0}
+    - target: {fileID: 3379277048498393731, guid: 081f7da41793b3d4c9091cfdef278408,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.791
+      objectReference: {fileID: 0}
+    - target: {fileID: 3379277048498393731, guid: 081f7da41793b3d4c9091cfdef278408,
+        type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 0.497
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 081f7da41793b3d4c9091cfdef278408, type: 3}
 --- !u!4 &7114455552256749043 stripped
