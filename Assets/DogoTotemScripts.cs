@@ -7,6 +7,7 @@ public class DogoTotemScripts : MonoBehaviour
     public Animator animator;
     public GameObject Dogo;
     public GameObject DogoUI;
+    public AudioSource glitch;
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -30,6 +31,7 @@ public class DogoTotemScripts : MonoBehaviour
 
     IEnumerator InstantiateDogo()
     {
+        
         yield return new WaitForSeconds(4.8f);
         Instantiate(Dogo, transform.position, Quaternion.identity);
     }
@@ -50,6 +52,7 @@ public class DogoTotemScripts : MonoBehaviour
         else
         {
             animator.SetTrigger("Unlock");
+            glitch.Play();
             Destroy(gameObject, 5f);
             StartCoroutine(InstantiateDogo());
 

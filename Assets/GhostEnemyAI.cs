@@ -20,6 +20,7 @@ public class GhostEnemyAI : MonoBehaviour, IDamageable
     public bool inTransition = false;
     public Movement player;
     public CharacterGhost ghost;
+    public AudioSource dashSound;
     public float Health
     {
         set
@@ -210,6 +211,7 @@ public class GhostEnemyAI : MonoBehaviour, IDamageable
         originalVelocity = rb.velocity;
         rb.velocity = Vector2.zero;
         yield return new WaitForSeconds(0.5f);
+        dashSound.Play();
         // Move towards the player at high speed
         Vector2 direction = (targetPos - (Vector2)transform.position).normalized;
         rb.AddForce(direction * chargeDashSpeed);
@@ -227,7 +229,10 @@ public class GhostEnemyAI : MonoBehaviour, IDamageable
 
     public void OnHit(float damage, Vector2 knockback)
     {
-        Health -= damage;
+        if (isAlive)
+        {
+            Health -= damage;
+        }
         rb.AddForce(knockback);
         healthBar.UpdateHealthBar(_health, maxHealth);
         Debug.Log(Health);
@@ -236,7 +241,11 @@ public class GhostEnemyAI : MonoBehaviour, IDamageable
     public void OnHit(float damage)
     {
         healthBar.UpdateHealthBar(_health, maxHealth);
-        Health -= damage;
+        if (isAlive)
+        {
+            Health -= damage;
+        }
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -262,7 +271,7 @@ public class GhostEnemyAI : MonoBehaviour, IDamageable
     private bool isBurning = false;
     public void OnBurn(float damage, float time)
     {
-        if (!isBurning)
+        if (!isBurning && isAlive)
         {
             StartCoroutine(ApplyBurnDamage(damage, time));
         }
