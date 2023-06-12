@@ -20,7 +20,7 @@ MonoBehaviour:
   actionType: 0
   element: 0
   range: {x: 5, y: 4}
-  weaponDamage: 40
+  weaponDamage: 100
   lungeDistance: 0
   hasDurability: 1
   maxDurability: 60

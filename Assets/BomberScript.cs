@@ -33,8 +33,13 @@ public class BomberScript : MonoBehaviour, IDamageable
 
     private float followDistance = 2.5f;
     public float jumpRange = 7f;
-    
+    public bool isDead = false;
+
+
+    public AudioSource[] bombersounds;
     public float Health
+
+
     {
         set
         {
@@ -42,6 +47,9 @@ public class BomberScript : MonoBehaviour, IDamageable
 
             if (_health <= 0)
             {
+                
+                hitCollider.enabled = false;
+                isDead = true;
                 Cellular cellular = FindObjectOfType<Cellular>();
                 cellular.isDeadBomber = true;
                 moveSpeed = 0;
@@ -97,7 +105,10 @@ public class BomberScript : MonoBehaviour, IDamageable
 
     private bool isJumpAttacking = false;
 
-
+    public void DeathSound()
+    {
+        bombersounds[4].Play();
+    }
     private void Update()
     {
         if (detectionZone.detectedObj.Count > 0)
@@ -181,12 +192,26 @@ public class BomberScript : MonoBehaviour, IDamageable
     {
         isStomping = true;
     }
+    public void StompSound()
+    {
+        bombersounds[1].Play();
+    }
+    public void StepSound()
+    {
+        bombersounds[2].Play();
+    }
+    public void HitSound()
+    {
+        bombersounds[3].Play();
+    }
     public void StompEnd()
     {
         isStomping = false;
     }
+
     private IEnumerator SummonPlantBomb(Vector2 playerPos)
     {
+        bombersounds[0].Play();
         animator.SetTrigger("Summon");
         moveSpeed = 0f;
         yield return new WaitForSeconds(0.5f);
@@ -251,8 +276,9 @@ public class BomberScript : MonoBehaviour, IDamageable
     
     public void OnHit(float damage, Vector2 knockback)
     {
+        HitSound();
         Item weapon = InventoryManager.instance.GetSelectedItem(false);
-        if (weapon != null && weapon.type != ItemType.Weapon)
+        if (weapon != null && weapon.type != ItemType.Weapon && !isDead)
         {
             float reducedDamage = damage * 0.05f;
 
@@ -277,8 +303,13 @@ public class BomberScript : MonoBehaviour, IDamageable
 
     public void OnHit(float damage)
     {
+        HitSound();
         healthBar.UpdateHealthBar(_health, maxHealth);
-        Health -= damage;
+        if (!isDead)
+        {
+            Health -= damage;
+        }
+       
     }
     public float treeDamage = 5000f;
     private void OnCollisionEnter2D(Collision2D collision)
@@ -301,7 +332,7 @@ public class BomberScript : MonoBehaviour, IDamageable
     private bool isBurning = false;
     public void OnBurn(float damage, float time)
     {
-        if (!isBurning && _health > 0)
+        if (!isBurning && !isDead)
         {
             Debug.Log("BURRRRN");
             StartCoroutine(ApplyBurnDamage(damage, time));

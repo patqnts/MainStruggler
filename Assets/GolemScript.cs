@@ -32,6 +32,7 @@ public class GolemScript : MonoBehaviour, IDamageable
     public AudioSource[] golemSounds;
 
     public Animator cameraAnimator;
+    public bool isDead = false;
     public float Health
     {
         set
@@ -40,6 +41,7 @@ public class GolemScript : MonoBehaviour, IDamageable
 
             if (_health <= 0)
             {
+                isDead = true;
                 Cellular cellular = FindObjectOfType<Cellular>();
                 cellular.isDeadGolem = true;
                 moveSpeed = 0;
@@ -240,7 +242,7 @@ public class GolemScript : MonoBehaviour, IDamageable
     public void OnHit(float damage, Vector2 knockback)
     {
         Item weapon = InventoryManager.instance.GetSelectedItem(false);
-        if(weapon != null && weapon.type != ItemType.Tool )
+        if(weapon != null && weapon.type != ItemType.Tool && !isDead )
         {
             float reducedDamage = damage * 0.05f;
 
@@ -266,7 +268,11 @@ public class GolemScript : MonoBehaviour, IDamageable
     public void OnHit(float damage)
     {
         healthBar.UpdateHealthBar(_health, maxHealth);
-        Health -= damage;
+        if (!isDead)
+        {
+            Health -= damage;
+        }
+        
     }
     public float treeDamage = 5000f;
     private void OnCollisionEnter2D(Collision2D collision)

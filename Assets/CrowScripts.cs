@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CrowScripts : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class CrowScripts : MonoBehaviour
     public bool isLookingLeft = false;
     public GameObject dashAbility;
     public string inactiveObjectName = "Dash";
-
+    public Text crowText;
 
     private Movement player;
 
@@ -22,6 +23,8 @@ public class CrowScripts : MonoBehaviour
     public GameObject notice;
     public GameObject NoticeUI;
     public bool isAttacking = false;
+
+    public AudioSource attackSound;
     private void Start()
     {
         player = FindObjectOfType<Movement>();
@@ -83,6 +86,7 @@ public class CrowScripts : MonoBehaviour
             if (isAttacking)
             {
                 // Reduce the player's health every attackInterval seconds
+                
                 animator.SetBool("Attack", true);
                 player.rb.constraints = RigidbodyConstraints2D.FreezeAll;
                 attackTimer += Time.deltaTime;
@@ -98,9 +102,24 @@ public class CrowScripts : MonoBehaviour
                     {
                         StopAttack();
                         numAttacks = 0;
-                        dashAbility.SetActive(true);
-                        Debug.Log("Success");
-                        dashUnlocked = true;
+                        if(player.maxHealth > 10)
+                        {
+                            isAttacking = false;
+                            dashAbility.SetActive(true);
+                            Debug.Log("Success");
+                            crowText.text = "Hmmm...";
+                            dashUnlocked = true;
+                            player.rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+                        }
+                        else
+                        {
+                            isAttacking = false;
+                            player.rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+                            player.OnHit(999);
+                            crowText.text = "You are not qualified";
+                            player.animator.SetBool("Crow", false);
+                        }
+                       
 
 
                     }
@@ -111,12 +130,13 @@ public class CrowScripts : MonoBehaviour
             }
             else
             {
-               
+                isAttacking = false;
                 StopAttack();
-               
-              
-             
-                
+               player.rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+
+
+
+
             }
         }
         else if (detectionZone.detectedObj.Count == 0)
@@ -126,6 +146,7 @@ public class CrowScripts : MonoBehaviour
             animator.SetBool("isLookingRight", false);
             animator.SetBool("isLookingLeft", false);
             animator.SetBool("Attack", false);
+            player.animator.SetBool("Crow", false);
             NoticeUI.SetActive(false);
             notice.SetActive(false);
             isAttacking = false;
@@ -134,22 +155,22 @@ public class CrowScripts : MonoBehaviour
 
         
     }
-
-
+   
         
     public void Attack()
     {
         if(detectionZone.detectedObj.Count > 0 && !player.isDead)
         {
             isAttacking = true;
-           
+            attackSound.Play();
             player.animator.SetBool("Crow", true);
 
         }
         else
         {
-            player.rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+            
             StopAttack();
+           
         }
         
         
@@ -160,11 +181,13 @@ public class CrowScripts : MonoBehaviour
 
     public void StopAttack()
     {
+        player.animator.SetBool("Crow", false);
         numAttacks = 0;
         animator.SetBool("Attack", false);
         isAttacking = false;
-        player.animator.SetBool("Crow", false);
         
+        attackSound.Stop();
+        player.rb.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
     
     

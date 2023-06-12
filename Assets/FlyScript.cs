@@ -28,6 +28,7 @@ public class FlyScript : MonoBehaviour, IDamageable
     public bool isHorde2 = false;
     private CircleCollider2D detectionCollider;
     public AudioSource[] flySounds;
+    private bool isDead = false;
     public float Health
     {
         set
@@ -37,7 +38,7 @@ public class FlyScript : MonoBehaviour, IDamageable
             if (_health <= 0)
             {
                 moveSpeed = 0;
-
+                isDead = true;
                 hitCollider.enabled = false;
                 animator.SetTrigger("Death");
                 flySounds[0].Play();
@@ -138,7 +139,7 @@ public class FlyScript : MonoBehaviour, IDamageable
 
                 rb.AddForce(direction * moveSpeed * Time.deltaTime);
             }
-            else if (Time.time - lastProjectileTime >= projectileCooldown)
+            else if (Time.time - lastProjectileTime >= projectileCooldown && !isDead)
             {
                 // Shoot a projectile if enough time has passed since the last shot
                 animator.SetTrigger("Attack");
@@ -162,7 +163,7 @@ public class FlyScript : MonoBehaviour, IDamageable
     {
         Health -= damage;
         enemyHealthBar.UpdateHealthBar(_health, maxHealth);
-
+        flySounds[1].Play();
         // Create a new GameObject with the floating damage value
         var floatingDamageGO = Instantiate(floatingDamage, transform.position, Quaternion.identity);
         floatingDamageGO.GetComponent<TextMesh>().text = damage.ToString();
@@ -183,6 +184,7 @@ public class FlyScript : MonoBehaviour, IDamageable
 
     public void OnHit(float damage)
     {
+        flySounds[1].Play();
         Health -= damage;
         enemyHealthBar.UpdateHealthBar(_health, maxHealth);
 
@@ -190,7 +192,7 @@ public class FlyScript : MonoBehaviour, IDamageable
         var floatingDamageGO = Instantiate(floatingDamage, transform.position, Quaternion.identity);
         floatingDamageGO.GetComponent<TextMesh>().text = damage.ToString();
 
-        if (_health <= 0)
+        if (Health <= 0)
         {
             enemyHealthObject.SetActive(false);
             Destroy(floatingDamageGO, 1f);
@@ -220,7 +222,7 @@ public class FlyScript : MonoBehaviour, IDamageable
     {
         float elapsedTime = 0f;
 
-        while (elapsedTime < time && _health > 0)
+        while (elapsedTime < time && Health > 0)
         {
             isBurning = true;
             yield return new WaitForSeconds(1f);

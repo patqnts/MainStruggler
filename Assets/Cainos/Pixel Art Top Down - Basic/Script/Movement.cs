@@ -41,6 +41,7 @@ public class Movement : MonoBehaviour, IDamageable
     public float maxHealth;
     public InventoryItem selectedItem;
 
+    public CharacterSoundManager characterSound;
 
     public GameObject Inventory;
     public bool isJoypad = false;
@@ -158,6 +159,7 @@ public class Movement : MonoBehaviour, IDamageable
             if (dashCoolCounter <= 0 && dashCounter <= 0)
             {
                 ghost.makeGhost = true;
+                characterSound.dashSound();
                 activeMoveSpeed = dashSpeed;
                 dashCounter = dashLength;
 
@@ -450,6 +452,7 @@ public class Movement : MonoBehaviour, IDamageable
                 indicatorAnimator.SetTrigger("Heal");
                 uiHealth.StrugglerHeal();
                 InventoryManager.instance.GetSelectedItem(true);
+                characterSound.strugglerBottleSound();
             }
             else if (canEat != null && InventoryManager.instance.GetSelectedItem(item).name == "Heart Container")
             {
@@ -457,11 +460,13 @@ public class Movement : MonoBehaviour, IDamageable
                 indicatorAnimator.SetTrigger("Up");
                 uiHealth.AddHeart();
                 InventoryManager.instance.GetSelectedItem(true);
+                characterSound.heartContainerSound();
             }
             else if (canEat != null && canEat.consumable && InventoryManager.instance.GetSelectedItem(item) != null && _health < maxHealth)
             {
                 _health++;
                 indicatorAnimator.SetTrigger("Heal");
+                characterSound.eatSound();
                 InventoryManager.instance.GetSelectedItem(true);
             }
             else
@@ -474,6 +479,7 @@ public class Movement : MonoBehaviour, IDamageable
     {
         if (dashCoolCounter <= 0 && dashCounter <= 0)
         {
+            characterSound.dashSound();
             ghost.makeGhost = true;
             activeMoveSpeed = dashSpeed;
             dashCounter = dashLength;

@@ -40,26 +40,43 @@ public class LoadSystem : MonoBehaviour
     private void Start()
     {
         Cellular cellular = FindObjectOfType<Cellular>();
-        if(cellular != null)
+        if (cellular != null)
         {
-           // LoadPlayer(passedText);
+            // LoadPlayer(passedText);
         }
-        imageLoader = FindObjectOfType<ImageLoader>();
-        imageLoader.DeleteSaveData("rogue");
 
-
+       
     }
+    public void RogueScript()
+    {
+        GameObject rogueGameObject = GameObject.Find("Rogue");
+        if (rogueGameObject != null)
+        {
+            ImageLoader imageLoader = rogueGameObject.GetComponent<ImageLoader>();
+            if (imageLoader != null)
+            {
+                imageLoader.DeleteSaveData("rogue");
+            }
+        }
+    }
+
+  
     public void LoadPlayerWithDefaultSeed(string profileId)
     {
         
         passedText = profileId;
         lastSeedCode = 0; // Set the seed code to 0
+        StartCoroutine(LoadRougeAfterDelay());
 
-        SceneManager.LoadScene("Rogue");
         // Load the player with the default seed code (0)
-       
-    }
 
+    }
+    private IEnumerator LoadRougeAfterDelay()
+    {
+        yield return new WaitForSeconds(3f); // Wait for 3 seconds
+        SceneManager.LoadScene("Rogue");
+
+    }
     public void LoadPlayerAndGameScene(string profileId)
     {
         passedText = profileId;

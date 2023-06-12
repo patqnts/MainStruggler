@@ -12,10 +12,11 @@ public class Projectile : MonoBehaviour
     private void Start()
     {
         animator = GetComponent<Animator>();
+        Destroy(gameObject, 10f);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player")|| collision.CompareTag("Tree")|| collision.CompareTag("Rock"))
         {
             
             // Deal damage to the player

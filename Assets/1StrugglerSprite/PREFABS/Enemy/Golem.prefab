@@ -241,6 +241,8 @@ MonoBehaviour:
   - {fileID: 593067995031978350, guid: 08b75fbb057c8f942a1b22bc50ce6f32, type: 3}
   - {fileID: 593067995031978350, guid: 08b75fbb057c8f942a1b22bc50ce6f32, type: 3}
   - {fileID: 593067995031978350, guid: 08b75fbb057c8f942a1b22bc50ce6f32, type: 3}
+  - {fileID: 9077758531394121762, guid: 74cbd16b424155b45af65b8da75bff20, type: 3}
+  - {fileID: 9077758531394121762, guid: 74cbd16b424155b45af65b8da75bff20, type: 3}
   stonePrefab: {fileID: 1766724209424863414, guid: f0ba6202b04c054468d659c8137332ad,
     type: 3}
   throwPoint: {fileID: 8810965869763599021}
@@ -251,6 +253,7 @@ MonoBehaviour:
   - {fileID: 3027831478851412283}
   - {fileID: 4183988216526249007}
   cameraAnimator: {fileID: 0}
+  isDead: 0
   coolDown: 2
   Timer: 0
   treeDamage: 5000

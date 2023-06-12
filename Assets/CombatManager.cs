@@ -6,6 +6,7 @@ public class CombatManager : MonoBehaviour
 {
     public Dictionary<Item, int> itemDurabilityMap = new Dictionary<Item, int>();
     public Animator animator;
+    public AudioSource borkenSound;
     // Add item with initial durability to the dictionary
     public void AddItemWithDurability(Item item, int durability)
     {
@@ -48,6 +49,7 @@ public class CombatManager : MonoBehaviour
     // Handle item break event
     private void HandleItemBreak(Item item)
     {
+        borkenSound.Play();
         animator.SetTrigger("Destroy");
         InventoryManager.instance.GetSelectedItem(true);
         // Item broke, perform any necessary actions

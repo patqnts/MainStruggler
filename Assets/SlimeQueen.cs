@@ -30,6 +30,7 @@ public class SlimeQueen : MonoBehaviour, IDamageable
     [SerializeField] private EnemyHealthBar healthBar;
     public GameObject enemyHealthObject;
     public GameObject SlimeHealthUI;
+    public bool isDead = false;
     public float Health
     {
         set
@@ -38,12 +39,13 @@ public class SlimeQueen : MonoBehaviour, IDamageable
 
             if (_health <= 0)
             {
+                isDead = true;
                 Cellular cellular = FindObjectOfType<Cellular>();
                 cellular.isDeadSlime = true;
                 rb.constraints = RigidbodyConstraints2D.FreezeAll;
                 collider.enabled = false;
                 //enemyHealthObject.SetActive(false);
-                for(int x=0; x<20; x++)
+                for(int x=0; x<15; x++)
                 {
                     GameObject projectile = Instantiate(slimeMinionPrefab, transform.position, Quaternion.identity);
                 }
@@ -214,7 +216,11 @@ public class SlimeQueen : MonoBehaviour, IDamageable
     public void OnHit(float damage)
     {
         healthBar.UpdateHealthBar(_health, maxHealth);
-        Health -= damage;
+        if (!isDead)
+        {
+            Health -= damage;
+        }
+       
     }
 
 
@@ -229,7 +235,7 @@ public class SlimeQueen : MonoBehaviour, IDamageable
     }
     public void OnBurn(float damage, float time)
     {
-        if(_health > 0)
+        if(Health > 0 && !isDead)
         {
             StartCoroutine(ApplyBurnDamage(damage, time));
         }
@@ -240,7 +246,7 @@ public class SlimeQueen : MonoBehaviour, IDamageable
     {
         float elapsedTime = 0f;
 
-        while (elapsedTime < time && _health > 0)
+        while (elapsedTime < time && Health > 0)
         {
             yield return new WaitForSeconds(1f);
 

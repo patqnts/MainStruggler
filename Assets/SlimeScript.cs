@@ -28,7 +28,7 @@ public class SlimeScript : MonoBehaviour, IDamageable
     public bool isHorde2 = false;
     private CircleCollider2D detectionCollider;
     public AudioSource[] audio;
-   
+    public bool isDead = false;
     public void DeathSound()
     {
         audio[0].Play();
@@ -55,7 +55,7 @@ public class SlimeScript : MonoBehaviour, IDamageable
             if (_health <= 0)
             {
                 moveSpeed = 0;
-
+                isDead = true;
                 hitCollider.enabled = false;
                 animator.SetTrigger("Death");
                 
@@ -122,11 +122,14 @@ public class SlimeScript : MonoBehaviour, IDamageable
         
     }
 
-    
+
+
+    private bool canAttack = true;
+    private float attackCooldown = 2.0f; // Cooldown duration in seconds
+    private float timeSinceLastAttack = 0.0f;
 
     private void FixedUpdate()
     {
-
         if (detectionZone.detectedObj.Count > 0)
         {
             enemyHealthObject.SetActive(true);
@@ -144,27 +147,40 @@ public class SlimeScript : MonoBehaviour, IDamageable
                 isFacingRight = false;
             }
             rb.AddForce(direction * moveSpeed * Time.deltaTime);
+
             // Get the position of the closest detected object
             Vector2 playerPos = detectionZone.detectedObj[0].transform.position;
 
-            // Check if the player is close enough to attack
+            // Check if the player is close enough to attack and cooldown is over
             float distanceToPlayer = Vector2.Distance(transform.position, playerPos);
-            if (distanceToPlayer <= attackRange)
+            if (distanceToPlayer <= attackRange && canAttack)
             {
+                // Perform the attack
                 animator.SetTrigger("Attack");
+
+                // Apply cooldown
+                canAttack = false;
+                timeSinceLastAttack = 0.0f;
             }
         }
         else
         {
             enemyHealthObject.SetActive(false);
         }
-       
-      
 
-
+        // Update the attack cooldown
+        if (!canAttack)
+        {
+            timeSinceLastAttack += Time.deltaTime;
+            if (timeSinceLastAttack >= attackCooldown)
+            {
+                canAttack = true;
+            }
+        }
     }
 
-    
+
+
 
     void DeactivateAlarm()
     {
@@ -172,7 +188,10 @@ public class SlimeScript : MonoBehaviour, IDamageable
     }
     public void OnHit(float damage, Vector2 knockback)
     {
-        Health -= damage;
+        if (!isDead)
+        {
+            Health -= damage;
+        }
         enemyHealthBar.UpdateHealthBar(_health, maxHealth);
 
         // Create a new GameObject with the floating damage value
@@ -196,7 +215,10 @@ public class SlimeScript : MonoBehaviour, IDamageable
 
     public void OnHit(float damage)
     {
-        Health -= damage;
+        if (!isDead)
+        {
+            Health -= damage;
+        }
         enemyHealthBar.UpdateHealthBar(_health, maxHealth);
 
         // Create a new GameObject with the floating damage value
@@ -209,7 +231,7 @@ public class SlimeScript : MonoBehaviour, IDamageable
         
         animator.SetTrigger("Hurt");
         Debug.Log(Health);
-        if (_health <= 0)
+        if (Health <= 0)
         {
             enemyHealthObject.SetActive(false);
             Destroy(floatingDamageGO, 1f);
@@ -233,7 +255,7 @@ public class SlimeScript : MonoBehaviour, IDamageable
 
         float elapsedTime = 0f;
 
-        while (elapsedTime < time && _health > 0)
+        while (elapsedTime < time && Health > 0)
         {
             isBurning = true;
             yield return new WaitForSeconds(1f);
@@ -245,20 +267,7 @@ public class SlimeScript : MonoBehaviour, IDamageable
         }
         isBurning = false;
     }
-    private void OnCollisionEnter2D(Collision2D collision)
-    { 
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            
-            animator.SetBool("Attack", true);
-        }
-        else
-        {
-            animator.SetTrigger("Attack");
-        }
-
-
-    }
+  
 
     private void DropItem()
     {

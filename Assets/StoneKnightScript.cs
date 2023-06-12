@@ -21,7 +21,7 @@ public class StoneKnightScript : MonoBehaviour, IDamageable
     public float _health,maxHealth = 10f;
     private NPCManager npcManager;
     public bool isElemental;
-
+    public bool isDead = false;
     public AudioSource[] stone;
     public void PlayWake()
     {
@@ -47,6 +47,7 @@ public class StoneKnightScript : MonoBehaviour, IDamageable
 
             if (_health <= 0)
             {
+                isDead = true;
                 moveSpeed = 0;
                 hitCollider.enabled = false;
                 enemyHealthObject.SetActive(false);
@@ -186,7 +187,11 @@ public class StoneKnightScript : MonoBehaviour, IDamageable
 
     public void OnHit(float damage, Vector2 knockback)
     {
-        Health -= damage;
+        if (!isDead)
+        {
+            Health -= damage;
+        }
+       
         rb.AddForce(knockback);
         HitSound();
         healthBar.UpdateHealthBar(_health, maxHealth);
@@ -200,7 +205,10 @@ public class StoneKnightScript : MonoBehaviour, IDamageable
 
     public void OnHit(float damage)
     {
-        Health -= damage;
+        if (!isDead)
+        {
+            Health -= damage;
+        }
 
 
         healthBar.UpdateHealthBar(_health, maxHealth);

@@ -318,13 +318,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3518801454607935627, guid: ff13ae384beb8b94b87a1ce79d31909c,
         type: 3}
+      propertyPath: projectileSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3518801454607935627, guid: ff13ae384beb8b94b87a1ce79d31909c,
+        type: 3}
       propertyPath: projectileCooldown
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3518801454607935627, guid: ff13ae384beb8b94b87a1ce79d31909c,
         type: 3}
       propertyPath: flySounds.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3518801454607935627, guid: ff13ae384beb8b94b87a1ce79d31909c,
         type: 3}
@@ -338,15 +343,55 @@ PrefabInstance:
       objectReference: {fileID: 6497637766289950595}
     - target: {fileID: 3518801454607935627, guid: ff13ae384beb8b94b87a1ce79d31909c,
         type: 3}
+      propertyPath: flySounds.Array.data[1]
+      value: 
+      objectReference: {fileID: 5984358200928439168}
+    - target: {fileID: 3518801454607935627, guid: ff13ae384beb8b94b87a1ce79d31909c,
+        type: 3}
       propertyPath: dropPrefab.Array.data[1]
       value: 
       objectReference: {fileID: 593067995031978350, guid: 05d3517b392834643848e1e375a2306e,
         type: 3}
+    - target: {fileID: 5382878787527386798, guid: ff13ae384beb8b94b87a1ce79d31909c,
+        type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5382878787527386798, guid: ff13ae384beb8b94b87a1ce79d31909c,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.683
+      objectReference: {fileID: 0}
+    - target: {fileID: 5382878787527386798, guid: ff13ae384beb8b94b87a1ce79d31909c,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 3eaf342add97ffb4188bc660ffabd224, type: 3}
+    - target: {fileID: 5382878787527386798, guid: ff13ae384beb8b94b87a1ce79d31909c,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5891413548151957510, guid: ff13ae384beb8b94b87a1ce79d31909c,
         type: 3}
       propertyPath: m_Name
       value: fly
       objectReference: {fileID: 0}
+    - target: {fileID: 7269122024848816215, guid: ff13ae384beb8b94b87a1ce79d31909c,
+        type: 3}
+      propertyPath: m_Pitch
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7269122024848816215, guid: ff13ae384beb8b94b87a1ce79d31909c,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7269122024848816215, guid: ff13ae384beb8b94b87a1ce79d31909c,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 1c75510c8f9bcb544af6e80b674c0a07, type: 3}
     - target: {fileID: 7763015380849478520, guid: ff13ae384beb8b94b87a1ce79d31909c,
         type: 3}
       propertyPath: m_Sprite
@@ -394,6 +439,12 @@ PrefabInstance:
 --- !u!4 &1258484563357349679 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2781717066076898552, guid: ff13ae384beb8b94b87a1ce79d31909c,
+    type: 3}
+  m_PrefabInstance: {fileID: 4030068436852667351}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &5984358200928439168 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 7269122024848816215, guid: ff13ae384beb8b94b87a1ce79d31909c,
     type: 3}
   m_PrefabInstance: {fileID: 4030068436852667351}
   m_PrefabAsset: {fileID: 0}
