@@ -256,8 +256,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba7031edf4382ea45a0c3ed51a055b23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 2000
-  maxHealth: 2000
+  _health: 1500
+  maxHealth: 1500
   playerDetectionZone: {fileID: 3559810121155677841}
   slimeMinionPrefab: {fileID: 7627692086151174695, guid: 7c1097dd31e992a40a0043ac80509bf1,
     type: 3}
@@ -354,7 +354,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.876
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0

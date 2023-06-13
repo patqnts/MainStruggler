@@ -797,8 +797,8 @@ MonoBehaviour:
   summonCooldown: 5
   healthBar: {fileID: 1089180840270555253}
   enemyHealthObject: {fileID: 677092881716341370}
-  _health: 100
-  maxHealth: 100
+  _health: 2000
+  maxHealth: 2000
   throwCooldown: 5
   dropPrefab:
   - {fileID: 9061668225178378007, guid: 1e4f95339ee60c845b253504014c5418, type: 3}

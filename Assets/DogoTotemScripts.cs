@@ -56,9 +56,9 @@ public class DogoTotemScripts : MonoBehaviour
             Destroy(gameObject, 5f);
             StartCoroutine(InstantiateDogo());
 
-            InventoryManager.instance.RemoveItem("Key of Slime",1);
-            InventoryManager.instance.RemoveItem("Key of Stone", 1);
-            InventoryManager.instance.RemoveItem("Key of Nature", 1);
+            // InventoryManager.instance.RemoveItem("Key of Slime",1);
+            // InventoryManager.instance.RemoveItem("Key of Stone", 1);
+            // InventoryManager.instance.RemoveItem("Key of Nature", 1);
             DogoUI.SetActive(false);
         }
     }

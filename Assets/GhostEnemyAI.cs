@@ -21,6 +21,7 @@ public class GhostEnemyAI : MonoBehaviour, IDamageable
     public Movement player;
     public CharacterGhost ghost;
     public AudioSource dashSound;
+    public GameObject CreditScene;
     public float Health
     {
         set
@@ -37,7 +38,9 @@ public class GhostEnemyAI : MonoBehaviour, IDamageable
                     rb.constraints = RigidbodyConstraints2D.FreezeAll;
                     hitCollider.enabled = false;
                     animator.SetTrigger("Death");
-                    Destroy(gameObject, 4f);
+                    StartCoroutine(OpenCreditScene());
+                    Destroy(gameObject, 4.5f);
+                    
                 }
                 else
                 {
@@ -83,7 +86,11 @@ public class GhostEnemyAI : MonoBehaviour, IDamageable
         animator = GetComponent<Animator>();
         StartCoroutine(ThrowProjectilesWithCooldown());
     }
-
+    private IEnumerator OpenCreditScene()
+    {
+        yield return new WaitForSeconds(4f);
+        Instantiate(CreditScene);
+    }
     private IEnumerator ThrowProjectilesWithCooldown()
     {
         while (true)

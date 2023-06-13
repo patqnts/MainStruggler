@@ -343,20 +343,23 @@ public class NPCManager : MonoBehaviour
         }
     }
 
-   
 
+    public int dogspawns = 0;
+    public Vector3 dogoTotemSavedPos;
     public void SpawnDogo()
     {
 
-        int dogspawn = 0;
-        while (dogspawn < 1 && cellular.groundTilePositions.Count > 0)
+       
+        while (dogspawns < 1 && cellular.groundTilePositions.Count > 0)
         {
             int randomIndex = Random.Range(0, cellular.groundTilePositions.Count);
             Vector3Int tilePosition = cellular.groundTilePositions[randomIndex];
             Vector3 worldPosition = cellular.tilemap.CellToWorld(tilePosition) + new Vector3(0.5f, 0.5f, 0f); // add offset to center the ruin on the tile
-            Instantiate(Dogo, worldPosition, Quaternion.identity);
+            dogoTotemSavedPos = worldPosition;
+            Instantiate(Dogo, dogoTotemSavedPos, Quaternion.identity);
+            
             cellular.groundTilePositions.RemoveAt(randomIndex);
-            dogspawn++;
+            dogspawns++;
         }
     }
 

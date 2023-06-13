@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 6291933019551006518}
   - component: {fileID: 6396431971971614924}
   - component: {fileID: 2749488577461406276}
-  - component: {fileID: 3252595225681207020}
   m_Layer: 5
   m_Name: NPC
   m_TagString: Untagged
@@ -81,22 +80,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &3252595225681207020
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1350355611739925040}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1bb82cb794f0e148aa289a5044e8d91, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inventoryManager: {fileID: 0}
-  itemsToPickup:
-  - {fileID: 11400000, guid: 592e24c49b844da408a5b4385f83d846, type: 2}
-  - {fileID: 11400000, guid: cce285e6480a9b5488a0002e5f3cd1ca, type: 2}
 --- !u!1 &1525764373845887075
 GameObject:
   m_ObjectHideFlags: 0
@@ -2788,6 +2771,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 3598347497053982329}
+  dogo: {fileID: 0}
+  npcManager: {fileID: 0}
+  load: {fileID: 0}
 --- !u!95 &1100045240647168564
 Animator:
   serializedVersion: 4

@@ -8,9 +8,23 @@ public class reload : MonoBehaviour
 
     Movement player;
     public GameObject button;
+    public GhostEnemyAI dogo;
+    public NPCManager npcManager;
+    public LoadSystem load;
     private void Start()
     {
         player = FindObjectOfType<Movement>();
+        dogo = FindObjectOfType<GhostEnemyAI>();
+    }
+
+    private void Update()
+    {
+       
+    }
+    private void OnEnable()
+    {
+        dogo = FindObjectOfType<GhostEnemyAI>();
+         load = FindObjectOfType<LoadSystem>();
     }
     public void Reload()
     {
@@ -19,6 +33,14 @@ public class reload : MonoBehaviour
         RuinSavePoint.PlayerDied();
         player.Respawn();
         button.SetActive(false);
+
+        if (dogo != null)
+        {
+            Destroy(dogo.gameObject);
+            npcManager.dogspawns = 0;
+            //npcManager.SpawnDogo();
+            Instantiate(npcManager.Dogo, npcManager.dogoTotemSavedPos, Quaternion.identity);
+        }
         
     }
     public void NewGame()

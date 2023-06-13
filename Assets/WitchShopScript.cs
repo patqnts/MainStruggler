@@ -94,9 +94,9 @@ public class WitchShopScript : MonoBehaviour
                 break;
 
             case "Fire Wisp":
-                coinCost = 1500;
+               // coinCost = 1500;
                 wispCost = 1;
-                fireOrbisCost = 10;
+               // fireOrbisCost = 10;
 
                 break;
             case "Dark Wisp":
@@ -107,6 +107,7 @@ public class WitchShopScript : MonoBehaviour
                 break;
 
             case "Heart Container":
+                coinCost = 1;
                 darkOrbisCost = 1;
                 lightOrbisCost = 1;
                 fireOrbisCost = 1;

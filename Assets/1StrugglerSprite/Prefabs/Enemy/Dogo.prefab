@@ -897,6 +897,8 @@ MonoBehaviour:
   player: {fileID: 0}
   ghost: {fileID: 6845998329259354576}
   dashSound: {fileID: 6186997602918624079}
+  CreditScene: {fileID: 8270017735046760497, guid: 263eea4c92af38a4ba1daab23bc7f803,
+    type: 3}
   projectileCooldown: 5
   projectilesToThrow: 10
   chargeDashSpeed: 2000

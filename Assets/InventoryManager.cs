@@ -290,6 +290,8 @@ public class InventoryManager : MonoBehaviour
     public int GetItemCount(string itemName)
     {
         int count = 0;
+
+        // Checking inventory slots
         foreach (InventorySlot slot in inventorySlots)
         {
             InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
@@ -298,8 +300,12 @@ public class InventoryManager : MonoBehaviour
                 count += itemInSlot.count;
             }
         }
+
+       
+
         return count;
     }
+
 
     public void DropAllItems(Transform dropLocation)
     {

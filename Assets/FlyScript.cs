@@ -161,9 +161,13 @@ public class FlyScript : MonoBehaviour, IDamageable
 
     public void OnHit(float damage, Vector2 knockback)
     {
-        Health -= damage;
+        if (!isDead)
+        {
+            Health -= damage;
+            flySounds[1].Play();
+        }
         enemyHealthBar.UpdateHealthBar(_health, maxHealth);
-        flySounds[1].Play();
+       
         // Create a new GameObject with the floating damage value
         var floatingDamageGO = Instantiate(floatingDamage, transform.position, Quaternion.identity);
         floatingDamageGO.GetComponent<TextMesh>().text = damage.ToString();
@@ -184,8 +188,13 @@ public class FlyScript : MonoBehaviour, IDamageable
 
     public void OnHit(float damage)
     {
-        flySounds[1].Play();
-        Health -= damage;
+        
+        if (!isDead)
+        {
+            Health -= damage;
+            flySounds[1].Play();
+        }
+        
         enemyHealthBar.UpdateHealthBar(_health, maxHealth);
 
         // Create a new GameObject with the floating damage value
@@ -210,7 +219,7 @@ public class FlyScript : MonoBehaviour, IDamageable
     private bool isBurning = false;
     public void OnBurn(float damage, float time)
     {
-        if (!isBurning)
+        if (!isBurning && !isDead)
         {
             StartCoroutine(ApplyBurnDamage(damage, time));
         }
