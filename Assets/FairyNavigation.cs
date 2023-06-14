@@ -8,7 +8,7 @@ public class FairyNavigation : MonoBehaviour
     public GameObject FairyUI;
     public bool isOpen = false;
     public GameObject mapCam;
-    public GameObject mapNotif;
+
     void Start()
     {
         

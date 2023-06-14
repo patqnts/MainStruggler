@@ -50,7 +50,21 @@ public class NPCDetection : MonoBehaviour
 
 
         }
-       
+        else if (collision.CompareTag("Tree") || collision.CompareTag("Rock"))
+        {
+            Destroy(collision.gameObject);
+
+        }
+        else if (collision.CompareTag("Enemy"))
+        {
+            Rigidbody2D enemyRigidbody = collision.GetComponent<Rigidbody2D>();
+            if (enemyRigidbody != null)
+            {
+                Vector2 knockbackDirection = (collision.transform.position - transform.position).normalized;
+                enemyRigidbody.AddForce(knockbackDirection * 10f, ForceMode2D.Impulse);
+            }
+        }
+
     }
     private void OnTriggerExit2D(Collider2D collision)
     {

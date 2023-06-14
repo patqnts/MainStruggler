@@ -724,6 +724,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 5101297130531719594, guid: d7bbfde9c0c5730408dbe97f7120723f,
+        type: 3}
+      propertyPath: m_Radius
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5889708071794490854, guid: d7bbfde9c0c5730408dbe97f7120723f,
         type: 3}
       propertyPath: m_PlayOnAwake
