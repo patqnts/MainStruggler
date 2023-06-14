@@ -7,7 +7,8 @@ public class ImageLoader : MonoBehaviour
     public Image imageComponent;
     public string imagePath;
     public string folderId;
-
+    public Text progressPercentage;
+    public GameObject playUI;
     private void Start()
     {
         LoadImage(folderId);
@@ -31,6 +32,7 @@ public class ImageLoader : MonoBehaviour
         // Check if the file exists
         if (File.Exists(fullPath))
         {
+            playUI.SetActive(true);
             // Read the image data from the file
             byte[] imageData = File.ReadAllBytes(fullPath);
 
@@ -53,7 +55,36 @@ public class ImageLoader : MonoBehaviour
         {
             Debug.Log("Image file not found: " + fullPath);
         }
+
+        // Read the player data from the PlayerDatas.json file
+        string playerDataPath = Path.Combine(Application.persistentDataPath, profileId, "PlayerDatas.json");
+        if (File.Exists(playerDataPath))
+        {
+            string jsonData = File.ReadAllText(playerDataPath);
+            PlayerData playerData = JsonUtility.FromJson<PlayerData>(jsonData);
+
+            // Calculate the text value based on the boss booleans
+            int bossCount = 0;
+            if (playerData.isDeadGolem)
+                bossCount++;
+            if (playerData.isDeadSlime)
+                bossCount++;
+            if (playerData.isDeadBomber)
+                bossCount++;
+            if (playerData.isDeadDogo)
+                bossCount++;
+
+            int BossProgress = bossCount * 20;
+            int totalProgress = BossProgress + Mathf.RoundToInt(playerData.maxHealth);
+            progressPercentage.text = "["+ totalProgress.ToString() +"%" + "]";
+            Debug.Log("Text Value: " + totalProgress);
+        }
+        else
+        {
+            Debug.Log("Player data file not found: " + playerDataPath);
+        }
     }
+
 
     public void DeleteSaveData(string profileId)
     {
@@ -71,12 +102,14 @@ public class ImageLoader : MonoBehaviour
             imageColor.a = 0f;
             imageComponent.color = imageColor;
             imageComponent.sprite = null;
-
+            progressPercentage.text = null;
+            playUI.SetActive(false);
 
             Debug.Log("Player data deleted: " + saveDataPath);
         }
         else
         {
+            
             Debug.Log("Player data file not found: " + saveDataPath);
         }
 

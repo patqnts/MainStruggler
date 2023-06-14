@@ -11,6 +11,7 @@ public class reload : MonoBehaviour
     public GhostEnemyAI dogo;
     public NPCManager npcManager;
     public LoadSystem load;
+    public GameObject inventoryBag;
     private void Start()
     {
         player = FindObjectOfType<Movement>();
@@ -33,7 +34,7 @@ public class reload : MonoBehaviour
         RuinSavePoint.PlayerDied();
         player.Respawn();
         button.SetActive(false);
-
+        inventoryBag.SetActive(false);
         if (dogo != null)
         {
             Destroy(dogo.gameObject);

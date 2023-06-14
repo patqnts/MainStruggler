@@ -12,7 +12,7 @@ public class BomberScript : MonoBehaviour, IDamageable
    
     private Vector2 movement;
 
-
+    public bool Agro = false;
 
     public GameObject plantBombPrefab;  // Reference to the plant bomb prefab
     public Transform summonPoint;       // Transform indicating the summon point in front of the enemy base
@@ -111,58 +111,63 @@ public class BomberScript : MonoBehaviour, IDamageable
     }
     private void Update()
     {
-        if (detectionZone.detectedObj.Count > 0)
+        if (detectionZone.detectedObj.Count > 0 )
         {
-            // Get the position of the closest detected object (player)
-            Vector2 playerPos = detectionZone.detectedObj[0].transform.position;
-
-            if (Timer <= 0 && !isJumpAttacking)
+            //Noticegameobject .true
+            if(Agro == true)
             {
-                // Check if the player is within jump range
-                if (Vector2.Distance(playerPos, transform.position) <= jumpRange)
+                // Get the position of the closest detected object (player)
+                Vector2 playerPos = detectionZone.detectedObj[0].transform.position;
+
+                if (Timer <= 0 && !isJumpAttacking)
                 {
-                   
-                    StartCoroutine(PerformJumpAttack(playerPos));
+                    // Check if the player is within jump range
+                    if (Vector2.Distance(playerPos, transform.position) <= jumpRange)
+                    {
+
+                        StartCoroutine(PerformJumpAttack(playerPos));
+                    }
+                }
+                if (summonTimer <= 0f && !isJumpAttacking)
+                {
+                    StartCoroutine(SummonPlantBomb(playerPos));
+                    // Summon a plant bomb
+
+
+                    // Reset the summon timer
+                    summonTimer = summonCooldown;
+                }
+
+                if (playerPos != null)
+                {
+                    // Calculate the direction towards the player
+                    Vector2 directionToPlayer = playerPos - (Vector2)transform.position;
+
+                    // Check if the enemy is too close to the player
+                    float distanceToPlayer = directionToPlayer.magnitude;
+
+                    if (distanceToPlayer <= followDistance && !isJumpAttacking)
+                    {
+                        // Calculate the target position that maintains a certain distance from the player
+                        Vector2 targetPosition = playerPos - directionToPlayer.normalized * followDistance;
+
+                        // Calculate the movement towards the target position
+                        movement = (targetPosition - (Vector2)transform.position).normalized;
+                        animator.SetBool("Run", true);
+                        // Apply the movement force
+                        rb.AddForce(movement * moveSpeed * Time.deltaTime);
+                    }
+                    else
+                    {
+                        // Move directly towards the player if the distance is greater than the follow distance
+                        movement = directionToPlayer.normalized;
+                        animator.SetBool("Run", true);
+                        // Apply the movement force
+                        rb.AddForce(movement * moveSpeed * Time.deltaTime);
+                    }
                 }
             }
-            if (summonTimer <= 0f && !isJumpAttacking)
-            {
-                StartCoroutine(SummonPlantBomb(playerPos));
-                // Summon a plant bomb
-                
-
-                // Reset the summon timer
-                summonTimer = summonCooldown;
-            }
-
-            if (playerPos != null)
-            {
-                // Calculate the direction towards the player
-                Vector2 directionToPlayer = playerPos - (Vector2)transform.position;
-
-                // Check if the enemy is too close to the player
-                float distanceToPlayer = directionToPlayer.magnitude;
-
-                if (distanceToPlayer <= followDistance && !isJumpAttacking)
-                {
-                    // Calculate the target position that maintains a certain distance from the player
-                    Vector2 targetPosition = playerPos - directionToPlayer.normalized * followDistance;
-
-                    // Calculate the movement towards the target position
-                    movement = (targetPosition - (Vector2)transform.position).normalized;
-                    animator.SetBool("Run", true);
-                    // Apply the movement force
-                    rb.AddForce(movement * moveSpeed * Time.deltaTime);
-                }
-                else
-                {
-                    // Move directly towards the player if the distance is greater than the follow distance
-                    movement = directionToPlayer.normalized;
-                    animator.SetBool("Run", true);
-                    // Apply the movement force
-                    rb.AddForce(movement * moveSpeed * Time.deltaTime);
-                }
-            }
+            
         }
         else
         {
@@ -276,6 +281,7 @@ public class BomberScript : MonoBehaviour, IDamageable
     
     public void OnHit(float damage, Vector2 knockback)
     {
+        Agro = true;
         HitSound();
         Item weapon = InventoryManager.instance.GetSelectedItem(false);
         if (weapon != null && weapon.type != ItemType.Weapon && !isDead)
@@ -303,6 +309,7 @@ public class BomberScript : MonoBehaviour, IDamageable
 
     public void OnHit(float damage)
     {
+        Agro = true;
         HitSound();
         healthBar.UpdateHealthBar(_health, maxHealth);
         if (!isDead)
@@ -318,6 +325,10 @@ public class BomberScript : MonoBehaviour, IDamageable
         if (collision.gameObject.CompareTag("Tree") || collision.gameObject.CompareTag("Rock"))
         {
             damageable.OnHit(treeDamage);
+        }
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Agro = true;
         }
     }
 

@@ -11,7 +11,7 @@ public class GolemScript : MonoBehaviour, IDamageable
     public DetectionZone detectionZone;
     private bool isAttacking;
     private Vector2 movement;
-
+    public bool Agro = false;
     private Vector2 lastDirection = Vector2.zero;
     public bool isDetecting;
 
@@ -117,7 +117,7 @@ public class GolemScript : MonoBehaviour, IDamageable
         animator.SetFloat("LastHorizontal", lastDirection.x);
         animator.SetFloat("LastVertical", lastDirection.y);
 
-        if (detectionZone.detectedObj.Count > 0)
+        if (detectionZone.detectedObj.Count > 0 && Agro == true)
         {
            // animator.SetTrigger("Wake");
             
@@ -241,6 +241,7 @@ public class GolemScript : MonoBehaviour, IDamageable
 
     public void OnHit(float damage, Vector2 knockback)
     {
+        Agro = true;
         Item weapon = InventoryManager.instance.GetSelectedItem(false);
         if(weapon != null && weapon.type != ItemType.Tool && !isDead )
         {
@@ -249,6 +250,10 @@ public class GolemScript : MonoBehaviour, IDamageable
             Health -= reducedDamage;
             rb.AddForce(knockback);
             Debug.Log("Reduced");
+        }
+        else if (weapon == null) 
+        {
+            float reducedDamage = damage * 0.05f;
         }
         else
         {
@@ -267,6 +272,7 @@ public class GolemScript : MonoBehaviour, IDamageable
 
     public void OnHit(float damage)
     {
+        Agro = true;
         healthBar.UpdateHealthBar(_health, maxHealth);
         if (!isDead)
         {
@@ -281,6 +287,10 @@ public class GolemScript : MonoBehaviour, IDamageable
         if (collision.gameObject.CompareTag("Tree") || collision.gameObject.CompareTag("Rock"))
         {
             damageable.OnHit(treeDamage);
+        }
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Agro = true;
         }
     }
     private bool isBurning = false;
