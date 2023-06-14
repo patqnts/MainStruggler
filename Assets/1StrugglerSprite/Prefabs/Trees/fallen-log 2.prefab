@@ -138,8 +138,8 @@ MonoBehaviour:
   - {fileID: 9061668225178378007, guid: 34ef1725ec3680144bb6758b5a7ef42d, type: 3}
   - {fileID: 9061668225178378007, guid: 34ef1725ec3680144bb6758b5a7ef42d, type: 3}
   collider: {fileID: 3047474607450488283}
-  _health: 3
-  maxHealth: 3
+  _health: 10
+  maxHealth: 10
 --- !u!95 &1289731364640345039
 Animator:
   serializedVersion: 4

@@ -180,8 +180,21 @@ public class SlimeScript : MonoBehaviour, IDamageable
     }
 
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision != null & collision.gameObject.CompareTag("Player"))
+        {
+            if (canAttack)
+            {
+                // Perform the attack
+                animator.SetTrigger("Attack");
 
-
+                // Apply cooldown
+                canAttack = false;
+                timeSinceLastAttack = 0.0f;
+            }
+        }
+    }
     void DeactivateAlarm()
     {
         alarm.gameObject.SetActive(false);

@@ -84,12 +84,13 @@ public class AttackHitbox : MonoBehaviour
                 else if (selectedItem != null && selectedItem.type == ItemType.Tool)
                 {
                     //TOOL TO ENEMY
-                    damage = selectedItem.weaponDamage * .05f;
+                    // damage = selectedItem.weaponDamage * .1f;
+                    damage = 10f;
                 }
                 else
                 {
                     // Hand only
-                    damage = 1f;
+                    damage = 10f;
                 }
             }
             else if (collision.gameObject.CompareTag("Tree"))
@@ -102,7 +103,8 @@ public class AttackHitbox : MonoBehaviour
                 else if (selectedItem != null && selectedItem.type == ItemType.Weapon)
                 {
                     // WEAPON TO TREES AND ROCK
-                    damage = selectedItem.weaponDamage * .05f;
+                   // damage = selectedItem.weaponDamage * .1f;
+                    damage = 10f;
                     GameObject elementEffect = selectedItem.elementEffect;
                     if (elementEffect != null)
                     {
@@ -133,7 +135,7 @@ public class AttackHitbox : MonoBehaviour
                 else
                 {
                     // Hand only
-                    damage = 1f;
+                    damage = 10f;
                 } 
             }
             else if (collision.gameObject.CompareTag("Rock"))
@@ -146,7 +148,7 @@ public class AttackHitbox : MonoBehaviour
                 else
                 {
                     // Hand only
-                    damage = 1f;
+                    damage = 10f;
                 }
             }
             if (InventoryManager.instance.GetFairySlot(false) != null &&

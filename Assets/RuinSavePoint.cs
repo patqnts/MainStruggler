@@ -53,7 +53,9 @@ public class RuinSavePoint : MonoBehaviour
         if (playerHealth != null && playerHealth._health < playerHealth.maxHealth)
         {
             playerHealth._health++;
-            
+            playerHealth.indicatorAnimator.SetTrigger("Heal");
+            playerHealth.characterSound.eatSound();
+
             Debug.Log("Player Health: " + playerHealth._health);
         }
         if (InventoryManager.instance.GetInventoryItem("Struggler Bottle") != null &&

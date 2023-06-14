@@ -13,16 +13,24 @@ MonoBehaviour:
   m_Name: Starstone
   m_EditorClassIdentifier: 
   prefab: {fileID: 3396009678439204717, guid: e673a7611c54bc144be38fa1bc05ccec, type: 3}
+  slashTrailPrefab: {fileID: 0}
+  elementEffect: {fileID: 0}
   tile: {fileID: 0}
   type: 4
   actionType: 1
+  element: 0
   range: {x: 5, y: 4}
   weaponDamage: 0
+  lungeDistance: 0
+  hasDurability: 0
+  maxDurability: 0
   _stackable: 1
   maxStackCount: 999
   consumable: 0
   holdable: 0
-  description: High-grade stone that can be used for weapon and tools.
-  priceAmount: 0
+  struggler: 0
+  description: High-grade crafting material.
+  priceAmount: 150
   materialRequirements: []
   image: {fileID: -1781302341, guid: 73567c2e5b46e5141a21c3dc36e27ad0, type: 3}
+  durability: 0

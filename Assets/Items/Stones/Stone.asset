@@ -13,16 +13,24 @@ MonoBehaviour:
   m_Name: Stone
   m_EditorClassIdentifier: 
   prefab: {fileID: 60820714438538513, guid: 3e241f4ac8bceb04884641f4988c0919, type: 3}
+  slashTrailPrefab: {fileID: 0}
+  elementEffect: {fileID: 0}
   tile: {fileID: 0}
   type: 4
   actionType: 1
+  element: 0
   range: {x: 5, y: 4}
   weaponDamage: 0
+  lungeDistance: 0
+  hasDurability: 0
+  maxDurability: 0
   _stackable: 1
   maxStackCount: 999
   consumable: 0
   holdable: 0
-  description: 
-  priceAmount: 0
+  struggler: 0
+  description: Low-grade crafting material.
+  priceAmount: 5
   materialRequirements: []
   image: {fileID: 130203420, guid: 51721a244c2b3b2448a18bd0044dee35, type: 3}
+  durability: 0

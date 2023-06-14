@@ -30,7 +30,7 @@ MonoBehaviour:
   holdable: 0
   struggler: 0
   description: Reveals the map.
-  priceAmount: 250
+  priceAmount: 350
   materialRequirements: []
   image: {fileID: -163314762, guid: c3c53e49058f269459a6b8b47db0943e, type: 3}
   durability: 0

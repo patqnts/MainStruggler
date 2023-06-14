@@ -88,7 +88,7 @@ public class BlackShopScript : MonoBehaviour
                 break;
             case "Stone Gathering Tool":
                 coinCost = 100;
-                stoneCost = 50;
+                stoneCost = 20;
                 woodCost = 35;
                 break;
             case "Steel Gathering Tool":

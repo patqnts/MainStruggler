@@ -6,6 +6,7 @@ public class MapManagerUI : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject mapButtonUI;
+    public GameObject mapNotif;
     void Start()
     {
         
@@ -17,6 +18,10 @@ public class MapManagerUI : MonoBehaviour
         if(InventoryManager.instance.GetItemByName("Island Map") != null)
         {
             mapButtonUI.SetActive(true);
+            if(mapNotif != null)
+            {
+                mapNotif.SetActive(true);
+            }
         }
         else
         {

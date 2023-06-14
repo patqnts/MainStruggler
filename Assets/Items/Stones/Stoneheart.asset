@@ -13,16 +13,24 @@ MonoBehaviour:
   m_Name: Stoneheart
   m_EditorClassIdentifier: 
   prefab: {fileID: 3396009678439204717, guid: acc8f81c2f236594aae730138a983065, type: 3}
+  slashTrailPrefab: {fileID: 0}
+  elementEffect: {fileID: 0}
   tile: {fileID: 0}
   type: 4
   actionType: 1
+  element: 0
   range: {x: 5, y: 4}
   weaponDamage: 0
+  lungeDistance: 0
+  hasDurability: 0
+  maxDurability: 0
   _stackable: 1
   maxStackCount: 999
   consumable: 0
   holdable: 0
-  description: 
-  priceAmount: 0
+  struggler: 0
+  description: Medium-grade crafting material.
+  priceAmount: 30
   materialRequirements: []
   image: {fileID: 1873076053, guid: 51721a244c2b3b2448a18bd0044dee35, type: 3}
+  durability: 0

@@ -33,60 +33,60 @@ public class TravelerShopScript : MonoBehaviour
                
                 break;
             case "Fruit":
-                coin = 0;
+                coin = 5;
               
                 break;
             case "Wood":
-                coin = 0;
+                coin = 5;
                
                 break;
             case "Blackwood":
-                coin = 0;
+                coin = 50;
 
                 break;
             case "Lumos Wood":
-                coin = 0;
+                coin = 200;
 
                 break;
             case "Dark Orbis":
-                coin = 0;
+                coin = 100;
 
                 break;
             case "Light Orbis":
-                coin = 0;
+                coin = 100;
 
                 break;
             case "Fire Orbis":
-                coin = 0;
+                coin = 100;
 
                 break;
             case "Wind Orbis":
-                coin = 0;
+                coin = 100;
 
                 break;
             case "Stone":
-                coin = 0;
+                coin = 5;
 
                 break;
             case "Stoneheart":
-                coin = 0;
+                coin = 30;
 
                 break;
             case "Starstone":
-                coin = 0;
+                coin = 150;
 
                 break;
             case "Wisp":
-                coin = 0;
+                coin = 2500;
 
                 break;
 
             case "Island Map":
-                coin = 0;
+                coin = 350;
              
                 break;
             case "Heart Container":
-                coin = 0;
+                coin = 450;
 
                 break;
             default:

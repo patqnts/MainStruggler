@@ -24,7 +24,7 @@ MonoBehaviour:
   weaponDamage: 40
   lungeDistance: 0
   hasDurability: 1
-  maxDurability: 25
+  maxDurability: 35
   _stackable: 0
   maxStackCount: 1
   consumable: 0
@@ -41,4 +41,4 @@ MonoBehaviour:
   - materialSprite: {fileID: 1543865707, guid: 51721a244c2b3b2448a18bd0044dee35, type: 3}
     requiredAmount: 10
   image: {fileID: 301452346, guid: d9a09ae36fc993c438ece0f13525844d, type: 3}
-  durability: 25
+  durability: 35
