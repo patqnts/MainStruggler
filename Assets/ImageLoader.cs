@@ -53,6 +53,7 @@ public class ImageLoader : MonoBehaviour
         }
         else
         {
+            playUI.SetActive(false);
             Debug.Log("Image file not found: " + fullPath);
         }
 
