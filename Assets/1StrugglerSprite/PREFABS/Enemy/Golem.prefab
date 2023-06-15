@@ -216,13 +216,14 @@ MonoBehaviour:
   animator: {fileID: 384921432218952126}
   hitCollider: {fileID: 336463137349850326}
   detectionZone: {fileID: 6168216594607561823}
+  Agro: 0
   isDetecting: 0
   attackRange: 2.3
   throwRange: 10
   healthBar: {fileID: 1950425565587949940}
   enemyHealthObject: {fileID: 7915852163822042233}
-  _health: 1500
-  maxHealth: 1500
+  _health: 3500
+  maxHealth: 3500
   dropPrefab:
   - {fileID: 9061668225178378007, guid: 25fe04a7ec5a1b54fbce79afddc59380, type: 3}
   - {fileID: 9077758531394121762, guid: 74cbd16b424155b45af65b8da75bff20, type: 3}
@@ -652,7 +653,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitCollider: {fileID: 5981352956023515500}
   knockbackForce: 5000
-  damage: 1
+  damage: 3
   isFire: 0
   isDark: 0
 --- !u!1 &1437646707404213046

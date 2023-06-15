@@ -32,7 +32,7 @@ public class TravelerShopScript : MonoBehaviour
                 coin = 0;
                
                 break;
-            case "Fruit":
+            case "Dreamberry":
                 coin = 5;
               
                 break;
@@ -85,7 +85,7 @@ public class TravelerShopScript : MonoBehaviour
                 coin = 350;
              
                 break;
-            case "Heart Container":
+            case "Heart Container2":
                 coin = 450;
 
                 break;

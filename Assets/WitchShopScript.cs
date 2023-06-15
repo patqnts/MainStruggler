@@ -53,7 +53,8 @@ public class WitchShopScript : MonoBehaviour
         switch (itemToBuy.name)
         {
             case "Struggler Bottle":
-                coinCost = 0;
+                coinCost = 350;
+                stoneheartCost = 25;
                
                 break;
             case "Light Longsword":
@@ -94,9 +95,9 @@ public class WitchShopScript : MonoBehaviour
                 break;
 
             case "Fire Wisp":
-               // coinCost = 1500;
+                coinCost = 1500;
                 wispCost = 1;
-               // fireOrbisCost = 10;
+                fireOrbisCost = 10;
 
                 break;
             case "Dark Wisp":

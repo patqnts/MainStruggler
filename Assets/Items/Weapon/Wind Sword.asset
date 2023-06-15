@@ -21,7 +21,7 @@ MonoBehaviour:
   actionType: 0
   element: 4
   range: {x: 5, y: 4}
-  weaponDamage: 20
+  weaponDamage: 50
   lungeDistance: 5
   hasDurability: 0
   maxDurability: 0
@@ -30,7 +30,14 @@ MonoBehaviour:
   consumable: 0
   holdable: 1
   struggler: 0
-  description: 
+  description: ' Swift as a gust of wind, granting the wielder unparalleled speed
+    and the ability to unleash razor-sharp attacks upon enemies.
+
+
+    Damage: 50
+
+    Ability:
+    Long attack lunges.'
   priceAmount: 5000
   materialRequirements:
   - materialSprite: {fileID: -2005474995, guid: 7e4f01963cb573f4ab3e60dc5f04e90a,

@@ -33,7 +33,7 @@ MonoBehaviour:
   description: 'A very sharp sword.
 
 
-    Damage: 200'
+    Damage: 60'
   priceAmount: 500
   materialRequirements:
   - materialSprite: {fileID: -1781302341, guid: 73567c2e5b46e5141a21c3dc36e27ad0,
@@ -41,8 +41,8 @@ MonoBehaviour:
     requiredAmount: 30
   - materialSprite: {fileID: 1873076053, guid: 51721a244c2b3b2448a18bd0044dee35, type: 3}
     requiredAmount: 50
-  - materialSprite: {fileID: 130203420, guid: 51721a244c2b3b2448a18bd0044dee35, type: 3}
-    requiredAmount: 150
+  - materialSprite: {fileID: 1269202101, guid: 73567c2e5b46e5141a21c3dc36e27ad0, type: 3}
+    requiredAmount: 50
   - materialSprite: {fileID: 1543865707, guid: 51721a244c2b3b2448a18bd0044dee35, type: 3}
     requiredAmount: 200
   image: {fileID: -592206513, guid: d9a09ae36fc993c438ece0f13525844d, type: 3}

@@ -21,19 +21,22 @@ MonoBehaviour:
   element: 0
   range: {x: 1, y: 1}
   weaponDamage: 1
+  lungeDistance: 0
+  hasDurability: 0
+  maxDurability: 0
   _stackable: 1
   maxStackCount: 4
   consumable: 0
   holdable: 0
   struggler: 1
-  description: 'Refills every rest.
+  description: 'A miraculous concoction that restores the drinker''s health to its
+    maximum capacity.
 
 
-    +X amount of health.'
-  priceAmount: 1000
+    Player can only have one.'
+  priceAmount: 350
   materialRequirements:
-  - materialSprite: {fileID: 357429414, guid: 51721a244c2b3b2448a18bd0044dee35, type: 3}
-    requiredAmount: 50
   - materialSprite: {fileID: 1873076053, guid: 51721a244c2b3b2448a18bd0044dee35, type: 3}
-    requiredAmount: 30
+    requiredAmount: 25
   image: {fileID: -1672398112, guid: 51721a244c2b3b2448a18bd0044dee35, type: 3}
+  durability: 0

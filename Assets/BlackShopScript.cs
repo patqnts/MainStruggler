@@ -49,6 +49,7 @@ public class BlackShopScript : MonoBehaviour
 
         int coinCost = 0;
         int woodCost = 0;
+        int blackWoodCost = 0;
         int stoneCost = 0;
         int stoneheartCost = 0;
         int starstoneCost = 0;
@@ -78,7 +79,7 @@ public class BlackShopScript : MonoBehaviour
             case "Starstone Sword":
                 coinCost = 500;
                 starstoneCost = 30;
-                stoneCost = 150;
+                blackWoodCost = 50;
                 woodCost = 200;
                 stoneheartCost = 50;
                 break;
@@ -100,7 +101,7 @@ public class BlackShopScript : MonoBehaviour
             case "Starstone Gathering Tool":
                 coinCost = 500;
                 starstoneCost = 30;
-                stoneCost = 150;
+                blackWoodCost = 50;
                 woodCost = 200;
                 steelIngotCost = 50;
                 break;
@@ -111,6 +112,7 @@ public class BlackShopScript : MonoBehaviour
 
         if (inventoryManager.GetItemCount("Coin") < coinCost ||
             inventoryManager.GetItemCount("Wood") < woodCost ||
+            inventoryManager.GetItemCount("Blackwood") < blackWoodCost ||
             inventoryManager.GetItemCount("Stone") < stoneCost ||
             inventoryManager.GetItemCount("Stoneheart") < stoneheartCost ||
             inventoryManager.GetItemCount("Starstone") < starstoneCost ||
@@ -128,6 +130,7 @@ public class BlackShopScript : MonoBehaviour
             Bought();
             inventoryManager.RemoveItem("Coin", coinCost);
             inventoryManager.RemoveItem("Wood", woodCost);
+            inventoryManager.RemoveItem("Blackwood", blackWoodCost);
             inventoryManager.RemoveItem("Stone", stoneCost);
             inventoryManager.RemoveItem("Stoneheart", stoneheartCost);
             inventoryManager.RemoveItem("Starstone", starstoneCost);

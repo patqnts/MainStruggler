@@ -31,7 +31,14 @@ MonoBehaviour:
   consumable: 0
   holdable: 1
   struggler: 0
-  description: 
+  description: 'A blade of pure darkness, its malevolent aura consumes light and
+    strikes fear into the hearts of enemies.
+
+
+    Damage: 70
+
+    Effect: Stuns
+    enemy for 1 second.'
   priceAmount: 5000
   materialRequirements:
   - materialSprite: {fileID: 1281223405, guid: 7e4f01963cb573f4ab3e60dc5f04e90a, type: 3}
@@ -41,4 +48,4 @@ MonoBehaviour:
   - materialSprite: {fileID: -592206513, guid: d9a09ae36fc993c438ece0f13525844d, type: 3}
     requiredAmount: 1
   image: {fileID: 937176768, guid: 51721a244c2b3b2448a18bd0044dee35, type: 3}
-  durability: 999
+  durability: 0

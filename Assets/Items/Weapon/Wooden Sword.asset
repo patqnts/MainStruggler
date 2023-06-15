@@ -33,7 +33,7 @@ MonoBehaviour:
   description: 'A sword made of ...  wood.
 
 
-    Damage: 50'
+    Damage: 20'
   priceAmount: 10
   materialRequirements:
   - materialSprite: {fileID: 1543865707, guid: 51721a244c2b3b2448a18bd0044dee35, type: 3}

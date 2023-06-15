@@ -18,7 +18,7 @@ MonoBehaviour:
   m_TilingRules:
   - m_Id: 0
     m_Sprites:
-    - {fileID: -1743844949, guid: d34d4f1f5a441094786c6a491225e3ce, type: 3}
+    - {fileID: -791188305, guid: aeb1bcc8d3320fd40adafcbf4c2236df, type: 3}
     m_GameObject: {fileID: 0}
     m_MinAnimationSpeed: 1
     m_MaxAnimationSpeed: 1
@@ -36,7 +36,7 @@ MonoBehaviour:
     m_RuleTransform: 0
   - m_Id: 1
     m_Sprites:
-    - {fileID: -72974246, guid: d34d4f1f5a441094786c6a491225e3ce, type: 3}
+    - {fileID: 1211248778, guid: aeb1bcc8d3320fd40adafcbf4c2236df, type: 3}
     m_GameObject: {fileID: 0}
     m_MinAnimationSpeed: 1
     m_MaxAnimationSpeed: 1
@@ -53,7 +53,7 @@ MonoBehaviour:
     m_RuleTransform: 0
   - m_Id: 2
     m_Sprites:
-    - {fileID: -1423780200, guid: d34d4f1f5a441094786c6a491225e3ce, type: 3}
+    - {fileID: 246961459, guid: aeb1bcc8d3320fd40adafcbf4c2236df, type: 3}
     m_GameObject: {fileID: 0}
     m_MinAnimationSpeed: 1
     m_MaxAnimationSpeed: 1

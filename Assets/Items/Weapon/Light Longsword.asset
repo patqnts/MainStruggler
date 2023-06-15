@@ -21,7 +21,7 @@ MonoBehaviour:
   actionType: 0
   element: 3
   range: {x: 5, y: 4}
-  weaponDamage: 70
+  weaponDamage: 45
   lungeDistance: 0
   hasDurability: 0
   maxDurability: 0
@@ -30,9 +30,14 @@ MonoBehaviour:
   consumable: 0
   holdable: 1
   struggler: 0
-  description: 'Light sword pero kulay pink eh noh.
+  description: 'Radiant and luminous, this blade harnesses the power of celestial
+    light, banishing darkness and illuminating the path to victory.
 
-    Ano magagawa mo ako developer.'
+
+    Damage:
+    45
+
+    Effect: Long range slash (Damage : 20)'
   priceAmount: 5000
   materialRequirements:
   - materialSprite: {fileID: 675871748, guid: 7e4f01963cb573f4ab3e60dc5f04e90a, type: 3}

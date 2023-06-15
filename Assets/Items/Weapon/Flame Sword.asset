@@ -31,7 +31,13 @@ MonoBehaviour:
   consumable: 0
   holdable: 1
   struggler: 0
-  description: 
+  description: 'Wreathed in flames, its fiery edge scorches foes and leaves destruction
+    in its wake.
+
+
+    Damage: 65
+
+    Effect: Burning'
   priceAmount: 5000
   materialRequirements:
   - materialSprite: {fileID: -1885814087, guid: 7e4f01963cb573f4ab3e60dc5f04e90a,

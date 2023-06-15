@@ -30,7 +30,7 @@ MonoBehaviour:
   holdable: 1
   struggler: 0
   description: Slightly better gathering tool.
-  priceAmount: 250
+  priceAmount: 100
   materialRequirements:
   - materialSprite: {fileID: 1543865707, guid: 51721a244c2b3b2448a18bd0044dee35, type: 3}
     requiredAmount: 35
