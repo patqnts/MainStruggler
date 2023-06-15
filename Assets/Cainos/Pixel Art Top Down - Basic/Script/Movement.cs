@@ -454,7 +454,8 @@ public class Movement : MonoBehaviour, IDamageable
                 InventoryManager.instance.GetSelectedItem(true);
                 characterSound.strugglerBottleSound();
             }
-            else if (canEat != null && InventoryManager.instance.GetSelectedItem(item).name == "Heart Container")
+            else if (canEat != null && InventoryManager.instance.GetSelectedItem(item).name == "Heart Container" ||
+                canEat != null && InventoryManager.instance.GetSelectedItem(item).name == "Heart Container2")
             {
                 Debug.Log("Heart Container");
                 indicatorAnimator.SetTrigger("Up");
