@@ -10,7 +10,9 @@ public class GhostDamage : MonoBehaviour
     public float damage = 25f;
 
 
-    
+    public bool isPlayer = false;
+    private string objectTag = "";
+   
     void Start()
     {
         
@@ -27,7 +29,16 @@ public class GhostDamage : MonoBehaviour
             Vector3 parentPos = transform.position;
             Vector2 direction = (collision.gameObject.transform.position - parentPos).normalized;
             Vector2 knockback = direction * knockbackForce;
-            if (collision.gameObject.CompareTag("Enemy"))
+            if (isPlayer)
+            {
+                objectTag = "Enemy";
+            }
+            else
+            {
+                objectTag = "Player";
+            }
+
+            if (collision.gameObject.CompareTag(objectTag))
              {
                 damageableObject.OnHit(damage, knockback);
              }

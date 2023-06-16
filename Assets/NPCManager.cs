@@ -17,7 +17,7 @@ public class NPCManager : MonoBehaviour
     public GameObject Bomber;
     public GameObject Container;
     public GameObject ElementalContainer;
-
+    public GameObject NPCContainer;
 
    
 
@@ -226,7 +226,7 @@ public class NPCManager : MonoBehaviour
                 continue;
             }
 
-            Instantiate(blackSmith, worldPosition, Quaternion.identity);
+            Instantiate(blackSmith, worldPosition, Quaternion.identity, NPCContainer.transform);
             cellular.groundTilePositions.RemoveAt(randomIndex);
             blacksmithSpawn++;
         }
@@ -269,7 +269,7 @@ public class NPCManager : MonoBehaviour
                 continue;
             }
 
-            Instantiate(Witch, worldPosition, Quaternion.identity);
+            Instantiate(Witch, worldPosition, Quaternion.identity, NPCContainer.transform);
             cellular.groundTilePositions.RemoveAt(randomIndex);
             witchspawn++;
         }
@@ -310,7 +310,7 @@ public class NPCManager : MonoBehaviour
                 continue;
             }
 
-            Instantiate(Crow, worldPosition, Quaternion.identity);
+            Instantiate(Crow, worldPosition, Quaternion.identity, NPCContainer.transform);
             cellular.groundTilePositions.RemoveAt(randomIndex);
             crowspawn++;
         }
@@ -323,7 +323,7 @@ public class NPCManager : MonoBehaviour
             int randomIndex = Random.Range(0, cellular.groundTilePositions.Count);
             Vector3Int tilePosition = cellular.groundTilePositions[randomIndex];
             Vector3 worldPosition = cellular.tilemap.CellToWorld(tilePosition) + new Vector3(0.5f, 0.5f, 0f); // add offset to center the ruin on the tile
-            Instantiate(Merchant, worldPosition, Quaternion.identity);
+            Instantiate(Merchant, worldPosition, Quaternion.identity, NPCContainer.transform);
             cellular.groundTilePositions.RemoveAt(randomIndex);
             merchantspawn++;
         }
