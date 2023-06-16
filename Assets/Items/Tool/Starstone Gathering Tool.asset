@@ -35,9 +35,8 @@ MonoBehaviour:
   - materialSprite: {fileID: -1781302341, guid: 73567c2e5b46e5141a21c3dc36e27ad0,
       type: 3}
     requiredAmount: 30
-  - materialSprite: {fileID: -1191300391, guid: 73567c2e5b46e5141a21c3dc36e27ad0,
-      type: 3}
-    requiredAmount: 50
+  - materialSprite: {fileID: 1420595539, guid: 73567c2e5b46e5141a21c3dc36e27ad0, type: 3}
+    requiredAmount: 30
   - materialSprite: {fileID: 1543865707, guid: 51721a244c2b3b2448a18bd0044dee35, type: 3}
     requiredAmount: 200
   - materialSprite: {fileID: 1269202101, guid: 73567c2e5b46e5141a21c3dc36e27ad0, type: 3}

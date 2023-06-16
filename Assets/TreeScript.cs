@@ -100,7 +100,7 @@ public class TreeScript : MonoBehaviour, IDamageable
     {
         isBurning = true;
         float elapsedTime = 0f;
-        float multiplier = 90f;
+        float multiplier = 20f;
          
         while (elapsedTime < time && _health > 0)
         {

@@ -50,6 +50,7 @@ public class BlackShopScript : MonoBehaviour
         int coinCost = 0;
         int woodCost = 0;
         int blackWoodCost = 0;
+        int lumosWoodCost = 0;
         int stoneCost = 0;
         int stoneheartCost = 0;
         int starstoneCost = 0;
@@ -74,6 +75,7 @@ public class BlackShopScript : MonoBehaviour
                 coinCost = 250;
                 stoneCost = 50;
                 woodCost = 40;
+                blackWoodCost = 50;
                 stoneheartCost = 20;
                 break;
             case "Starstone Sword":
@@ -81,7 +83,7 @@ public class BlackShopScript : MonoBehaviour
                 starstoneCost = 30;
                 blackWoodCost = 50;
                 woodCost = 200;
-                stoneheartCost = 50;
+                lumosWoodCost = 30;
                 break;
             case "Wood Gathering Tool":
                 coinCost = 10;
@@ -96,6 +98,7 @@ public class BlackShopScript : MonoBehaviour
                 coinCost = 250;
                 stoneCost = 50;
                 woodCost = 40;
+                blackWoodCost = 50;
                 stoneheartCost = 20;
                 break;
             case "Starstone Gathering Tool":
@@ -103,7 +106,7 @@ public class BlackShopScript : MonoBehaviour
                 starstoneCost = 30;
                 blackWoodCost = 50;
                 woodCost = 200;
-                steelIngotCost = 50;
+                lumosWoodCost = 30;
                 break;
             default:
                 Debug.Log("Invalid item name");
@@ -112,6 +115,7 @@ public class BlackShopScript : MonoBehaviour
 
         if (inventoryManager.GetItemCount("Coin") < coinCost ||
             inventoryManager.GetItemCount("Wood") < woodCost ||
+            inventoryManager.GetItemCount("Lumos Wood") < lumosWoodCost ||
             inventoryManager.GetItemCount("Blackwood") < blackWoodCost ||
             inventoryManager.GetItemCount("Stone") < stoneCost ||
             inventoryManager.GetItemCount("Stoneheart") < stoneheartCost ||
@@ -131,6 +135,7 @@ public class BlackShopScript : MonoBehaviour
             inventoryManager.RemoveItem("Coin", coinCost);
             inventoryManager.RemoveItem("Wood", woodCost);
             inventoryManager.RemoveItem("Blackwood", blackWoodCost);
+            inventoryManager.RemoveItem("Lumos Wood", lumosWoodCost);
             inventoryManager.RemoveItem("Stone", stoneCost);
             inventoryManager.RemoveItem("Stoneheart", stoneheartCost);
             inventoryManager.RemoveItem("Starstone", starstoneCost);
