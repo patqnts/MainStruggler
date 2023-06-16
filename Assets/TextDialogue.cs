@@ -6,7 +6,7 @@ public class TextDialogue : MonoBehaviour
 {
     public Text dialogueText;
     public string[] dialogueTexts;
-
+    public BlacksmithGameObject sounds;
     void Start()
     {
         // Choose a random index from the array
@@ -31,6 +31,11 @@ public class TextDialogue : MonoBehaviour
 
     public void OnEnable()
     {
+        if(sounds != null)
+        {
+            sounds.SmithInteractionSounds[Random.Range(0, 3)].Play();
+        }
+        
         int randomIndex = Random.Range(0, dialogueTexts.Length);
         StartCoroutine(TypeText(dialogueTexts[randomIndex]));
     }

@@ -46,7 +46,11 @@ public class NPCDetection : MonoBehaviour
         {
             notice.gameObject.SetActive(true);
             noticeButtonUI.gameObject.SetActive(true);
-            mooSound.Play();
+            if(mooSound != null)
+            {
+                mooSound.Play();
+            }
+            
 
 
         }

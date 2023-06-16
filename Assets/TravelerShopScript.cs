@@ -77,7 +77,7 @@ public class TravelerShopScript : MonoBehaviour
 
                 break;
             case "Wisp":
-                coin = 2500;
+                coin = 2000;
 
                 break;
 

@@ -15,14 +15,13 @@ MonoBehaviour:
   prefab: {fileID: 1471064017145405185, guid: 60cc47dc9938dee40a7d817da2a5f1a0, type: 3}
   slashTrailPrefab: {fileID: 5687266812581423517, guid: b23da958ea858be4585be6d0ad67af60,
     type: 3}
-  elementEffect: {fileID: 4704997326843700060, guid: 5c6c51a45a58d384fb1baa52d56ad207,
-    type: 3}
+  elementEffect: {fileID: 0}
   tile: {fileID: 0}
   type: 2
   actionType: 0
   element: 2
   range: {x: 5, y: 4}
-  weaponDamage: 70
+  weaponDamage: 60
   lungeDistance: 1
   hasDurability: 0
   maxDurability: 0
@@ -35,7 +34,7 @@ MonoBehaviour:
     strikes fear into the hearts of enemies.
 
 
-    Damage: 70
+    Damage: 60
 
     Effect: Stuns
     enemy for 1 second.'

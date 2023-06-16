@@ -330,8 +330,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 11.1, y: -7.4}
-  m_SizeDelta: {x: 4990.732, y: 3344.443}
+  m_AnchoredPosition: {x: 11.1, y: 7}
+  m_SizeDelta: {x: 4990.732, y: 3482.6887}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8270017735845972722
 CanvasRenderer:
@@ -375,6 +375,8 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "Credits\n\nMusic: \n\nAlkaKrab\r - https://alkakrab.itch.io/\nFarBeyondStudio\r 
-    (https://farbeyond-studio.itch.io/)\nFatalExit - https://soundcloud.com/fatalexit\r/\nhttps://cilliancreates.itch.io/\n\nFonts:
+    (https://farbeyond-studio.itch.io/)\nFatalExit - https://soundcloud.com/fatalexit\r/\nhttps://cilliancreates.itch.io/\n\nSounds:\nhttps://johncarroll.itch.io/orc-voice-pack\n\nhttps://dillonbecker.itch.io/sdap\nSuper
+    Dialogue Audio Pack by Dillon Becker(https://www.dillonbecker.com/). This work
+    is licensed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)\n\nFonts:
     \n(dogapixel) - Roberto Mocci (https://www.dafont.com/roberto-mocci.d8882)\n(Alkhemikal)
-    - jeti (https://www.dafont.com/jeti.d1589)\n(Alagard) - Hewett Tsoi\r (https://www.dafont.com/hewett-tsoi.d4888)\n\n\nrr"
+    - jeti (https://www.dafont.com/jeti.d1589)\n(Alagard) - Hewett Tsoi\r (https://www.dafont.com/hewett-tsoi.d4888)\n\n\n"
