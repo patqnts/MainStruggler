@@ -29,7 +29,7 @@ MonoBehaviour:
   consumable: 0
   holdable: 0
   struggler: 0
-  description: One of the key to unlock the dog totem.
+  description: One of the three keys to unlock the dog totem.
   priceAmount: 1000
   materialRequirements:
   - materialSprite: {fileID: 357429414, guid: 51721a244c2b3b2448a18bd0044dee35, type: 3}
