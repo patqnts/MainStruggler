@@ -164,6 +164,7 @@ public class GolemScript : MonoBehaviour, IDamageable
         else
         {
             isDetecting = false;
+            Agro = false;
             movement = Vector2.zero;
             animator.SetBool("Detect", false);
             

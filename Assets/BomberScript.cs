@@ -111,6 +111,7 @@ public class BomberScript : MonoBehaviour, IDamageable
     }
     private void Update()
     {
+        
         if (detectionZone.detectedObj.Count > 0 )
         {
             //Noticegameobject .true
@@ -172,6 +173,7 @@ public class BomberScript : MonoBehaviour, IDamageable
         else
         {
             movement = Vector2.zero;
+            Agro = false;
             animator.SetBool("Run", false);
         }
         
