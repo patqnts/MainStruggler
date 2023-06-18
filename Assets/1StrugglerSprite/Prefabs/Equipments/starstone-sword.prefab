@@ -103,7 +103,7 @@ MonoBehaviour:
   sr: {fileID: 8772386301943041240}
   collider: {fileID: 8772386301943041242}
   moveSpeed: 5
-  durability: 200
+  durability: 100
   item: {fileID: 11400000, guid: ec5bb8d077900264c89a9d880301e741, type: 2}
   itemCount: 0
 --- !u!58 &8772386301943041242

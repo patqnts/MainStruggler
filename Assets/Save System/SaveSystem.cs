@@ -179,5 +179,23 @@ public class SaveSystem : MonoBehaviour
         // Load the first scene of your game
         SceneManager.LoadScene(0);
     }
+    private bool isPaused = false;
 
+    private void OnApplicationPause(bool pauseStatus)
+    {
+        Cellular cellular = FindObjectOfType<Cellular>();
+        if (pauseStatus && !isPaused)
+        {
+            // App is being paused (e.g., closed through tabs)
+            // Save your data here
+            SavePlayer(cellular.text);
+
+            isPaused = true;
+        }
+        else if (!pauseStatus && isPaused)
+        {
+            // App is being resumed
+            isPaused = false;
+        }
+    }
 }
