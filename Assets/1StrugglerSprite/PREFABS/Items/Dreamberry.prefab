@@ -104,7 +104,7 @@ MonoBehaviour:
   moveSpeed: 4
   durability: 0
   item: {fileID: 11400000, guid: 562b5ae1d9bb8e54b84fa41a795074a8, type: 2}
-  itemCount: 1
+  itemCount: 2
 --- !u!58 &2165472879857506554
 CircleCollider2D:
   m_ObjectHideFlags: 0

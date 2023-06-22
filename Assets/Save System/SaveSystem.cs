@@ -121,14 +121,14 @@ public class SaveSystem : MonoBehaviour
         Directory.CreateDirectory(directoryPath);
 
         string screenshotPath = Path.Combine(Application.persistentDataPath,"/"+cellular.text+ "/savepoint.png"); //ANDROID VERSION
-        ScreenCapture.CaptureScreenshot(screenshotPath);
+         ScreenCapture.CaptureScreenshot(screenshotPath);
 
-       // string screenshotPathS = Path.Combine(Application.persistentDataPath, cellular.text ,"savepoint.png");
-        //ScreenCapture.CaptureScreenshot(screenshotPathS);
-        
+        // string screenshotPathS = Path.Combine(Application.persistentDataPath, cellular.text ,"savepoint.png");
+        // ScreenCapture.CaptureScreenshot(screenshotPathS);
 
 
-       
+
+
 
         string filePath = Path.Combine(directoryPath, Path.GetFileName(PlayerDataPath));
         File.WriteAllText(filePath, json);
@@ -145,7 +145,7 @@ public class SaveSystem : MonoBehaviour
         Debug.Log("is night: " + data.isNight);
         Debug.Log("Time of Day: " + data.timeOfDay);
     }
-
+    public bool isRogue;
     public void BackToMenu()
     {
         // Destroy the LoadSystem instance
@@ -153,7 +153,7 @@ public class SaveSystem : MonoBehaviour
 
         SaveSystem saveSystem = FindObjectOfType<SaveSystem>();
         Cellular cellular = FindObjectOfType<Cellular>();
-        if (saveSystem != null)
+        if (saveSystem != null && !isRogue)
         {
             saveSystem.SavePlayer(cellular.text);
             Debug.Log(cellular.text);

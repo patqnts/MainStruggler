@@ -70,14 +70,16 @@ public class AttackHitbox : MonoBehaviour
                             {
                                 damageableObject.OnBurn(10, 4);
                             }
-                            if(selectedItem.element == Element.Dark)
-                            {
-                                Debug.Log("DARKNESS");
-                                damageableObject.OnDark(1f);
-                            }
+                            
 
                             Destroy(effect, 4f);
                         }
+                        
+                    }
+                    if (selectedItem.element == Element.Dark)
+                    {
+                        Debug.Log("DARKNESS");
+                        damageableObject.OnDark(1f);
                     }
                     damage = selectedItem.weaponDamage;
                 }

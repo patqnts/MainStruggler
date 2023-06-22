@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using CrazyGames;
 public class reload : MonoBehaviour
 {
 
@@ -29,8 +29,8 @@ public class reload : MonoBehaviour
     }
     public void Reload()
     {
-        
-        
+
+        CrazyAds.Instance.beginAdBreak();
         RuinSavePoint.PlayerDied();
         player.Respawn();
         button.SetActive(false);

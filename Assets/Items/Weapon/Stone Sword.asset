@@ -21,7 +21,7 @@ MonoBehaviour:
   actionType: 0
   element: 0
   range: {x: 5, y: 4}
-  weaponDamage: 40
+  weaponDamage: 35
   lungeDistance: 0
   hasDurability: 1
   maxDurability: 35
@@ -33,7 +33,7 @@ MonoBehaviour:
   description: 'A stone made of sword.
 
 
-    Damage: 40'
+    Damage: 35'
   priceAmount: 100
   materialRequirements:
   - materialSprite: {fileID: 130203420, guid: 51721a244c2b3b2448a18bd0044dee35, type: 3}

@@ -45,9 +45,13 @@ public class UIHealth : MonoBehaviour
     }
     public void AddHeart()
     {
-        player.maxHealth++;
-        player._health++;
-        SetMaxHearts(player.maxHealth);
+        if(player.maxHealth <= 29)
+        {
+            player.maxHealth++;
+            player._health++;
+            SetMaxHearts(player.maxHealth);
+        }
+        
 
     }
     public void StrugglerHeal()

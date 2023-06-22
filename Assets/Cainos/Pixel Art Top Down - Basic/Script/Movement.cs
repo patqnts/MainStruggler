@@ -45,7 +45,7 @@ public class Movement : MonoBehaviour, IDamageable
 
     public GameObject Inventory;
     public bool isJoypad = false;
-    
+    public CrowScripts crows;
     public float Health
     {
         set
@@ -113,7 +113,7 @@ public class Movement : MonoBehaviour, IDamageable
         {
             indicatorAnimator = healthAnimator.GetComponent<Animator>();
         }
-        
+         crows = FindObjectOfType<CrowScripts>();
         
     }
 
@@ -153,7 +153,8 @@ public class Movement : MonoBehaviour, IDamageable
 
         
         //Dash logic
-        if (Input.GetKeyDown(KeyCode.LeftShift) && !isAttacking && movement != Vector2.zero && dashCounter <= 0)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && !isAttacking && movement != Vector2.zero && dashCounter <= 0 &&
+            crows.dashUnlocked)
         {
 
             if (dashCoolCounter <= 0 && dashCounter <= 0)
@@ -213,37 +214,41 @@ public class Movement : MonoBehaviour, IDamageable
             if (Input.GetKeyDown(KeyCode.Space) && handle != null && handle.type != ItemType.Tool && !isAttacking ||
                 Input.GetKeyDown(KeyCode.Space) && handle == null && !isAttacking)
             {
-                
+
                 StartCoroutine(Attack());
-                isAttacking = true;
 
                 Item canEat = InventoryManager.instance.GetSelectedItem(item);
 
-                if (canEat != null && 
-                    canEat.struggler && 
-                    InventoryManager.instance.GetSelectedItem(item) != null 
-                    && _health < maxHealth&&
-                    InventoryManager.instance.GetItemCount("Struggler Bottle") >= 1)
+                if (canEat != null && InventoryManager.instance.GetItemCount("Struggler Bottle") >= 1 &&
+                    canEat.struggler && InventoryManager.instance.GetSelectedItem(item) != null && _health < maxHealth)
                 {
                     Debug.Log("StrugglerHeal");
                     indicatorAnimator.SetTrigger("Heal");
-
                     uiHealth.StrugglerHeal();
-                   
-                         InventoryManager.instance.GetSelectedItem(true);
-                    
-                   
+                    InventoryManager.instance.GetSelectedItem(true);
+                    characterSound.strugglerBottleSound();
+                }
+                else if (canEat != null && InventoryManager.instance.GetSelectedItem(item).name == "Heart Container" ||
+                    canEat != null && InventoryManager.instance.GetSelectedItem(item).name == "Heart Container2")
+                {
+                    Debug.Log("Heart Container");
+                    indicatorAnimator.SetTrigger("Up");
+                    uiHealth.AddHeart();
+                    InventoryManager.instance.GetSelectedItem(true);
+                    characterSound.heartContainerSound();
                 }
                 else if (canEat != null && canEat.consumable && InventoryManager.instance.GetSelectedItem(item) != null && _health < maxHealth)
                 {
                     _health++;
-                    InventoryManager.instance.GetSelectedItem(true);
                     indicatorAnimator.SetTrigger("Heal");
-                    Debug.Log("Heal ANimator");
-
-
+                    characterSound.eatSound();
+                    InventoryManager.instance.GetSelectedItem(true);
                 }
-             }
+                else
+                {
+                    return;
+                }
+            }
 
         }
 

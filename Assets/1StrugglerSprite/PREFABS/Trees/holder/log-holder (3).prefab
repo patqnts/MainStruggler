@@ -138,6 +138,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6977609336432495957}
     m_Modifications:
+    - target: {fileID: -6201549210570180509, guid: 4bcd60e38cbd34b40884ac45ad63363b,
+        type: 3}
+      propertyPath: dropPrefab.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1833335181474588423, guid: 4bcd60e38cbd34b40884ac45ad63363b,
         type: 3}
       propertyPath: m_RootOrder

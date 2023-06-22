@@ -21,7 +21,7 @@ MonoBehaviour:
   actionType: 0
   element: 0
   range: {x: 5, y: 4}
-  weaponDamage: 60
+  weaponDamage: 45
   lungeDistance: 0
   hasDurability: 1
   maxDurability: 60
@@ -33,7 +33,7 @@ MonoBehaviour:
   description: 'A pretty decent sword.
 
 
-    Damage: 60'
+    Damage: 45'
   priceAmount: 250
   materialRequirements:
   - materialSprite: {fileID: 130203420, guid: 51721a244c2b3b2448a18bd0044dee35, type: 3}

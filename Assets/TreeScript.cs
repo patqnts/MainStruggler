@@ -79,10 +79,15 @@ public class TreeScript : MonoBehaviour, IDamageable
     }
     private void DropItem()
     {
-       
-            Instantiate(dropPrefab[Random.Range(0, dropPrefab.Length)], transform.position, Quaternion.identity);
 
-        
+        if (dropPrefab != null)
+        {
+            foreach (var prefab in dropPrefab)
+            {
+                Instantiate(prefab, transform.position, Quaternion.identity);
+            }
+        }
+
     }
 
     private bool isBurning = false;

@@ -58,7 +58,7 @@ public class SlimeScript : MonoBehaviour, IDamageable
                 isDead = true;
                 hitCollider.enabled = false;
                 animator.SetTrigger("Death");
-                DropItem();
+               
                 if (isElemental)
                 {
                     Debug.Log("elemental monster dies -1");
@@ -88,7 +88,7 @@ public class SlimeScript : MonoBehaviour, IDamageable
                     
                 }
 
-                
+                DropItem();
                 InventoryManager.instance.ReduceDurability();
 
 
