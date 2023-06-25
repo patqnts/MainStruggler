@@ -120,7 +120,7 @@ MonoBehaviour:
   moveSpeed: 4
   durability: 0
   item: {fileID: 11400000, guid: 083e604b9aa8b4144a765e2ed26c1afc, type: 2}
-  itemCount: 1
+  itemCount: 7
 --- !u!82 &5767532134297482587
 AudioSource:
   m_ObjectHideFlags: 0
