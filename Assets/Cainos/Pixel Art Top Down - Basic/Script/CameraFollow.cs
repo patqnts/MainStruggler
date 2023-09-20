@@ -29,13 +29,16 @@ namespace Cainos.PixelArtTopDown_Basic
         private void Update()
         {
             if (target == null) return;
+           
 
             if (InventoryManager.instance.GetInventoryItem("Key of Slime") &&
                 InventoryManager.instance.GetInventoryItem("Key of Nature") &&
                 InventoryManager.instance.GetInventoryItem("Key of Stone"))
             {
-                if (!lookAtDogo)
+                 DogoTotemScripts Dogo = FindObjectOfType<DogoTotemScripts>();
+                if (!lookAtDogo && Dogo != null)
                 {
+                    target = Dogo.gameObject.transform;
                     DogoCamera();
                 }
                 
@@ -50,9 +53,6 @@ namespace Cainos.PixelArtTopDown_Basic
         
          void DogoCamera()
         {
-            DogoTotemScripts Dogo = FindObjectOfType<DogoTotemScripts>();
-            target = Dogo.gameObject.transform;
-
             Invoke("ResetCamera", 3f);
             lookAtDogo = true;
         }
