@@ -33,7 +33,7 @@ MonoBehaviour:
 
     30% critical
     damage.'
-  priceAmount: 1500
+  priceAmount: 1000
   materialRequirements:
   - materialSprite: {fileID: 21300000, guid: 62647edf4baba9749b66c6a7a74feaaf, type: 3}
     requiredAmount: 1

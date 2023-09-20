@@ -120,15 +120,11 @@ public class SaveSystem : MonoBehaviour
         string directoryPath = Path.Combine(Application.persistentDataPath, profileId);
         Directory.CreateDirectory(directoryPath);
 
-        // string screenshotPath = Path.Combine(Application.persistentDataPath,"/"+cellular.text+ "/savepoint.png"); //ANDROID VERSION
-        // ScreenCapture.CaptureScreenshot(screenshotPath);
+         string screenshotPath = Path.Combine(Application.persistentDataPath,"/"+cellular.text+ "/savepoint.png"); //ANDROID VERSION
+         ScreenCapture.CaptureScreenshot(screenshotPath);
 
-         string screenshotPathS = Path.Combine(Application.persistentDataPath, cellular.text ,"savepoint.png");
-         ScreenCapture.CaptureScreenshot(screenshotPathS);
-
-
-
-
+         //string screenshotPathS = Path.Combine(Application.persistentDataPath, cellular.text ,"savepoint.png");
+        // ScreenCapture.CaptureScreenshot(screenshotPathS);
 
         string filePath = Path.Combine(directoryPath, Path.GetFileName(PlayerDataPath));
         File.WriteAllText(filePath, json);

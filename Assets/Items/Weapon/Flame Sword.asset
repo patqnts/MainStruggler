@@ -38,7 +38,7 @@ MonoBehaviour:
     Damage: 65
 
     Effect: Burning'
-  priceAmount: 5000
+  priceAmount: 2500
   materialRequirements:
   - materialSprite: {fileID: -1885814087, guid: 7e4f01963cb573f4ab3e60dc5f04e90a,
       type: 3}

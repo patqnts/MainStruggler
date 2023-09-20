@@ -26,12 +26,14 @@ public class MapButton : MonoBehaviour
             isOpen = true;
             FairyUI.SetActive(true);
             mapCam.SetActive(true);
+            Time.timeScale = 0;
         }
         else
         {
             isOpen = false;
             FairyUI.SetActive(false);
             mapCam.SetActive(false);
+            Time.timeScale = 1;
         }
     }
 }

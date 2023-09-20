@@ -38,7 +38,7 @@ MonoBehaviour:
 
     Ability:
     Long attack lunges.'
-  priceAmount: 5000
+  priceAmount: 2500
   materialRequirements:
   - materialSprite: {fileID: -2005474995, guid: 7e4f01963cb573f4ab3e60dc5f04e90a,
       type: 3}

@@ -39,6 +39,7 @@ public class LoadSystem : MonoBehaviour
     }
     private void Start()
     {
+        Time.timeScale = 1;
         Cellular cellular = FindObjectOfType<Cellular>();
         if (cellular != null)
         {

@@ -58,50 +58,50 @@ public class WitchShopScript : MonoBehaviour
                
                 break;
             case "Light Longsword":
-                coinCost = 5000;
+                coinCost = 2500;
                 lightOrbisCost = 10;
                 swordCost = 1;
                 
                 break;
             case "Dark Longsword":
-                coinCost = 5000;
+                coinCost = 2500;
                 darkOrbisCost = 10;
                 swordCost = 1;
 
                 break;
             case "Flame Sword":
-                coinCost = 5000;
+                coinCost = 2500;
                 fireOrbisCost = 10;
                 swordCost = 1;
 
                 break;
             case "Wind Sword":
-                coinCost = 5000;
+                coinCost = 2500;
                 windOrbisCost = 10;
                 swordCost = 1;
                 break;
 
             case "Wind Wisp":
-                coinCost = 1500;
+                coinCost = 1000;
                 wispCost = 1;
                 windOrbisCost = 10;
                 
                 break;
             case "Light Wisp":
-                coinCost = 1500;
+                coinCost = 1000;
                 wispCost = 1;
                 lightOrbisCost = 10;
 
                 break;
 
             case "Fire Wisp":
-                coinCost = 1500;
+                coinCost = 1000;
                 wispCost = 1;
                 fireOrbisCost = 10;
 
                 break;
             case "Dark Wisp":
-                coinCost = 1500;
+                coinCost = 1000;
                 wispCost = 1;
                 darkOrbisCost = 10;
 
