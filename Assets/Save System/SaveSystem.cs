@@ -8,7 +8,7 @@ public class SaveSystem : MonoBehaviour
 {
     public Movement player;
     public InventoryManager inventoryManager;
-
+    public bool isMobile;
     public GolemScript golem;
     public SlimeQueen slime;
     public BomberScript bomber;
@@ -120,11 +120,18 @@ public class SaveSystem : MonoBehaviour
         string directoryPath = Path.Combine(Application.persistentDataPath, profileId);
         Directory.CreateDirectory(directoryPath);
 
-         string screenshotPath = Path.Combine(Application.persistentDataPath,"/"+cellular.text+ "/savepoint.png"); //ANDROID VERSION
-         ScreenCapture.CaptureScreenshot(screenshotPath);
+        if (isMobile)
+        {
+            string screenshotPath = Path.Combine(Application.persistentDataPath, "/" + cellular.text + "/savepoint.png"); //ANDROID VERSION
+            ScreenCapture.CaptureScreenshot(screenshotPath);
+        }
+        else
+        {
+            string screenshotPathS = Path.Combine(Application.persistentDataPath, cellular.text ,"savepoint.png");
+            ScreenCapture.CaptureScreenshot(screenshotPathS);
+        }
 
-         //string screenshotPathS = Path.Combine(Application.persistentDataPath, cellular.text ,"savepoint.png");
-        // ScreenCapture.CaptureScreenshot(screenshotPathS);
+
 
         string filePath = Path.Combine(directoryPath, Path.GetFileName(PlayerDataPath));
         File.WriteAllText(filePath, json);

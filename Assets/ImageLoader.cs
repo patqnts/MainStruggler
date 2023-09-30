@@ -9,6 +9,7 @@ public class ImageLoader : MonoBehaviour
     public string folderId;
     public Text progressPercentage;
     public GameObject playUI;
+    public GameObject deleteButton;
     private void Start()
     {
         LoadImage(folderId);
@@ -21,6 +22,8 @@ public class ImageLoader : MonoBehaviour
         {
             DeleteSaveData(folderId);
         }
+
+        
     }
 
     public void LoadImage(string profileId)
@@ -32,6 +35,8 @@ public class ImageLoader : MonoBehaviour
         // Check if the file exists
         if (File.Exists(fullPath))
         {
+           
+            Debug.Log("Button Delete Disabled");
             playUI.SetActive(true);
             // Read the image data from the file
             byte[] imageData = File.ReadAllBytes(fullPath);
@@ -53,6 +58,7 @@ public class ImageLoader : MonoBehaviour
         }
         else
         {
+            
             playUI.SetActive(false);
             Debug.Log("Image file not found: " + fullPath);
         }
@@ -63,7 +69,7 @@ public class ImageLoader : MonoBehaviour
         {
             string jsonData = File.ReadAllText(playerDataPath);
             PlayerData playerData = JsonUtility.FromJson<PlayerData>(jsonData);
-
+            deleteButton.SetActive(true);
             // Calculate the text value based on the boss booleans
             int bossCount = 0;
             if (playerData.isDeadGolem)
@@ -77,11 +83,21 @@ public class ImageLoader : MonoBehaviour
 
             int BossProgress = bossCount * 20;
             int totalProgress = BossProgress + Mathf.RoundToInt(playerData.maxHealth);
-            progressPercentage.text = "["+ totalProgress.ToString() +"%" + "]";
+
+            if (totalProgress < 100) 
+            {
+                progressPercentage.text = "[" + totalProgress.ToString() + "%" + "]";
+            }
+            else
+            {
+                progressPercentage.text = "[Completed]";
+            }
+            
             Debug.Log("Text Value: " + totalProgress);
         }
         else
         {
+            deleteButton.SetActive(false);
             Debug.Log("Player data file not found: " + playerDataPath);
         }
     }
