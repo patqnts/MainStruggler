@@ -15,6 +15,7 @@ TagManager:
   - No Postprocess
   - BlackTarget
   - FairyFollow
+  - WaterRender
   layers:
   - Default
   - TransparentFX

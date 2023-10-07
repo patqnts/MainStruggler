@@ -479,6 +479,8 @@ public class Cellular : MonoBehaviour
                 continue;
             }
         }
+     //  waterTilemap.gameObject.SetActive(false);
+        
 
     }
 
