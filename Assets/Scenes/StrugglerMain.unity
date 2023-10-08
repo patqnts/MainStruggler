@@ -5494,9 +5494,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b1586ec71657a747bfb0b3e2ec8be86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dayLength: 300
-  nightLength: 300
-  transitionLength: 125
+  dayLength: 250
+  nightLength: 250
+  transitionLength: 25
   timeOfDay: 0
   isNight: 0
 --- !u!4 &1030907121 stripped
@@ -7402,7 +7402,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1497093152}
   m_Layer: 0
-  m_Name: Lightubg
+  m_Name: DayNightSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
