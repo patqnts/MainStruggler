@@ -95,7 +95,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IPointerDownHandler, I
                         if (selectedAnimator != null)
                         {
                             InventoryManager.instance.weaponHolder.GetComponent<Animator>().runtimeAnimatorController = selectedAnimator.runtimeAnimatorController;
-                            Debug.Log("Not Holdable Item - to Empty slot : weapon animator continue");
+                            
                         }
 
                     }
@@ -107,14 +107,14 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IPointerDownHandler, I
                         if (selectedAnimator != null)
                         {
                             InventoryManager.instance.fairyHolder.GetComponent<Animator>().runtimeAnimatorController = selectedAnimator.runtimeAnimatorController;
-                            Debug.Log("Fairy - to Empty slot : fairy animator continue");
+                       
                         }
                        
 
                     }
                     else // IF FAIRY SLOT IS EMPTY
                     {
-                        Debug.Log("Fairy Slot is Empty");
+                       
                         InventoryManager.instance.fairyHolder.GetComponent<Animator>().runtimeAnimatorController = null;
                         InventoryManager.instance.fairyHolder.GetComponent<SpriteRenderer>().sprite = null;
                     }
@@ -123,7 +123,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IPointerDownHandler, I
 
                 else
                 {
-                    Debug.Log("Holdable item has no animator 2");
+                   
 
                     InventoryManager.instance.weaponHolder.GetComponent<Animator>().runtimeAnimatorController = null;
                     InventoryManager.instance.weaponHolder.GetComponent<SpriteRenderer>().sprite = null;
@@ -131,7 +131,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IPointerDownHandler, I
 
                 if (InventoryManager.instance.fairySlot == transform.GetSiblingIndex()) //IF FAIRY ITEM IS DROP TO FAIRY SLOT
                 {
-                    Debug.Log("Into the fairy slot");
+                  
                     Item selectedFairy = InventoryManager.instance.GetFairySlot(false);
                     if (selectedFairy != null)
                     {
@@ -180,7 +180,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IPointerDownHandler, I
                         else
                         {
                             InventoryManager.instance.weaponHolder.GetComponent<Animator>().runtimeAnimatorController = null;
-                            Debug.Log("Holdable item has no animator");
+                         
                         }
                     }
                     else
@@ -191,7 +191,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IPointerDownHandler, I
                             InventoryManager.instance.weaponHolder.GetComponent<Animator>().runtimeAnimatorController = null;
 
                             InventoryManager.instance.weaponHolder.GetComponent<SpriteRenderer>().sprite = null;
-                            Debug.Log("Item is not holdable");
+                           
                            
                         }
                     }                                    
@@ -210,19 +210,19 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IPointerDownHandler, I
 
                             if (itemAnimator != null)
                             {
-                                Debug.Log("Holdable to - Empty slot : continue weapon animation");
+                              
                                 InventoryManager.instance.weaponHolder.GetComponent<Animator>().runtimeAnimatorController = itemAnimator.runtimeAnimatorController;
                             }
                             else
                             {
                                 InventoryManager.instance.weaponHolder.GetComponent<Animator>().runtimeAnimatorController = null;
-                                Debug.Log("Holdable to - Empty slot : null animation");
+                             
                             } 
                         }
                     
                         else
                         {
-                            Debug.Log("Holdable to - Empty slot :else null animation");
+                           
                             InventoryManager.instance.weaponHolder.GetComponent<Animator>().runtimeAnimatorController = null;
                             InventoryManager.instance.weaponHolder.GetComponent<SpriteRenderer>().sprite = null;
                         }
@@ -245,7 +245,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IPointerDownHandler, I
                 Item selectedItem = InventoryManager.instance.GetSelectedItem(false);
                 if (!selectedItem.holdable)
                 {
-                    Debug.Log("Non Holdable Item to Selected slot : continue holder animation");
+                   
                     InventoryManager.instance.weaponHolder.GetComponent<Animator>().runtimeAnimatorController = null;
                     InventoryManager.instance.weaponHolder.GetComponent<SpriteRenderer>().sprite = null;
                 }
@@ -264,7 +264,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IPointerDownHandler, I
                 if (selectedItem != null && !selectedItem.holdable)
                 {
                     InventoryManager.instance.weaponHolder.GetComponent<Animator>().runtimeAnimatorController = null;
-                    Debug.Log("Animator null");
+                   
                 }
                
             }
@@ -282,7 +282,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IPointerDownHandler, I
         {
                 InventoryManager.instance.weaponHolder.GetComponent<SpriteRenderer>().sprite = null;
                 InventoryManager.instance.weaponHolder.GetComponent<Animator>().runtimeAnimatorController = null;
-                Debug.Log("animator null");
+              
             }
 
         // Destroy the item object
@@ -298,7 +298,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IPointerDownHandler, I
         {
             InventoryManager.instance.weaponHolder.GetComponent<SpriteRenderer>().sprite = null;
             InventoryManager.instance.weaponHolder.GetComponent<Animator>().runtimeAnimatorController = null;
-                Debug.Log("animator null");
+               
             }
     }
 }
@@ -312,7 +312,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IPointerDownHandler, I
     {
         if (transform.childCount == 0) return;
         InventoryManager.instance.ChangeSelectedSlot(slot);
-        Debug.Log(slot);
+      
         
         
         float currentTime = Time.time;

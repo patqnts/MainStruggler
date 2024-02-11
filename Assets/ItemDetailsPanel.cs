@@ -41,7 +41,7 @@ public class ItemDetailsPanel : MonoBehaviour
         Cycle();
         
        
-        Debug.Log("Current Item " + blackShop.Intest);
+        
         // Set the image, name, description, materials required, and price text
         image.sprite = item.image;
         nameText.text = item.name;

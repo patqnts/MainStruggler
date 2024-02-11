@@ -95,11 +95,11 @@ public class SaveSystem : MonoBehaviour
                 itemData.durability = item.durability;
                 itemData.count = item.count;
                 data.inventoryItems.Add(itemData);
-                Debug.Log("Item: " + itemData.itemName);
+                
             }
             else
             {
-                Debug.Log("No item in the inventory");
+                
             }
         }
         // Save equipment item in equipmentSlots[7]
@@ -111,7 +111,7 @@ public class SaveSystem : MonoBehaviour
             equipmentData.durability = equipmentItem.durability;
             equipmentData.count = equipmentItem.count;
             data.inventoryItems.Add(equipmentData);
-            Debug.Log("Equipment Item: " + equipmentData.itemName);
+          
         }
 
         string json = JsonUtility.ToJson(data, true);
@@ -137,16 +137,6 @@ public class SaveSystem : MonoBehaviour
         File.WriteAllText(filePath, json);
 
 
-        Debug.Log(Application.persistentDataPath);
-        Debug.Log("Player saved!");
-        Debug.Log("Health: " + data._health);
-      
-        Debug.Log("Position: " + data.playerPos);
-        Debug.Log("Inventory Items saved: " + data.inventoryItems.Count);
-        Debug.Log("Map seedcode: " + data.mapSeed);
-        Debug.Log("ProfileId: " + cellular.text);
-        Debug.Log("is night: " + data.isNight);
-        Debug.Log("Time of Day: " + data.timeOfDay);
     }
     public bool isRogue;
     public void BackToMenu()
@@ -159,7 +149,6 @@ public class SaveSystem : MonoBehaviour
         if (saveSystem != null && !isRogue)
         {
             saveSystem.SavePlayer(cellular.text);
-            Debug.Log(cellular.text);
         }
         if (loadSystem != null)
         {

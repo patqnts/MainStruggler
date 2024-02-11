@@ -78,7 +78,7 @@ public class AttackHitbox : MonoBehaviour
                     }
                     if (selectedItem.element == Element.Dark)
                     {
-                        Debug.Log("DARKNESS");
+                        
                         damageableObject.OnDark(1f);
                     }
                     damage = selectedItem.weaponDamage;
@@ -159,7 +159,7 @@ public class AttackHitbox : MonoBehaviour
                 if (Random.value <= 0.3f) // 30% chance for critical strike
                 {
                     damage *= 1.5f; // Multiply damage by 1.5
-                    Debug.Log("Critical");
+                   
                 }
                 else
                 {

@@ -8,17 +8,21 @@ public class Loot : MonoBehaviour
     [SerializeField] private CircleCollider2D collider;
     [SerializeField] private float moveSpeed;
     [SerializeField] public int durability;
+    public ItemNotificationScript itemNotificationScript;
 
     // Start is called before the first frame update
     public Item item;
     public int itemCount; // New variable to store the item count
 
-
-    public void Initialize(Item item, int count, int durability) // Added durability parameter
+    private void Start()
+    {
+        itemNotificationScript = FindObjectOfType<ItemNotificationScript>();
+    }
+    public void Initialize(Item item, int count, int durability) 
     {
         this.item = item;
         this.itemCount = count;
-        this.durability = durability; // Assign durability value
+        this.durability = durability; 
         sr.sprite = item.image;
     }
 
@@ -26,10 +30,20 @@ public class Loot : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            bool canAdd = InventoryManager.instance.AddItem(item, durability, itemCount); // Pass itemCount to AddItem
+            Item checkItem = InventoryManager.instance.GetItemByName(item.name);
+           
+
+            bool canAdd = InventoryManager.instance.AddItem(item, durability, itemCount); 
             if (canAdd)
-            {
-                StartCoroutine(MoveAndCollect(other.transform));
+            {             
+                
+                if (checkItem == null)
+                {
+                    itemNotificationScript.Notify(item);
+                   
+                }
+
+                StartCoroutine(MoveAndCollect(other.transform));               
             }
         }
     }
@@ -41,10 +55,8 @@ public class Loot : MonoBehaviour
         while (transform.position != target.position)
         {
             transform.position = Vector3.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
-            yield return 0;
+            yield return 0;     
             Destroy(gameObject,0.5f);
-        }
-       // InventoryManager.instance.AddItem(item);
-        Debug.Log("Item Received:" + item); 
-    }
+        }    
+    }  
 }

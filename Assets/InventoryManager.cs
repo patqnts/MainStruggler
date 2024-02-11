@@ -196,7 +196,7 @@ public class InventoryManager : MonoBehaviour
         if (addedToInventory && item.hasDurability)
         {
             combatManager.AddItemWithDurability(item, durability);
-            Debug.Log(item + " Durability: " + durability);
+          
         }
         //ChangeSelectedSlot(0);
         return addedToInventory;
@@ -240,7 +240,7 @@ public class InventoryManager : MonoBehaviour
                 itemInSlot.count--;
                 if (itemInSlot.count <= 0 && itemInSlot != item.struggler)
                 {
-                    Debug.Log("DestroyL " + itemInSlot);
+                   
                     Destroy(itemInSlot.gameObject);
                 }
                 else
@@ -411,7 +411,7 @@ public class InventoryManager : MonoBehaviour
             InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
             if (itemInSlot != null && itemInSlot.item.name == itemName)
             {
-                return itemInSlot.item;
+                return itemInSlot.item;               
             }
         }
         return null;
@@ -426,7 +426,7 @@ public class InventoryManager : MonoBehaviour
             if (item != null)
             {
                 Destroy(item.gameObject);
-                Debug.Log("Destroyed item: " + item.name);
+               
             }
         }
 

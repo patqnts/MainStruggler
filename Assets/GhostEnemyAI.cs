@@ -119,7 +119,7 @@ public class GhostEnemyAI : MonoBehaviour, IDamageable
         GameObject player = GameObject.FindGameObjectWithTag("Target");
         if (player == null)
         {
-            Debug.Log("Player Defeated");
+      
             return;
         }
 
@@ -136,7 +136,7 @@ public class GhostEnemyAI : MonoBehaviour, IDamageable
             isAttacking = true;
             animator.SetTrigger("Attack");
             GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
-            Debug.Log("Projectile position: " + projectile.transform.position);
+        
             Vector2 direction = (playerPoss - enemyPos).normalized;
             projectile.GetComponent<Rigidbody2D>().AddForce(direction * 250);
             Destroy(projectile, 5f);
@@ -184,7 +184,7 @@ public class GhostEnemyAI : MonoBehaviour, IDamageable
             }
             else
             {
-                Debug.Log("player dead?");
+                //
             }
         }
 
@@ -242,7 +242,6 @@ public class GhostEnemyAI : MonoBehaviour, IDamageable
         }
         rb.AddForce(knockback);
         healthBar.UpdateHealthBar(_health, maxHealth);
-        Debug.Log(Health);
     }
 
     public void OnHit(float damage)
@@ -283,7 +282,7 @@ public class GhostEnemyAI : MonoBehaviour, IDamageable
             StartCoroutine(ApplyBurnDamage(damage, time));
         }
 
-        Debug.Log("BURRRRN");
+      
     }
 
     private IEnumerator ApplyBurnDamage(float damage, float time)
@@ -296,7 +295,7 @@ public class GhostEnemyAI : MonoBehaviour, IDamageable
             yield return new WaitForSeconds(1f);
 
             OnHit(damage);
-            Debug.Log("BURRRRN");
+            
 
             elapsedTime += 1f;
         }

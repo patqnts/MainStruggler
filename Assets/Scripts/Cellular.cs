@@ -223,10 +223,6 @@ public class Cellular : MonoBehaviour
         }
     }
 
-
-
-
-
     private void GenerateMap()
     {
         if (seedCode == 0)
@@ -235,7 +231,7 @@ public class Cellular : MonoBehaviour
             seedCode = Random.Range(1, int.MaxValue); // Generate a random seed code
             GenerateMapUsingSeed();
             seedCodex = seedCode;
-            Debug.Log("SEED = 0");
+            
             newLoad = true;
             //RuinSavePoint.PlayerDied();
 
@@ -245,7 +241,7 @@ public class Cellular : MonoBehaviour
             
             Random.InitState(seedCode);
             GenerateMapUsingSeed();
-            Debug.Log("SEED = " + seedCode);
+            
         }
         SmoothMap();
 

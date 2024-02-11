@@ -43,7 +43,7 @@ public class TravellerItemDetails : MonoBehaviour
         Cycle();
 
 
-        Debug.Log("Current Item " + travelerShop.Intest);
+        
         // Set the image, name, description, materials required, and price text
         image.sprite = item.image;
         nameText.text = item.name;

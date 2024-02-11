@@ -33,7 +33,7 @@ public class StoneHItBox : MonoBehaviour
         {
             if (isDark)
             {
-                damageableObject.OnDark(1f);
+                damageableObject.OnDark(2f);
             }
             else if (isFire)
             {

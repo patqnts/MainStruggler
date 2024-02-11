@@ -24,8 +24,7 @@ public class WitchShopScript : MonoBehaviour
     public void BuyItem()
     {
         if (Intest < 0 || Intest >= itemList.Length)
-        {
-            Debug.Log("Invalid item index");
+        {       
             return;
         }
 
@@ -45,8 +44,7 @@ public class WitchShopScript : MonoBehaviour
         int wispCost = 0;
         if (itemToBuy.name == "Struggler Bottle" && InventoryManager.instance.GetInventoryItem("Struggler Bottle") != null)
         {
-            witchSounds[1].Play();
-            Debug.Log("Item already exists in inventory. Cannot buy another one.");
+            witchSounds[1].Play();          
             return; // Exit the method if the item already exists in the inventory
         }
 
@@ -116,7 +114,7 @@ public class WitchShopScript : MonoBehaviour
 
                 break;
             default:
-                Debug.Log("Invalid item name");
+                
                 return;
         }
 
@@ -137,7 +135,7 @@ public class WitchShopScript : MonoBehaviour
         {
             animator.SetTrigger("NotEnough");
             witchSounds[1].Play();
-            Debug.Log("Not enough resources to buy " + itemToBuy.name);
+           
             return;
         }
 
@@ -162,12 +160,12 @@ public class WitchShopScript : MonoBehaviour
             inventoryManager.RemoveItem("Wind Orbis", windOrbisCost);
             inventoryManager.RemoveItem("Starstone Sword", swordCost);
             inventoryManager.RemoveItem("Wisp", wispCost);
-            Debug.Log("Bought " + itemToBuy.name);
+           
         }
         else
         {
             witchSounds[1].Play();
-            Debug.Log("Inventory is full");
+            
         }
     }
 

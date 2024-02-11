@@ -222,7 +222,7 @@ public class SlimeQueen : MonoBehaviour, IDamageable
         rb.AddForce(knockback);
         healthBar.UpdateHealthBar(_health, maxHealth);
         animator.SetTrigger("Hurt");
-        Debug.Log(Health);
+        
     }
 
     public void OnHit(float damage)

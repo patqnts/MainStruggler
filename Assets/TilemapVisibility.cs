@@ -12,13 +12,13 @@ public class TilemapVisibility : MonoBehaviour
 
     private void OnBecameVisible()
     {
-        Debug.Log("water vis");
+       
         tilemapRenderer.enabled = true;
     }
 
     private void OnBecameInvisible()
     {
-        Debug.Log("water inv");
+      
         tilemapRenderer.enabled = false;
     }
 }

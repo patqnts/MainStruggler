@@ -38,12 +38,12 @@ public class HoardSlime : MonoBehaviour, IDamageable
 
                 if (isElemental)
                 {
-                    Debug.Log("elemental monster dies -1");
+            
                     npcManager.OnElementalDestroyed();
                 }
                 else
                 {
-                    Debug.Log("Normal monster dies -1");
+                 
                     npcManager.OnEnemyDestroyed();
                 }
 
@@ -147,7 +147,7 @@ public class HoardSlime : MonoBehaviour, IDamageable
 
         rb.AddForce(knockback);
         animator.SetTrigger("Hurt");
-        Debug.Log(Health);
+        
         if (_health <= 0)
         {
             enemyHealthObject.SetActive(false);
@@ -171,7 +171,7 @@ public class HoardSlime : MonoBehaviour, IDamageable
 
 
         animator.SetTrigger("Hurt");
-        Debug.Log(Health);
+      
         if (_health <= 0)
         {
             enemyHealthObject.SetActive(false);
@@ -188,7 +188,7 @@ public class HoardSlime : MonoBehaviour, IDamageable
             StartCoroutine(ApplyBurnDamage(damage, time));
         }
 
-        Debug.Log("BURRRRN");
+      
     }
 
     private IEnumerator ApplyBurnDamage(float damage, float time)
@@ -202,7 +202,7 @@ public class HoardSlime : MonoBehaviour, IDamageable
             yield return new WaitForSeconds(1f);
 
             OnHit(damage);
-            Debug.Log(isBurning);
+            
 
             elapsedTime += 1f;
         }

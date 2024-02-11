@@ -16,18 +16,19 @@ public class TileRenderDistance : MonoBehaviour
 
     void Update()
     {
-        GameObject[] waterTiles = GameObject.FindGameObjectsWithTag("Tree");
+        GameObject[] treeObjects = GameObject.FindGameObjectsWithTag("Tree");
+        
 
-        foreach (GameObject waterTile in waterTiles)
+        foreach (GameObject tree in treeObjects)
         {
             // Calculate the distance between the current waterTile and your location
-            float distance = Vector3.Distance(waterTile.transform.position, myLocation.position);
+            float distance = Vector3.Distance(tree.transform.position, myLocation.position);
 
             // Check if the distance is less than or equal to the renderDistance
             if (distance <= renderDistance)
             {
                 // Enable the renderer of the waterTile
-                Renderer renderer = waterTile.GetComponent<Renderer>();
+                Renderer renderer = tree.GetComponent<Renderer>();
                 if (renderer != null)
                 {
                     renderer.enabled = true;
@@ -36,12 +37,14 @@ public class TileRenderDistance : MonoBehaviour
             else
             {
                 // Disable the renderer of the waterTile
-                Renderer renderer = waterTile.GetComponent<Renderer>();
+                Renderer renderer = tree.GetComponent<Renderer>();
                 if (renderer != null)
                 {
                     renderer.enabled = false;
                 }
             }
         }
+
+        
     }
 }

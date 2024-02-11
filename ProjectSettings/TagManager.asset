@@ -16,6 +16,7 @@ TagManager:
   - BlackTarget
   - FairyFollow
   - WaterRender
+  - TreeHolder
   layers:
   - Default
   - TransparentFX

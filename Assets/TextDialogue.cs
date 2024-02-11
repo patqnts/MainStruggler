@@ -7,17 +7,7 @@ public class TextDialogue : MonoBehaviour
     public Text dialogueText;
     public string[] dialogueTexts;
     public BlacksmithGameObject sounds;
-    void Start()
-    {
-        // Choose a random index from the array
-        
-
-        // Start typing the text
-        
-    }
-
-    
-
+ 
     IEnumerator TypeText(string text)
     {
         dialogueText.text = "";

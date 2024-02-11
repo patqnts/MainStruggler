@@ -57,12 +57,12 @@ public class StoneKnightScript : MonoBehaviour, IDamageable
                 //DropItem();
                 if (isElemental)
                 {
-                    Debug.Log("elemental monster dies -1");
+                    
                     npcManager.OnElementalDestroyed();
                 }
                 else
                 {
-                    Debug.Log("Normal monster dies -1");
+                    
                     npcManager.OnEnemyDestroyed();
                 }
                 
@@ -226,7 +226,7 @@ public class StoneKnightScript : MonoBehaviour, IDamageable
         if (burnCoroutine == null)
         {
             burnCoroutine = StartCoroutine(ApplyBurnDamage(damage, time));
-            Debug.Log("BURRRRN");
+            
         }
     }
 
@@ -239,7 +239,7 @@ public class StoneKnightScript : MonoBehaviour, IDamageable
             yield return new WaitForSeconds(1f);
 
             OnHit(damage);
-            Debug.Log("BURRRRN");
+           
 
             elapsedTime += 1f;
         }

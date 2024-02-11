@@ -190,7 +190,7 @@ public class BomberScript : MonoBehaviour, IDamageable
             if (isStomping)
             {
                 damageableObject.OnHit(1f);
-                damageableObject.OnDark(1.5f);
+                damageableObject.OnDark(2f);
             }
             
         }
@@ -277,7 +277,7 @@ public class BomberScript : MonoBehaviour, IDamageable
         moveSpeed = 400f;
         // Reset the jump attack timer
         Timer = throwCooldown;
-        Debug.Log("Reset");
+       
     }
 
     
@@ -292,7 +292,7 @@ public class BomberScript : MonoBehaviour, IDamageable
 
             Health -= reducedDamage;
             rb.AddForce(knockback);
-            Debug.Log("Reduced");
+          
         }
         else
         {
@@ -300,7 +300,7 @@ public class BomberScript : MonoBehaviour, IDamageable
 
             Health -= icreaseDamage;
             rb.AddForce(knockback);
-            Debug.Log("Increased");
+            
         }
 
 
@@ -347,7 +347,7 @@ public class BomberScript : MonoBehaviour, IDamageable
     {
         if (!isBurning && !isDead)
         {
-            Debug.Log("BURRRRN");
+           
             StartCoroutine(ApplyBurnDamage(damage, time));
         }
 
@@ -365,7 +365,7 @@ public class BomberScript : MonoBehaviour, IDamageable
             yield return new WaitForSeconds(1f);
 
             OnHit(damage);
-            Debug.Log(isBurning);
+           
 
             elapsedTime += 1f;
         }

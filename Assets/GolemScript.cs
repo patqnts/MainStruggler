@@ -250,7 +250,7 @@ public class GolemScript : MonoBehaviour, IDamageable
 
             Health -= reducedDamage;
             rb.AddForce(knockback);
-            Debug.Log("Reduced");
+          
         }
         else if (weapon == null) 
         {
@@ -262,7 +262,7 @@ public class GolemScript : MonoBehaviour, IDamageable
 
             Health -= icreaseDamage;
            // rb.AddForce(knockback);
-            Debug.Log("Increased");
+       
         }
         
 
@@ -302,7 +302,7 @@ public class GolemScript : MonoBehaviour, IDamageable
             StartCoroutine(ApplyBurnDamage(damage, time));
         }
 
-        Debug.Log("BURRRRN");
+      
     }
 
     private IEnumerator ApplyBurnDamage(float damage, float time)
@@ -316,7 +316,7 @@ public class GolemScript : MonoBehaviour, IDamageable
             yield return new WaitForSeconds(1f);
 
             OnHit(damage);
-            Debug.Log(isBurning);
+         
 
             elapsedTime += 1f;
         }

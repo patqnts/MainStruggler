@@ -22,7 +22,7 @@ public class WaterRenderer : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Player GameObject not found. Make sure it has the 'Player' tag.");
+            //
         }
     }
 
@@ -30,7 +30,7 @@ public class WaterRenderer : MonoBehaviour
     {
         if (playerTransform == null || waterRenderer == null)
         {
-            Debug.LogError("Player Transform or Water Renderer is not set.");
+            
             return;
         }
 

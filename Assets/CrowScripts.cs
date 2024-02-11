@@ -106,7 +106,7 @@ public class CrowScripts : MonoBehaviour
                         {
                             isAttacking = false;
                             dashAbility.SetActive(true);
-                            Debug.Log("Success");
+                           
                             crowText.text = "Hmmm...";
                             dashUnlocked = true;
                             player.rb.constraints = RigidbodyConstraints2D.FreezeRotation;

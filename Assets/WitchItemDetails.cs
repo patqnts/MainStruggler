@@ -41,7 +41,7 @@ public class WitchItemDetails : MonoBehaviour
         Cycle();
 
 
-        Debug.Log("Current Item " + witchShop.Intest);
+       
         // Set the image, name, description, materials required, and price text
         image.sprite = item.image;
         nameText.text = item.name;

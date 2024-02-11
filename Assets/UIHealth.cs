@@ -56,7 +56,6 @@ public class UIHealth : MonoBehaviour
     }
     public void StrugglerHeal()
     {
-        Debug.Log("StrugglerHeal");
         player._health = player.maxHealth;
         SetMaxHearts(player.maxHealth);
     }

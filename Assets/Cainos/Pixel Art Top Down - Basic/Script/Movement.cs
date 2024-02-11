@@ -1,51 +1,59 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.PostProcessing;
 
 public class Movement : MonoBehaviour, IDamageable
 {
-    [SerializeField] public float moveSpeed = 3f;
-    [SerializeField] private float attackTime = 0.40f;
-    
+
     [SerializeField] public Rigidbody2D rb;
     [SerializeField] public Animator animator;
     [SerializeField] private Joystick joystick;
     
-    public CombatManager combatManager;
+
     public Transform slashPos;
+    public Transform dropPos;
+    public Collider2D collider;
+    public GameObject Inventory;
+
+    public HoldButton holdButton;
+    private InventoryManager item;
+    public InventoryItem selectedItem;
+    public CombatManager combatManager;
+    public CharacterSoundManager characterSound;
+    public CrowScripts crows;
+    public CharacterGhost ghost;
+
+    private Vector2 movement;
+    private Vector2 lastDirection = Vector2.zero;
 
     public Animator cameraAnimator;
     public Animator indicatorAnimator;
+    
+    public UIHealth uiHealth;
 
+    public Volume DarkVolume;
+    public Volume FireVolume;
+
+    [Header("Float")]
+    [SerializeField] public float moveSpeed = 3f;
+    [SerializeField] private float attackTime = 0.40f;
     public float dashSpeed;
     public float dashLength = .5f, dashCooldown = 1f;
     private float activeMoveSpeed;
     private float dashCounter;
     private float dashCoolCounter;
-
-    private Vector2 movement;
-    private bool isAttacking;
-    private Vector2 lastDirection = Vector2.zero;
-    private InventoryManager item;
-
-    public HoldButton holdButton;
-
-    public CharacterGhost ghost;
-    private bool canTool = true;
-    public Transform dropPos;
-    public Collider2D collider;
-    public bool isDead = false;
-
     public float _health;
-    public UIHealth uiHealth;
     public float maxHealth;
-    public InventoryItem selectedItem;
 
-    public CharacterSoundManager characterSound;
-
-    public GameObject Inventory;
+    [Header("Booleans")]
+    private bool isAttacking;
+    private bool canTool = true;
+    public bool isDead = false;
     public bool isJoypad = false;
-    public CrowScripts crows;
+    public bool holding = false;
+    private bool isCurrentlyDark;
     public float Health
     {
         set
@@ -60,9 +68,7 @@ public class Movement : MonoBehaviour, IDamageable
                 animator.SetTrigger("Death");
                 Invoke("Dead", 2f);
                 // Destroy(gameObject, 2.3f);
-            }
-            
-          
+            }      
         }
         get
         {
@@ -167,9 +173,6 @@ public class Movement : MonoBehaviour, IDamageable
 
                 Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Ignore"), true);
             }
-
-
-            Debug.Log("DASH");
         }
 
         if (dashCounter > 0)
@@ -190,9 +193,6 @@ public class Movement : MonoBehaviour, IDamageable
         {
             dashCoolCounter -= Time.deltaTime;
         }
-
-        
-
 
         Item handle = InventoryManager.instance.GetSelectedItem(false);
 
@@ -222,7 +222,7 @@ public class Movement : MonoBehaviour, IDamageable
                 if (canEat != null && InventoryManager.instance.GetItemCount("Struggler Bottle") >= 1 &&
                     canEat.struggler && InventoryManager.instance.GetSelectedItem(item) != null && _health < maxHealth)
                 {
-                    Debug.Log("StrugglerHeal");
+                   
                     indicatorAnimator.SetTrigger("Heal");
                     uiHealth.StrugglerHeal();
                     InventoryManager.instance.GetSelectedItem(true);
@@ -231,7 +231,8 @@ public class Movement : MonoBehaviour, IDamageable
                 else if (canEat != null && InventoryManager.instance.GetSelectedItem(item).name == "Heart Container" ||
                     canEat != null && InventoryManager.instance.GetSelectedItem(item).name == "Heart Container2")
                 {
-                    Debug.Log("Heart Container");
+                   
+
                     indicatorAnimator.SetTrigger("Up");
                     uiHealth.AddHeart();
                     InventoryManager.instance.GetSelectedItem(true);
@@ -265,9 +266,6 @@ public class Movement : MonoBehaviour, IDamageable
         uiHealth.UpdateHealth(_health, maxHealth);
     }
 
-
-
-    public bool holding = false;
     public void isHolding()
     {
         holding =  true;
@@ -375,7 +373,7 @@ public class Movement : MonoBehaviour, IDamageable
                 Rigidbody2D slashRigidbody = slashObject.GetComponent<Rigidbody2D>();
                 if (slashRigidbody != null && slash.element == Element.Light)   //LIGHT ELEMENT EFFECT
                 {
-                    Debug.Log("Light");
+                 
                     // Apply forward movement to the slash prefab
                     float moveSpeed = 5f; // Adjust the movement speed as needed
                     Vector2 moveDirection = lastDirection.normalized;
@@ -389,7 +387,7 @@ public class Movement : MonoBehaviour, IDamageable
             else
             {
             
-                Debug.Log("No Slash Prefab");
+                //
             }
             if (slash.element == Element.Wind)
             {
@@ -399,7 +397,7 @@ public class Movement : MonoBehaviour, IDamageable
         else
         {
          
-            Debug.Log("No weapon for slash");
+           //
         }
         
         isAttacking = true;
@@ -453,7 +451,7 @@ public class Movement : MonoBehaviour, IDamageable
             if (canEat != null && InventoryManager.instance.GetItemCount("Struggler Bottle") >= 1 && 
                 canEat.struggler && InventoryManager.instance.GetSelectedItem(item) != null && _health < maxHealth)
             {
-                Debug.Log("StrugglerHeal");
+                
                 indicatorAnimator.SetTrigger("Heal");
                 uiHealth.StrugglerHeal();
                 InventoryManager.instance.GetSelectedItem(true);
@@ -462,7 +460,7 @@ public class Movement : MonoBehaviour, IDamageable
             else if (canEat != null && InventoryManager.instance.GetSelectedItem(item).name == "Heart Container" ||
                 canEat != null && InventoryManager.instance.GetSelectedItem(item).name == "Heart Container2")
             {
-                Debug.Log("Heart Container");
+               
                 indicatorAnimator.SetTrigger("Up");
                 uiHealth.AddHeart();
                 InventoryManager.instance.GetSelectedItem(true);
@@ -483,7 +481,7 @@ public class Movement : MonoBehaviour, IDamageable
     }
     public void Dash()
     {
-        if (dashCoolCounter <= 0 && dashCounter <= 0)
+        if (dashCoolCounter <= 0 && dashCounter <= 0 && movement != Vector2.zero)
         {
             characterSound.dashSound();
             ghost.makeGhost = true;
@@ -509,7 +507,7 @@ public class Movement : MonoBehaviour, IDamageable
 
         // Play hurt animation
         animator.SetTrigger("Hurt");
-        Debug.Log("Current health: " + _health);
+      
         uiHealth.UpdateHealth(_health, maxHealth);
         //rb.drag = 10;
 
@@ -547,6 +545,16 @@ public class Movement : MonoBehaviour, IDamageable
     private IEnumerator ApplyBurnDamage(float damage, float time)
     {
         float elapsedTime = 0f;
+        Volume volumeComponent = FireVolume.GetComponent<Volume>();
+
+        // Transition from 0 to 1
+        float duration = 0.3f;
+        for (float t = 0; t < duration; t += Time.deltaTime)
+        {
+            volumeComponent.weight = Mathf.Lerp(0f, 1f, t / duration);
+            yield return null;
+        }
+        volumeComponent.weight = 1f;
 
         while (elapsedTime < time)
         {
@@ -556,19 +564,37 @@ public class Movement : MonoBehaviour, IDamageable
 
             elapsedTime += 1f;
         }
+
+        for (float t = 0; t < duration; t += Time.deltaTime)
+        {
+            volumeComponent.weight = Mathf.Lerp(1f, 0f, t / duration);
+            yield return null;
+        }
+        volumeComponent.weight = 0f;
     }
+
+    
     public void OnDark(float time)
     {
         if (InventoryManager.instance.GetFairySlot(false) != null &&
             InventoryManager.instance.GetFairySlot(false).element != Element.Dark)
         {
             StartCoroutine(Slow(time));
+            if(!isCurrentlyDark)
+            {
+                StartCoroutine(DarkEffect());
+            }
+                  
         }
         else
         {
             if (InventoryManager.instance.GetFairySlot(false) == null)
             {
                 StartCoroutine(Slow(time));
+                if (!isCurrentlyDark)
+                {
+                    StartCoroutine(DarkEffect());
+                }
             }
         }
         
@@ -577,8 +603,42 @@ public class Movement : MonoBehaviour, IDamageable
 
     public IEnumerator Slow(float time)
     {
+       
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
+
         yield return new WaitForSeconds(time);
+
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+       
+
     }
+
+    public IEnumerator DarkEffect()
+    {
+        isCurrentlyDark = true;
+        Volume volumeComponent = DarkVolume.GetComponent<Volume>();
+
+        // Transition from 0 to 1
+        float duration = 0.3f;
+        for (float t = 0; t < duration; t += Time.deltaTime)
+        {
+            volumeComponent.weight = Mathf.Lerp(0f, 1f, t / duration);
+            yield return null;
+        }
+        volumeComponent.weight = 1f; // Ensure it ends at 1
+
+        // Wait for 5 seconds at full weight
+        yield return new WaitForSeconds(5f);
+
+        // Transition back from 1 to 0
+        for (float t = 0; t < duration; t += Time.deltaTime)
+        {
+            volumeComponent.weight = Mathf.Lerp(1f, 0f, t / duration);
+            yield return null;
+        }
+        volumeComponent.weight = 0f;
+        isCurrentlyDark = false;// Ensure it ends at 0
+    }
+
+
 }

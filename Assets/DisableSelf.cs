@@ -4,19 +4,14 @@ using UnityEngine;
 
 public class DisableSelf : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public void DestroySelf()
     {
         Destroy(gameObject);
+    }
+
+    public void TurnOffSelf()
+    {
+        gameObject.SetActive(false);
     }
 }

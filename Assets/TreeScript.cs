@@ -39,7 +39,7 @@ public class TreeScript : MonoBehaviour, IDamageable
     {
         treeSoundManager.TreeHit();
         Health -= (damage * .7f);
-        Debug.Log("Tree healt" + Health);
+     
         animator.SetTrigger("Hit");
     }
 
@@ -49,7 +49,7 @@ public class TreeScript : MonoBehaviour, IDamageable
         {
             treeSoundManager.TreeHit();
             Health -= (damage * .7f);
-            Debug.Log("rock health" + Health);
+         
         }
     }
 
@@ -98,7 +98,7 @@ public class TreeScript : MonoBehaviour, IDamageable
             StartCoroutine(ApplyBurnDamage(damage, time));
         }
 
-        Debug.Log("BURRRRN");
+      
     }
 
     private IEnumerator ApplyBurnDamage(float damage, float time)
@@ -114,7 +114,7 @@ public class TreeScript : MonoBehaviour, IDamageable
             
             yield return new WaitForSeconds(1f);
             OnHit(increasedDamage);
-            Debug.Log(increasedDamage);
+           
 
             elapsedTime += 1f;
             multiplier++;

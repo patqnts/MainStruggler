@@ -47,7 +47,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler,IEnd
                     }
                     else
                     {
-                        Debug.Log("Weapon spawn is not in the selected slot.");
+                      //
                     }
                 }
                 else if (selectedItem.holdable)
@@ -73,7 +73,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler,IEnd
                     if (fairyAnimator != null)
                     {
                         InventoryManager.instance.fairyHolder.GetComponent<Animator>().runtimeAnimatorController = fairyAnimator.runtimeAnimatorController;
-                        Debug.Log("Fairy - to Empty slot : fairy animator continue");
+                     
                     }
                     else
                     {
@@ -131,7 +131,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler,IEnd
         if (transform.parent.GetSiblingIndex() == 8)
         {
             // The current item is from equipmentSlots[7]
-            Debug.Log("Dragging item from equipmentSlots[7]");
+           
             // Add your desired logic here
         }
 
@@ -177,7 +177,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler,IEnd
             InventoryManager.instance.inventorySlots[i].gameObject.SetActive(true);
         }
         // If the item is not dropped into the fairy slot, leave it in its new slot
-        Debug.Log("Item in regular slot/Swappers");
+       
         transform.SetParent(parentAfterDrag);
     }
 

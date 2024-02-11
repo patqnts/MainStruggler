@@ -61,7 +61,7 @@ public class RockScript : MonoBehaviour, IDamageable
     {
 
         Health -= (damage * .7f);
-        Debug.Log("rock health" + Health);
+        
         animator.SetTrigger("Hit");
         treeSoundManager.TreeHit();
     }
@@ -71,7 +71,7 @@ public class RockScript : MonoBehaviour, IDamageable
         if(_health >= 0)
         {
             Health -= (damage * .7f);
-            Debug.Log("rock health" + Health);
+           
             treeSoundManager.TreeHit();
         }
         

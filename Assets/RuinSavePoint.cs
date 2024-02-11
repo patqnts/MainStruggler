@@ -56,7 +56,7 @@ public class RuinSavePoint : MonoBehaviour
             playerHealth.indicatorAnimator.SetTrigger("Heal");
             playerHealth.characterSound.eatSound();
 
-            Debug.Log("Player Health: " + playerHealth._health);
+           
         }
         if (InventoryManager.instance.GetInventoryItem("Struggler Bottle") != null &&
             InventoryManager.instance.GetItemCount("Struggler Bottle") < 4)
@@ -72,14 +72,14 @@ public class RuinSavePoint : MonoBehaviour
         if (saveSystem != null)
         {
             //saveSystem.SavePlayer(cellular.text);
-            //Debug.Log(cellular.text);
+           
         }
         // If the collider is the player, set the flag to true and update the last ruin
         if (other.CompareTag("Player"))
         {
             playerEntered = true;
             lastRuin = this;
-            Debug.Log("SAVEPOINT");
+            
         }
         else if (other.CompareTag("Tree") || other.CompareTag("Rock"))
         {
@@ -116,7 +116,7 @@ public class RuinSavePoint : MonoBehaviour
         if (saveSystem != null && cellular != null)
         {
             saveSystem.SavePlayer(cellular.text);
-            Debug.Log(cellular.text);
+          
         }
         // If a last ruin has been set, teleport the player to it
         if (lastRuin != null)

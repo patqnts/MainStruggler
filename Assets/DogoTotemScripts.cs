@@ -46,7 +46,7 @@ public class DogoTotemScripts : MonoBehaviour
             InventoryManager.instance.GetItemCount("Key of Stone") < 1||
             InventoryManager.instance.GetItemCount("Key of Slime") < 1)
         {
-            Debug.Log("Keys are not complete yet.");
+           
             return;
         }
         else

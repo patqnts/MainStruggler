@@ -40,12 +40,12 @@ public class Plant : MonoBehaviour, IDamageable
                 
                 if (isElemental)
                 {
-                    Debug.Log("Elemental monster dies -1");
+                   
                     npcManager.OnElementalDestroyed();
                 }
                 else
                 {
-                    Debug.Log("Normal monster dies -1");
+                    
                     npcManager.OnEnemyDestroyed();
                 }
 
@@ -214,7 +214,7 @@ public class Plant : MonoBehaviour, IDamageable
             StartCoroutine(ApplyBurnDamage(damage, time));
         }
 
-        Debug.Log("BURRRRN");
+        
     }
 
     private IEnumerator ApplyBurnDamage(float damage, float time)
@@ -227,7 +227,7 @@ public class Plant : MonoBehaviour, IDamageable
             yield return new WaitForSeconds(1f);
 
             OnHit(damage);
-            Debug.Log("BURRRRN");
+
 
             elapsedTime += 1f;
         }

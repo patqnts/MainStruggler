@@ -24,8 +24,7 @@ public class CombatManager : MonoBehaviour
     {
         if (inventoryItem != null)
         {
-           
-            Debug.Log(inventoryItem + " current durability: " + inventoryItem.durability);
+                      
             inventoryItem.durability -= amount;
             if (inventoryItem.durability <= 0)
             {

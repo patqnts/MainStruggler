@@ -41,7 +41,7 @@ public class BlackShopScript : MonoBehaviour
     {
         if (Intest < 0 || Intest >= itemList.Length)
         {
-            Debug.Log("Invalid item index");
+           
             return;
         }
 
@@ -109,7 +109,7 @@ public class BlackShopScript : MonoBehaviour
                 lumosWoodCost = 30;
                 break;
             default:
-                Debug.Log("Invalid item name");
+               
                 return;
         }
 
@@ -122,7 +122,7 @@ public class BlackShopScript : MonoBehaviour
             inventoryManager.GetItemCount("Starstone") < starstoneCost ||
             inventoryManager.GetItemCount("Steel") < steelIngotCost)
         {
-            Debug.Log("Not enough resources to buy " + itemToBuy.name);
+           
             animator.SetTrigger("NotEnough");
             NotEnough();
             return;
@@ -140,12 +140,11 @@ public class BlackShopScript : MonoBehaviour
             inventoryManager.RemoveItem("Stoneheart", stoneheartCost);
             inventoryManager.RemoveItem("Starstone", starstoneCost);
             inventoryManager.RemoveItem("Steel", steelIngotCost);
-            Debug.Log("Bought " + itemToBuy.name);
+          
         }
         else
         {
             NotEnough();
-            Debug.Log("Inventory is full");
         }
     }
 

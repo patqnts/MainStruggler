@@ -38,13 +38,13 @@ public class DayNightCycles : MonoBehaviour
             localLight2D.color = dayColor;
             localLight2D.intensity = dayIntensity;
 
-            Debug.Log("is day: IS NIGHT IS " + isNight);
+          
         }
         else
         {
             localLight2D.color = nightColor;
             localLight2D.intensity = nightIntensity;
-            Debug.Log("is night IS NIGHT IS " + isNight);
+            
         }
     }
 
